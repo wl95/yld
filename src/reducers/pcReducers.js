@@ -1,4 +1,4 @@
-import {SET_FILTERDATA, SET_SEARCHDATA,SET_PAGE_DATAS} from '../actions/actions'
+import {SET_FILTERDATA, SET_SEARCHDATA,SET_PAGE_DATAS, GET_AUTH_DATA} from '../actions/actions'
 /**
  * 公用reducer
  */
@@ -19,7 +19,8 @@ export function filterReducers(state = initState, action) {
         case SET_SEARCHDATA:
           let { searchData } = action
           return {...state,filter:searchData}
-        
+        case GET_AUTH_DATA:
+          return state
         default:
           return state
     }

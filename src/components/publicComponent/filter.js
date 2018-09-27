@@ -33,7 +33,23 @@ class Filter extends Component {
     }
 
     componentDidMount(){
-        let { filter, setFilter } = this.props
+        let { filter, setFilter, getAuthority } = this.props
+
+        let herfStr = location.href;
+        let index = herfStr.indexOf('?');
+        herfStr = herfStr.slice(index+1);
+        if(herfStr.indexOf('organCode')!==-1 && herfStr.indexOf('organLevel') !== -1){
+          // 参数正确得传入
+          herfStr.split('&').map(item=>{//把获取参数存入本地存储
+            return item.split('=')
+          }).forEach(item=>{
+            localStorage.setItem(item[0],item[1]);
+            getAuthority(item[0],item[1])
+          })
+        }else{
+          //参数未正确传入
+        }
+
         filter && filter.map((item, index) => {
             if(item.defaultValue === 0 || item.defaultValue != undefined){
                 let { filed } = this.state

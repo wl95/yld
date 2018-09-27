@@ -28,3 +28,4 @@ export const SET_FILTERDATA = 'SET_FILTERDATA'  // 查询请求到得数据
 export const SET_QUERY_DATA = 'SET_QUERY_DATA'  // 查询请求列表
 
 export const SET_PAGE_DATAS = "SET_PAGE_DATAS"
+export const GET_AUTH_DATA = "GET_AUTH_DATA"     // 用户权限

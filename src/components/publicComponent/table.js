@@ -186,7 +186,7 @@ class Table extends Component {
           }
         </tbody>
       </table>
-      {ArrayDate.length>10 && <PageComponent
+      <PageComponent
         total={this.state.totalNum}
         current={this.state.current}
         totalPage={this.state.totalPage}
@@ -194,7 +194,7 @@ class Table extends Component {
         pageClick={this.pageClick.bind(this)}
         goPrev={this.goPrevClick.bind(this)}
         goNext={this.goNext.bind(this)}
-        switchChange={this.goSwitchChange.bind(this)} /> }
+        switchChange={this.goSwitchChange.bind(this)} /> 
     </div>
   }
 }

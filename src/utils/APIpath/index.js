@@ -1,5 +1,6 @@
 import filterAPI from './filter'
-
-export default {
+import commonAPI from './common'
+module.exports = {
   filterAPI,
+  commonAPI
 }

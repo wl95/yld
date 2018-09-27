@@ -28,6 +28,7 @@ module.exports = {
             }
         }
     },
+    devtool: 'eval-source-map',
     output: {
         filename: '[name].[chunkhash].js',
         chunkFilename: '[name].[chunkhash].js',

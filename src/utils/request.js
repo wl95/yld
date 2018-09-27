@@ -30,7 +30,7 @@ const fetch = (options) => {
       if (requestType === 'form') {
         return axios.post(url, data, { headers: { 'Content-Type': 'multipart/form-data' } })
       }
-      return axios.post(url, cloneData)
+      return axios({method:'post',dataType: "json",data: JSON.stringify(cloneData),url})
     case 'put':
       return axios.put(url, cloneData)
     case 'patch':
