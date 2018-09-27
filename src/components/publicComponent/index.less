@@ -1,0 +1,176 @@
+input{
+  padding-left: 5px;
+  outline: none;
+  border: 1px solid #ccc;
+  line-height: 30px;
+}
+.form{
+  padding: 10px 8px;
+}
+.picode,.select,.react-datepicker__input-container{
+    border-radius: 4px;
+}
+label{
+    margin:0;
+}
+@media screen and (min-width:768px) {
+    .form{
+        width:100%;
+        margin:0;
+        padding:0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        border-top:none;
+    }
+    .back{
+        width:100%;
+        height:45px;
+        line-height: 45px;
+        background:#081a6a;
+        color:#fff;
+        >a{
+            display: inline-block;
+            width:auto;
+            height:45px;
+            padding-left:20px;
+        }
+    }
+    .cols{
+        width:25%;
+        padding: 0px 8px;
+        text-align: right;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 8px;
+        >label{
+            width:43%;
+            background: #fff;
+            padding-right: 5px;
+            font-size: 13px;
+        }
+        >.select, >input, >div{
+            width:57%;
+            height:30px;
+            background: #fff;
+        }
+        /* .pcode{
+            width:43%;
+            height:30px;
+        }
+        .picode{
+            width:57%;
+            height:30px;
+            >input{
+                width:100%;
+                height:30px;
+            }
+        } */
+        .react-datepicker-wrapper{
+            width:100%;
+            .react-datepicker__input-container{
+                width:100%;
+                height:30px;
+                >input{
+                    width:100%;
+                    padding:0;
+                    height:30px;
+                    padding-left: 8px;
+                }
+            }
+        }
+    }
+    .go{
+        flex: 1;
+        line-height:30px;
+        text-align: center;
+        margin-top: 8px;
+    }
+    .go button{
+        background: #081a6a;
+        color:#fff;
+        border:none;
+        outline:none;
+        border-radius:4px;
+        margin:0 5px;
+        padding:0 15px;
+    }
+}
+@media screen and (min-width:320px) and (max-width:767px) {
+    .form{
+        width:100%;
+        margin:0;
+        padding:0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border:1px solid #ccc;
+        flex-wrap: wrap;
+        border-top:none;
+    }
+    .back{
+        width:100%;
+        height:45px;
+        line-height: 45px;
+        background:#081a6a;
+        color:#fff;
+    }
+    .cols{
+        width:100%;
+        padding: 0px 8px;
+        margin-top: 8px;
+        text-align: right;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        >label{
+            width:40%;
+            background: #fff;
+            padding-right: 5px;
+            font-size: 13px;
+        }
+        >.select, >input, >div{
+            width:57%;
+            height:30px;
+            background: #fff;
+        }
+        .react-datepicker-wrapper{
+            width:100%;
+            .react-datepicker__input-container{
+                width:100%;
+                height:30px;
+                >input{
+                    width:100%;
+                    padding:0;
+                    height:30px;
+                    padding-left: 8px;
+                }
+            }
+        }
+        /* .picode{
+            width:57%;
+            height:30px;
+            >input{
+                width:100%;
+                height:30px;
+            }
+        } */
+    }
+    .go{
+        flex: 1;
+        line-height:30px;
+        text-align: center;
+        margin-top: 8px;
+    }
+    .go button{
+        background: #081a6a;
+        color:#fff;
+        border:none;
+        outline:none;
+        border-radius:4px;
+        margin:0 5px;
+        padding:0 15px;
+    }
+}
