@@ -15,6 +15,21 @@ class BootstrapsPage extends Component{
       isShow:value
     })
   }
+  componentDidMount(){
+    let herfStr = location.href;
+    let index = herfStr.indexOf('?');
+    herfStr = herfStr.slice(index+1);
+    if(herfStr.indexOf('organcode')!==-1 && herfStr.indexOf('organlevel') !== -1){
+      // 参数正确得传入
+      herfStr.split('&').map(item=>{//把获取参数存入本地存储
+        return item.split('=')
+      }).forEach(item=>{
+        localStorage.setItem(item[0],item[1]);
+      })
+    }else{
+      //参数未正确传入
+    }
+  }
   render(){
     let {isShow} = this.state;
     return  <div className="first">
