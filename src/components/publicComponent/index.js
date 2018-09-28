@@ -64,7 +64,7 @@ const PublicComponent = ({
             switch(pubChildren){
                 case "publicComponent":
                     const {dateType,UPDATE_DATE_START,UPDATE_DATE_END,ORGAN_LEVEL} =filed;
-                    let UPDATE_DATE_STARTs=moment(UPDATE_DATE_START).format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM');
+                    let UPDATE_DATE_STARTs = moment(UPDATE_DATE_START).format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM');
                     let UPDATE_DATE_ENDs = moment(UPDATE_DATE_END).format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM')
                     let JgTime;
                     dateType==="0"?JSON.stringify(JgTime = Times(UPDATE_DATE_START,UPDATE_DATE_END)):JSON.stringify(JgTime=getIntervalMonth(moment(UPDATE_DATE_START).format('YYYY-MM'),moment(UPDATE_DATE_END).format('YYYY-MM')))
