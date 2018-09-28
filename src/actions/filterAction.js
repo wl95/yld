@@ -1,6 +1,6 @@
 import {SET_FILTERDATA, SET_SEARCHDATA, SET_QUERY_DATA,SET_PAGE_DATAS, GET_AUTH_DATA} from './actions'
 import { request } from 'utils'
-import { apiPrefix, filterAPI } from 'utils/APIpath'
+import { filterAPI } from 'utils/APIpath'
 const { organRange } = filterAPI
 /***
  *设置当前页面查询内容
@@ -47,17 +47,15 @@ export function setDATE(PAGEdATE){
     }
 }
 
-export function getAuthorityData(organCode, organLevel){
-    /* request({
+export function getAuthorityData(dispatch, juris){
+    let { organCode, organLevel } = juris
+    request({
         method:'get',
         url:`${organRange}?organCode=${organCode}&organLevel=${organLevel}`,
     }).then(resData => {
-        return{
+        dispatch({
             type:GET_AUTH_DATA,
-            queryData:resData,
-        }
-    }) */
-    return{
-        type:GET_AUTH_DATA,
-    }
+            authData:resData,
+        })
+    })
 }

@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import mapDispatchToProps from './mapDispatch'
 import mapStateToProps from './mapState'
 import { request, filterAPI } from 'utils'
+import MonthDate from 'components/Calendar/Month.jsx'
 import './index.less'
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
@@ -34,8 +35,8 @@ class Filter extends Component {
 
     componentDidMount(){
         let { filter, setFilter, getAuthority } = this.props
-
         let herfStr = location.href;
+        let juris = {}
         let index = herfStr.indexOf('?');
         herfStr = herfStr.slice(index+1);
         if(herfStr.indexOf('organCode')!==-1 && herfStr.indexOf('organLevel') !== -1){
@@ -44,8 +45,9 @@ class Filter extends Component {
             return item.split('=')
           }).forEach(item=>{
             localStorage.setItem(item[0],item[1]);
-            getAuthority(item[0],item[1])
+            juris[item[0]] = item[1]
           })
+          getAuthority(juris)
         }else{
           //参数未正确传入
         }
@@ -59,12 +61,12 @@ class Filter extends Component {
                 })
             }
             //请求
-            filterAPI[item.requestType] && item.method && request({
+            /* filterAPI[item.requestType] && item.method && request({
                 method:item.method,
                 url:filterAPI[item.requestType]
             }).then(resData => {
                 setFilter(resData[item.selectKey], index)
-            })
+            }) */
         })
     }
     
@@ -276,15 +278,14 @@ class Filter extends Component {
                                                 }
                                             </select>}
                                         { item.type === 3 && 
-                                            <DatePicker
-                                                placeholderText="请选择" 
-                                                selectsStart={item.selectType === 'UPDATE_DATE_START'} 
+                                            <MonthDate
+                                                dateFormat={item.dateFormat || dateFormat}
+                                               /*  selectsStart={item.selectType === 'UPDATE_DATE_START'} 
                                                 selectsEnd={item.selectType === 'UPDATE_DATE_END'} 
                                                 selected={moment(filed[item.selectType])}
                                                 endDate={moment(filed[item.selectType])}
                                                 startDate={moment(filed[item.selectType])}
-                                                dateFormat={item.dateFormat || dateFormat}
-                                                onChange={e => this.onChangeSelect(e, item, true)}
+                                                onChange={e => this.onChangeSelect(e, item, true)} */
                                             />}
                                     </div>
                                 )

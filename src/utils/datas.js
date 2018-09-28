@@ -20,6 +20,10 @@ export default {
             dateTypeCode:'0',
             dateTypeName:'日'
           },
+          {
+            dateTypeCode:'1',
+            dateTypeName:'月'
+          },
         ]
       },
       {
