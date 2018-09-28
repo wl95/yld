@@ -1,5 +1,6 @@
 import axios from 'axios'
 import lodash from 'lodash'
+import queryString from 'query-string'
 
 const fetch = (options) => {
   let {
@@ -21,7 +22,7 @@ const fetch = (options) => {
   // const cloneData = lodash.cloneDeep(data)
   switch (method.toLowerCase()) {
     case 'get':
-      return axios({method:'get',dataType: "json",params: JSON.stringify(cloneData),url})
+      return axios({method:'get',dataType: "json",params: cloneData,url})
     case 'delete':
       return axios.delete(url, {
         data: cloneData,
@@ -30,7 +31,7 @@ const fetch = (options) => {
       if (requestType === 'form') {
         return axios.post(url, data, { headers: { 'Content-Type': 'multipart/form-data' } })
       }
-      return axios({method:'post',dataType: "json",data: JSON.stringify(cloneData),url})
+      return axios({method:'post',dataType: "json",data: queryString.stringify(cloneData),url})
     case 'put':
       return axios.put(url, cloneData)
     case 'patch':

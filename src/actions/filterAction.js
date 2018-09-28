@@ -48,10 +48,10 @@ export function setDATE(PAGEdATE){
 }
 
 export function getAuthorityData(dispatch, juris){
-    let { organCode, organLevel } = juris
     request({
         method:'get',
-        url:`${organRange}?organCode=${organCode}&organLevel=${organLevel}`,
+        url:`${organRange}`,
+        data:juris
     }).then(resData => {
         dispatch({
             type:GET_AUTH_DATA,

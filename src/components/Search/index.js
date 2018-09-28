@@ -13,7 +13,7 @@ class Search extends Component {
                     type="text"
                     ref='search'
                     value={value}
-                    placeholder='请输入产品代码'
+                    placeholder='请输入'
                     className='InputBOX'
                     onChange={e => onChange(e, selectType)}/>
                 <ul className='SearchResults' ref='area_txt'></ul>

@@ -5,7 +5,8 @@ import {SET_FILTERDATA, SET_SEARCHDATA,SET_PAGE_DATAS, GET_AUTH_DATA} from '../a
 
 const initState = {
     filter:[],   //查询条件的数据
-    arr:[]
+    arr:[],
+    authData:{}
 }
 
 export function filterReducers(state = initState, action) {
@@ -20,8 +21,13 @@ export function filterReducers(state = initState, action) {
           let { searchData } = action
           return {...state,filter:searchData}
         case GET_AUTH_DATA:
-          console.log(action.authData)
-          return state
+          let { data, code } = action.authData
+          if(code === 200){
+            return {...state, authData:data}
+          }else{
+            throw data
+          }
+          
         default:
           return state
     }

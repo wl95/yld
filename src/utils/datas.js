@@ -52,13 +52,11 @@ export default {
       },
       { 
         text:'省份:', 
-        requestType:'province',       
         selectType:'PROVINCE_CODE',
         selectKey:'provinceList',
-        itemKey:'provinceCode',           
-        itemName:'provinceName',         
-        linkage:'areaCode',
-        method:'get',
+        itemKey:'provinceCode',   
+        itemName:'provinceName', 
+        disabled:true,          
         type:2,
       },
       {
@@ -66,8 +64,8 @@ export default {
         selectType:'PREFECTURE_CODE',
         selectKey:'areaList',
         itemKey:'areaCode',
-        itemName:'areaName',         
-        linkage:'cityCode',
+        itemName:'areaName', 
+        disabled:true,          
         type:2,
       },
       {
@@ -75,8 +73,8 @@ export default {
         selectType:'CITY_CODE',
         selectKey:'cityList',
         itemKey:'cityCode',
-        itemName:'cityName',         
-        linkage:'branchCode',
+        itemName:'cityName',
+        disabled:true,           
         type:2,
       },
       {
@@ -84,7 +82,8 @@ export default {
         selectType:'BRANCE_CODE',
         selectKey:'branchList',
         itemKey:'branchCode',
-        itemName:'branchName',         
+        itemName:'branchName',  
+        disabled:true,         
         type:2,
       },
       {

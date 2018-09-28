@@ -53,6 +53,7 @@ class Filter extends Component {
             localStorage.setItem(item[0],item[1]);
             juris[item[0]] = item[1]
           })
+          console.log(juris['organLevel'])
           getAuthority(juris)
         }else{
             //参数未正确传入
@@ -141,7 +142,7 @@ class Filter extends Component {
     }
 
     onSubmit = () => {
-        let { onFilterSubmit, location } = this.props
+        let { onFilterSubmit } = this.props
         let { filed, dateFormat } = this.state
         onFilterSubmit({ filed , dateFormat })
     }
@@ -187,9 +188,11 @@ class Filter extends Component {
     }
 
     onReset = () => {
+        let { onFilterSubmit } = this.props
         this.setState({
             filed:{}
         })
+        onFilterSubmit()
     } 
     /* 判断开始日期和结束日期 */
     disabledDate = (UPDATE_DATE, dateCalendarType) => {
@@ -232,7 +235,7 @@ class Filter extends Component {
                                         <label>{item.text}</label>
                                         { item.type === 1 && <Search value={filed[item.selectType] || ''} onChange={e => this.onChangeSelect(e, item, false)} selectType={item.selectType}/>}
                                         { item.type === 2 && 
-                                            <select className="select" disabled={item.disabled} value={filed[item.selectType] || ''} onChange={e => this.onChangeSelect(e, item, false)}>
+                                            <select className={"select " + (item.disabled ? 'disabled' : '')} disabled={item.disabled} value={filed[item.selectType] || ''} onChange={e => this.onChangeSelect(e, item, false)}>
                                                 <option value="">请选择</option>
                                                 {
                                                     item.option && item.option.map((optionItem, index) => {

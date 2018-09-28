@@ -7,6 +7,7 @@ import Table from './table'
 import data from 'utils/datas.js'
 import moment from "moment"
 import axios from 'axios';
+import queryString from 'query-string'
 import Month from '../Calendar/Month.jsx'
 import { request } from 'utils'
 const PublicComponent = ({
@@ -86,14 +87,14 @@ const PublicComponent = ({
                         "orderMap":{"property":"period","direction":"DESC"}
                     };
                     
-                    /* location.search = queryString.stringify({
+                    location.search = queryString.stringify({
                         "DATE_TYPE":dateType,
                         "GROUP_BY":"ORGAN_ID",
-                        "UPDATE_DATE_START":UPDATE_DATE_STARTs,
-                        "UPDATE_DATE_END":UPDATE_DATE_ENDs,
+                        "UPDATE_DATE_START":UPDATE_DATE_START,
+                        "UPDATE_DATE_END":UPDATE_DATE_END,
                         "ORGAN_LEVEL":ORGAN_LEVEL,
                         "DAY_INTERVAL":JgTime
-                    }) */
+                    })
                     axios({
                         method:'get',
                         dataType: "json",
@@ -122,9 +123,9 @@ const PublicComponent = ({
                         "orderMap":{"property":"period","direction":"DESC"}
                     }
                     axios({
-                        method:'POST',
+                        method:'get',
                         dataType: "json",
-                        data: JSON.stringify(get),
+                        data: JSON.stringify(data),
                         url:"http://10.136.1.216:9091/ycReport",
                         }).then(resData => {
                         if(resData.status==200&&resData.statusText=="OK"){
