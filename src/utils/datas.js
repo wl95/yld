@@ -30,12 +30,14 @@ export default {
         text:'起始日期:',
         selectType:'UPDATE_DATE_START',
         defaultValue:moment('2017-11-20', 'YYYY-MM-DD'),
+        dateCalendarType:'start',
         type:3,
       },
       {
         text:'终止日期:',
         selectType:'UPDATE_DATE_END',
         defaultValue:moment('2017-11-25', 'YYYY-MM-DD'),
+        dateCalendarType:'end',
         type:3,
       },
       {

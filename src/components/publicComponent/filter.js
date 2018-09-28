@@ -6,10 +6,9 @@ import mapStateToProps from './mapState'
 import { request, filterAPI } from 'utils'
 import MonthDate from 'components/Calendar/Month.jsx'
 import './index.less'
-import DatePicker from 'react-datepicker';
+import queryString from 'query-string'
 import moment from 'moment';
 import Search from '../Search'
-import { apiPrefix } from 'utils/APIpath/common'
 import 'react-datepicker/dist/react-datepicker.css';
 import { toast } from 'react-toastify';
 
@@ -34,8 +33,14 @@ class Filter extends Component {
     }
 
     componentDidMount(){
-        let { filter, setFilter, getAuthority } = this.props
-        let herfStr = location.href;
+        this.fetch()
+    }
+    
+    fetch = () => {
+        let { filter, getAuthority, location } = this.props
+        let { search, href } = location
+        let { filed } = this.state
+        let herfStr = href;
         let juris = {}
         let index = herfStr.indexOf('?');
         herfStr = herfStr.slice(index+1);
@@ -52,9 +57,16 @@ class Filter extends Component {
           //参数未正确传入
         }
 
+        if(filed['UPDATE_DATE_END']){
+          filed['UPDATE_DATE_END'] = moment(queryString.parse(search).UPDATE_DATE_END, 'YYYY-MM-DD');
+        }
+         
+        if( filed['UPDATE_DATE_START']){
+          filed['UPDATE_DATE_START'] = moment(queryString.parse(search).UPDATE_DATE_START, 'YYYY-MM-DD');
+        }
+
         filter && filter.map((item, index) => {
             if(item.defaultValue === 0 || item.defaultValue != undefined){
-                let { filed } = this.state
                 filed[item.selectType] = item.defaultValue
                 this.setState({
                     filed
@@ -69,7 +81,7 @@ class Filter extends Component {
             }) */
         })
     }
-    
+
     onModeChange = ( key, e ) => {
         let mode;
         let { rcCalendar } = this.state
@@ -94,75 +106,10 @@ class Filter extends Component {
         });
     }
 
-    /***
-     * 起始日期和开始日期判断
-     * @param value
-     */
-    disabledEndDate = (e, selectType, isData) => {
-        let { filed } = this.state;
-        
-        if(isData && filed.UPDATE_DATE_START && selectType === 'UPDATE_DATE_END' && Number(filed.UPDATE_DATE_START.valueOf()>e.valueOf())){
-            toast.warn("结束时间不能小于起始时间!", {
-                position:toast.POSITION.TOP_CENTER
-            });
-            return 0;
-        }
-        if(isData && filed.UPDATE_DATE_END && selectType === 'UPDATE_DATE_START' && Number(e.valueOf()>filed.UPDATE_DATE_END.valueOf())){
-            toast.warn("起始时间不能大于结束时间!", {
-                position:toast.POSITION.TOP_CENTER
-            });
-            return 0;
-        }
-        return 1;
-    }
-
     onChangeSelect = ( e, item, isData ) => {
-        let { selectType, linkage, isMonth } = item
-        let { filed, dateFormat } = this.state
-        let { setFilter, filter, setSearch } = this.props
-
-        if(!this.disabledEndDate(e, selectType, isData)){
-          return;
-        }
-
-        if( selectType === 'PROVINCE_CODE' ){
-            let value = e.target.value
-            request({
-                method:'get',
-                url:`${apiPrefix}/organization/province_${e.target.value}.json`
-            }).then(resData => {
-                let { area_data, branch_data, city_data } = resData
-                filter.map((item, index) => {
-                    if( item.itemKey === linkage ){
-                        setFilter(area_data[value].areaList, index)
-                    }
-                })
-                this.setState({
-                    branch_data,
-                    city_data,
-                })
-            })
-        }
-
-        if( selectType === 'PREFECTURE_CODE' &&  filed['PROVINCE_CODE'] ){
-            let value = e.target.value
-            let { city_data } = this.state;
-            filter.map((cityItem, index) => {
-                if( cityItem.itemKey === linkage ){
-                    setFilter(city_data[value].cityList, index)
-                }
-            })    
-        }
-
-        if( selectType === 'CITY_CODE' &&  filed['PREFECTURE_CODE'] ){
-            let value = e.target.value
-            let { branch_data } = this.state;
-            filter.map((branchItem, index) => {
-                if( branchItem.itemKey === linkage ){
-                    setFilter(branch_data[value], index)
-                }
-            })    
-        }
+        let { selectType } = item
+        let { filed } = this.state
+        let { filter, setSearch } = this.props
 
         if( selectType === 'dateType' ){
             this.onModeChange('rangeStartMode', e.target.value)
@@ -170,18 +117,12 @@ class Filter extends Component {
 
         if( selectType === 'dCustomerType' ){
             let value = e.target.value
-            // console.log(filter)
             filter.map((item, index) => {
-                // console.log(item)
                 if( item.selectType === 'reProper' ){
-                    //console.log(e.target.value)
-                    //console.log(filter[index])
                     filter[index].disabled = e.target.value == 1 ? true : false;
-                    console.log(value == 1)
                 }
             })
             setSearch(filter)
-
             filed.reProper = ''
             this.setState({
                 filed
@@ -202,7 +143,6 @@ class Filter extends Component {
     onSubmit = () => {
         let { onFilterSubmit, location } = this.props
         let { filed, dateFormat } = this.state
-        // console.log(filed)
         onFilterSubmit({ filed , dateFormat })
     }
 
@@ -252,6 +192,29 @@ class Filter extends Component {
         })
     } 
 
+    disabledDate = (UPDATE_DATE, dateCalendarType) => {
+        const { UPDATE_DATE_START, UPDATE_DATE_END } = this.state.filed;
+        if(dateCalendarType === 'start'){
+            if (!UPDATE_DATE) {
+                return false;
+            }
+            if (!UPDATE_DATE_END) {
+                return false;
+            }
+            return UPDATE_DATE_END.isBefore(UPDATE_DATE)
+        } else if(dateCalendarType === 'end') {
+            if (!UPDATE_DATE) {
+              return false;
+            }
+           
+            if (!UPDATE_DATE_START) {
+              return false;
+            }
+            return UPDATE_DATE.isBefore(UPDATE_DATE_START)
+        }
+        
+    }
+
     onBack = () => {
         history.go(-1)
     }
@@ -280,12 +243,10 @@ class Filter extends Component {
                                         { item.type === 3 && 
                                             <MonthDate
                                                 dateFormat={item.dateFormat || dateFormat}
-                                               /*  selectsStart={item.selectType === 'UPDATE_DATE_START'} 
-                                                selectsEnd={item.selectType === 'UPDATE_DATE_END'} 
-                                                selected={moment(filed[item.selectType])}
-                                                endDate={moment(filed[item.selectType])}
-                                                startDate={moment(filed[item.selectType])}
-                                                onChange={e => this.onChangeSelect(e, item, true)} */
+                                                dateValue={filed[item.selectType]}
+                                                disabledDate={(value) => this.disabledDate(value, item.dateCalendarType)}
+                                                defaultValue={item.defaultValue}
+                                                onChange={e => this.onChangeSelect(e, item, true)}
                                             />}
                                     </div>
                                 )
