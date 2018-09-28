@@ -4,5 +4,5 @@ export default (dispatch) => ({
     setSearch: (searchData) => dispatch(setSearchData(searchData)),
     queryList: (queryData) => dispatch(queryListData(queryData)),
     SUPDATE_DATE_END: (data) => dispatch(setDATE(data)),
-    getAuthority:(organCode, organLevel) => dispatch(getAuthorityData(organCode, organLevel)),
+    getAuthority:(juris) => getAuthorityData(dispatch, juris),
 })

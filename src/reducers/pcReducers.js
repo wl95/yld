@@ -20,6 +20,7 @@ export function filterReducers(state = initState, action) {
           let { searchData } = action
           return {...state,filter:searchData}
         case GET_AUTH_DATA:
+          console.log(action.authData)
           return state
         default:
           return state
