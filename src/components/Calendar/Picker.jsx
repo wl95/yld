@@ -11,7 +11,6 @@ import 'moment/locale/zh-cn';
 import 'moment/locale/en-gb';
 
 const format = 'YYYY-MM-DD';
-
 const fullFormat = 'YYYY-MM-DD';
 const cn = location.search.indexOf('cn') !== -1;
 
@@ -70,5 +69,4 @@ class Picker extends React.Component {
       </DatePicker>);
   }
 }
-
 export default Picker
