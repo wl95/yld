@@ -35,10 +35,11 @@ class Filter extends Component {
     componentDidMount(){
         this.fetch()
     }
-    
+    /* 首次打开页面 */
     fetch = () => {
         let { filter, getAuthority, location, setFilter } = this.props
         let { search, href } = location
+        let locationSearch = queryString.parse(search)
         let { filed } = this.state
         let herfStr = href;
         let juris = {}
@@ -57,17 +58,16 @@ class Filter extends Component {
             //参数未正确传入
         }
 
-        if(filed['UPDATE_DATE_END']){
-          filed['UPDATE_DATE_END'] = moment(queryString.parse(search).UPDATE_DATE_END, 'YYYY-MM-DD');
-        }
-         
-        if( filed['UPDATE_DATE_START']){
-          filed['UPDATE_DATE_START'] = moment(queryString.parse(search).UPDATE_DATE_START, 'YYYY-MM-DD');
-        }
-
         filter && filter.map((item, index) => {
             if(item.defaultValue === 0 || item.defaultValue != undefined){
                 filed[item.selectType] = item.defaultValue
+                if(locationSearch.UPDATE_DATE_END){
+                    filed['UPDATE_DATE_END'] = moment(locationSearch.UPDATE_DATE_END, 'YYYY-MM-DD');
+                  }
+                   
+                  if(locationSearch.UPDATE_DATE_START){
+                    filed['UPDATE_DATE_START'] = moment(locationSearch.UPDATE_DATE_START, 'YYYY-MM-DD');
+                  }
                 this.setState({
                     filed
                 })
@@ -191,7 +191,7 @@ class Filter extends Component {
             filed:{}
         })
     } 
-
+    /* 判断开始日期和结束日期 */
     disabledDate = (UPDATE_DATE, dateCalendarType) => {
         const { UPDATE_DATE_START, UPDATE_DATE_END } = this.state.filed;
         if(dateCalendarType === 'start'){
