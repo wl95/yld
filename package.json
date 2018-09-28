@@ -24,6 +24,7 @@
     "npm": "6.0.0",
     "query-string": "6.1.0",
     "rc-calendar": "9.7.0",
+    "rc-pagination": "^1.17.2",
     "rc-time-picker": "3.4.0",
     "react-bootstrap": "0.32.1",
     "react-datepicker": "1.6.0",

@@ -21,7 +21,7 @@ const fetch = (options) => {
   // const cloneData = lodash.cloneDeep(data)
   switch (method.toLowerCase()) {
     case 'get':
-      return axios.get(url)
+      return axios({method:'get',dataType: "json",params: JSON.stringify(cloneData),url})
     case 'delete':
       return axios.delete(url, {
         data: cloneData,

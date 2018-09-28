@@ -95,7 +95,7 @@ const PublicComponent = ({
                         "DAY_INTERVAL":JgTime
                     }) */
                     axios({
-                        method:'POST',
+                        method:'get',
                         dataType: "json",
                         data: JSON.stringify(datas),
                         url:urls,
@@ -124,7 +124,7 @@ const PublicComponent = ({
                     axios({
                         method:'POST',
                         dataType: "json",
-                        data: JSON.stringify(data),
+                        data: JSON.stringify(get),
                         url:"http://10.136.1.216:9091/ycReport",
                         }).then(resData => {
                         if(resData.status==200&&resData.statusText=="OK"){
