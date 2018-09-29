@@ -37,7 +37,7 @@ class Filter extends Component {
     }
     /* 首次打开页面 */
     fetch = () => {
-        let { filter, getAuthority, setDisable, location, setFilter } = this.props
+        let { filter, getAuthority, location, setFilter } = this.props
         let { search, href } = location
         let locationSearch = queryString.parse(search)
         let { filed } = this.state
@@ -46,15 +46,14 @@ class Filter extends Component {
         let index = herfStr.indexOf('?');
         herfStr = herfStr.slice(index+1);
         if(herfStr.indexOf('organCode')!==-1 && herfStr.indexOf('organLevel') !== -1){
-            // 参数正确得传入
-            herfStr.split('&').map(item=>{//把获取参数存入本地存储
-                return item.split('=')
-            }).forEach(item=>{
-                localStorage.setItem(item[0],item[1]);
-                juris[item[0]] = item[1]
-            })
-            getAuthority(juris)
-            setDisable(juris['organLevel'])
+          // 参数正确得传入
+          herfStr.split('&').map(item=>{//把获取参数存入本地存储
+            return item.split('=')
+          }).forEach(item=>{
+            localStorage.setItem(item[0],item[1]);
+            juris[item[0]] = item[1]
+          })
+          getAuthority(juris)
         }else{
             //参数未正确传入
         }

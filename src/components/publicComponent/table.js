@@ -108,16 +108,6 @@ class Table extends Component {
   }
 }
 Table.propTypes = {
-  // ArrayDate: PropTypes.array.isRequired
+ 
 }
-// function mapStateToProps(state) {
-//   console.log(state.SAVETableReducer.TableData)
-//   return {
-//     
-//   }
-// }
-
-// function mapDispatchToProps() {
-//   return {}
-// }
 export default connect(mapStateToProps, mapDispatchToProps)(Table)
