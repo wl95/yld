@@ -15,7 +15,6 @@ class Table extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      total: 0,//总记录数
       current: 1, //当前页码
       pageSize: 10, //每页显示的条数5条
     }
@@ -25,14 +24,15 @@ class Table extends Component {
   }
 
   onChange = (page) => {
+    console.log(page)
     this.setState({
       current: page,
     });
   }
 
   render() {
-    let { title = '', tableResult, scroll, ArrayDate, Fileds } = this.props;
-    let { total, current, pageSize } = this.state
+    let { title = '', tableResult, scroll, list, total, totalPage } = this.props;
+    let { current, pageSize } = this.state
     let { columns } = tableResult;
     const thThead = (columns) => {
       return columns && columns.length > 0 && columns[0].children ?
@@ -77,7 +77,9 @@ class Table extends Component {
       showSizeChanger:true,
       showQuickJumper:{ goButton: <button>确定</button> },
       defaultPageSize:pageSize,
+      showTotal:(total) => `共 ${total} 条`,
       defaultCurrent:current,
+      pageSizeOptions:['10', '30', '50', '100', '500']
     }
 
     return <div className="table" style={{ overflowX: scroll && scroll.x && 'scroll' }}>
@@ -89,7 +91,7 @@ class Table extends Component {
         </thead>
         <tbody>
           {
-            ArrayDate.length>0? ArrayDate && ArrayDate.map((dataItem, _ind) => {
+            (list && list.length>0) ?  list.map((dataItem, _ind) => {
                 return <tr key={_ind}>
                   {
                     Object.keys(dataItem).map(function (key,_index) {
@@ -102,7 +104,7 @@ class Table extends Component {
         </tbody>
       </table>
       {
-         ArrayDate.length>0 && <Pagination style={{textAlign:'center', margin:'10px 0', display:'inline-block'}} {...PaginationProps}/> 
+        list && list.length>0 && <Pagination style={{textAlign:'center', margin:'10px 0', display:'inline-block'}} {...PaginationProps}/> 
       }
     </div>
   }

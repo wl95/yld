@@ -7,24 +7,24 @@ import Table from './table'
 import data from 'utils/datas.js'
 import moment from "moment"
 import axios from 'axios';
+import mock from '../../actions/mock'
 import queryString from 'query-string'
 import Month from '../Calendar/Month.jsx'
 import { request } from 'utils'
 const PublicComponent = ({
     setSearch,
     queryList,
-    SUPDATE_DATE_END
 }) => {
     let { pathname } = location
     let pubChildren = pathname.split('/')[2]
     const filterProps = {   
         location,
         onFilterSubmit({filed, dateFormat}){
-            for (let item in filed) {
+            /* for (let item in filed) {
                 if(filed[item] instanceof Object){
                     filed[item] =  filed[item].format(dateFormat)
                 }
-            }
+            } */
             /**
             * 间隔天数
             */
@@ -59,7 +59,8 @@ const PublicComponent = ({
                 months = (year2 - year1) * 12 + (month2-month1)+1;
                 return months;    
             }
-            // queryList(filed)
+
+            
             switch(pubChildren){
                 case "publicComponent":
                     const {dateType,UPDATE_DATE_START,UPDATE_DATE_END,ORGAN_LEVEL} =filed;
@@ -67,9 +68,8 @@ const PublicComponent = ({
                     let UPDATE_DATE_ENDs = moment(UPDATE_DATE_END).format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM')
                     let JgTime;
                     dateType === "0" ? JSON.stringify(JgTime = Times(UPDATE_DATE_START,UPDATE_DATE_END)) : JSON.stringify(JgTime=getIntervalMonth(moment(UPDATE_DATE_START).format('YYYY-MM'),moment(UPDATE_DATE_END).format('YYYY-MM')))
-                    // console.log(JgTime)
                     let urls = "http://10.136.1.216:9091/v1/ycReport";
-                    /* let datas = {
+                    let datas = {
                         "reportName":"R19",
                         "offset":1,
                         "limit":10,
@@ -82,23 +82,6 @@ const PublicComponent = ({
                             "DAY_INTERVAL":JgTime
                         },
                         "orderMap":{"property":"period","direction":"DESC"}
-                    }; */
-                    let datas = {
-                        "reportName": "R19",
-                        "offset": 1,
-                        "limit": 10,
-                        "paramMap": {
-                            "DATE_TYPE": "0",
-                            "GROUP_BY": "ORGAN_ID",
-                            "UPDATE_DATE_START": "20171111",
-                            "UPDATE_DATE_END": "20171120",
-                            "ORGAN_LEVEL": "1",
-                            "DAY_INTERVAL": "10"
-                        },
-                        "orderMap": {
-                            "property": "period",
-                            "direction": "DESC"
-                        }
                     };
                     /*  location.search = queryString.stringify({
                         "DATE_TYPE":dateType,
@@ -110,17 +93,16 @@ const PublicComponent = ({
                     }) */
                     axios({
                         method:'get',
-                        // dataType: "json",
                         params: {
-                            // reportParam:queryString.stringify(datas),
                             reportParam:JSON.stringify(datas),
                         },
                         url:urls,
                     }).then(resData => {
                         //console.log(resData)
+                        
                         if(resData.status==200&&resData.statusText=="OK"){
                             //console.log(resData.data.data)
-                            SUPDATE_DATE_END(resData.data.data)
+                            queryList(resData.data.data)
                         }
                     })
                 break;

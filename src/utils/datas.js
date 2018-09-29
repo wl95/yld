@@ -6,6 +6,7 @@ import moment from 'moment'
     itemName:'',        // 渲染字段 */
 export default {
   publicComponent:{   
+    reportName:"R19",
     title:'各分行理财产品日均保有量统计表',
     search:[
       {
@@ -193,11 +194,6 @@ export default {
           key:'QUOTA'
         }
       ],
-      dataSource:[
-        {
-          
-        }
-      ]
     }
   },
   productReport:{
@@ -375,11 +371,6 @@ export default {
           key:'companyAddress'
         }
       ],
-      dataSource:[
-        {
-            
-        }
-      ]
     }
   },
   information:{
@@ -426,12 +417,15 @@ export default {
       },
       {
         text:'产品终止开始日期:',
+        dateCalendarType:'start',
         selectType:'prod_expire_date_start',
+        relationship:'prod_expire_date_end',
         type:3
       },
       {
         text:'产品终止结束日期:',
         selectType:'prod_expire_date_end',
+        relationship:'prod_expire_date_start',
         type:3
       },
       {
@@ -659,11 +653,6 @@ export default {
           key:'companyAddress'
         }
       ],
-      dataSource:[
-        {
-            
-        }
-    ]
     }
   },
   closeStatistics:{
@@ -847,11 +836,6 @@ export default {
           ]
         }
       ],
-      dataSource:[
-        {
-          
-        }
-      ] 
     }
   },
   closedSequence:{
@@ -1251,11 +1235,6 @@ export default {
           key:'companyAddress'
         }
       ],
-      dataSource:[
-        {
-
-        }
-      ]
     }
   },
   scaleSequence:{
@@ -1327,11 +1306,6 @@ export default {
           key:'companyAddress'
         }
       ],
-      dataSource:[
-        {
-
-        }
-      ]
     }
   },
   customerSales:{
@@ -1408,11 +1382,6 @@ export default {
           key:'companyAddress'
         }
       ],
-      dataSource:[
-        {
-
-        }
-      ]
     }
   },
   saleStatuSequence:{
@@ -1580,11 +1549,6 @@ export default {
           key:'companyAddress'
         }   
       ],
-      dataSource:[
-        {
-
-        }
-      ]
     }
   },
   closeSalesEnquiries:{
@@ -1658,11 +1622,6 @@ export default {
           key:'companyAddress'
         }
       ],
-      dataResult:[
-        {
-
-        }
-      ]
     }
   },
   openSalesEnquiries:{
@@ -1841,11 +1800,6 @@ export default {
           key:'companyAddress'
         }
       ],
-      dataSource:[
-        {
-
-        }
-      ]
     }
   },
   openSaleSequence:{
@@ -2052,11 +2006,6 @@ export default {
           key:'comapnyAddress'
         }
       ],
-      dataSource:[
-        {
-
-        }
-      ]
     }
   },
   branchSaleStatistics:{
@@ -2374,11 +2323,6 @@ export default {
           ]
         },
       ],
-      dataSource:[
-        {
-
-        }
-      ]
     }
   },
   productSaleStatistics:{
@@ -2694,11 +2638,6 @@ export default {
           ]
         }
       ],
-      dataSource:[
-        {
-
-        }
-      ]
     }
   },
   customerProductTrading:{
@@ -2782,11 +2721,6 @@ export default {
           key:'companyAddress'
         }
       ],
-      dataSource:[
-        {
-
-        }
-      ]
     }
   },
   branchBalanceStatistics:{
@@ -2892,11 +2826,6 @@ export default {
           key:'companyAddress'
         }
       ],
-      dataSource:[
-        {
-
-        }
-      ]
     }
   },
   balanceChangeStatistics:{
@@ -3025,11 +2954,6 @@ export default {
           key:'companyAddress'
         }
       ],
-      dataSource:[
-        {
-
-        }
-      ]
     }
   },
   productBalanceSequence:{
@@ -3186,11 +3110,6 @@ export default {
           key:'companyAddress'
         }
       ],
-      dataSource:[
-        {
-
-        }
-      ]
     }
   },
   branchBalanceEnquiry:{
@@ -3241,11 +3160,6 @@ export default {
           key:'companyAddress'
         }
       ],
-      dataSource:[
-        {
-
-        }
-      ]
     }
   },
   productRevenueStatistics:{
@@ -3452,11 +3366,6 @@ export default {
           ]
         }
       ],
-      dataSource:[
-        {
-
-        }
-      ]
     }
   },
   branchRevenueStatistics:{
@@ -3673,11 +3582,6 @@ export default {
           ]
         }
       ],
-      dataSource:[
-        {
-          
-        }
-      ]
     }
   },
   annualWithdrawing:{
@@ -3827,11 +3731,6 @@ export default {
           key:'companyAddress'
         }
       ],
-      dataSource:[
-        {
-          
-        }
-      ]
     }
   },
   purchaseIntentionEnquiry:{
@@ -3927,11 +3826,6 @@ export default {
           key:'companyAddress'
         }
       ],
-      dataSource:[
-        {
-          
-        }
-      ]
     }
   },
   branchComprehensiveStatistic:{
@@ -4187,11 +4081,6 @@ export default {
           ]
         }
       ],
-      dataSource:[
-        {
-          
-        }
-      ]
     }
   },
   comprehensiveProductStatistics:{
@@ -4427,11 +4316,6 @@ export default {
           ]
         }
       ],
-      dataSource:[
-        {
-          
-        }
-      ]
     }
   },
   weeklyQuery:{
@@ -4457,11 +4341,6 @@ export default {
       columns:[
 
       ],
-      dataSource:[
-        {
-          
-        }
-      ]
     }
   }
 }

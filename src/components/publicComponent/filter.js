@@ -156,7 +156,7 @@ class Filter extends Component {
             e.target.value = ''
         }
         let val = e.target.value;
-        if ( val !== '' && val.length > 0 ) {
+        if ( val !== '' && val.length > 0 && prodCodeList.length > 0 ) {
             SearchResult.style.display = 'block';
             for ( let i in prodCodeList ) {
                 let txt = prodCodeList[i].prodCode;
