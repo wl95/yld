@@ -8,7 +8,6 @@ import Login from './login/Login'
 import routeConfig from 'components/routeConfig'
 import { request } from 'utils'
 import BootstrapsPage from './bootstrapsPage/bootstrapsPage'
-import '../utils/test.html'
 
 import {fetchDataCallback} from "../actions/commonActions";
 

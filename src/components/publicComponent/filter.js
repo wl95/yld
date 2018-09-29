@@ -37,7 +37,7 @@ class Filter extends Component {
     }
     /* 首次打开页面 */
     fetch = () => {
-        let { filter, getAuthority, setDisable, location, setFilter } = this.props
+        let { filter, getAuthority, location, setFilter } = this.props
         let { search, href } = location
         let locationSearch = queryString.parse(search)
         let { filed } = this.state
@@ -54,7 +54,6 @@ class Filter extends Component {
             juris[item[0]] = item[1]
           })
           getAuthority(juris)
-          setDisable(juris['organLevel'])
         }else{
             //参数未正确传入
         }
@@ -74,12 +73,12 @@ class Filter extends Component {
                 })
             }
             //请求
-            filterAPI[item.requestType] && item.method && request({
+            /* filterAPI[item.requestType] && item.method && request({
                 method:item.method,
                 url:filterAPI[item.requestType]
             }).then(resData => {
                 setFilter(resData[item.selectKey], index)
-            })
+            }) */
         })
     }
 
