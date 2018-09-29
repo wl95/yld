@@ -132,9 +132,9 @@ const PublicComponent = ({
                     }
                     axios({
                         method:'get',
-                        dataType: "json",
+                        // dataType: "json",
                         data: JSON.stringify(data),
-                        url:"http://10.136.1.216:9091/v2/ycReport",
+                        url:"http://10.136.1.216:9091/v1/ycReport",
                         }).then(resData => {
                         if(resData.status==200&&resData.statusText=="OK"){
                             // console.log(resData.data.data)
