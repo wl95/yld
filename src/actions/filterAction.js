@@ -1,4 +1,4 @@
-import {SET_FILTERDATA, SET_SEARCHDATA, SET_QUERY_DATA,SET_PAGE_DATAS, GET_AUTH_DATA} from './actions'
+import {SET_FILTERDATA, SET_SEARCHDATA, SET_QUERY_DATA,SET_PAGE_DATAS, GET_AUTH_DATA, SET_DISABLE} from './actions'
 import { request } from 'utils'
 import { filterAPI } from 'utils/APIpath'
 const { organRange } = filterAPI
@@ -44,6 +44,12 @@ export function setDATE(PAGEdATE){
     return {
         type:SET_PAGE_DATAS,
         datas:PAGEdATE
+    }
+}
+export function disableSelect(organLevel){
+    return {
+        type:SET_DISABLE,
+        organLevel
     }
 }
 

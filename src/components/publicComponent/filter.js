@@ -37,7 +37,7 @@ class Filter extends Component {
     }
     /* 首次打开页面 */
     fetch = () => {
-        let { filter, getAuthority, location, setFilter } = this.props
+        let { filter, getAuthority, setDisable, location, setFilter } = this.props
         let { search, href } = location
         let locationSearch = queryString.parse(search)
         let { filed } = this.state
@@ -53,8 +53,8 @@ class Filter extends Component {
             localStorage.setItem(item[0],item[1]);
             juris[item[0]] = item[1]
           })
-          console.log(juris['organLevel'])
           getAuthority(juris)
+          setDisable(juris['organLevel'])
         }else{
             //参数未正确传入
         }
