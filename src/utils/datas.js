@@ -13,7 +13,7 @@ export default {
         text:'选择查询日期格式:',
         type:2,
         defaultValue:'0',
-        selectType:'dateType',
+        selectType:'DATE_TYPE',
         itemKey:'dateTypeCode',         // 渲染请求参数
         itemName:'dateTypeName',         // 渲染字段
         option:[
