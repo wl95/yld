@@ -63,22 +63,21 @@ class Filter extends Component {
                 filed[item.selectType] = item.defaultValue
                 if(locationSearch.UPDATE_DATE_END){
                     filed['UPDATE_DATE_END'] = moment(locationSearch.UPDATE_DATE_END, 'YYYY-MM-DD');
-                  }
-                   
-                  if(locationSearch.UPDATE_DATE_START){
+                }
+                if(locationSearch.UPDATE_DATE_START){
                     filed['UPDATE_DATE_START'] = moment(locationSearch.UPDATE_DATE_START, 'YYYY-MM-DD');
-                  }
+                }
                 this.setState({
                     filed
                 })
             }
             //请求
-            /* filterAPI[item.requestType] && item.method && request({
+            filterAPI[item.requestType] && item.method && request({
                 method:item.method,
                 url:filterAPI[item.requestType]
             }).then(resData => {
                 setFilter(resData[item.selectKey], index)
-            }) */
+            })
         })
     }
 
