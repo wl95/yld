@@ -17,17 +17,16 @@ const PublicComponent = ({
 }) => {
     let { pathname } = location
     let pubChildren = pathname.split('/')[2]
-    
     const filterProps = {   
         location,
         onFilterSubmit({filed, dateFormat}){
-            for(let item in filed){
+            for (let item in filed) {
                 if(filed[item] instanceof Object){
                     filed[item] =  filed[item].format(dateFormat)
                 }
             }
             /**
-             * 间隔天数
+            * 间隔天数
             */
             function Times(faultDate,completeTime){
                 let stime = Date.parse(new Date(faultDate));
@@ -61,16 +60,15 @@ const PublicComponent = ({
                 return months;    
             }
             // queryList(filed)
-               
             switch(pubChildren){
                 case "publicComponent":
                     const {dateType,UPDATE_DATE_START,UPDATE_DATE_END,ORGAN_LEVEL} =filed;
                     let UPDATE_DATE_STARTs = moment(UPDATE_DATE_START).format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM');
                     let UPDATE_DATE_ENDs = moment(UPDATE_DATE_END).format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM')
                     let JgTime;
-                    dateType==="0"?JSON.stringify(JgTime = Times(UPDATE_DATE_START,UPDATE_DATE_END)):JSON.stringify(JgTime=getIntervalMonth(moment(UPDATE_DATE_START).format('YYYY-MM'),moment(UPDATE_DATE_END).format('YYYY-MM')))
+                    dateType === "0" ? JSON.stringify(JgTime = Times(UPDATE_DATE_START,UPDATE_DATE_END)) : JSON.stringify(JgTime=getIntervalMonth(moment(UPDATE_DATE_START).format('YYYY-MM'),moment(UPDATE_DATE_END).format('YYYY-MM')))
                     // console.log(JgTime)
-                    let urls = "http://10.136.1.216:9091/ycReport";
+                    let urls = "http://10.136.1.216:9091/v2/ycReport";
                     let datas = {
                         "contextId":"report001",
                         "reportName":"R19",
@@ -118,7 +116,7 @@ const PublicComponent = ({
                         "limit":10,
                         "paramMap":{
                             "UPDATE_DATE":month,
-                            "GROUP_BY":GROUP_BY=="1"?"BRANCH":"AREA"
+                            "GROUP_BY":GROUP_BY == "1" ? "BRANCH" : "AREA"
                         },
                         "orderMap":{"property":"period","direction":"DESC"}
                     }
@@ -126,7 +124,7 @@ const PublicComponent = ({
                         method:'get',
                         dataType: "json",
                         data: JSON.stringify(data),
-                        url:"http://10.136.1.216:9091/ycReport",
+                        url:"http://10.136.1.216:9091/v2/ycReport",
                         }).then(resData => {
                         if(resData.status==200&&resData.statusText=="OK"){
                             // console.log(resData.data.data)
@@ -137,19 +135,14 @@ const PublicComponent = ({
             }
         }
     }
-
     setSearch(data[pubChildren] && data[pubChildren].search)
-
     const listProps = {
         tableResult:data[pubChildren] && data[pubChildren].tableResult,
         title:data[pubChildren] && data[pubChildren].title,
     }
-
     return  <Fragment>
                 <Filter {...filterProps} /> 
                 <Table {...listProps} />
             </Fragment>
 }
-
-
 export default connect(mapStateToProps, mapDispatchToProps)(PublicComponent)

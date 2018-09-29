@@ -46,15 +46,15 @@ class Filter extends Component {
         let index = herfStr.indexOf('?');
         herfStr = herfStr.slice(index+1);
         if(herfStr.indexOf('organCode')!==-1 && herfStr.indexOf('organLevel') !== -1){
-          // 参数正确得传入
-          herfStr.split('&').map(item=>{//把获取参数存入本地存储
-            return item.split('=')
-          }).forEach(item=>{
-            localStorage.setItem(item[0],item[1]);
-            juris[item[0]] = item[1]
-          })
-          getAuthority(juris)
-          setDisable(juris['organLevel'])
+            // 参数正确得传入
+            herfStr.split('&').map(item=>{//把获取参数存入本地存储
+                return item.split('=')
+            }).forEach(item=>{
+                localStorage.setItem(item[0],item[1]);
+                juris[item[0]] = item[1]
+            })
+            getAuthority(juris)
+            setDisable(juris['organLevel'])
         }else{
             //参数未正确传入
         }
@@ -64,11 +64,10 @@ class Filter extends Component {
                 filed[item.selectType] = item.defaultValue
                 if(locationSearch.UPDATE_DATE_END){
                     filed['UPDATE_DATE_END'] = moment(locationSearch.UPDATE_DATE_END, 'YYYY-MM-DD');
-                  }
-                   
-                  if(locationSearch.UPDATE_DATE_START){
+                }
+                if(locationSearch.UPDATE_DATE_START){
                     filed['UPDATE_DATE_START'] = moment(locationSearch.UPDATE_DATE_START, 'YYYY-MM-DD');
-                  }
+                }
                 this.setState({
                     filed
                 })
