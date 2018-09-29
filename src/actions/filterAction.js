@@ -49,7 +49,7 @@ export function setDATE(PAGEdATE){
 }
 
 export function getAuthorityData(dispatch, juris){
-    /* request({
+    request({
         method:'get',
         url:`${organRange}`,
         data:juris
@@ -62,12 +62,12 @@ export function getAuthorityData(dispatch, juris){
                 authData:data
             },
         })
-    }) */
-    dispatch({
+    })
+   /*  dispatch({
         type:GET_AUTH_DATA,
         resData:{
             juris,
             authData:mock.data
         },
-    })
+    }) */
 }
