@@ -72,12 +72,12 @@ class Filter extends Component {
                 })
             }
             //请求
-            filterAPI[item.requestType] && item.method && request({
+           /*  filterAPI[item.requestType] && item.method && request({
                 method:item.method,
                 url:filterAPI[item.requestType]
             }).then(resData => {
                 setFilter(resData[item.selectKey], index)
-            })
+            }) */
         })
     }
 
@@ -193,27 +193,18 @@ class Filter extends Component {
         onFilterSubmit()
     } 
     /* 判断开始日期和结束日期 */
-    disabledDate = (UPDATE_DATE, dateCalendarType) => {
-        const { UPDATE_DATE_START, UPDATE_DATE_END } = this.state.filed;
-        if(dateCalendarType === 'start'){
-            if (!UPDATE_DATE) {
-                return false;
-            }
-            if (!UPDATE_DATE_END) {
-                return false;
-            }
-            return UPDATE_DATE_END.isBefore(UPDATE_DATE)
-        } else if(dateCalendarType === 'end') {
-            if (!UPDATE_DATE) {
-              return false;
-            }
-           
-            if (!UPDATE_DATE_START) {
-              return false;
-            }
-            return UPDATE_DATE.isBefore(UPDATE_DATE_START)
+    disabledDate = (UPDATE_DATE, Item) => {
+        const { dateCalendarType, relationship } = Item
+        const { filed } = this.state
+        //const { UPDATE_DATE_START, UPDATE_DATE_END } = this.state.filed;
+        if (!UPDATE_DATE) {
+            return false;
         }
         
+        if (!filed[relationship]) {
+            return false;
+        }
+        return dateCalendarType == 'start' ? filed[relationship].isBefore(UPDATE_DATE) : UPDATE_DATE.isBefore(filed[relationship])
     }
 
     onBack = () => {
@@ -245,7 +236,7 @@ class Filter extends Component {
                                             <MonthDate
                                                 dateFormat={item.dateFormat || dateFormat}
                                                 dateValue={filed[item.selectType]}
-                                                disabledDate={(value) => this.disabledDate(value, item.dateCalendarType)}
+                                                disabledDate={(value) => this.disabledDate(value, item)}
                                                 defaultValue={item.defaultValue}
                                                 onChange={e => this.onChangeSelect(e, item, true)}
                                             />}

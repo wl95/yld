@@ -100,6 +100,14 @@ const PublicComponent = ({
                             "direction": "DESC"
                         }
                     };
+                    /*  location.search = queryString.stringify({
+                        "DATE_TYPE":dateType,
+                        "GROUP_BY":"ORGAN_ID",
+                        "UPDATE_DATE_START":UPDATE_DATE_START,
+                        "UPDATE_DATE_END":UPDATE_DATE_END,
+                        "ORGAN_LEVEL":ORGAN_LEVEL,
+                        "DAY_INTERVAL":JgTime
+                    }) */
                     axios({
                         method:'get',
                         // dataType: "json",
