@@ -8,7 +8,7 @@ const { organRange } = filterAPI
  * @param pageName
  * @returns {{type, pageName: *}}
  */
-console.log(mock)
+// console.log(mock)
 export function setFilterData(filterData, index) {
     return{
         type:SET_FILTERDATA,
@@ -38,7 +38,6 @@ export function queryListData(queryData) {
     //         queryData:resData,
     //     }
     // })
-
 }
 
 export function setDATE(PAGEdATE){

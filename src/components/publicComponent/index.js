@@ -68,9 +68,8 @@ const PublicComponent = ({
                     let JgTime;
                     dateType === "0" ? JSON.stringify(JgTime = Times(UPDATE_DATE_START,UPDATE_DATE_END)) : JSON.stringify(JgTime=getIntervalMonth(moment(UPDATE_DATE_START).format('YYYY-MM'),moment(UPDATE_DATE_END).format('YYYY-MM')))
                     // console.log(JgTime)
-                    let urls = "http://10.136.1.216:9091/v2/ycReport";
-                    let datas = {
-                        "contextId":"report001",
+                    let urls = "http://10.136.1.216:9091/v1/ycReport";
+                    /* let datas = {
                         "reportName":"R19",
                         "offset":1,
                         "limit":10,
@@ -83,20 +82,31 @@ const PublicComponent = ({
                             "DAY_INTERVAL":JgTime
                         },
                         "orderMap":{"property":"period","direction":"DESC"}
+                    }; */
+                    let datas = {
+                        "reportName": "R19",
+                        "offset": 1,
+                        "limit": 10,
+                        "paramMap": {
+                            "DATE_TYPE": "0",
+                            "GROUP_BY": "ORGAN_ID",
+                            "UPDATE_DATE_START": "20171111",
+                            "UPDATE_DATE_END": "20171120",
+                            "ORGAN_LEVEL": "1",
+                            "DAY_INTERVAL": "10"
+                        },
+                        "orderMap": {
+                            "property": "period",
+                            "direction": "DESC"
+                        }
                     };
-                    
-                    location.search = queryString.stringify({
-                        "DATE_TYPE":dateType,
-                        "GROUP_BY":"ORGAN_ID",
-                        "UPDATE_DATE_START":UPDATE_DATE_START,
-                        "UPDATE_DATE_END":UPDATE_DATE_END,
-                        "ORGAN_LEVEL":ORGAN_LEVEL,
-                        "DAY_INTERVAL":JgTime
-                    })
                     axios({
                         method:'get',
-                        dataType: "json",
-                        data: JSON.stringify(datas),
+                        // dataType: "json",
+                        params: {
+                            // reportParam:queryString.stringify(datas),
+                            reportParam:JSON.stringify(datas),
+                        },
                         url:urls,
                     }).then(resData => {
                         //console.log(resData)
@@ -106,7 +116,7 @@ const PublicComponent = ({
                         }
                     })
                 break;
-                case "branchBalanceStatistics":
+                /* case "branchBalanceStatistics":
                     const {UPDATE_DATE,GROUP_BY} =filed;
                     let month = moment(UPDATE_DATE).format('YYYYMM')
                     //console.log(month)
@@ -131,7 +141,7 @@ const PublicComponent = ({
                             SUPDATE_DATE_END(resData.data.data)
                         }
                     })
-                break;
+                break; */
             }
         }
     }
