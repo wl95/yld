@@ -72,7 +72,6 @@ const PublicComponent = ({
                     // console.log(JgTime)
                     let urls = "http://10.136.1.216:9091/ycReport";
                     let datas = {
-                        "contextId":"report001",
                         "reportName":"R19",
                         "offset":1,
                         "limit":10,
@@ -87,18 +86,20 @@ const PublicComponent = ({
                         "orderMap":{"property":"period","direction":"DESC"}
                     };
                     
-                    location.search = queryString.stringify({
+                   /*  location.search = queryString.stringify({
                         "DATE_TYPE":dateType,
                         "GROUP_BY":"ORGAN_ID",
                         "UPDATE_DATE_START":UPDATE_DATE_START,
                         "UPDATE_DATE_END":UPDATE_DATE_END,
                         "ORGAN_LEVEL":ORGAN_LEVEL,
                         "DAY_INTERVAL":JgTime
-                    })
+                    }) */
                     axios({
                         method:'get',
                         dataType: "json",
-                        data: JSON.stringify(datas),
+                        params: {
+                            reportParam:queryString.stringify(datas)
+                        },
                         url:urls,
                     }).then(resData => {
                         //console.log(resData)
