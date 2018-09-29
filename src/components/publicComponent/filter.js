@@ -1,5 +1,5 @@
 import 'rc-calendar/assets/index.css';
-import React,{Component} from 'react'
+import React,{ Component } from 'react'
 import { connect } from 'react-redux'
 import mapDispatchToProps from './mapDispatch'
 import mapStateToProps from './mapState'
@@ -35,6 +35,7 @@ class Filter extends Component {
     componentDidMount(){
         this.fetch()
     }
+
     /* 首次打开页面 */
     fetch = () => {
         let { filter, getAuthority, location, setFilter } = this.props
@@ -46,14 +47,14 @@ class Filter extends Component {
         let index = herfStr.indexOf('?');
         herfStr = herfStr.slice(index+1);
         if(herfStr.indexOf('organCode')!==-1 && herfStr.indexOf('organLevel') !== -1){
-          // 参数正确得传入
-          herfStr.split('&').map(item=>{//把获取参数存入本地存储
-            return item.split('=')
-          }).forEach(item=>{
-            localStorage.setItem(item[0],item[1]);
-            juris[item[0]] = item[1]
-          })
-          getAuthority(juris)
+            // 参数正确得传入
+            herfStr.split('&').map(item=>{//把获取参数存入本地存储
+                return item.split('=')
+            }).forEach(item=>{
+                localStorage.setItem(item[0],item[1]);
+                juris[item[0]] = item[1]
+            })
+            getAuthority(juris)
         }else{
             //参数未正确传入
         }
@@ -72,12 +73,12 @@ class Filter extends Component {
                 })
             }
             //请求
-           /*  filterAPI[item.requestType] && item.method && request({
+            filterAPI[item.requestType] && item.method && request({
                 method:item.method,
                 url:filterAPI[item.requestType]
             }).then(resData => {
                 setFilter(resData[item.selectKey], index)
-            }) */
+            })
         })
     }
 

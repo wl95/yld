@@ -47,11 +47,13 @@ export function setDATE(PAGEdATE){
     }
 }
 export function getAuthorityData(dispatch, juris){
+    let pa = {"organCode":"37000049","organLevel":"2"};
     request({
         method:'get',
         url:`${organRange}`,
         data:{
-            organParams:juris
+            // organParams:JSON.stringify(pa)
+            organParams:{"organCode":"37000049","organLevel":"2"}
         }
     }).then(resData => {
         let { data } = resData

@@ -20,11 +20,11 @@ const PublicComponent = ({
     const filterProps = {   
         location,
         onFilterSubmit({filed, dateFormat}){
-            for (let item in filed) {
+            /* for (let item in filed) {
                 if(filed[item] instanceof Object){
                     filed[item] =  filed[item].format(dateFormat)
                 }
-            }
+            } */
             /**
             * 间隔天数
             */
@@ -100,6 +100,7 @@ const PublicComponent = ({
                             "direction": "DESC"
                         }
                     };
+
                     /*  location.search = queryString.stringify({
                         "DATE_TYPE":dateType,
                         "GROUP_BY":"ORGAN_ID",
@@ -108,6 +109,7 @@ const PublicComponent = ({
                         "ORGAN_LEVEL":ORGAN_LEVEL,
                         "DAY_INTERVAL":JgTime
                     }) */
+
                     axios({
                         method:'get',
                         // dataType: "json",

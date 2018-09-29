@@ -36,7 +36,7 @@ class MonthCalendarComponent extends Component {
   render() {
     let { dateFormat, dateValue, onChange, ...calendarProps } = this.props
     const state = this.state;
-    console.log(dateFormat)
+    // console.log(dateFormat)
     const calendar = dateFormat === 'YYYY-MM' ? (<MonthCalendar
       {...calendarProps}
       locale={cn ? zhCN : enUS}

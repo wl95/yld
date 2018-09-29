@@ -426,12 +426,15 @@ export default {
       },
       {
         text:'产品终止开始日期:',
+        dateCalendarType:'start',
         selectType:'prod_expire_date_start',
+        relationship:'prod_expire_date_end',
         type:3
       },
       {
         text:'产品终止结束日期:',
         selectType:'prod_expire_date_end',
+        relationship:'prod_expire_date_start',
         type:3
       },
       {

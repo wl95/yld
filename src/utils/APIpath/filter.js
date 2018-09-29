@@ -21,5 +21,5 @@ export default {
   reProdCode:`${apiPrefix}/RE_PRODCODE.json`,                              // 产品代码
   reDicticnariesdatae:`${apiPrefix}/RE_DICTIONARIESDATA.json`,             // 字典表数据
   reHolding:`${apiPrefix}/RE_HOLDING.json`,                                // 理财产品日均保有量
-  organRange:`${apiPrefixV1}/range`,                                     // 用户权限
+  organRange:`${apiPrefixV1}`,                                     // 用户权限
 }
