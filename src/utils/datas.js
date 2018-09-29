@@ -25,15 +25,16 @@ export default {
       {
         text:'起始日期:',
         selectType:'UPDATE_DATE_START',
-        defaultValue:moment('2017-11-20', 'YYYY-MM-DD'),
+        relationship:'UPDATE_DATE_END',
         dateCalendarType:'start',
+        defaultValue:moment('2017-11-20', 'YYYY-MM-DD'),
         type:3,
       },
       {
         text:'终止日期:',
         selectType:'UPDATE_DATE_END',
+        relationship:'UPDATE_DATE_START',
         defaultValue:moment('2017-11-25', 'YYYY-MM-DD'),
-        dateCalendarType:'end',
         type:3,
       },
       {
@@ -386,32 +387,41 @@ export default {
     search:[
       {
         text:'募集起始开始日期:',
+        dateCalendarType:'start',
         selectType:'raising_start_day_start',
+        relationship:'raising_start_day_end',
         type:3
       },
       {
         text:'募集起始结束日期:',
         selectType:'raising_start_day_end',
+        relationship:'raising_start_day_start',
         type:3
       },
       {
         text:'募集终止开始日期:',
+        dateCalendarType:'start',
         selectType:'raising_end_day_start',
+        relationship:'raising_end_day_end',
         type:3
       },
       {
         text:'募集终止结束日期:',
         selectType:'raising_end_day_end',
+        relationship:'raising_end_day_start',
         type:3
       },
       {
         text:'产品成立开始日期:',
+        dateCalendarType:'start',
         selectType:'prod_found_date_start',
+        relationship:'prod_found_date_end',
         type:3
       },
       {
         text:'产品成立结束日期:',
         selectType:'prod_found_date_end',
+        relationship:'prod_found_date_start',
         type:3
       },
       {
