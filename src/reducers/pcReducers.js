@@ -30,6 +30,7 @@ export function filterReducers(state = initState, action) {
                 if(item.selectType === 'PROVINCE_CODE'){
                   item.disabled = false
                   item.option = authData.children
+
                 }
               })
               return {...state,filter:newFilterData}
@@ -45,15 +46,15 @@ export function filterReducers(state = initState, action) {
               newFilterData.map(item => {
                 if(item.selectType === 'PREFECTURE_CODE' || item.selectType === 'CITY_CODE') {
                   item.disabled = false
-                  item.option = item.selectType === 'PREFECTURE_CODE' ?  authData.children : authData.brother
+                  item.option = item.selectType === 'CITY_CODE' ?  authData.children : authData.brother
                 }
               })
               return {...state,filter:newFilterData}
-            case '3'                                :
+            case '3':
               newFilterData.map(item => {
                 if(item.selectType === 'CITY_CODE'|| item.selectType === 'BRANCE_CODE'){
                   item.disabled = false
-                  item.option = item.selectType === 'CITY_CODE' ?  authData.children : authData.brother
+                  item.option = item.selectType === 'BRANCE_CODE' ?  authData.children : authData.brother
                 }
               })
               return {...state,filter:newFilterData}
