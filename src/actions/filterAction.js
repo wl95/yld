@@ -51,7 +51,9 @@ export function getAuthorityData(dispatch, juris){
     request({
         method:'get',
         url:`${organRange}`,
-        data:juris
+        data:{
+            organParams:juris
+        }
     }).then(resData => {
         let { data } = resData
         dispatch({
