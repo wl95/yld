@@ -1,9 +1,6 @@
 import { combineReducers } from 'redux' // 利用combineReducers 合并reducers
 import { routerReducer } from 'react-router-redux' // 将routerReducer一起合并管理
 import userInfoReducer from './userInfoReducers' // 引入reducer
-import commonReducer from './commonReducers'
-import mainReducer from './mainReducers'
-import reportReducer from './reportReducers'
 import { filterReducers } from './pcReducers'
 
 /***
@@ -11,9 +8,6 @@ import { filterReducers } from './pcReducers'
  */
 export default combineReducers({
     userInfoReducer,
-    commonReducer,
-    mainReducer,
-    reportReducer,
     routing: routerReducer,
     filterReducers,
 })

@@ -1,19 +1,10 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {Route,NavLink,Redirect} from 'react-router-dom'
-import {fetchDataCallback} from "../../actions/commonActions"
-import {initProvinceList,initBrandList,initProdCodeList,initDictionariesData} from "../../actions/reportActions"
+import {Route,NavLink} from 'react-router-dom'
 import { Col } from 'react-bootstrap'
 import BootstrapPage from '../test/bootstrapPage'
-// import BootstrapsPage from '../bootstrapsPage/bootstrapsPage'
-import PublicComponent from '../../components/publicComponent'
-import {setPageName} from "../../actions/mainActions";
-// import RoueterWrapper from '../../components/routerWrapper/index'
-// import datas from '../../../datas.js'
+import './main.less'
 
-
-import styles from './main.less'
 const ArrySlide=[
     
     {"id":1,menu:"各分行理财产品日均保有量统计表",path:'/publicComponent'},
@@ -56,13 +47,6 @@ class Main extends Component {
         }
     }
 
-    /***
-     * 点击导航条的跳转路由函数
-     */
-    toPage=(pageName)=>{
-        this.props.history.replace(this.props.match.url+pageName)
-    }
-
     onClickMenu = () => {
         this.setState({
             isShow:!this.state.isShow
@@ -72,17 +56,11 @@ class Main extends Component {
     }
 
     render() {
-        // console.log("render**************Main"+this.props.match.url)
 
         /**根据浏览器中的url来区分当前导航条的选中项*/
         const pathArray = this.props.location.pathname.split("/")
-        const selectedKey=[pathArray[pathArray.length-1]]
-        const openKey=[pathArray[pathArray.length-2]]
         const { isShow } = this.state
         /** end */
-
-        //console.log(this.props);
-        //console.log(datas2.default)
 
         return (
             <div className="main">
@@ -101,16 +79,6 @@ class Main extends Component {
                 </Col>
                 <Col className="partRight" md={10} lg={10} xs={10}>
                     <Route path={`${this.props.match.path}/home`} component={BootstrapPage}/>
-                    {/* <Route path={`${this.props.match.path}/home`} component={BootstrapsPage}/> */}
-                   
-                    
-                   {/*  {
-                        datas.default && datas.default.map((item,key) => {
-                            return  <Route key={key} path={`${this.peops.match.path}/item`} component={PublicComponent}/>
-                        })
-                    } */}
-
-                    {/* <RouterWrapper routes={router.routers} prop={this.props}/> */}
                 </Col>
             </div>
         )
@@ -119,32 +87,6 @@ class Main extends Component {
 
 Main.propTypes = {
     userInfo: PropTypes.object.isRequired,
-    pageName: PropTypes.string.isRequired,
-    provinceList:PropTypes.array.isRequired,
-    brandList:PropTypes.array.isRequired,
-    prodCodeList:PropTypes.array.isRequired,
-    dictionariesData:PropTypes.object.isRequired
 }
 
-const mapStateToProps = (state) => ({
-    userInfo: state.userInfoReducer.userInfo,
-    pageName:state.mainReducer.pageName,
-    provinceList:state.reportReducer.provinceList,
-    brandList:state.reportReducer.brandList,
-    prodCodeList:state.reportReducer.prodCodeList,
-    dictionariesData:state.reportReducer.dictionariesData
-})
-
-const mapDispatchToProps = (dispatch) => ({
-    fetchDataCallback: (fetchUrl, reqType, params, successCallback, failedCallback, isOpenLoadingDialog, isAlertError) => dispatch(fetchDataCallback(fetchUrl, reqType, params, successCallback, failedCallback, isOpenLoadingDialog, isAlertError)),
-    setPageName:(pageName)=>dispatch(setPageName(pageName)),
-    initProvinceList:(provinceList)=>dispatch(initProvinceList(provinceList)),
-    initBrandList:(brandList)=>dispatch(initBrandList(brandList)),
-    initProdCodeList:(prodCodeList)=>dispatch(initProdCodeList(prodCodeList)),
-    initDictionariesData:(dictionariesData)=>dispatch(initDictionariesData(dictionariesData))
-})
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Main)
+export default Main

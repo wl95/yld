@@ -6,7 +6,6 @@ import {Route} from 'react-router-dom'
 import LoadingDialog from "components/comman/LoadingDialog"
 import Login from './login/Login'
 import routeConfig from 'components/routeConfig'
-import { request } from 'utils'
 import BootstrapsPage from './bootstrapsPage/bootstrapsPage'
 
 import {fetchDataCallback} from "../actions/commonActions";
@@ -21,7 +20,7 @@ class App extends Component {
     }
     
     render() {
-        const {isFetching, location} = this.props
+        const {location} = this.props
         // console.log(this.props.match.path)
         return (
             <Fragment>
@@ -36,7 +35,7 @@ class App extends Component {
                     })
                 }
                 {/*判断是否有请求，显示加载动画框*/}
-                {isFetching && <LoadingDialog/>}
+                {/* isFetching && <LoadingDialog/> */}
             </Fragment>
         )
     }
@@ -48,7 +47,6 @@ App.propTypes = {
 
 const mapStateToProps = (state) => ({
     userInfo: state.userInfoReducer.userInfo,
-    isFetching: state.commonReducer.isFetching
 })
 
 const mapDispatchToProps = (dispatch) => ({

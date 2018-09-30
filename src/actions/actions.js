@@ -6,8 +6,6 @@ export const FETCH_FAILED = 'FETCH_FAILED'//请求失败
 /**用户信息*/
 export const INIT_USERINFO = 'INIT_USERINFO'//初始化用户信息
 
-export const SET_PAGENAME = 'SET_PAGENAME'//设置当前页面名称（暂时不用）
-
 export const INIT_PROVINCE_LIST = 'INIT_PROVINCE_LIST'//初始化省列表
 
 export const SET_AREA_LIST = 'SET_AREA_LIST'//设置当前地市列表

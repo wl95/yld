@@ -1,16 +1,13 @@
-import 'rc-calendar/assets/index.css';
 import React,{ Component } from 'react'
 import { connect } from 'react-redux'
 import mapDispatchToProps from './mapDispatch'
 import mapStateToProps from './mapState'
 import { request, filterAPI } from 'utils'
-import MonthDate from 'components/Calendar/Month.jsx'
-import './index.less'
+import MonthDate from 'components/Calendar'
 import queryString from 'query-string'
 import moment from 'moment';
 import Search from '../Search'
-import 'react-datepicker/dist/react-datepicker.css';
-import { toast } from 'react-toastify';
+import './index.less'
 
 class Filter extends Component {
     constructor(){
