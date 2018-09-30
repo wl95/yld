@@ -58,18 +58,23 @@ class Filter extends Component {
         }else{
             //参数未正确传入
         }
-
+        // console.log(filter)
         filter && filter.map((item, index) => {
+            // console.log(item.ss)
             if(item.defaultValue === 0 || item.defaultValue != undefined){
                 filed[item.selectType] = item.defaultValue
+                //console.log(item)
                 if(locationSearch.UPDATE_DATE_END){
                     filed['UPDATE_DATE_END'] = moment(locationSearch.UPDATE_DATE_END, 'YYYY-MM-DD');
                 }
                 if(locationSearch.UPDATE_DATE_START){
                     filed['UPDATE_DATE_START'] = moment(locationSearch.UPDATE_DATE_START, 'YYYY-MM-DD');
                 }
+                //console.log(filed)
                 this.setState({
                     filed
+                },() => {
+                    //console.log(this.state.filed)
                 })
             }
             //请求
@@ -157,7 +162,7 @@ class Filter extends Component {
             e.target.value = ''
         }
         let val = e.target.value;
-        if ( val !== '' && val.length > 0 ) {
+        if ( val !== '' && val.length > 0 && prodCodeList.length > 0 ) {
             SearchResult.style.display = 'block';
             for ( let i in prodCodeList ) {
                 let txt = prodCodeList[i].prodCode;

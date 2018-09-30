@@ -1,1 +1,57 @@
-module.exports = {"msg":"success","code":200,"data":{"superiorOrgan":{"area":{},"country":{"organName":null,"organCode":null,"organLevel":null},"province":{"organName":null,"organCode":null,"organLevel":null},"city":{}},"children":[{"organName":"商河县支行","organCode":"37000330","organLevel":"3"},{"organName":"济南市历下支行","organCode":"37031660","organLevel":"3"},{"organName":"济南市历城区支行","organCode":"37000759","organLevel":"3"},{"organName":"平阴县支行","organCode":"37030180","organLevel":"3"},{"organName":"济阳县支行","organCode":"37000165","organLevel":"3"},{"organName":"章丘市支行","organCode":"37001344","organLevel":"3"},{"organName":"济南市城区支行","organCode":"37000239","organLevel":"3"},{"organName":"济南市长清区支行","organCode":"37001229","organLevel":"3"}],"brother":[{"organName":"济南市分行","organCode":"37000049","organLevel":"2"},{"organName":"威海市分行","organCode":"37029166","organLevel":"2"},{"organName":"淄博市分行","organCode":"37029154","organLevel":"2"},{"organName":"东营市分行","organCode":"37029115","organLevel":"2"},{"organName":"菏泽市分行","organCode":"37000037","organLevel":"2"},{"organName":"莱芜市分行","organCode":"37000076","organLevel":"2"},{"organName":"滨州市分行","organCode":"37000052","organLevel":"2"},{"organName":"德州市分行","organCode":"37000064","organLevel":"2"},{"organName":"潍坊市分行","organCode":"37000090","organLevel":"2"},{"organName":"济宁市分行","organCode":"37000102","organLevel":"2"},{"organName":"泰安市分行","organCode":"37000114","organLevel":"2"},{"organName":"枣庄市分行","organCode":"37000138","organLevel":"2"},{"organName":"临沂市分行","organCode":"37000088","organLevel":"2"},{"organName":"烟台市分行","organCode":"37000126","organLevel":"2"},{"organName":"日照市分行","organCode":"37000140","organLevel":"2"},{"organName":"聊城市分行","organCode":"37021765","organLevel":"2"}]}}
+module.exports = {
+  "innerCode": 100,
+  "total": 160,
+  "totalPage": 16,
+  "data": [
+      {
+          "ORGAN_ID": "14012817",
+          "ORGAN_NAME": "山西省分行",
+          "QUOTA": "1201380.0"
+      },
+      {
+          "ORGAN_ID": "14012817",
+          "ORGAN_NAME": "山西省分行",
+          "QUOTA": "1441656.0"
+      },
+      {
+          "ORGAN_ID": "14012817",
+          "ORGAN_NAME": "山西省分行",
+          "QUOTA": "840966.0"
+      },
+      {
+          "ORGAN_ID": "14012817",
+          "ORGAN_NAME": "山西省分行",
+          "QUOTA": "1561794.0"
+      },
+      {
+          "ORGAN_ID": "23016187",
+          "ORGAN_NAME": "黑龙江省分行",
+          "QUOTA": "1081242.0"
+      },
+      {
+          "ORGAN_ID": "23016187",
+          "ORGAN_NAME": "黑龙江省分行",
+          "QUOTA": "600690.0"
+      },
+      {
+          "ORGAN_ID": "23016187",
+          "ORGAN_NAME": "黑龙江省分行",
+          "QUOTA": "480552.0"
+      },
+      {
+          "ORGAN_ID": "23016187",
+          "ORGAN_NAME": "黑龙江省分行",
+          "QUOTA": "840966.0"
+      },
+      {
+          "ORGAN_ID": "37000013",
+          "ORGAN_NAME": "青岛分行",
+          "QUOTA": "1561794.0"
+      },
+      {
+          "ORGAN_ID": "37000013",
+          "ORGAN_NAME": "青岛分行",
+          "QUOTA": "1922208.0"
+      }
+  ]
+}

@@ -4,7 +4,7 @@ import userInfoReducer from './userInfoReducers' // 引入reducer
 import commonReducer from './commonReducers'
 import mainReducer from './mainReducers'
 import reportReducer from './reportReducers'
-import { filterReducers ,fILETReducer} from './pcReducers'
+import { filterReducers } from './pcReducers'
 
 /***
  * 根reducers，所有新增的reducer都要在这里添加进来
@@ -16,5 +16,4 @@ export default combineReducers({
     reportReducer,
     routing: routerReducer,
     filterReducers,
-    fILETReducer
 })

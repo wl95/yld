@@ -6,13 +6,14 @@ import moment from 'moment'
     itemName:'',        // 渲染字段 */
 export default {
   publicComponent:{   
+    reportName:"R19",
     title:'各分行理财产品日均保有量统计表',
     search:[
       {
         text:'选择查询日期格式:',
         type:2,
         defaultValue:'0',
-        selectType:'dateType',
+        selectType:'DATE_TYPE',
         itemKey:'dateTypeCode',         // 渲染请求参数
         itemName:'dateTypeName',         // 渲染字段
         option:[
@@ -27,14 +28,14 @@ export default {
         selectType:'UPDATE_DATE_START',
         relationship:'UPDATE_DATE_END',
         dateCalendarType:'start',
-        defaultValue:moment('2017-11-20', 'YYYY-MM-DD'),
+        defaultValue:moment('2017-11-11', 'YYYY-MM-DD'),
         type:3,
       },
       {
         text:'终止日期:',
         selectType:'UPDATE_DATE_END',
         relationship:'UPDATE_DATE_START',
-        defaultValue:moment('2017-11-25', 'YYYY-MM-DD'),
+        defaultValue:moment('2017-11-20', 'YYYY-MM-DD'),
         type:3,
       },
       {
@@ -51,8 +52,8 @@ export default {
         text:'省份:', 
         selectType:'PROVINCE_CODE',
         selectKey:'provinceList',
-        itemKey:'organCode',   
-        itemName:'organName', 
+        itemKey:'code',   
+        itemName:'name', 
         disabled:true,          
         type:2,
       },
@@ -60,8 +61,8 @@ export default {
         text:'地市:',
         selectType:'PREFECTURE_CODE',
         selectKey:'areaList',
-        itemKey:'organCode',   
-        itemName:'organName', 
+        itemKey:'code',   
+        itemName:'name', 
         disabled:true,          
         type:2,
       },
@@ -69,8 +70,8 @@ export default {
         text:'市县:',
         selectType:'CITY_CODE',
         selectKey:'cityList',
-        itemKey:'organCode',   
-        itemName:'organName', 
+        itemKey:'code',   
+        itemName:'name', 
         disabled:true,           
         type:2,
       },
@@ -78,8 +79,8 @@ export default {
         text:'网点:',
         selectType:'BRANCE_CODE',
         selectKey:'branchList',
-        itemKey:'organCode',   
-        itemName:'organName', 
+        itemKey:'code',   
+        itemName:'name', 
         disabled:true,         
         type:2,
       },
@@ -159,6 +160,7 @@ export default {
         requestType:'dSjld',       
         selectType:'ORGAN_LEVEL',
         selectKey:'list',
+        disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -193,11 +195,6 @@ export default {
           key:'QUOTA'
         }
       ],
-      dataSource:[
-        {
-          
-        }
-      ]
     }
   },
   productReport:{
@@ -207,25 +204,28 @@ export default {
         text:'选择查询日期格式:',
         type:2,
         defaultValue:'0',
-        selectType:'dateType',
+        selectType:'DATE_TYPE',
         itemKey:'dateTypeCode',         // 渲染请求参数
         itemName:'dateTypeName',         // 渲染字段
         option:[
           {
             dateTypeCode:'0',
             dateTypeName:'日'
-          },
+          }
         ]
       },
       {
         text:'起始日期:',
         selectType:'UPDATE_DATE_START',
+        relationship:'UPDATE_DATE_END',
+        dateCalendarType:'start',
         defaultValue:moment(),
         type:3,
       },
       {
         text:'终止日期:',
         selectType:'UPDATE_DATE_END',
+        relationship:'UPDATE_DATE_START',
         defaultValue:moment(),
         type:3,
       },
@@ -241,39 +241,38 @@ export default {
       },
       { 
         text:'省份:', 
-        requestType:'province',       
         selectType:'PROVINCE_CODE',
         selectKey:'provinceList',
-        itemKey:'provinceCode',           
-        itemName:'provinceName',         
-        linkage:'areaCode',
-        method:'get',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
         type:2,
       },
       {
         text:'地市:',
         selectType:'PREFECTURE_CODE',
         selectKey:'areaList',
-        itemKey:'areaCode',
-        itemName:'areaName',         
-        linkage:'cityCode',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
         type:2,
       },
       {
         text:'市县:',
         selectType:'CITY_CODE',
         selectKey:'cityList',
-        itemKey:'cityCode',
-        itemName:'cityName',         
-        linkage:'branchCode',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,           
         type:2,
       },
       {
         text:'网点:',
         selectType:'BRANCE_CODE',
         selectKey:'branchList',
-        itemKey:'branchCode',
-        itemName:'branchName',         
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,         
         type:2,
       },
       {
@@ -375,11 +374,6 @@ export default {
           key:'companyAddress'
         }
       ],
-      dataSource:[
-        {
-            
-        }
-      ]
     }
   },
   information:{
@@ -662,11 +656,6 @@ export default {
           key:'companyAddress'
         }
       ],
-      dataSource:[
-        {
-            
-        }
-    ]
     }
   },
   closeStatistics:{
@@ -675,13 +664,16 @@ export default {
       {
         text:'查询起始日期:',
         selectType:'UPDATE_DATE_START',
-        defaultValue:moment(),
+        relationship:'UPDATE_DATE_END',
+        dateCalendarType:'start',
+        defaultValue:moment('2017-11-11', 'YYYY-MM-DD'),
         type:3,
       },
       {
         text:'查询终止日期:',
         selectType:'UPDATE_DATE_END',
-        defaultValue:moment(),
+        relationship:'UPDATE_DATE_START',
+        defaultValue:moment('2017-11-20', 'YYYY-MM-DD'),
         type:3,
       },
       {
@@ -850,11 +842,6 @@ export default {
           ]
         }
       ],
-      dataSource:[
-        {
-          
-        }
-      ] 
     }
   },
   closedSequence:{
@@ -864,10 +851,9 @@ export default {
         text:'选择查询日期格式:',
         type:2,
         defaultValue:'0',
-        isMonth:true,
-        selectType:'dateType',
-        itemKey:'dateTypeCode',          // 渲染请求参数
-        itemName:'dateTypeName',         // 渲染字段
+        selectType:'DATE_TYPE',
+        itemKey:'dateTypeCode',         
+        itemName:'dateTypeName',         
         option:[
           {
             dateTypeCode:'0',
@@ -882,12 +868,15 @@ export default {
       {
         text:'起始日期:',
         selectType:'UPDATE_DATE_START',
+        relationship:'UPDATE_DATE_END',
+        dateCalendarType:'start',
         defaultValue:moment(),
         type:3,
       },
       {
         text:'终止日期:',
         selectType:'UPDATE_DATE_END',
+        relationship:'UPDATE_DATE_START',
         defaultValue:moment(),
         type:3,
       },
@@ -1068,39 +1057,38 @@ export default {
     search:[
       { 
         text:'省份:', 
-        requestType:'province',       
         selectType:'PROVINCE_CODE',
         selectKey:'provinceList',
-        itemKey:'provinceCode',           
-        itemName:'provinceName',         
-        linkage:'areaCode',
-        method:'get',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
         type:2,
       },
       {
         text:'地市:',
         selectType:'PREFECTURE_CODE',
         selectKey:'areaList',
-        itemKey:'areaCode',
-        itemName:'areaName',         
-        linkage:'cityCode',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
         type:2,
       },
       {
         text:'市县:',
         selectType:'CITY_CODE',
         selectKey:'cityList',
-        itemKey:'cityCode',
-        itemName:'cityName',         
-        linkage:'branchCode',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,           
         type:2,
       },
       {
         text:'网点:',
         selectType:'BRANCE_CODE',
         selectKey:'branchList',
-        itemKey:'branchCode',
-        itemName:'branchName',         
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,         
         type:2,
       },
       {
@@ -1254,11 +1242,6 @@ export default {
           key:'companyAddress'
         }
       ],
-      dataSource:[
-        {
-
-        }
-      ]
     }
   },
   scaleSequence:{
@@ -1330,11 +1313,6 @@ export default {
           key:'companyAddress'
         }
       ],
-      dataSource:[
-        {
-
-        }
-      ]
     }
   },
   customerSales:{
@@ -1343,12 +1321,15 @@ export default {
       {
         text:'起始日期:',
         selectType:'UPDATE_DATE_START',
+        relationship:'UPDATE_DATE_END',
+        dateCalendarType:'start',
         defaultValue:moment(),
         type:3,
       },
       {
         text:'终止日期:',
         selectType:'UPDATE_DATE_END',
+        relationship:'UPDATE_DATE_START',
         defaultValue:moment(),
         type:3,
       },
@@ -1411,11 +1392,6 @@ export default {
           key:'companyAddress'
         }
       ],
-      dataSource:[
-        {
-
-        }
-      ]
     }
   },
   saleStatuSequence:{
@@ -1423,49 +1399,47 @@ export default {
     search:[
       { 
         text:'省份:', 
-        requestType:'province',       
         selectType:'PROVINCE_CODE',
         selectKey:'provinceList',
-        itemKey:'provinceCode',           
-        itemName:'provinceName',         
-        linkage:'areaCode',
-        method:'get',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
         type:2,
       },
       {
         text:'地市:',
         selectType:'PREFECTURE_CODE',
         selectKey:'areaList',
-        itemKey:'areaCode',
-        itemName:'areaName',         
-        linkage:'cityCode',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
         type:2,
       },
       {
         text:'市县:',
         selectType:'CITY_CODE',
         selectKey:'cityList',
-        itemKey:'cityCode',
-        itemName:'cityName',         
-        linkage:'branchCode',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,           
         type:2,
       },
       {
         text:'网点:',
         selectType:'BRANCE_CODE',
         selectKey:'branchList',
-        itemKey:'branchCode',
-        itemName:'branchName',         
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,         
         type:2,
       },
       {
         text:'选择查询日期格式:',
         type:2,
         defaultValue:'0',
-        isMonth:true,
-        selectType:'dateType',
-        itemKey:'dateTypeCode',         // 渲染请求参数
-        itemName:'dateTypeName',         // 渲染字段
+        selectType:'DATE_TYPE',
+        itemKey:'dateTypeCode',         
+        itemName:'dateTypeName',         
         option:[
           {
             dateTypeCode:'0',
@@ -1474,18 +1448,21 @@ export default {
           {
             dateTypeCode:'1',
             dateTypeName:'月'
-          },
+          }
         ]
       },
       {
         text:'起始日期:',
         selectType:'UPDATE_DATE_START',
+        relationship:'UPDATE_DATE_END',
+        dateCalendarType:'start',
         defaultValue:moment(),
         type:3,
       },
       {
         text:'终止日期:',
         selectType:'UPDATE_DATE_END',
+        relationship:'UPDATE_DATE_START',
         defaultValue:moment(),
         type:3,
       },
@@ -1583,11 +1560,6 @@ export default {
           key:'companyAddress'
         }   
       ],
-      dataSource:[
-        {
-
-        }
-      ]
     }
   },
   closeSalesEnquiries:{
@@ -1661,11 +1633,6 @@ export default {
           key:'companyAddress'
         }
       ],
-      dataResult:[
-        {
-
-        }
-      ]
     }
   },
   openSalesEnquiries:{
@@ -1673,50 +1640,52 @@ export default {
     search:[
       { 
         text:'省份:', 
-        requestType:'province',       
         selectType:'PROVINCE_CODE',
         selectKey:'provinceList',
-        itemKey:'provinceCode',           
-        itemName:'provinceName',         
-        linkage:'areaCode',
-        method:'get',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
         type:2,
       },
       {
         text:'地市:',
         selectType:'PREFECTURE_CODE',
         selectKey:'areaList',
-        itemKey:'areaCode',
-        itemName:'areaName',         
-        linkage:'cityCode',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
         type:2,
       },
       {
         text:'市县:',
         selectType:'CITY_CODE',
         selectKey:'cityList',
-        itemKey:'cityCode',
-        itemName:'cityName',         
-        linkage:'branchCode',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,           
         type:2,
       },
       {
         text:'网点:',
         selectType:'BRANCE_CODE',
         selectKey:'branchList',
-        itemKey:'branchCode',
-        itemName:'branchName',         
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,         
         type:2,
       },
       {
         text:'起始日期:',
         selectType:'UPDATE_DATE_START',
+        relationship:'UPDATE_DATE_END',
+        dateCalendarType:'start',
         defaultValue:moment(),
         type:3,
       },
       {
         text:'终止日期:',
         selectType:'UPDATE_DATE_END',
+        relationship:'UPDATE_DATE_START',
         defaultValue:moment(),
         type:3,
       },
@@ -1844,11 +1813,6 @@ export default {
           key:'companyAddress'
         }
       ],
-      dataSource:[
-        {
-
-        }
-      ]
     }
   },
   openSaleSequence:{
@@ -1856,46 +1820,45 @@ export default {
     search:[
       { 
         text:'省份:', 
-        requestType:'province',       
         selectType:'PROVINCE_CODE',
         selectKey:'provinceList',
-        itemKey:'provinceCode',           
-        itemName:'provinceName',         
-        linkage:'areaCode',
-        method:'get',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
         type:2,
       },
       {
         text:'地市:',
         selectType:'PREFECTURE_CODE',
         selectKey:'areaList',
-        itemKey:'areaCode',
-        itemName:'areaName',         
-        linkage:'cityCode',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
         type:2,
       },
       {
         text:'市县:',
         selectType:'CITY_CODE',
         selectKey:'cityList',
-        itemKey:'cityCode',
-        itemName:'cityName',         
-        linkage:'branchCode',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,           
         type:2,
       },
       {
         text:'网点:',
         selectType:'BRANCE_CODE',
         selectKey:'branchList',
-        itemKey:'branchCode',
-        itemName:'branchName',         
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,         
         type:2,
       },
       {
         text:'选择查询日期格式:',
         type:2,
         defaultValue:'0',
-        selectType:'dateType',
+        selectType:'DATE_TYPE',
         itemKey:'dateTypeCode',         // 渲染请求参数
         itemName:'dateTypeName',         // 渲染字段
         option:[
@@ -1912,12 +1875,15 @@ export default {
       {
         text:'起始日期:',
         selectType:'UPDATE_DATE_START',
+        relationship:'UPDATE_DATE_END',
+        dateCalendarType:'start',
         defaultValue:moment(),
         type:3,
       },
       {
         text:'终止日期:',
         selectType:'UPDATE_DATE_END',
+        relationship:'UPDATE_DATE_START',
         defaultValue:moment(),
         type:3,
       },
@@ -2055,11 +2021,6 @@ export default {
           key:'comapnyAddress'
         }
       ],
-      dataSource:[
-        {
-
-        }
-      ]
     }
   },
   branchSaleStatistics:{
@@ -2067,39 +2028,38 @@ export default {
     search:[
       { 
         text:'省份:', 
-        requestType:'province',       
         selectType:'PROVINCE_CODE',
         selectKey:'provinceList',
-        itemKey:'provinceCode',           
-        itemName:'provinceName',         
-        linkage:'areaCode',
-        method:'get',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
         type:2,
       },
       {
         text:'地市:',
         selectType:'PREFECTURE_CODE',
         selectKey:'areaList',
-        itemKey:'areaCode',
-        itemName:'areaName',         
-        linkage:'cityCode',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
         type:2,
       },
       {
         text:'市县:',
         selectType:'CITY_CODE',
         selectKey:'cityList',
-        itemKey:'cityCode',
-        itemName:'cityName',         
-        linkage:'branchCode',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,           
         type:2,
       },
       {
         text:'网点:',
         selectType:'BRANCE_CODE',
         selectKey:'branchList',
-        itemKey:'branchCode',
-        itemName:'branchName',         
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,         
         type:2,
       },
       {
@@ -2164,12 +2124,15 @@ export default {
       {
         text:'起始日期:',
         selectType:'UPDATE_DATE_START',
+        relationship:'UPDATE_DATE_END',
+        dateCalendarType:'start',
         defaultValue:moment(),
         type:3,
       },
       {
         text:'终止日期:',
         selectType:'UPDATE_DATE_END',
+        relationship:'UPDATE_DATE_START',
         defaultValue:moment(),
         type:3,
       },
@@ -2377,11 +2340,6 @@ export default {
           ]
         },
       ],
-      dataSource:[
-        {
-
-        }
-      ]
     }
   },
   productSaleStatistics:{
@@ -2389,39 +2347,38 @@ export default {
     search:[
       { 
         text:'省份:', 
-        requestType:'province',       
         selectType:'PROVINCE_CODE',
         selectKey:'provinceList',
-        itemKey:'provinceCode',           
-        itemName:'provinceName',         
-        linkage:'areaCode',
-        method:'get',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
         type:2,
       },
       {
         text:'地市:',
         selectType:'PREFECTURE_CODE',
         selectKey:'areaList',
-        itemKey:'areaCode',
-        itemName:'areaName',         
-        linkage:'cityCode',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
         type:2,
       },
       {
         text:'市县:',
         selectType:'CITY_CODE',
         selectKey:'cityList',
-        itemKey:'cityCode',
-        itemName:'cityName',         
-        linkage:'branchCode',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,           
         type:2,
       },
       {
         text:'网点:',
         selectType:'BRANCE_CODE',
         selectKey:'branchList',
-        itemKey:'branchCode',
-        itemName:'branchName',         
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,         
         type:2,
       },
       {
@@ -2467,12 +2424,15 @@ export default {
       {
         text:'起始日期:',
         selectType:'UPDATE_DATE_START',
+        relationship:'UPDATE_DATE_END',
+        dateCalendarType:'start',
         defaultValue:moment(),
         type:3,
       },
       {
         text:'终止日期:',
         selectType:'UPDATE_DATE_END',
+        relationship:'UPDATE_DATE_START',
         defaultValue:moment(),
         type:3,
       },
@@ -2697,11 +2657,6 @@ export default {
           ]
         }
       ],
-      dataSource:[
-        {
-
-        }
-      ]
     }
   },
   customerProductTrading:{
@@ -2710,12 +2665,15 @@ export default {
       {
         text:'起始日期:',
         selectType:'UPDATE_DATE_START',
+        relationship:'UPDATE_DATE_END',
+        dateCalendarType:'start',
         defaultValue:moment(),
         type:3,
       },
       {
         text:'终止日期:',
         selectType:'UPDATE_DATE_END',
+        relationship:'UPDATE_DATE_START',
         defaultValue:moment(),
         type:3,
       },
@@ -2785,11 +2743,6 @@ export default {
           key:'companyAddress'
         }
       ],
-      dataSource:[
-        {
-
-        }
-      ]
     }
   },
   branchBalanceStatistics:{
@@ -2895,11 +2848,6 @@ export default {
           key:'companyAddress'
         }
       ],
-      dataSource:[
-        {
-
-        }
-      ]
     }
   },
   balanceChangeStatistics:{
@@ -2908,12 +2856,15 @@ export default {
       {
         text:'起始日期:',
         selectType:'UPDATE_DATE_START',
+        relationship:'UPDATE_DATE_END',
+        dateCalendarType:'start',
         defaultValue:moment(),
         type:3,
       },
       {
         text:'终止日期:',
         selectType:'UPDATE_DATE_END',
+        relationship:'UPDATE_DATE_START',
         defaultValue:moment(),
         type:3,
       },
@@ -3028,11 +2979,6 @@ export default {
           key:'companyAddress'
         }
       ],
-      dataSource:[
-        {
-
-        }
-      ]
     }
   },
   productBalanceSequence:{
@@ -3040,68 +2986,66 @@ export default {
     search:[
       { 
         text:'省份:', 
-        requestType:'province',       
         selectType:'PROVINCE_CODE',
         selectKey:'provinceList',
-        itemKey:'provinceCode',           
-        itemName:'provinceName',         
-        linkage:'areaCode',
-        method:'get',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
         type:2,
       },
       {
         text:'地市:',
         selectType:'PREFECTURE_CODE',
         selectKey:'areaList',
-        itemKey:'areaCode',
-        itemName:'areaName',         
-        linkage:'cityCode',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
         type:2,
       },
       {
         text:'市县:',
         selectType:'CITY_CODE',
         selectKey:'cityList',
-        itemKey:'cityCode',
-        itemName:'cityName',         
-        linkage:'branchCode',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,           
         type:2,
       },
       {
         text:'网点:',
         selectType:'BRANCE_CODE',
         selectKey:'branchList',
-        itemKey:'branchCode',
-        itemName:'branchName',         
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,         
         type:2,
       },
       {
         text:'选择查询日期格式:',
         type:2,
         defaultValue:'0',
-        selectType:'dateType',
+        selectType:'DATE_TYPE',
         itemKey:'dateTypeCode',         // 渲染请求参数
         itemName:'dateTypeName',         // 渲染字段
         option:[
           {
             dateTypeCode:'0',
             dateTypeName:'日'
-          },
-          {
-            dateTypeCode:'1',
-            dateTypeName:'月'
-          },
+          }
         ]
       },
       {
         text:'起始日期:',
         selectType:'UPDATE_DATE_START',
+        relationship:'UPDATE_DATE_END',
+        dateCalendarType:'start',
         defaultValue:moment(),
         type:3,
       },
       {
         text:'终止日期:',
         selectType:'UPDATE_DATE_END',
+        relationship:'UPDATE_DATE_START',
         defaultValue:moment(),
         type:3,
       },
@@ -3189,11 +3133,6 @@ export default {
           key:'companyAddress'
         }
       ],
-      dataSource:[
-        {
-
-        }
-      ]
     }
   },
   branchBalanceEnquiry:{
@@ -3244,11 +3183,6 @@ export default {
           key:'companyAddress'
         }
       ],
-      dataSource:[
-        {
-
-        }
-      ]
     }
   },
   productRevenueStatistics:{
@@ -3256,39 +3190,38 @@ export default {
     search:[
       { 
         text:'省份:', 
-        requestType:'province',       
         selectType:'PROVINCE_CODE',
         selectKey:'provinceList',
-        itemKey:'provinceCode',           
-        itemName:'provinceName',         
-        linkage:'areaCode',
-        method:'get',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
         type:2,
       },
       {
         text:'地市:',
         selectType:'PREFECTURE_CODE',
         selectKey:'areaList',
-        itemKey:'areaCode',
-        itemName:'areaName',         
-        linkage:'cityCode',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
         type:2,
       },
       {
         text:'市县:',
         selectType:'CITY_CODE',
         selectKey:'cityList',
-        itemKey:'cityCode',
-        itemName:'cityName',         
-        linkage:'branchCode',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,           
         type:2,
       },
       {
         text:'网点:',
         selectType:'BRANCE_CODE',
         selectKey:'branchList',
-        itemKey:'branchCode',
-        itemName:'branchName',         
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,         
         type:2,
       },
       {
@@ -3455,11 +3388,6 @@ export default {
           ]
         }
       ],
-      dataSource:[
-        {
-
-        }
-      ]
     }
   },
   branchRevenueStatistics:{
@@ -3467,39 +3395,38 @@ export default {
     search:[
       { 
         text:'省份:', 
-        requestType:'province',       
         selectType:'PROVINCE_CODE',
         selectKey:'provinceList',
-        itemKey:'provinceCode',           
-        itemName:'provinceName',         
-        linkage:'areaCode',
-        method:'get',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
         type:2,
       },
       {
         text:'地市:',
         selectType:'PREFECTURE_CODE',
         selectKey:'areaList',
-        itemKey:'areaCode',
-        itemName:'areaName',         
-        linkage:'cityCode',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
         type:2,
       },
       {
         text:'市县:',
         selectType:'CITY_CODE',
         selectKey:'cityList',
-        itemKey:'cityCode',
-        itemName:'cityName',         
-        linkage:'branchCode',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,           
         type:2,
       },
       {
         text:'网点:',
         selectType:'BRANCE_CODE',
         selectKey:'branchList',
-        itemKey:'branchCode',
-        itemName:'branchName',         
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,         
         type:2,
       },
       {
@@ -3676,11 +3603,6 @@ export default {
           ]
         }
       ],
-      dataSource:[
-        {
-          
-        }
-      ]
     }
   },
   annualWithdrawing:{
@@ -3688,39 +3610,38 @@ export default {
     search:[
       { 
         text:'省份:', 
-        requestType:'province',       
         selectType:'PROVINCE_CODE',
         selectKey:'provinceList',
-        itemKey:'provinceCode',           
-        itemName:'provinceName',         
-        linkage:'areaCode',
-        method:'get',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
         type:2,
       },
       {
         text:'地市:',
         selectType:'PREFECTURE_CODE',
         selectKey:'areaList',
-        itemKey:'areaCode',
-        itemName:'areaName',         
-        linkage:'cityCode',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
         type:2,
       },
       {
         text:'市县:',
         selectType:'CITY_CODE',
         selectKey:'cityList',
-        itemKey:'cityCode',
-        itemName:'cityName',         
-        linkage:'branchCode',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,           
         type:2,
       },
       {
         text:'网点:',
         selectType:'BRANCE_CODE',
         selectKey:'branchList',
-        itemKey:'branchCode',
-        itemName:'branchName',         
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,         
         type:2,
       },
       {
@@ -3830,11 +3751,6 @@ export default {
           key:'companyAddress'
         }
       ],
-      dataSource:[
-        {
-          
-        }
-      ]
     }
   },
   purchaseIntentionEnquiry:{
@@ -3843,12 +3759,15 @@ export default {
       {
         text:'起始日期:',
         selectType:'UPDATE_DATE_START',
+        relationship:'UPDATE_DATE_END',
+        dateCalendarType:'start',
         defaultValue:moment(),
         type:3,
       },
       {
         text:'终止日期:',
         selectType:'UPDATE_DATE_END',
+        relationship:'UPDATE_DATE_START',
         defaultValue:moment(),
         type:3,
       },
@@ -3882,12 +3801,15 @@ export default {
       {
         text:'起始日期:',
         selectType:'UPDATE_DATE_START',
+        relationship:'UPDATE_DATE_END',
+        dateCalendarType:'start',
         defaultValue:moment(),
         type:3,
       },
       {
         text:'终止日期:',
         selectType:'UPDATE_DATE_END',
+        relationship:'UPDATE_DATE_START',
         defaultValue:moment(),
         type:3,
       },
@@ -3930,11 +3852,6 @@ export default {
           key:'companyAddress'
         }
       ],
-      dataSource:[
-        {
-          
-        }
-      ]
     }
   },
   branchComprehensiveStatistic:{
@@ -3942,39 +3859,38 @@ export default {
     search:[
       { 
         text:'省份:', 
-        requestType:'province',       
         selectType:'PROVINCE_CODE',
         selectKey:'provinceList',
-        itemKey:'provinceCode',           
-        itemName:'provinceName',         
-        linkage:'areaCode',
-        method:'get',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
         type:2,
       },
       {
         text:'地市:',
         selectType:'PREFECTURE_CODE',
         selectKey:'areaList',
-        itemKey:'areaCode',
-        itemName:'areaName',         
-        linkage:'cityCode',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
         type:2,
       },
       {
         text:'市县:',
         selectType:'CITY_CODE',
         selectKey:'cityList',
-        itemKey:'cityCode',
-        itemName:'cityName',         
-        linkage:'branchCode',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,           
         type:2,
       },
       {
         text:'网点:',
         selectType:'BRANCE_CODE',
         selectKey:'branchList',
-        itemKey:'branchCode',
-        itemName:'branchName',         
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,         
         type:2,
       },
       {
@@ -3990,12 +3906,15 @@ export default {
       {
         text:'起始日期:',
         selectType:'UPDATE_DATE_START',
+        relationship:'UPDATE_DATE_END',
+        dateCalendarType:'start',
         defaultValue:moment(),
         type:3,
       },
       {
         text:'终止日期:',
         selectType:'UPDATE_DATE_END',
+        relationship:'UPDATE_DATE_START',
         defaultValue:moment(),
         type:3,
       },
@@ -4190,11 +4109,6 @@ export default {
           ]
         }
       ],
-      dataSource:[
-        {
-          
-        }
-      ]
     }
   },
   comprehensiveProductStatistics:{
@@ -4202,50 +4116,52 @@ export default {
     search:[
       { 
         text:'省份:', 
-        requestType:'province',       
         selectType:'PROVINCE_CODE',
         selectKey:'provinceList',
-        itemKey:'provinceCode',           
-        itemName:'provinceName',         
-        linkage:'areaCode',
-        method:'get',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
         type:2,
       },
       {
         text:'地市:',
         selectType:'PREFECTURE_CODE',
         selectKey:'areaList',
-        itemKey:'areaCode',
-        itemName:'areaName',         
-        linkage:'cityCode',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
         type:2,
       },
       {
         text:'市县:',
         selectType:'CITY_CODE',
         selectKey:'cityList',
-        itemKey:'cityCode',
-        itemName:'cityName',         
-        linkage:'branchCode',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,           
         type:2,
       },
       {
         text:'网点:',
         selectType:'BRANCE_CODE',
         selectKey:'branchList',
-        itemKey:'branchCode',
-        itemName:'branchName',         
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,         
         type:2,
       },
       {
         text:'起始日期:',
         selectType:'UPDATE_DATE_START',
+        relationship:'UPDATE_DATE_END',
+        dateCalendarType:'start',
         defaultValue:moment(),
         type:3,
       },
       {
         text:'终止日期:',
         selectType:'UPDATE_DATE_END',
+        relationship:'UPDATE_DATE_START',
         defaultValue:moment(),
         type:3,
       },
@@ -4430,11 +4346,6 @@ export default {
           ]
         }
       ],
-      dataSource:[
-        {
-          
-        }
-      ]
     }
   },
   weeklyQuery:{
@@ -4460,11 +4371,6 @@ export default {
       columns:[
 
       ],
-      dataSource:[
-        {
-          
-        }
-      ]
     }
   }
 }

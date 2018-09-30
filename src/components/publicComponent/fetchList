@@ -1,32 +1,4 @@
-import React,{Fragment,Component} from 'react';
-import mapStateToProps from './mapState'
-import mapDispatchToProps from './mapDispatch'
-import { connect } from 'react-redux'
-import Filter from './filter'
-import Table from './table'
-import data from 'utils/datas.js'
-import moment from "moment"
-import axios from 'axios';
-import mock from '../../actions/mock'
-import queryString from 'query-string'
-import Month from '../Calendar/Month.jsx'
-import { request } from 'utils'
-const PublicComponent = ({
-    setSearch,
-    queryList,
-}) => {
-    let { pathname } = location
-    let pubChildren = pathname.split('/')[2]
-    const filterProps = {   
-        location,
-        onFilterSubmit({filed, dateFormat}){
-             /* for (let item in filed) {
-                if(filed[item] instanceof Object){
-                   
-                    filed[item] = filed[item].format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM')
-                }
-            } */
-             /**
+ /**
             * 间隔天数
             */
             function Times(faultDate,completeTime){
@@ -72,28 +44,27 @@ const PublicComponent = ({
                 "offset":1,
                 "limit":10,
                 "paramMap":{
-                    "DATE_TYPE":JSON.stringify(dateType),
+                    "DATE_TYPE":dateType,
                     "GROUP_BY":"ORGAN_ID",
                     "UPDATE_DATE_START":UPDATE_DATE_STARTs,
                     "UPDATE_DATE_END":UPDATE_DATE_ENDs,
-                    "ORGAN_LEVEL":'1',
+                    "ORGAN_LEVEL":ORGAN_LEVEL,
                     "DAY_INTERVAL":JgTime
                 },
                 "orderMap":{"property":"period","direction":"DESC"}
             };
-            /* location.search = queryString.stringify({
+              location.search = queryString.stringify({
                 "DATE_TYPE":dateType,
                 "GROUP_BY":"ORGAN_ID",
                 "UPDATE_DATE_START":UPDATE_DATE_START,
                 "UPDATE_DATE_END":UPDATE_DATE_END,
                 "ORGAN_LEVEL":ORGAN_LEVEL,
                 "DAY_INTERVAL":JgTime
-            }) */
-            queryList(mock)
-            request({
+            }) 
+            axios({
                 method:'get',
-                data: {
-                    reportParam:datas,
+                params: {
+                    reportParam:JSON.stringify(datas),
                 },
                 url:urls,
             }).then(resData => {
@@ -104,17 +75,3 @@ const PublicComponent = ({
                     queryList(resData.data.data)
                 }
             })
-            console.log(filed)
-        }
-    }
-    setSearch(data[pubChildren] && data[pubChildren].search)
-    const listProps = {
-        tableResult:data[pubChildren] && data[pubChildren].tableResult,
-        title:data[pubChildren] && data[pubChildren].title,
-    }
-    return  <Fragment>
-                <Filter {...filterProps} /> 
-                <Table {...listProps} />
-            </Fragment>
-}
-export default connect(mapStateToProps, mapDispatchToProps)(PublicComponent)
