@@ -198,6 +198,7 @@ export default {
     }
   },
   productReport:{
+    reportName:"R20",
     title:'各理财产品日均保有量统计表',
     search:[
       {
@@ -377,6 +378,7 @@ export default {
     }
   },
   information:{
+    reportName:"R01",
     title:'理财产品基本信息表',
     search:[
       {
@@ -659,6 +661,7 @@ export default {
     }
   },
   closeStatistics:{
+    reportName:"R02",
     title:'封闭式非净值型理财产品平均客户收益率及投资收益率统计表',
     search:[
       {
@@ -845,6 +848,7 @@ export default {
     }
   },
   closedSequence:{
+    reportName:"R03",
     title:'封闭式非净值型理财产品平均客户收益率及投资收益率序列表',
     search:[ 
       {
@@ -1245,6 +1249,7 @@ export default {
     }
   },
   scaleSequence:{
+    reportName:"R05",
     title:'理财产品供给规模与销售规模序列表',
     search:[
       {
@@ -1316,6 +1321,7 @@ export default {
     }
   },
   customerSales:{
+    reportName:"R06",
     title:'机构理财产品客户销售情况表',
     search:[
       {
@@ -1395,6 +1401,7 @@ export default {
     }
   },
   saleStatuSequence:{
+    reportName:"R07",
     title:'理财销售情况序列表',
     search:[
       { 
@@ -1563,6 +1570,7 @@ export default {
     }
   },
   closeSalesEnquiries:{
+    reportName:"R08",
     title:'在售封闭式理财产品销售情况查询表',
     search:[
       {
@@ -1636,6 +1644,7 @@ export default {
     }
   },
   openSalesEnquiries:{
+    reportName:"R09",
     title:'开放式理财产品销售情况查询表',
     search:[
       { 
@@ -1816,6 +1825,7 @@ export default {
     }
   },
   openSaleSequence:{
+    reportName:"R10",
     title:'开放式产品销售情况序列表',
     search:[
       { 
@@ -2024,6 +2034,7 @@ export default {
     }
   },
   branchSaleStatistics:{
+    reportName:"R13",
     title:'各分行理财产品销售情况统计表',
     search:[
       { 
@@ -2660,6 +2671,7 @@ export default {
     }
   },
   customerProductTrading:{
+    reportName:"R14",
     title:'机构理财客户产品交易情况表',
     search:[
       {
@@ -2746,6 +2758,7 @@ export default {
     }
   },
   branchBalanceStatistics:{
+    reportName:"R15",
     title:'各分行理财余额统计查询表',
     search:[
       {
@@ -2851,6 +2864,7 @@ export default {
     }
   },
   balanceChangeStatistics:{
+    reportName:"R16",
     title:'各分行理财余额变动统计表',
     search:[
       {
@@ -3136,6 +3150,7 @@ export default {
     }
   },
   branchBalanceEnquiry:{
+    reportName:"R18",
     title:'各分行发行自主平衡产品情况查询',
     search:[
       {
@@ -3606,6 +3621,7 @@ export default {
     }
   },
   annualWithdrawing:{
+    reportName:"R23",
     title:'年度销售手续费总计提/已分配/待分配确认表',
     search:[
       { 
@@ -3796,6 +3812,7 @@ export default {
     }
   },
   newCustomer:{
+    reportName:"R26",
     title:'新增客户开户数',
     search:[
       {
@@ -3855,6 +3872,7 @@ export default {
     }
   },
   branchComprehensiveStatistic:{
+    reportName:"R27",
     title:'各分行理财产品综合情况统计表',
     search:[
       { 
@@ -4112,6 +4130,7 @@ export default {
     }
   },
   comprehensiveProductStatistics:{
+    reportName:"R28",
     title:'各理财产品综合情况统计表',
     search:[
       { 
@@ -4349,6 +4368,7 @@ export default {
     }
   },
   weeklyQuery:{
+    reportName:"R29",
     title:'周报数据查询表',
     search:[
       {

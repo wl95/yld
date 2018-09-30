@@ -68,8 +68,8 @@ const PublicComponent = ({
         
         DATE_TYPE === "0" ? JSON.stringify(JgTime = Times(UPDATE_DATE_START,UPDATE_DATE_END)) : JSON.stringify(JgTime=getIntervalMonth(moment(UPDATE_DATE_START).format('YYYY-MM'),moment(UPDATE_DATE_END).format('YYYY-MM')))
         let urls = "http://10.136.1.216:9091/v1/ycReport";
-        console.log(JgTime)
-        console.log(DATE_TYPE === "0")
+        // console.log(JgTime)
+        // console.log(DATE_TYPE === "0")
         let datas = {
             reportName:data[pubChildren].reportName,
             offset:1,
