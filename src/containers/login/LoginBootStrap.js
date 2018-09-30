@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {fetchDataCallback} from "../../actions/commonActions"
-import {FETCH_URL_LOGIN} from "../../utils/constant"
 import { Form, Col, FormControl, Button, FormGroup } from 'react-bootstrap'
 import styles from './login.less'
 

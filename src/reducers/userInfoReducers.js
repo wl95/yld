@@ -1,5 +1,4 @@
 import {INIT_USERINFO} from '../actions/actions'
-import {INIT_ORGANCODE,INIT_ORGANLEVEL} from "../utils/constant";
 
 /**
  * 初始化用户信息
@@ -7,8 +6,6 @@ import {INIT_ORGANCODE,INIT_ORGANLEVEL} from "../utils/constant";
 
 const initStore = {
     userInfo: {
-        userOrganCode: INIT_ORGANCODE,
-        userOrganLevel: INIT_ORGANLEVEL,
         userProvinceCode:"",
         userProvinceName:"",
         userAreaCode:"",
