@@ -47,12 +47,11 @@ export function getAuthorityData(dispatch, juris){
             organParams:juris
         }
     }).then(resData => {
-        let { data } = resData
         dispatch({
             type:GET_AUTH_DATA,
             resData:{
                 juris,
-                authData:data
+                authData:resData
             },
         })
     })

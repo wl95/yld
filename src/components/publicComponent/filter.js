@@ -1,5 +1,5 @@
 import 'rc-calendar/assets/index.css';
-import React,{Component} from 'react'
+import React,{ Component } from 'react'
 import { connect } from 'react-redux'
 import mapDispatchToProps from './mapDispatch'
 import mapStateToProps from './mapState'
@@ -35,6 +35,7 @@ class Filter extends Component {
     componentDidMount(){
         this.fetch()
     }
+
     /* 首次打开页面 */
     fetch = () => {
         let { filter, getAuthority, location, setFilter } = this.props
@@ -46,38 +47,43 @@ class Filter extends Component {
         let index = herfStr.indexOf('?');
         herfStr = herfStr.slice(index+1);
         if(herfStr.indexOf('organCode')!==-1 && herfStr.indexOf('organLevel') !== -1){
-          // 参数正确得传入
-          herfStr.split('&').map(item=>{//把获取参数存入本地存储
-            return item.split('=')
-          }).forEach(item=>{
-            localStorage.setItem(item[0],item[1]);
-            juris[item[0]] = item[1]
-          })
-          getAuthority(juris)
+            // 参数正确得传入
+            herfStr.split('&').map(item=>{//把获取参数存入本地存储
+                return item.split('=')
+            }).forEach(item=>{
+                localStorage.setItem(item[0],item[1]);
+                juris[item[0]] = item[1]
+            })
+            getAuthority(juris)
         }else{
             //参数未正确传入
         }
-
+        // console.log(filter)
         filter && filter.map((item, index) => {
+            // console.log(item.ss)
             if(item.defaultValue === 0 || item.defaultValue != undefined){
                 filed[item.selectType] = item.defaultValue
+                //console.log(item)
                 if(locationSearch.UPDATE_DATE_END){
                     filed['UPDATE_DATE_END'] = moment(locationSearch.UPDATE_DATE_END, 'YYYY-MM-DD');
                 }
                 if(locationSearch.UPDATE_DATE_START){
                     filed['UPDATE_DATE_START'] = moment(locationSearch.UPDATE_DATE_START, 'YYYY-MM-DD');
                 }
+                //console.log(filed)
                 this.setState({
                     filed
+                },() => {
+                    //console.log(this.state.filed)
                 })
             }
             //请求
-           /*  filterAPI[item.requestType] && item.method && request({
+            filterAPI[item.requestType] && item.method && request({
                 method:item.method,
                 url:filterAPI[item.requestType]
             }).then(resData => {
                 setFilter(resData[item.selectKey], index)
-            }) */
+            })
         })
     }
 

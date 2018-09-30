@@ -59,7 +59,7 @@ const PublicComponent = ({
             month2 = parseInt(date2[1]) , 
             //通过年,月差计算月份差
             months = (year2 - year1) * 12 + (month2-month1)+1;
-            return months;    
+            return JSON.stringify(months);    
         }
         
         let UPDATE_DATE_STARTs = moment(UPDATE_DATE_START).format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM');

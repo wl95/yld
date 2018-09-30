@@ -17,7 +17,6 @@ export function filterReducers(state = initState, action) {
       case SET_FILTERDATA:
         let { filterResult } = action
         let { filterData, index } = filterResult
-        
         newFilterData[index].option = filterData
         return {...state,filter:newFilterData}
       case SET_SEARCHDATA:
@@ -32,15 +31,20 @@ export function filterReducers(state = initState, action) {
               if(item.selectType === 'PROVINCE_CODE'){
                 item.disabled = false
                 item.option = authData.children
-
+              }
+              if( item.selectType === 'ORGAN_LEVEL' ){
+                item.defaultValue = '1'
               }
             })
             return {...state,filter:newFilterData}
           case '1':
             newFilterData.map(item => {
-              if(item.selectType === 'PROVINCE_CODE' || item.selectType === 'PREFECTURE_CODE' ){
+              if((item.selectType === 'PROVINCE_CODE' || item.selectType === 'PREFECTURE_CODE') && authData.children){
                 item.disabled = false
-                item.option = item.selectType === 'PROVINCE_CODE' ?  authData.children : authData.brother
+                item.option = item.selectType === 'PROVINCE_CODE' ? authData.children : authData.brother
+              }
+              if( item.selectType === 'ORGAN_LEVEL' ){
+                item.defaultValue = '1'
               }
             })
             return {...state,filter:newFilterData}
@@ -50,6 +54,9 @@ export function filterReducers(state = initState, action) {
                 item.disabled = false
                 item.option = item.selectType === 'CITY_CODE' ?  authData.children : authData.brother
               }
+              if( item.selectType === 'ORGAN_LEVEL' ){
+                item.defaultValue = '1'
+              }
             })
             return {...state,filter:newFilterData}
           case '3':
@@ -58,6 +65,9 @@ export function filterReducers(state = initState, action) {
                 item.disabled = false
                 item.option = item.selectType === 'BRANCE_CODE' ?  authData.children : authData.brother
               }
+              if( item.selectType === 'ORGAN_LEVEL' ){
+                item.defaultValue = '1'
+              }
             })
             return {...state,filter:newFilterData}
           case '4':
@@ -65,6 +75,9 @@ export function filterReducers(state = initState, action) {
               if(item.selectType === 'BRANCE_CODE'){
                 item.disabled = false
                 item.option = authData.children
+              }
+              if( item.selectType === 'ORGAN_LEVEL' ){
+                item.defaultValue = '1'
               }
             })
             return {...state,filter:newFilterData}    
