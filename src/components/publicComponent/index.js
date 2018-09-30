@@ -17,16 +17,26 @@ const PublicComponent = ({
     const filterProps = {   
         location,
         onFilterSubmit({filed, dateFormat}){
+            let urls = "http://10.136.1.216:9091/v1/ycReport";
             const {DATE_TYPE,UPDATE_DATE_START,UPDATE_DATE_END,ORGAN_LEVEL} =filed;
+            /* for (let item in filed) {
+                if(filed[item] instanceof Object){
+                    filed[item] = filed[item].format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM')
+                }
+            } */
              /**
             * 间隔天数
             */
             const Times = (faultDate,completeTime) => {
+                console.log(faultDate,completeTime)
                 let stime = Date.parse(new Date(faultDate));
                 let etime = Date.parse(new Date(completeTime));
                 let usedTime = etime - stime;  //两个时间戳相差的毫秒数
                 let days=Math.floor(usedTime/(24*3600*1000));
+                //计算出小时数
+                let leave1=usedTime%(24*3600*1000);    //计算天数后剩余的毫秒数
                 //计算相差分钟数
+                let leave2=leave1%(3600*1000);        //计算小时数后剩余的毫秒数
                 let time = days+1;
                 return JSON.stringify(time);
             }
@@ -50,12 +60,6 @@ const PublicComponent = ({
             
             let JgTime;
             DATE_TYPE === "0" ? JSON.stringify(JgTime = Times(UPDATE_DATE_START,UPDATE_DATE_END)) : JSON.stringify(JgTime=getIntervalMonth(moment(UPDATE_DATE_START).format('YYYY-MM'),moment(UPDATE_DATE_END).format('YYYY-MM')))
-            let urls = "http://10.136.1.216:9091/v1/ycReport";
-            for (let item in filed) {
-                if(filed[item] instanceof Object){
-                    filed[item] = filed[item].format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM')
-                }
-            }
             let datas = {
                 reportName:data[pubChildren].reportName,
                 offset:1,
@@ -63,8 +67,8 @@ const PublicComponent = ({
                 paramMap:{
                     DATE_TYPE,
                     GROUP_BY:"ORGAN_ID",
-                    UPDATE_DATE_START,
-                    UPDATE_DATE_END:UPDATE_DATE_END,
+                    UPDATE_DATE_START:UPDATE_DATE_START.format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM'),
+                    UPDATE_DATE_END:UPDATE_DATE_END.format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM'),
                     ORGAN_LEVEL:ORGAN_LEVEL,
                     DAY_INTERVAL:JgTime
                 },
