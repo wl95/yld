@@ -6,14 +6,14 @@ const {
 
 
 const CalcDiffTime = (stateTime, endTime, dateFormat) => {
-  console.log(stateTime)
-  console.log()
-  stateTime = stateTime.format(dateFormat)
-  endTime = endTime.format(dateFormat)
+ 
   if(dateFormat === 'YYYY-MM-DD'){
     /**
     * 间隔天数
     */
+    stateTime = stateTime.replace(/^(\d{4})(\d{2})(\d{2})$/, "$1-$2-$3")
+    endTime = endTime.replace(/^(\d{4})(\d{2})(\d{2})$/, "$1-$2-$3")
+    
     stateTime = new Date(stateTime.replace(/-/g, "/"));
     endTime = new Date(endTime.replace(/-/g, "/"));//当前日期：2017-04-24
     var days = endTime.getTime() - stateTime.getTime();
@@ -23,6 +23,8 @@ const CalcDiffTime = (stateTime, endTime, dateFormat) => {
     /**
      * 间隔月数
      */
+    stateTime = stateTime.replace(/^(\d{4})(\d{2})$/, "$1-$2")
+    endTime = endTime.replace(/^(\d{4})(\d{2})$/, "$1-$2")
     stateTime = stateTime.split("-");
     endTime = endTime.split("-");
     //获取年,月数

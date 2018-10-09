@@ -34,8 +34,8 @@ const PublicComponent = ({
                     UPDATE_DATE_START:UPDATE_DATE_START,
                     UPDATE_DATE_END:UPDATE_DATE_END,
                     ORGAN_LEVEL:ORGAN_LEVEL,
-                    DAY_INTERVAL:'10'
-                    //DAY_INTERVAL:CalcDiffTime(UPDATE_DATE_START,UPDATE_DATE_END, dateFormat)
+                    //DAY_INTERVAL:'10'
+                    DAY_INTERVAL:CalcDiffTime(UPDATE_DATE_START,UPDATE_DATE_END, dateFormat)
                 },
                 orderMap:{property:"period",direction:"DESC"}
             };
