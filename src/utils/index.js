@@ -6,7 +6,6 @@ const {
 
 
 const CalcDiffTime = (stateTime, endTime, dateFormat) => {
-  console.log(stateTime)
   if(dateFormat === 'YYYY-MM-DD'){
     /**
     * 间隔天数
@@ -14,7 +13,7 @@ const CalcDiffTime = (stateTime, endTime, dateFormat) => {
     stateTime = new Date(stateTime.replace(/-/g, "/"));
     endTime = new Date(endTime.replace(/-/g, "/"));//当前日期：2017-04-24
     var days = endTime.getTime() - stateTime.getTime();
-    var time = parseInt(days / (1000 * 60 * 60 * 24));
+    var time = parseInt(days / (1000 * 60 * 60 * 24)) + 1;
     return JSON.stringify(time);
   } else {
     /**

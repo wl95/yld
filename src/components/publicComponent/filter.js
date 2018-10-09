@@ -61,7 +61,7 @@ class Filter extends Component {
         }
         filter && filter.map((item, index) => {
             filed[item.selectType] =  item.defaultValue
-            //console.log(item)
+            // console.log(item)
             if(locationSearch.UPDATE_DATE_END){
                 filed['UPDATE_DATE_END'] = moment(locationSearch.UPDATE_DATE_END, 'YYYY-MM-DD');
             }

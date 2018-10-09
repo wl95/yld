@@ -28,14 +28,14 @@ export default {
         selectType:'UPDATE_DATE_START',
         relationship:'UPDATE_DATE_END',
         dateCalendarType:'start',
-        defaultValue:moment('2017-11-11', 'YYYY-MM-DD'),
+        defaultValue:moment('2017-11-20', 'YYYY-MM-DD'),
         type:3,
       },
       {
         text:'终止日期:',
         selectType:'UPDATE_DATE_END',
         relationship:'UPDATE_DATE_START',
-        defaultValue:moment('2017-11-20', 'YYYY-MM-DD'),
+        defaultValue:moment('2017-11-25', 'YYYY-MM-DD'),
         type:3,
       },
       {
@@ -469,6 +469,7 @@ export default {
         selectType:'',
         selectKey:'',
         itemKey:'',
+        itemName:'',
         type:2
       },
       {
@@ -523,7 +524,7 @@ export default {
       },
       {
         text:'拟续接:',
-        requestType:'reIsCont',
+        requestType:'balance',
         selectType:'is_cont_prod',
         selectKey:'list',
         itemKey:'value',
@@ -533,10 +534,11 @@ export default {
       },
       {
         text:'待续接:',
-        requestType:'reIsCont',
+        requestType:'balance',
         selectType:'is_need_cont',
-        selectKey:'',
-        itemKey:'',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
         type:2,
         method:'get',
       },
@@ -546,6 +548,7 @@ export default {
         selectType:'project_name',
         selectKey:'',
         itemKey:'',
+        itemName:'',
         type:2,
         method:'get',
       },
@@ -555,6 +558,7 @@ export default {
         selectType:'project_researcher',
         selectKey:'',
         itemKey:'',
+        itemName:'',
         type:2,
         method:'get',
       },
@@ -564,7 +568,6 @@ export default {
         selectKey:'provinceList',
         itemKey:'code',           
         itemName:'name',          
-        disabled:true,          
         type:2,
       },
       {
@@ -576,7 +579,7 @@ export default {
         itemName:'label',
         type:2,
         method:'get',
-      },
+      }, 
       {
         text:'发行币种:',
         requestType:'regCurrency',       
@@ -739,7 +742,7 @@ export default {
       },
       {
         text:'是否自主平衡:',
-        requestType:'',
+        requestType:'balance', 
         selectType:'is_balance',
         selectKey:'list',
         itemKey:'value',
@@ -753,7 +756,6 @@ export default {
         selectKey:'provinceList',
         itemKey:'code',           
         itemName:'name',          
-        disabled:true,          
         type:2,
       },
       {
@@ -771,6 +773,8 @@ export default {
         requestType:'',
         selectType:'project_researcher',
         selectKey:'',
+        itemKey:'',
+        itemName:'',
         type:1,
         method:'get',
       },
@@ -948,7 +952,7 @@ export default {
       },
       {
         text:'是否自主平衡:',
-        requestType:'',
+        requestType:'balance', 
         selectType:'is_balance',
         selectKey:'list',
         itemKey:'value',
@@ -962,7 +966,6 @@ export default {
         selectKey:'provinceList',
         itemKey:'code',           
         itemName:'name',          
-        disabled:true,          
         type:2,
       },
       {
@@ -2497,7 +2500,7 @@ export default {
       },
       {
         text:'是否自主平衡:',
-        requestType:'', 
+        requestType:'balance', 
         selectType:'is_balance',
         selectKey:'list',
         itemKey:'value',
@@ -2934,7 +2937,7 @@ export default {
       },
       {
         text:'是否自主平衡:',
-        requestType:'',
+        requestType:'balance', 
         selectType:'is_balance',
         selectKey:'list',
         itemKey:'value',
@@ -2944,11 +2947,11 @@ export default {
       },
       {
         text:'地区分类:',
-        requestType:'',
-        selectType:'reAreaType',
+        requestType:'reAreaType',       
+        selectType:'GROUP_BY',
         selectKey:'list',
         itemKey:'value',
-        itemName:'label',
+        itemName:'label',         
         type:2,
         method:'get',
       },
@@ -3816,10 +3819,11 @@ export default {
       },
       {
         text:'地区:',
-        selectType:'reAreaType',
+        requestType:'reAreaType',       
+        selectType:'GROUP_BY',
         selectKey:'list',
         itemKey:'value',
-        itemName:'label',
+        itemName:'label',         
         type:2,
         method:'get',
       },
@@ -4557,7 +4561,8 @@ export default {
 }
 
 
-/* R03D	R03-封闭式非净值型理财产品平均客户收益率及投资收益率序列表（日）
+/* 
+R03D	R03-封闭式非净值型理财产品平均客户收益率及投资收益率序列表（日）
 R03M	R03-封闭式非净值型理财产品平均客户收益率及投资收益率序列表（月）
 R03Q	R03-封闭式非净值型理财产品平均客户收益率及投资收益率序列表（季）
 R03Y	R03-封闭式非净值型理财产品平均客户收益率及投资收益率序列表（年）
@@ -4605,4 +4610,6 @@ R25D	R25-扣款失败金额明细表
 R271D	R27-各分行理财产品综合情况统计表（一分）
 R272D	R27-各分行理财产品综合情况统计表（二分）
 R273D	R27-各分行理财产品综合情况统计表（一支）
-R274D	R27-各分行理财产品综合情况统计表（网点） */
+R274D	R27-各分行理财产品综合情况统计表（网点） 
+
+*/

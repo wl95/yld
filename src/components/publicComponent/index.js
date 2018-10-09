@@ -55,7 +55,7 @@ class PublicComponent extends Component {
                 UPDATE_DATE_START:UPDATE_DATE_START.format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM'),
                 UPDATE_DATE_END:UPDATE_DATE_END.format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM'),
                 ORGAN_LEVEL,
-                DAY_INTERVAL:CalcDiffTime(UPDATE_DATE_START.format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM'),UPDATE_DATE_END.format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM'), dateFormat)
+                DAY_INTERVAL:CalcDiffTime(UPDATE_DATE_START.format(dateFormat),UPDATE_DATE_END.format(dateFormat), dateFormat)
             },
             orderMap:{property:"period",direction:"DESC"}
         };
