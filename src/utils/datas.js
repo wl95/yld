@@ -513,7 +513,7 @@ export default {
       },
       {
         text:'是否自主平衡:',
-        requestType:'', 
+        requestType:'balance', 
         selectType:'is_balance',
         selectKey:'list',
         itemKey:'value',
@@ -523,7 +523,7 @@ export default {
       },
       {
         text:'拟续接:',
-        requestType:'',
+        requestType:'reIsCont',
         selectType:'is_cont_prod',
         selectKey:'list',
         itemKey:'value',
@@ -533,7 +533,7 @@ export default {
       },
       {
         text:'待续接:',
-        requestType:'',
+        requestType:'reIsCont',
         selectType:'is_need_cont',
         selectKey:'',
         itemKey:'',

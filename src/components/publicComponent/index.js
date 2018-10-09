@@ -52,8 +52,8 @@ class PublicComponent extends Component {
             paramMap:{
                 DATE_TYPE,
                 GROUP_BY:"ORGAN_ID",
-                UPDATE_DATE_START,
-                UPDATE_DATE_END,
+                UPDATE_DATE_START:UPDATE_DATE_START.format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM'),
+                UPDATE_DATE_END:UPDATE_DATE_END.format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM'),
                 ORGAN_LEVEL,
                 DAY_INTERVAL:CalcDiffTime(UPDATE_DATE_START.format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM'),UPDATE_DATE_END.format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM'), dateFormat)
             },
