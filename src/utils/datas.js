@@ -41,10 +41,10 @@ export default {
       {
         text:'产品代码:',   
         requestType:'reProdCode',     // 请求参数
-        selectType:'PROD_ID',      // 传给后端的字段
+        selectType:'PROD_ID',         // 传给后端的字段
         selectKey:'prodCodeList',     // 请求到的数据获取
-        itemKey:'prodCode',           // 渲染字段
-        itemName:'prodCode',          // 渲染字段
+        itemKey:'organCode',           // 渲染字段
+        itemName:'organName',          // 渲染字段
         type:1,
         method:'get',
       },
@@ -52,8 +52,8 @@ export default {
         text:'省份:', 
         selectType:'PROVINCE_CODE',
         selectKey:'provinceList',
-        itemKey:'code',   
-        itemName:'name', 
+        itemKey:'code',           // 渲染字段
+        itemName:'name',          // 渲染字段
         disabled:true,          
         type:2,
       },
@@ -61,8 +61,8 @@ export default {
         text:'地市:',
         selectType:'PREFECTURE_CODE',
         selectKey:'areaList',
-        itemKey:'code',   
-        itemName:'name', 
+        itemKey:'code',           // 渲染字段
+        itemName:'name',          // 渲染字段
         disabled:true,          
         type:2,
       },
@@ -70,8 +70,8 @@ export default {
         text:'市县:',
         selectType:'CITY_CODE',
         selectKey:'cityList',
-        itemKey:'code',   
-        itemName:'name', 
+        itemKey:'code',           // 渲染字段
+        itemName:'name',          // 渲染字段
         disabled:true,           
         type:2,
       },
@@ -79,8 +79,8 @@ export default {
         text:'网点:',
         selectType:'BRANCE_CODE',
         selectKey:'branchList',
-        itemKey:'code',   
-        itemName:'name', 
+        itemKey:'code',           // 渲染字段
+        itemName:'name',          // 渲染字段
         disabled:true,         
         type:2,
       },
@@ -198,6 +198,7 @@ export default {
     }
   },
   productReport:{
+    reportName:"R20",
     title:'各理财产品日均保有量统计表',
     search:[
       {
@@ -377,6 +378,7 @@ export default {
     }
   },
   information:{
+    reportName:"R01",
     title:'理财产品基本信息表',
     search:[
       {
@@ -434,7 +436,7 @@ export default {
       {
         text:'产品代码:',   
         requestType:'reProdCode',     
-        selectType:'PROD_ID',      
+        selectType:'prod_id',      
         selectKey:'prodCodeList',     
         itemKey:'prodCode',           
         itemName:'prodCode',          
@@ -443,7 +445,8 @@ export default {
       },
       {
         text:'产品名称:',
-        selectType:'',
+        requestType:'', 
+        selectType:'prod_name',
         selectKey:'',   
         itemKey:'',         
         itemName:'', 
@@ -462,6 +465,7 @@ export default {
       },
       {
         text:'产品研发人:',
+        requestType:'', 
         selectType:'',
         selectKey:'',
         itemKey:'',
@@ -509,7 +513,8 @@ export default {
       },
       {
         text:'是否自主平衡:',
-        selectType:'reAutoBalance',
+        requestType:'', 
+        selectType:'is_balance',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -518,7 +523,8 @@ export default {
       },
       {
         text:'拟续接:',
-        selectType:'reIsCont',
+        requestType:'',
+        selectType:'is_cont_prod',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -527,15 +533,17 @@ export default {
       },
       {
         text:'待续接:',
-        selectType:'',
+        requestType:'',
+        selectType:'is_need_cont',
         selectKey:'',
         itemKey:'',
         type:2,
         method:'get',
       },
       {
-        text:'项目名称:',        
-        selectType:'',
+        text:'项目名称:',
+        requestType:'',        
+        selectType:'project_name',
         selectKey:'',
         itemKey:'',
         type:2,
@@ -543,7 +551,8 @@ export default {
       },
       {
         text:'项目研发人:',
-        selectType:'',
+        requestType:'',
+        selectType:'project_researcher',
         selectKey:'',
         itemKey:'',
         type:2,
@@ -551,11 +560,12 @@ export default {
       },
       {
         text:'产品销售区域:',
-        selectType:'',
-        selectKey:'',
-        itemKey:'',
+        selectType:'PROVINCE_CODE',
+        selectKey:'provinceList',
+        itemKey:'code',           
+        itemName:'name',          
+        disabled:true,          
         type:2,
-        method:'get',
       },
       {
         text:'机构属性:',
@@ -659,6 +669,7 @@ export default {
     }
   },
   closeStatistics:{
+    reportName:"R02",
     title:'封闭式非净值型理财产品平均客户收益率及投资收益率统计表',
     search:[
       {
@@ -679,7 +690,8 @@ export default {
       {
         text:'产品研发人',
         type:2,
-        selectType:'',
+        requestType:'',
+        selectType:'prod_researcher',
         selectKey:'',
         itemKey:'',
         itenName:'',
@@ -727,7 +739,8 @@ export default {
       },
       {
         text:'是否自主平衡:',
-        selectType:'reAutoBalance',
+        requestType:'',
+        selectType:'is_balance',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -736,11 +749,12 @@ export default {
       },
       {
         text:'产品销售区域:',
-        selectType:'',
-        selectKey:'',
-        itemKey:'',
+        selectType:'PROVINCE_CODE',
+        selectKey:'provinceList',
+        itemKey:'code',           
+        itemName:'name',          
+        disabled:true,          
         type:2,
-        method:'get',
       },
       {
         text:'产品品牌:',
@@ -754,7 +768,8 @@ export default {
       },
       {
         text:'项目研发人:',
-        selectType:'',
+        requestType:'',
+        selectType:'project_researcher',
         selectKey:'',
         type:1,
         method:'get',
@@ -845,6 +860,7 @@ export default {
     }
   },
   closedSequence:{
+    reportName:"R03",
     title:'封闭式非净值型理财产品平均客户收益率及投资收益率序列表',
     search:[ 
       {
@@ -882,6 +898,7 @@ export default {
       },
       {
         text:'产品研发人:',
+        requestType:'prod_researcher',
         selectType:'',
         selectKey:'',
         itemKey:'',
@@ -931,7 +948,8 @@ export default {
       },
       {
         text:'是否自主平衡:',
-        selectType:'reAutoBalance',
+        requestType:'',
+        selectType:'is_balance',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -940,16 +958,17 @@ export default {
       },
       {
         text:'产品销售区域:',
-        selectType:'',
-        selectKey:'',
-        itemKey:'',
-        itemName:'',
+        selectType:'PROVINCE_CODE',
+        selectKey:'provinceList',
+        itemKey:'code',           
+        itemName:'name',          
+        disabled:true,          
         type:2,
-        method:'get',
       },
       {
         text:'项目研发人:',
-        selectType:'',
+        requestType:'',
+        selectType:'project_researcher',
         selectKey:'',
         itemKey:'',
         itemName:'',
@@ -1053,6 +1072,7 @@ export default {
     }
   },
   effectiveSales:{
+    reportName:'',
     title:'理财产品有效销量表',
     search:[
       { 
@@ -1245,6 +1265,7 @@ export default {
     }
   },
   scaleSequence:{
+    reportName:'R05',
     title:'理财产品供给规模与销售规模序列表',
     search:[
       {
@@ -1316,6 +1337,7 @@ export default {
     }
   },
   customerSales:{
+    reportName:'R06',
     title:'机构理财产品客户销售情况表',
     search:[
       {
@@ -1395,6 +1417,7 @@ export default {
     }
   },
   saleStatuSequence:{
+    reportName:'',
     title:'理财销售情况序列表',
     search:[
       { 
@@ -1563,6 +1586,7 @@ export default {
     }
   },
   closeSalesEnquiries:{
+    reportName:'R08',
     title:'在售封闭式理财产品销售情况查询表',
     search:[
       {
@@ -1582,7 +1606,8 @@ export default {
       },
       {
         text:'销售机构:',
-        selectType:'reOrganType',
+        requestType:'reOrganType',       
+        selectType:'ORGAN_MODE',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -1636,6 +1661,7 @@ export default {
     }
   },
   openSalesEnquiries:{
+    reportName:'R09',
     title:'开放式理财产品销售情况查询表',
     search:[
       { 
@@ -1816,6 +1842,7 @@ export default {
     }
   },
   openSaleSequence:{
+    reportName:'',
     title:'开放式产品销售情况序列表',
     search:[
       { 
@@ -2024,6 +2051,7 @@ export default {
     }
   },
   branchSaleStatistics:{
+    reportName:'',
     title:'各分行理财产品销售情况统计表',
     search:[
       { 
@@ -2343,6 +2371,7 @@ export default {
     }
   },
   productSaleStatistics:{
+    reportName:'',
     title:'各理财产品销售情况统计表',
     search:[
       { 
@@ -2448,10 +2477,12 @@ export default {
       },
       {
         text:'产品名称:',
+        requestType:'',
         selectType:'',
         selectKey:'',
+        itemKey:'',           
+        itemName:'', 
         type:1,
-        
         method:'get',
       },
       {
@@ -2466,7 +2497,8 @@ export default {
       },
       {
         text:'是否自主平衡:',
-        selectType:'reAutoBalance',
+        requestType:'', 
+        selectType:'is_balance',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -2660,8 +2692,9 @@ export default {
     }
   },
   customerProductTrading:{
+    reportName:"R14",
     title:'机构理财客户产品交易情况表',
-    search:[
+    search:[ 
       {
         text:'起始日期:',
         selectType:'UPDATE_DATE_START',
@@ -2746,6 +2779,7 @@ export default {
     }
   },
   branchBalanceStatistics:{
+    reportName:'R15',
     title:'各分行理财余额统计查询表',
     search:[
       {
@@ -2851,6 +2885,7 @@ export default {
     }
   },
   balanceChangeStatistics:{
+    reportName:"R16",
     title:'各分行理财余额变动统计表',
     search:[
       {
@@ -2899,7 +2934,8 @@ export default {
       },
       {
         text:'是否自主平衡:',
-        selectType:'reAutoBalance',
+        requestType:'',
+        selectType:'is_balance',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -2908,6 +2944,7 @@ export default {
       },
       {
         text:'地区分类:',
+        requestType:'',
         selectType:'reAreaType',
         selectKey:'list',
         itemKey:'value',
@@ -2982,6 +3019,7 @@ export default {
     }
   },
   productBalanceSequence:{
+    reportName:'',
     title:'各理财产品余额序列表',
     search:[
       { 
@@ -3136,6 +3174,7 @@ export default {
     }
   },
   branchBalanceEnquiry:{
+    reportName:'R18',
     title:'各分行发行自主平衡产品情况查询',
     search:[
       {
@@ -3186,6 +3225,7 @@ export default {
     }
   },
   productRevenueStatistics:{
+    reportName:'R13',
     title:'各理财产品收入情况统计表',
     search:[
       { 
@@ -3391,6 +3431,7 @@ export default {
     }
   },
   branchRevenueStatistics:{
+    reportName:'',
     title:'各分行理财收入统计表',
     search:[
       { 
@@ -3606,6 +3647,7 @@ export default {
     }
   },
   annualWithdrawing:{
+    reportName:'R23',
     title:'年度销售手续费总计提/已分配/待分配确认表',
     search:[
       { 
@@ -3754,6 +3796,7 @@ export default {
     }
   },
   purchaseIntentionEnquiry:{
+    reportName:'',
     title:'客户意向登记购买查询表',
     search:[
       {
@@ -3796,6 +3839,7 @@ export default {
     }
   },
   newCustomer:{
+    reportName:'R26',
     title:'新增客户开户数',
     search:[
       {
@@ -3855,6 +3899,7 @@ export default {
     }
   },
   branchComprehensiveStatistic:{
+    reportName:'',
     title:'各分行理财产品综合情况统计表',
     search:[
       { 
@@ -4112,6 +4157,7 @@ export default {
     }
   },
   comprehensiveProductStatistics:{
+    reportName:'R28',
     title:'各理财产品综合情况统计表',
     search:[
       { 
@@ -4247,8 +4293,11 @@ export default {
       },
       {
         text:'产品名称:',
+        requestType:'',
         selectType:'',
         selectKey:'',
+        itemKey:'',
+        itemName:'',
         type:1,
         method:'get',
       },
@@ -4349,7 +4398,9 @@ export default {
     }
   },
   weeklyQuery:{
+    reportName:'R29',
     title:'周报数据查询表',
+    tableType:'weekTable',
     search:[
       {
         text:'查询周期:',
@@ -4368,9 +4419,190 @@ export default {
       }
     ],
     tableResult:{
-      columns:[
-
+      columnsTable1:[
+        {
+          title:'理财产品销量',
+          children:[
+            {
+              title:'上周规模',
+              dataIndex:'a',
+              key:'a'
+            },
+            {
+              title:'本周余额',
+              dataIndex:'b',
+              key:'b'
+            },
+            {
+              title:'本月余额',
+              dataIndex:'c',
+              key:'c'
+            },
+            {
+              title:'本周余额',
+              dataIndex:'d',
+              key:'d'
+            },
+          ]
+        },
+        {
+          title:'理财产品余额',
+          children:[
+            {
+              title:'上周末余额',
+              dataIndex:'q',
+              key:'q'
+            },
+            {
+              title:'本周末余额',
+              dataIndex:'w',
+              key:'w'
+            },
+            {
+              title:'上月末余额',
+              dataIndex:'e',
+              key:'e'
+            },
+            {
+              title:'上年末余额',
+              dataIndex:'r',
+              key:'r'
+            },
+          ]
+        },
+      ],
+      columnsTable2:[
+        {
+          title:'时间区间',
+          dataIndex:'r',
+          key:'r'
+        },
+        {
+          title:'计划发售余额',
+          dataIndex:'a',
+          key:'a'
+        },
+        {
+          title:'较上周增量',
+          dataIndex:'c',
+          key:'c'
+        },
+      ],
+      columnsTable3:[
+        {
+          title:'时间区间',
+          dataIndex:'r',
+          key:'r'
+        },
+        {
+          title:'已成立产品只数',
+          dataIndex:'a',
+          key:'a'
+        },
+        {
+          title:'计划募集余额',
+          dataIndex:'c',
+          key:'c'
+        },
+        {
+          title:'实际募集余额',
+          dataIndex:'b',
+          key:'b'
+        },
+        {
+          title:'销售牢',
+          dataIndex:'e',
+          key:'e'
+        },
+        {
+          title:'仍在募集期产品',
+          dataIndex:'t',
+          key:'t'
+        },
+      ],
+      columnsTable4:[
+        {
+          title:'开放式理财产品',
+          dataIndex:'r',
+          key:'r'
+        },
+        {
+          title:'购买',
+          dataIndex:'a',
+          key:'a'
+        },
+        {
+          title:'赎回',
+          dataIndex:'c',
+          key:'c'
+        },
+        {
+          title:'净购买',
+          dataIndex:'b',
+          key:'b'
+        },
+        {
+          title:'产品余额',
+          dataIndex:'d',
+          key:'d'
+        },
+        {
+          title:'存量占比',
+          dataIndex:'e',
+          key:'e'
+        },
       ],
     }
   }
 }
+
+
+/* R03D	R03-封闭式非净值型理财产品平均客户收益率及投资收益率序列表（日）
+R03M	R03-封闭式非净值型理财产品平均客户收益率及投资收益率序列表（月）
+R03Q	R03-封闭式非净值型理财产品平均客户收益率及投资收益率序列表（季）
+R03Y	R03-封闭式非净值型理财产品平均客户收益率及投资收益率序列表（年）
+R041M	R04-理财产品有效销量表(一分)
+R042M	R04-理财产品有效销量表(二分)
+R043M	R04-理财产品有效销量表(一支)
+R044M	R04-理财产品有效销量表(网点)
+
+R07D	R07-理财销售情况序列表（日）
+R07M	R07-理财销售情况序列表（月）
+R07Y	R07-理财销售情况序列表（年）
+
+R10D	R10-开放式理财产品销售情况序列表（日）
+R10M	R10-开放式理财产品销售情况序列表（月）
+R10Q	R10-开放式理财产品销售情况序列表（季度）
+R10Y	R10-开放式理财产品销售情况序列表（年）
+R11D	R11-开放式非净值型理财产品成本统计表
+R121D	R12-各分行理财产品销售情况统计表（一分）
+R122D	R12-各分行理财产品销售情况统计表（二分）
+R123D	R12-各分行理财产品销售情况统计表（一支）
+R124D	R12-各分行理财产品销售情况统计表（网点）
+
+R17D	R17-理财余额序列表（日）
+R17M	R17-理财余额序列表（月）
+R17Y	R17-理财余额序列表（年）
+
+R191D	R19-各分行理财产品日均保有量统计表（一分）（日）
+R192D	R19-各分行理财产品日均保有量统计表（二分）（日）
+R193D	R19-各分行理财产品日均保有量统计表（一支）（日）
+R194D	R19-各分行理财产品日均保有量统计表（网点）（日）
+R195M	R19-各分行理财产品日均保有量统计表（一分）（月）
+R196M	R19-各分行理财产品日均保有量统计表（二分）（月）
+R197M	R19-各分行理财产品日均保有量统计表（一支）（月）
+R198M	R19-各分行理财产品日均保有量统计表（网点）（月）
+
+R211M	R21各理财产品收入情况统计表（一分）
+R212M	R21各理财产品收入情况统计表（二分）
+R213M	R21各理财产品收入情况统计表（一支）
+R214M	R21各理财产品收入情况统计表（网点）
+R22M	R22各分行理财产品收入情况统计表
+
+R24D	R24-预约自动购买查询表
+R25D	R25-扣款失败金额明细表
+
+R271D	R27-各分行理财产品综合情况统计表（一分）
+R272D	R27-各分行理财产品综合情况统计表（二分）
+R273D	R27-各分行理财产品综合情况统计表（一支）
+R274D	R27-各分行理财产品综合情况统计表（网点） */

@@ -35,7 +35,7 @@ class Filter extends Component {
 
     /* 首次打开页面 */
     fetch = () => {
-        let { filter, getAuthority, location, setFilter } = this.props
+        let { filter, getAuthority, setFilter } = this.props
         let { search, href } = location
         let locationSearch = queryString.parse(search)
         let { filed } = this.state
@@ -52,28 +52,25 @@ class Filter extends Component {
                 juris[item[0]] = item[1]
             })
             getAuthority(juris)
+            filed.ORGAN_LEVEL = juris.organLevel == 0 ? '1' : juris.organLevel
+            this.setState({
+                filed
+            })
         }else{
             //参数未正确传入
         }
-        // console.log(filter)
         filter && filter.map((item, index) => {
-            // console.log(item.ss)
-            if(item.defaultValue === 0 || item.defaultValue != undefined){
-                filed[item.selectType] = item.defaultValue
-                //console.log(item)
-                if(locationSearch.UPDATE_DATE_END){
-                    filed['UPDATE_DATE_END'] = moment(locationSearch.UPDATE_DATE_END, 'YYYY-MM-DD');
-                }
-                if(locationSearch.UPDATE_DATE_START){
-                    filed['UPDATE_DATE_START'] = moment(locationSearch.UPDATE_DATE_START, 'YYYY-MM-DD');
-                }
-                //console.log(filed)
-                this.setState({
-                    filed
-                },() => {
-                    //console.log(this.state.filed)
-                })
+            filed[item.selectType] =  item.defaultValue
+            //console.log(item)
+            if(locationSearch.UPDATE_DATE_END){
+                filed['UPDATE_DATE_END'] = moment(locationSearch.UPDATE_DATE_END, 'YYYY-MM-DD');
             }
+            if(locationSearch.UPDATE_DATE_START){
+                filed['UPDATE_DATE_START'] = moment(locationSearch.UPDATE_DATE_START, 'YYYY-MM-DD');
+            }
+            this.setState({
+                filed
+            })
             //请求
             filterAPI[item.requestType] && item.method && request({
                 method:item.method,
@@ -90,15 +87,12 @@ class Filter extends Component {
         if ( e && e.target ) {
             mode = e.target.value;
         } else {
-            // console.log(e);
             mode = e;
         }
-        //console.log(mode)
         let dateFormat = {
             0:'YYYY-MM-DD',
             1:'YYYY-MM',
         }
-        // console.log(dateFormat[mode])
         this.setState({
             rcCalendar:{
                 ...rcCalendar,
@@ -118,7 +112,6 @@ class Filter extends Component {
         }
 
         if( selectType === 'dCustomerType' ){
-            let value = e.target.value
             filter.map((item, index) => {
                 if( item.selectType === 'reProper' ){
                     filter[index].disabled = e.target.value == 1 ? true : false;
@@ -159,7 +152,7 @@ class Filter extends Component {
             e.target.value = ''
         }
         let val = e.target.value;
-        if ( val !== '' && val.length > 0 && prodCodeList.length > 0 ) {
+        if ( val !== '' && prodCodeList && prodCodeList.length > 0 ) {
             SearchResult.style.display = 'block';
             for ( let i in prodCodeList ) {
                 let txt = prodCodeList[i].prodCode;
@@ -227,7 +220,7 @@ class Filter extends Component {
                                         <label>{item.text}</label>
                                         { item.type === 1 && <Search value={filed[item.selectType] || ''} onChange={e => this.onChangeSelect(e, item, false)} selectType={item.selectType}/>}
                                         { item.type === 2 && 
-                                            <select className={"select " + (item.disabled ? 'disabled' : '')} disabled={item.disabled} value={filed[item.selectType] || ''} onChange={e => this.onChangeSelect(e, item, false)}>
+                                            <select className={"select " + (item.disabled ? 'disabled' : '')} disabled={item.disabled} value={item.defaultValue || filed[item.selectType] || ''} onChange={e => this.onChangeSelect(e, item, false)}>
                                                 <option value="">请选择</option>
                                                 {
                                                     item.option && item.option.map((optionItem, index) => {
@@ -256,4 +249,4 @@ class Filter extends Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Filter)
+export default Filter

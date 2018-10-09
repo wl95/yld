@@ -1,73 +1,106 @@
-import React,{Fragment} from 'react';
+import React,{Fragment, Component} from 'react';
 import mapStateToProps from './mapState'
 import mapDispatchToProps from './mapDispatch'
 import { connect } from 'react-redux'
+import queryString from 'query-string'
 import Filter from './filter'
 import Table from './table'
 import data from 'utils/datas.js'
-import moment from "moment"
-import { request, CalcDiffTime } from 'utils'
+import WeekTable from './weekTable'
+import { CalcDiffTime } from 'utils'
 
-const PublicComponent = ({
-    setSearch,
-    queryList,
-}) => {
-    let { pathname } = location
-    let pubChildren = pathname.split('/')[2]
-    const filterProps = {   
-        location,
-        onFilterSubmit({filed, dateFormat}){
-            let urls = "http://10.136.1.216:9091/v1/ycReport";
-            for (let item in filed) {
-                if(filed[item] instanceof Object){
-                    filed[item] = filed[item].format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM')
-                }
+class PublicComponent extends Component {
+    constructor(){
+        super()
+        this.state = {
+            dateFormat:''
+        }
+        this.onFilterSubmit = this.onFilterSubmit.bind(this)
+    }
+    
+    componentDidMount(){
+        let { pathname } = location
+        let pubChildren = pathname.split('/')[2]
+        let { setSearch } = this.props
+        let filed = queryString.parse(location.search)
+        data[pubChildren] && setSearch(data[pubChildren].search)
+        //location.search && this.onFilterSubmit({filed})
+    }
+
+    onFilterSubmit({filed, dateFormat,offset}){
+        let { queryList } = this.props
+        let reportName = ''
+        let { pathname } = location
+        let pubChildren = pathname.split('/')[2]
+       /*  for (let item in filed) {
+            if(filed[item] instanceof Object){
+                filed[item] = filed[item].format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM')
             }
-            let {DATE_TYPE,UPDATE_DATE_START,UPDATE_DATE_END,ORGAN_LEVEL} =filed;
-            let datas = {
-                reportName:data[pubChildren].reportName,
-                offset:1,
-                limit:10,
-                paramMap:{
-                    DATE_TYPE,
-                    GROUP_BY:"ORGAN_ID",
-                    UPDATE_DATE_START:UPDATE_DATE_START,
-                    UPDATE_DATE_END:UPDATE_DATE_END,
-                    ORGAN_LEVEL:ORGAN_LEVEL,
-                    //DAY_INTERVAL:'10'
-                    DAY_INTERVAL:CalcDiffTime(UPDATE_DATE_START,UPDATE_DATE_END, dateFormat)
-                },
-                orderMap:{property:"period",direction:"DESC"}
-            };
-            /* location.search = queryString.stringify({
+        } */
+        if(data[pubChildren].reportName){
+            reportName = data[pubChildren].reportName
+        } else {
+            /* if(){
+                reportName = 'R041M'
+            } */
+        }
+        let {DATE_TYPE,UPDATE_DATE_START,UPDATE_DATE_END,ORGAN_LEVEL} =filed;
+        let datas = {
+            reportName,
+            offset:offset || 1,
+            limit:10,
+            paramMap:{
                 DATE_TYPE,
                 GROUP_BY:"ORGAN_ID",
-                UPDATE_DATE_START:UPDATE_DATE_START,
-                UPDATE_DATE_END:UPDATE_DATE_END,
-                ORGAN_LEVEL:ORGAN_LEVEL,
-                DAY_INTERVAL:JgTime
-            })  */
-            request({
-                method:'get',
-                data: {
-                    reportParam:JSON.stringify(datas),
-                },
-                url:urls,
-            }).then(resData => {
-                console.log(resData)
-                //console.log(resData.data.data)
-                //queryList(resData.data)
-            })
+                UPDATE_DATE_START:UPDATE_DATE_START.format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM'),
+                UPDATE_DATE_END:UPDATE_DATE_END.format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM'),
+                ORGAN_LEVEL,
+                DAY_INTERVAL:CalcDiffTime(UPDATE_DATE_START.format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM'),UPDATE_DATE_END.format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM'), dateFormat)
+            },
+            orderMap:{property:"period",direction:"DESC"}
+        };
+
+        /* location.search =  queryString.stringify({
+            DATE_TYPE,
+            GROUP_BY:"ORGAN_ID",
+            UPDATE_DATE_START:UPDATE_DATE_START,
+            UPDATE_DATE_END:UPDATE_DATE_END,
+            ORGAN_LEVEL:ORGAN_LEVEL,
+            DAY_INTERVAL:CalcDiffTime(UPDATE_DATE_START,UPDATE_DATE_END, dateFormat)
+        })  */
+        queryList(datas)
+        this.setState({
+            dateFormat
+        })
+    }
+
+    render(){
+        const { filter, getAuthority, setFilter, setSearch } = this.props
+        let { pathname } = location
+        let pubChildren = pathname.split('/')[2]
+        const filterProps = {   
+            location,
+            filter,
+            getAuthority,
+            setFilter,
+            setSearch,
+            onFilterSubmit:this.onFilterSubmit
         }
-    }
-    setSearch(data[pubChildren] && data[pubChildren].search)
-    const listProps = {
-        tableResult:data[pubChildren] && data[pubChildren].tableResult,
-        title:data[pubChildren] && data[pubChildren].title,
-    }
-    return  <Fragment>
-                <Filter {...filterProps} /> 
-                <Table {...listProps} />
+
+        const listProps = {
+            tableResult:data[pubChildren] && data[pubChildren].tableResult,
+            title:data[pubChildren] && data[pubChildren].title,
+            onFilterSubmit:this.onFilterSubmit
+        }
+
+        return(
+            <Fragment>
+                { filter && filter.length > 0 && <Filter {...filterProps} />  }
+                { data[pubChildren].tableType === 'weekTable' && <WeekTable  {...listProps}/>}
+                { !data[pubChildren].tableType && <Table {...listProps} /> }
             </Fragment>
+        )
+    }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(PublicComponent)

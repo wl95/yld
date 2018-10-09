@@ -1,13 +1,12 @@
-import {SET_FILTERDATA, SET_SEARCHDATA, SET_QUERY_DATA, GET_AUTH_DATA } from './actions'
+import { SET_FILTERDATA, SET_SEARCHDATA, SET_QUERY_DATA, GET_AUTH_DATA } from './actions'
 import { request } from 'utils'
 import { filterAPI } from 'utils/APIpath'
-const { organRange } = filterAPI
+const { organRange, ycReport } = filterAPI
 /***
  *设置当前页面查询内容
  * @param pageName
  * @returns {{type, pageName: *}}
  */
-// console.log(mock)
 export function setFilterData(filterData, index) {
     return{
         type:SET_FILTERDATA,
@@ -23,20 +22,18 @@ export function setSearchData(searchData) {
 }
 
 export function queryListData(queryData) {
-    return{
-        type:SET_QUERY_DATA,
-        queryData,
-    }
-    // request({
-    //     method:'post',
-    //     url:`${apiPrefix}/ycReport`,
-    //     data:queryData
-    // }).then(resData => {
-    //     return{
-    //         type:SET_QUERY_DATA,
-    //         queryData:resData,
-    //     }
-    // })
+    request({
+        method:'get',
+        data: {
+            reportParam:JSON.stringify(queryData),
+        },
+        url:ycReport,
+    }).then(resData => {
+        return{
+            type:SET_QUERY_DATA,
+            queryData:resData,
+        }
+    })
 }
 
 export function getAuthorityData(dispatch, juris){
