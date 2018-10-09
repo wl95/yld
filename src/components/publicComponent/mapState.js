@@ -1,10 +1,9 @@
 export default (state) => {
   let { filterReducers } = state
-  return ({
+  return ({ 
     filter: filterReducers.filter,
     list: filterReducers.list,
     total: filterReducers.total,
     totalPage: filterReducers.totalPage,
-    //Fileds: state.SAVETableReducer.TableData
   })
 }

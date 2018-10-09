@@ -7,9 +7,6 @@ const {
 
 const CalcDiffTime = (stateTime, endTime, dateFormat) => {
   console.log(stateTime)
-  console.log()
-  stateTime = stateTime.format(dateFormat)
-  endTime = endTime.format(dateFormat)
   if(dateFormat === 'YYYY-MM-DD'){
     /**
     * 间隔天数

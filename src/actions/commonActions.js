@@ -1,6 +1,5 @@
 import fetch from 'isomorphic-fetch'
 import {FETCH_REQUEST, FETCH_SUCCESS, FETCH_FAILED} from './actions'
-import { message } from 'antd';
 
 /***
  * 公用动作
@@ -23,7 +22,7 @@ function reciveData() {
 
 //请求失败
 function reciveError(errorMsg) {
-    if (errorMsg !== '') {
+    /* if (errorMsg !== '') {
         message.config({
             maxCount: 1
         });
@@ -32,7 +31,7 @@ function reciveError(errorMsg) {
     return {
         type: FETCH_FAILED,
         errorMsg: errorMsg
-    }
+    } */
 }
 
 /***
