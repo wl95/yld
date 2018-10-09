@@ -76,7 +76,7 @@ class Filter extends Component {
                 method:item.method,
                 url:filterAPI[item.requestType]
             }).then(resData => {
-                setFilter(resData[item.selectKey], index)
+                setFilter(item.selectKey ? resData[item.selectKey] : resData, index)
             })
         })
     }

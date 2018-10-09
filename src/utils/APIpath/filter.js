@@ -15,12 +15,17 @@ export default {
   dSjld:`${apiPrefix}/D_SJLD.json`,                                        // 数据粒度
   regCurrency:`${apiPrefix}/REG_CURRENCY.json`,                            // 币种
   reIsCont:`${apiPrefix}/RE_IS_CONT_PROD.json`,                            // 拟续接
-  // balabce:`${apiPrefix}/RE_AUTO_BALANCE.json`,                       // 是否自主平衡
+  // balabce:`${apiPrefix}/RE_AUTO_BALANCE.json`,                          // 是否自主平衡
   reProfitType:`${apiPrefix}/RE_PROFIT_TYPE.json`,                         // 产品收益类型
   reBrand:`${apiPrefix}/RE_BRAND.json`,                                    // 产品品牌
   reProdCode:`${apiPrefix}/RE_PRODCODE.json`,                              // 产品代码
   reDicticnariesdatae:`${apiPrefix}/RE_DICTIONARIESDATA.json`,             // 字典表数据
   reHolding:`${apiPrefix}/RE_HOLDING.json`,                                // 理财产品日均保有量
+  reJudge:`${apiPrefix}/RE_JUDGE.json`,                                    // 拟续接  待续接
   organRange:`${apiPrefixV1}/organ`,                                       // 用户权限
+  productName:`${apiPrefixV1}/productName`,                                // 产品名称
+  projectName:`${apiPrefixV1}/projectName`,                                // 项目名称
+  productDeveloper:`${apiPrefixV1}/productDeveloper`,                      // 产品研发人
+  projectDeveloper:`${apiPrefixV1}/projectDeveloper`,                      // 项目研发人
   ycReport:`${apiPrefixV1}/ycReport`,                                      // 列表查询
 }
