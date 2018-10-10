@@ -6,7 +6,7 @@ import moment from 'moment'
     itemName:'',        // 渲染字段 */
 export default {
   publicComponent:{   
-    reportName:"R19",
+    reportName:"tiem-areas",
     title:'各分行理财产品日均保有量统计表',
     search:[
       {
@@ -567,7 +567,12 @@ export default {
         selectType:'prefecture',
         selectKey:'provinceList',
         itemKey:'code',     
+<<<<<<< HEAD
         itemName:'name',         
+=======
+        itemName:'name',   
+        method:'get',      
+>>>>>>> a998ca424fe79e3bf65b8d9e9c940c85ca9ba6de
         type:2,
       },
       {
@@ -756,7 +761,12 @@ export default {
         selectType:'prefecture',
         selectKey:'provinceList',
         itemKey:'code',           
+<<<<<<< HEAD
         itemName:'name',          
+=======
+        itemName:'name', 
+        method:'get',         
+>>>>>>> a998ca424fe79e3bf65b8d9e9c940c85ca9ba6de
         type:2,
       },
       {
@@ -866,7 +876,7 @@ export default {
     }
   },
   closedSequence:{
-    reportName:"R03",
+    reportName:"time",
     title:'封闭式非净值型理财产品平均客户收益率及投资收益率序列表',
     search:[ 
       {
@@ -1078,7 +1088,11 @@ export default {
     }
   },
   effectiveSales:{
+<<<<<<< HEAD
     reportName:'R04',
+=======
+    reportName:'areas',
+>>>>>>> a998ca424fe79e3bf65b8d9e9c940c85ca9ba6de
     title:'理财产品有效销量表',
     search:[
       { 
@@ -1423,7 +1437,11 @@ export default {
     }
   },
   saleStatuSequence:{
+<<<<<<< HEAD
     reportName:'R07',
+=======
+    reportName:'time',
+>>>>>>> a998ca424fe79e3bf65b8d9e9c940c85ca9ba6de
     title:'理财销售情况序列表',
     search:[
       { 
@@ -1667,7 +1685,11 @@ export default {
     }
   },
   openSalesEnquiries:{
+<<<<<<< HEAD
     reportName:'R10',
+=======
+    reportName:'time',
+>>>>>>> a998ca424fe79e3bf65b8d9e9c940c85ca9ba6de
     title:'开放式理财产品销售情况查询表',
     search:[
       { 
@@ -2057,7 +2079,11 @@ export default {
     }
   },
   branchSaleStatistics:{
+<<<<<<< HEAD
     reportName:'R12',
+=======
+    reportName:'areas',
+>>>>>>> a998ca424fe79e3bf65b8d9e9c940c85ca9ba6de
     title:'各分行理财产品销售情况统计表',
     search:[
       { 
@@ -2890,7 +2916,7 @@ export default {
     }
   },
   balanceChangeStatistics:{
-    reportName:"R16",
+    reportName:"time",
     title:'各分行理财余额变动统计表',
     search:[
       {
@@ -2910,7 +2936,8 @@ export default {
       },
       {
         text:'销售机构:',
-        selectType:'reOrganType',
+        requestType:'reOrganType',
+        selectType:'organ_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -3230,7 +3257,11 @@ export default {
     }
   },
   productRevenueStatistics:{
+<<<<<<< HEAD
     reportName:'R21',
+=======
+    reportName:'areas',
+>>>>>>> a998ca424fe79e3bf65b8d9e9c940c85ca9ba6de
     title:'各理财产品收入情况统计表',
     search:[
       { 
@@ -3271,12 +3302,14 @@ export default {
       },
       {
         text:'起始月份:',
-        selectType:'beginDate',
+        selectType:'UPDATE_DATE',
+        dateFormat:'YYYY-MM',
         type:3,
       },
       {
         text:'终止月份:',
-        selectType:'endDate',
+        selectType:'ENDDATE_DATE',
+        dateFormat:'YYYY-MM',
         type:3,
       },
       {
@@ -3475,7 +3508,7 @@ export default {
         disabled:true,         
         type:2,
       },
-      {
+      /* {
         text:'起始月份:',
         selectType:'beginDate',
         type:3,
@@ -3483,6 +3516,18 @@ export default {
       {
         text:'终止月份:',
         selectType:'endDate',
+        type:3,
+      }, */
+      {
+        text:'起始月份:',
+        selectType:'UPDATE_DATE',
+        dateFormat:'YYYY-MM',
+        type:3,
+      },
+      {
+        text:'结束月份:',
+        selectType:'ENDDATE_DATE',
+        dateFormat:'YYYY-MM',
         type:3,
       },
       {
@@ -3907,7 +3952,11 @@ export default {
     }
   },
   branchComprehensiveStatistic:{
+<<<<<<< HEAD
     reportName:'R27',
+=======
+    reportName:'areas',
+>>>>>>> a998ca424fe79e3bf65b8d9e9c940c85ca9ba6de
     title:'各分行理财产品综合情况统计表',
     search:[
       { 

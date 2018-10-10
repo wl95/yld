@@ -75,6 +75,27 @@ function calcReportName(stateTime, endTime, areas, reportName){
     default:
       return reportName + areas
   }
+  /**
+   * 间隔月数
+   */
+  stateTime = stateTime.split("-");
+  endTime = endTime.split("-");
+  //获取年,月数
+  var year1 = parseInt(stateTime[0]) , 
+  month1 = parseInt(stateTime[1]) , 
+  year2 = parseInt(endTime[0]) , 
+  month2 = parseInt(endTime[1]) , 
+  //通过年,月差计算月份差
+  months = (year2 - year1) * 12 + (month2-month1)+1;
+  if(dateFormat === 'YYYY-MM'){
+    return JSON.stringify(months);   
+  }
+  years = year2 - year1;
+  return JSON.stringify(years);   
+}
+
+function calcReportName(stateTime, endTime){
+
 }
 
 module.exports = {
