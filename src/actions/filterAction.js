@@ -7,7 +7,7 @@ const { organRange, ycReport } = filterAPI
  * @param pageName
  * @returns {{type, pageName: *}}
  */
-export function setFilterData(filterData, index) {
+export function setFilterData( filterData, index ) {
     return{
         type:SET_FILTERDATA,
         filterResult:{filterData, index}
@@ -36,14 +36,14 @@ export function queryListData(queryData) {
     })
 }
 
-export function getAuthorityData(dispatch, juris){
+export function getAuthorityData( dispatch, juris ){
     request({
         method:'get',
         url:`${organRange}`,
         data:{
             organParams:juris
         }
-    }).then(resData => {
+    }).then( resData => {
         dispatch({
             type:GET_AUTH_DATA,
             resData:{

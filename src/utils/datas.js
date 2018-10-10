@@ -40,11 +40,10 @@ export default {
       },
       {
         text:'产品代码:',   
-        requestType:'reProdCode',     // 请求参数
-        selectType:'PROD_ID',         // 传给后端的字段
-        selectKey:'prodCodeList',     // 请求到的数据获取
-        itemKey:'organCode',           // 渲染字段
-        itemName:'organName',          // 渲染字段
+        requestType:'reProdCode',     
+        selectType:'PROD_ID',      
+        selectKey:'prodCodeList',     
+        itemName:'prodCode',          
         type:1,
         method:'get',
       },
@@ -1669,7 +1668,7 @@ export default {
     }
   },
   openSalesEnquiries:{
-    reportName:'R09',
+    reportName:'',
     title:'开放式理财产品销售情况查询表',
     search:[
       { 
@@ -1850,7 +1849,7 @@ export default {
     }
   },
   openSaleSequence:{
-    reportName:'',
+    reportName:'R11',
     title:'开放式产品销售情况序列表',
     search:[
       { 
@@ -3027,7 +3026,7 @@ export default {
     }
   },
   productBalanceSequence:{
-    reportName:'',
+    reportName:'R17',
     title:'各理财产品余额序列表',
     search:[
       { 

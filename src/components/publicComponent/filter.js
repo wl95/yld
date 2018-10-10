@@ -44,7 +44,7 @@ class Filter extends Component {
         let juris = {}
         let index = herfStr.indexOf('?');
         herfStr = herfStr.slice(index+1);
-        if(herfStr.indexOf('organCode')!==-1 && herfStr.indexOf('organLevel') !== -1){
+        if(herfStr.indexOf('organCode') !== -1 && herfStr.indexOf('organLevel') !== -1){
             // 参数正确得传入
             herfStr.split('&').map(item=>{//把获取参数存入本地存储
                 return item.split('=')
@@ -139,8 +139,6 @@ class Filter extends Component {
     }
 
     onClickSearchs = (value, selectType) =>{
-        console.log(value);
-        console.log(selectType);
         let { filed } = this.state
         this.setState({
             filed:{
@@ -157,7 +155,7 @@ class Filter extends Component {
         })
         onFilterSubmit()
     } 
-    
+
     /* 判断开始日期和结束日期 */
     disabledDate = (UPDATE_DATE, Item) => {
         const { dateCalendarType, relationship } = Item
@@ -188,7 +186,7 @@ class Filter extends Component {
                         return  (   
                                     <div key={item.text} className="cols">
                                         <label>{item.text}</label>
-                                        { item.type === 1 && <Search value={filed[item.selectType] || ''} onClockSearchLists={this.onClickSearchs} onChange={e => this.onChangeSelect(e, item, false)} selectType={item.selectType} itemName={item.itemName} option={item.option}/>}
+                                        { item.type === 1 && <Search value={filed[item.selectType] || ''} onClickSearchLists={this.onClickSearchs} onChange={e => this.onChangeSelect(e, item, false)} selectType={item.selectType} itemName={item.itemName} option={item.option}/>}
                                         { item.type === 2 && 
                                             <select className={"select " + (item.disabled ? 'disabled' : '')} disabled={item.disabled} value={item.defaultValue || filed[item.selectType] || ''} onChange={e => this.onChangeSelect(e, item, false)}>
                                                 <option value="">请选择</option>
