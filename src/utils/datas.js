@@ -445,7 +445,7 @@ export default {
       {
         text:'产品名称:',
         requestType:'productName', 
-        selectType:'PROD_Name',
+        selectType:'prod_name',
         selectKey:'data',   
         itemName:'prod_name', 
         type:1,
@@ -464,7 +464,7 @@ export default {
       {
         text:'产品研发人:',
         requestType:'productDeveloper', 
-        selectType:'productDeveloper',
+        selectType:'prod_researcher',
         selectKey:'data',
         itemKey:'oper_code',
         itemName:'oper_name',
@@ -544,7 +544,7 @@ export default {
       {
         text:'项目名称:',
         requestType:'projectName',        
-        selectType:'prj_name',
+        selectType:'project_name',
         selectKey:'data',
         itemKey:'prj_code',
         itemName:'prj_name',
@@ -554,7 +554,7 @@ export default {
       {
         text:'项目研发人:',
         requestType:'projectDeveloper',
-        selectType:'oper_name',
+        selectType:'project_researcher',
         selectKey:'data',
         itemKey:'oper_code',
         itemName:'oper_name',
@@ -567,7 +567,8 @@ export default {
         selectType:'prefecture',
         selectKey:'provinceList',
         itemKey:'code',     
-        itemName:'name',         
+        itemName:'name',   
+        method:'get',      
         type:2,
       },
       {
@@ -693,7 +694,7 @@ export default {
       {
         text:'产品研发人:',
         requestType:'productDeveloper', 
-        selectType:'oper_name',
+        selectType:'prod_researcher',
         selectKey:'data',
         itemKey:'oper_code',
         itemName:'oper_name',
@@ -756,7 +757,8 @@ export default {
         selectType:'prefecture',
         selectKey:'provinceList',
         itemKey:'code',           
-        itemName:'name',          
+        itemName:'name', 
+        method:'get',         
         type:2,
       },
       {
@@ -772,7 +774,7 @@ export default {
       {
         text:'项目研发人:',
         requestType:'projectDeveloper',
-        selectType:'oper_name',
+        selectType:'project_researcher',
         selectKey:'data',
         itemKey:'oper_code',
         itemName:'oper_name',
@@ -905,7 +907,7 @@ export default {
       {
         text:'产品研发人:',
         requestType:'productDeveloper', 
-        selectType:'oper_name',
+        selectType:'prod_researcher',
         selectKey:'data',
         itemKey:'oper_code',
         itemName:'oper_name',
@@ -974,7 +976,7 @@ export default {
       {
         text:'项目研发人:',
         requestType:'projectDeveloper',
-        selectType:'oper_name',
+        selectType:'project_researcher',
         selectKey:'data',
         itemKey:'oper_code',
         itemName:'oper_name',
@@ -2116,15 +2118,15 @@ export default {
         type:1,
         method:'get',
       },
-      /* {
+      {
         text:'产品名称:',
-        selectType:'',
-        selectKey:'',
-        itemKey:'',
-        itemName:'',
+        requestType:'productName', 
+        selectType:'prod_name',
+        selectKey:'data',   
+        itemName:'prod_name', 
         type:1,
         method:'get',
-      }, */
+      },
       {
         text:'产品状态:',
         requestType:'prodStatus',       
@@ -2486,7 +2488,6 @@ export default {
         requestType:'productName', 
         selectType:'prod_name',
         selectKey:'data',   
-        itemKey:'prod_code',         
         itemName:'prod_name', 
         type:1,
         method:'get',
@@ -2911,7 +2912,8 @@ export default {
       },
       {
         text:'销售机构:',
-        selectType:'reOrganType',
+        requestType:'reOrganType',
+        selectType:'organ_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -3272,12 +3274,14 @@ export default {
       },
       {
         text:'起始月份:',
-        selectType:'beginDate',
+        selectType:'UPDATE_DATE',
+        dateFormat:'YYYY-MM',
         type:3,
       },
       {
         text:'终止月份:',
-        selectType:'endDate',
+        selectType:'ENDDATE_DATE',
+        dateFormat:'YYYY-MM',
         type:3,
       },
       {
@@ -3476,7 +3480,7 @@ export default {
         disabled:true,         
         type:2,
       },
-      {
+      /* {
         text:'起始月份:',
         selectType:'beginDate',
         type:3,
@@ -3484,6 +3488,18 @@ export default {
       {
         text:'终止月份:',
         selectType:'endDate',
+        type:3,
+      }, */
+      {
+        text:'起始月份:',
+        selectType:'UPDATE_DATE',
+        dateFormat:'YYYY-MM',
+        type:3,
+      },
+      {
+        text:'结束月份:',
+        selectType:'ENDDATE_DATE',
+        dateFormat:'YYYY-MM',
         type:3,
       },
       {
@@ -3743,7 +3759,6 @@ export default {
         requestType:'productName', 
         selectType:'prod_name',
         selectKey:'data',   
-        itemKey:'prod_code',         
         itemName:'prod_name', 
         type:1,
         method:'get',
@@ -4065,8 +4080,10 @@ export default {
       },
       {
         text:'产品名称:',
-        selectType:'',
-        selectKey:'',
+        requestType:'productName', 
+        selectType:'prod_name',
+        selectKey:'data',   
+        itemName:'prod_name', 
         type:1,
         method:'get',
       },
@@ -4303,11 +4320,10 @@ export default {
       },
       {
         text:'产品名称:',
-        requestType:'',
-        selectType:'',
-        selectKey:'',
-        itemKey:'',
-        itemName:'',
+        requestType:'productName', 
+        selectType:'prod_name',
+        selectKey:'data',   
+        itemName:'prod_name', 
         type:1,
         method:'get',
       },
