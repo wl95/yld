@@ -32,6 +32,7 @@ class PublicComponent extends Component {
         let reportName = ''
         let { pathname } = location
         let pubChildren = pathname.split('/')[2]
+        let calcDiffTime = CalcDiffTime(UPDATE_DATE_START.format(dateFormat),UPDATE_DATE_END.format(dateFormat), dateFormat)
        /*  for (let item in filed) {
             if(filed[item] instanceof Object){
                 filed[item] = filed[item].format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM')
@@ -40,6 +41,7 @@ class PublicComponent extends Component {
         if(data[pubChildren].reportName){
             reportName = data[pubChildren].reportName
         } else {
+            
             /* if(){
                 reportName = 'R041M'
             } */
@@ -55,7 +57,7 @@ class PublicComponent extends Component {
                 UPDATE_DATE_START:UPDATE_DATE_START.format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM'),
                 UPDATE_DATE_END:UPDATE_DATE_END.format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM'),
                 ORGAN_LEVEL,
-                DAY_INTERVAL:CalcDiffTime(UPDATE_DATE_START.format(dateFormat),UPDATE_DATE_END.format(dateFormat), dateFormat)
+                DAY_INTERVAL:calcDiffTime
             },
             orderMap:{property:"period",direction:"DESC"}
         };

@@ -6,7 +6,7 @@ import moment from 'moment'
     itemName:'',        // 渲染字段 */
 export default {
   publicComponent:{   
-    reportName:"R19",
+    reportName:"tiem-areas",
     title:'各分行理财产品日均保有量统计表',
     search:[
       {
@@ -436,20 +436,18 @@ export default {
       {
         text:'产品代码:',   
         requestType:'reProdCode',     
-        selectType:'prod_id',      
+        selectType:'PROD_ID',      
         selectKey:'prodCodeList',     
-        itemKey:'prodCode',           
         itemName:'prodCode',          
         type:1,
         method:'get',
       },
       {
         text:'产品名称:',
-        requestType:'', 
-        selectType:'prod_name',
-        selectKey:'',   
-        itemKey:'',         
-        itemName:'', 
+        requestType:'productName', 
+        selectType:'PROD_Name',
+        selectKey:'data',   
+        itemName:'prod_name', 
         type:1,
         method:'get',
       },
@@ -465,12 +463,13 @@ export default {
       },
       {
         text:'产品研发人:',
-        requestType:'', 
-        selectType:'',
-        selectKey:'',
-        itemKey:'',
-        itemName:'',
-        type:2
+        requestType:'productDeveloper', 
+        selectType:'productDeveloper',
+        selectKey:'data',
+        itemKey:'oper_code',
+        itemName:'oper_name',
+        type:2,
+        method:'get',
       },
       {
         text:'产品销售渠道:',
@@ -544,30 +543,31 @@ export default {
       },
       {
         text:'项目名称:',
-        requestType:'',        
-        selectType:'project_name',
-        selectKey:'',
-        itemKey:'',
-        itemName:'',
+        requestType:'projectName',        
+        selectType:'prj_name',
+        selectKey:'data',
+        itemKey:'prj_code',
+        itemName:'prj_name',
         type:2,
         method:'get',
       },
       {
         text:'项目研发人:',
-        requestType:'',
-        selectType:'project_researcher',
-        selectKey:'',
-        itemKey:'',
-        itemName:'',
+        requestType:'projectDeveloper',
+        selectType:'oper_name',
+        selectKey:'data',
+        itemKey:'oper_code',
+        itemName:'oper_name',
         type:2,
         method:'get',
       },
       {
         text:'产品销售区域:',
-        selectType:'PROVINCE_CODE',
+        requestType:'',
+        selectType:'prefecture',
         selectKey:'provinceList',
-        itemKey:'code',           
-        itemName:'name',          
+        itemKey:'code',     
+        itemName:'name',         
         type:2,
       },
       {
@@ -680,24 +680,24 @@ export default {
         selectType:'UPDATE_DATE_START',
         relationship:'UPDATE_DATE_END',
         dateCalendarType:'start',
-        defaultValue:moment('2017-11-11', 'YYYY-MM-DD'),
+        defaultValue:moment(),
         type:3,
       },
       {
         text:'查询终止日期:',
         selectType:'UPDATE_DATE_END',
         relationship:'UPDATE_DATE_START',
-        defaultValue:moment('2017-11-20', 'YYYY-MM-DD'),
+        defaultValue:moment(),
         type:3,
       },
       {
-        text:'产品研发人',
+        text:'产品研发人:',
+        requestType:'productDeveloper', 
+        selectType:'oper_name',
+        selectKey:'data',
+        itemKey:'oper_code',
+        itemName:'oper_name',
         type:2,
-        requestType:'',
-        selectType:'prod_researcher',
-        selectKey:'',
-        itemKey:'',
-        itenName:'',
         method:'get',
       },
       {
@@ -752,7 +752,8 @@ export default {
       },
       {
         text:'产品销售区域:',
-        selectType:'PROVINCE_CODE',
+        requestType:'',
+        selectType:'prefecture',
         selectKey:'provinceList',
         itemKey:'code',           
         itemName:'name',          
@@ -770,17 +771,18 @@ export default {
       },
       {
         text:'项目研发人:',
-        requestType:'',
-        selectType:'project_researcher',
-        selectKey:'',
-        itemKey:'',
-        itemName:'',
-        type:1,
+        requestType:'projectDeveloper',
+        selectType:'oper_name',
+        selectKey:'data',
+        itemKey:'oper_code',
+        itemName:'oper_name',
+        type:2,
         method:'get',
       },
       {
         text:'发行币种:',
-        selectType:'regCurrency',
+        requestType:'regCurrency',       
+        selectType:'AM_PROD_CURRENCY',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -864,7 +866,7 @@ export default {
     }
   },
   closedSequence:{
-    reportName:"R03",
+    reportName:"time",
     title:'封闭式非净值型理财产品平均客户收益率及投资收益率序列表',
     search:[ 
       {
@@ -902,11 +904,11 @@ export default {
       },
       {
         text:'产品研发人:',
-        requestType:'prod_researcher',
-        selectType:'',
-        selectKey:'',
-        itemKey:'',
-        itemName:'',
+        requestType:'productDeveloper', 
+        selectType:'oper_name',
+        selectKey:'data',
+        itemKey:'oper_code',
+        itemName:'oper_name',
         type:2,
         method:'get',
       },
@@ -962,7 +964,8 @@ export default {
       },
       {
         text:'产品销售区域:',
-        selectType:'PROVINCE_CODE',
+        requestType:'',
+        selectType:'prefecture',
         selectKey:'provinceList',
         itemKey:'code',           
         itemName:'name',          
@@ -970,11 +973,11 @@ export default {
       },
       {
         text:'项目研发人:',
-        requestType:'',
-        selectType:'project_researcher',
-        selectKey:'',
-        itemKey:'',
-        itemName:'',
+        requestType:'projectDeveloper',
+        selectType:'oper_name',
+        selectKey:'data',
+        itemKey:'oper_code',
+        itemName:'oper_name',
         type:2,
         method:'get',
       },
@@ -1075,7 +1078,7 @@ export default {
     }
   },
   effectiveSales:{
-    reportName:'',
+    reportName:'areas',
     title:'理财产品有效销量表',
     search:[
       { 
@@ -1420,7 +1423,7 @@ export default {
     }
   },
   saleStatuSequence:{
-    reportName:'',
+    reportName:'time',
     title:'理财销售情况序列表',
     search:[
       { 
@@ -1664,7 +1667,7 @@ export default {
     }
   },
   openSalesEnquiries:{
-    reportName:'R09',
+    reportName:'time',
     title:'开放式理财产品销售情况查询表',
     search:[
       { 
@@ -2054,7 +2057,7 @@ export default {
     }
   },
   branchSaleStatistics:{
-    reportName:'',
+    reportName:'areas',
     title:'各分行理财产品销售情况统计表',
     search:[
       { 
@@ -2480,11 +2483,11 @@ export default {
       },
       {
         text:'产品名称:',
-        requestType:'',
-        selectType:'',
-        selectKey:'',
-        itemKey:'',           
-        itemName:'', 
+        requestType:'productName', 
+        selectType:'prod_name',
+        selectKey:'data',   
+        itemKey:'prod_code',         
+        itemName:'prod_name', 
         type:1,
         method:'get',
       },
@@ -2888,7 +2891,7 @@ export default {
     }
   },
   balanceChangeStatistics:{
-    reportName:"R16",
+    reportName:"time",
     title:'各分行理财余额变动统计表',
     search:[
       {
@@ -3228,7 +3231,7 @@ export default {
     }
   },
   productRevenueStatistics:{
-    reportName:'R13',
+    reportName:'areas',
     title:'各理财产品收入情况统计表',
     search:[
       { 
@@ -3737,8 +3740,11 @@ export default {
       },
       {
         text:'产品名称:',
-        selectType:'',
-        selectKey:'',
+        requestType:'productName', 
+        selectType:'prod_name',
+        selectKey:'data',   
+        itemKey:'prod_code',         
+        itemName:'prod_name', 
         type:1,
         method:'get',
       },
@@ -3903,7 +3909,7 @@ export default {
     }
   },
   branchComprehensiveStatistic:{
-    reportName:'',
+    reportName:'areas',
     title:'各分行理财产品综合情况统计表',
     search:[
       { 
@@ -4561,8 +4567,7 @@ export default {
 }
 
 
-/* 
-R03D	R03-封闭式非净值型理财产品平均客户收益率及投资收益率序列表（日）
+/* R03D	R03-封闭式非净值型理财产品平均客户收益率及投资收益率序列表（日）
 R03M	R03-封闭式非净值型理财产品平均客户收益率及投资收益率序列表（月）
 R03Q	R03-封闭式非净值型理财产品平均客户收益率及投资收益率序列表（季）
 R03Y	R03-封闭式非净值型理财产品平均客户收益率及投资收益率序列表（年）
@@ -4610,6 +4615,4 @@ R25D	R25-扣款失败金额明细表
 R271D	R27-各分行理财产品综合情况统计表（一分）
 R272D	R27-各分行理财产品综合情况统计表（二分）
 R273D	R27-各分行理财产品综合情况统计表（一支）
-R274D	R27-各分行理财产品综合情况统计表（网点） 
-
-*/
+R274D	R27-各分行理财产品综合情况统计表（网点） */

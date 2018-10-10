@@ -88,14 +88,14 @@ class Table extends Component {
         </thead>
         <tbody>
             <tr>
+              {/* <td>213</td>
               <td>213</td>
               <td>213</td>
               <td>213</td>
               <td>213</td>
               <td>213</td>
               <td>213</td>
-              <td>213</td>
-              <td>213</td>
+              <td>213</td> */}
             </tr>
         </tbody>
       </table>
