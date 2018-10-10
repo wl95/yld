@@ -139,9 +139,9 @@ class Filter extends Component {
     }
 
     onClickSearchs = (value, selectType) =>{
+        console.log(value);
+        console.log(selectType);
         let { filed } = this.state
-        console.log(value)
-        console.log(selectType)
         this.setState({
             filed:{
                 ...filed,
@@ -157,6 +157,7 @@ class Filter extends Component {
         })
         onFilterSubmit()
     } 
+    
     /* 判断开始日期和结束日期 */
     disabledDate = (UPDATE_DATE, Item) => {
         const { dateCalendarType, relationship } = Item

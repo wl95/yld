@@ -35,7 +35,7 @@ export function filterReducers(state = initState, action) {
           })
           return {...state,filter:newFilterData}
         case '1':
-          newFilterData.map( item => {
+          newFilterData.map(item => {
             if((item.selectType === 'PROVINCE_CODE' || item.selectType === 'PREFECTURE_CODE') && authData.children){
               item.disabled = false
               item.option = item.selectType === 'PROVINCE_CODE' ? authData.children : authData.brother
@@ -59,7 +59,7 @@ export function filterReducers(state = initState, action) {
           })
           return {...state,filter:newFilterData}
         case '3':
-          newFilterData.map(item => {
+          newFilterData.map( item => {
             if(item.selectType === 'CITY_CODE'|| item.selectType === 'BRANCE_CODE'){
               item.disabled = false
               item.option = item.selectType === 'BRANCE_CODE' ?  authData.children : authData.brother

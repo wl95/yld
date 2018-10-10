@@ -28,6 +28,5 @@ class Search extends Component {
             </Fragment>
         );
     }
-
 }
 export default Search;
