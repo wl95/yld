@@ -6,7 +6,7 @@ import moment from 'moment'
     itemName:'',        // 渲染字段 */
 export default {
   publicComponent:{   
-    reportName:"tiem-areas",
+    reportName:"R19",
     title:'各分行理财产品日均保有量统计表',
     search:[
       {
@@ -330,6 +330,7 @@ export default {
         requestType:'reProper',       
         selectType:'reProper',
         selectKey:'list',
+        disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -496,6 +497,7 @@ export default {
         selectType:'reProper',
         selectKey:'list',
         itemKey:'value',
+        disabled:true,
         itemName:'label',
         type:2,
         method:'get',
@@ -566,8 +568,7 @@ export default {
         selectType:'prefecture',
         selectKey:'provinceList',
         itemKey:'code',     
-        itemName:'name',   
-        method:'get',      
+        itemName:'name',         
         type:2,
       },
       {
@@ -725,6 +726,7 @@ export default {
         requestType:'reProper',       
         selectType:'reProper',
         selectKey:'list',
+        disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -867,7 +869,7 @@ export default {
     }
   },
   closedSequence:{
-    reportName:"time",
+    reportName:"R03",
     title:'封闭式非净值型理财产品平均客户收益率及投资收益率序列表',
     search:[ 
       {
@@ -879,11 +881,11 @@ export default {
         itemName:'dateTypeName',         
         option:[
           {
-            dateTypeCode:'0',
+            dateTypeCode:0,
             dateTypeName:'日'
           },
           {
-            dateTypeCode:'1',
+            dateTypeCode:1,
             dateTypeName:'月'
           },
         ]
@@ -906,7 +908,7 @@ export default {
       {
         text:'产品研发人:',
         requestType:'productDeveloper', 
-        selectType:'prod_researcher',
+        selectType:'prod_resea',
         selectKey:'data',
         itemKey:'oper_code',
         itemName:'oper_name',
@@ -937,6 +939,7 @@ export default {
         text:'机构客户类型:',
         requestType:'reProper',       
         selectType:'reProper',
+        disabled:true,
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -1079,7 +1082,7 @@ export default {
     }
   },
   effectiveSales:{
-    reportName:'areas',
+    reportName:'R04',
     title:'理财产品有效销量表',
     search:[
       { 
@@ -1135,6 +1138,7 @@ export default {
         requestType:'dSjld',       
         selectType:'ORGAN_LEVEL',
         selectKey:'list',
+        disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -1424,7 +1428,7 @@ export default {
     }
   },
   saleStatuSequence:{
-    reportName:'time',
+    reportName:'R07',
     title:'理财销售情况序列表',
     search:[
       { 
@@ -1511,6 +1515,7 @@ export default {
         requestType:'reProper',       
         selectType:'reProper',
         selectKey:'list',
+        disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -1668,7 +1673,7 @@ export default {
     }
   },
   openSalesEnquiries:{
-    reportName:'',
+    reportName:'R10',
     title:'开放式理财产品销售情况查询表',
     search:[
       { 
@@ -2058,7 +2063,7 @@ export default {
     }
   },
   branchSaleStatistics:{
-    reportName:'areas',
+    reportName:'R12',
     title:'各分行理财产品销售情况统计表',
     search:[
       { 
@@ -2102,6 +2107,7 @@ export default {
         requestType:'dSjld',       
         selectType:'ORGAN_LEVEL',
         selectKey:'list',
+        disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -2151,6 +2157,7 @@ export default {
         requestType:'reProper',       
         selectType:'reProper',
         selectKey:'list',
+        disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -2452,6 +2459,7 @@ export default {
         requestType:'reProper',       
         selectType:'reProper',
         selectKey:'list',
+        disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -2935,6 +2943,7 @@ export default {
         selectType:'reProper',
         selectKey:'list',
         itemKey:'value',
+        disabled:true,
         itemName:'label',
         type:2,
         method:'get',
@@ -3109,6 +3118,7 @@ export default {
         requestType:'reProper',       
         selectType:'reProper',
         selectKey:'list',
+        disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -3232,7 +3242,7 @@ export default {
     }
   },
   productRevenueStatistics:{
-    reportName:'areas',
+    reportName:'R21',
     title:'各理财产品收入情况统计表',
     search:[
       { 
@@ -3566,6 +3576,7 @@ export default {
         requestType:'dSjld',       
         selectType:'ORGAN_LEVEL',
         selectKey:'list',
+        disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -3886,6 +3897,7 @@ export default {
         requestType:'reProper',       
         selectType:'reProper',
         selectKey:'list',
+        disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -3913,7 +3925,7 @@ export default {
     }
   },
   branchComprehensiveStatistic:{
-    reportName:'areas',
+    reportName:'R27',
     title:'各分行理财产品综合情况统计表',
     search:[
       { 
@@ -3957,6 +3969,7 @@ export default {
         requestType:'dSjld',       
         selectType:'ORGAN_LEVEL',
         selectKey:'list',
+        disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -3992,6 +4005,7 @@ export default {
         requestType:'reProper',       
         selectType:'reProper',
         selectKey:'list',
+        disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -4232,6 +4246,7 @@ export default {
         requestType:'reProper',       
         selectType:'reProper',
         selectKey:'list',
+        disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
