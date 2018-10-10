@@ -567,12 +567,7 @@ export default {
         selectType:'prefecture',
         selectKey:'provinceList',
         itemKey:'code',     
-<<<<<<< HEAD
         itemName:'name',         
-=======
-        itemName:'name',   
-        method:'get',      
->>>>>>> a998ca424fe79e3bf65b8d9e9c940c85ca9ba6de
         type:2,
       },
       {
@@ -761,12 +756,8 @@ export default {
         selectType:'prefecture',
         selectKey:'provinceList',
         itemKey:'code',           
-<<<<<<< HEAD
-        itemName:'name',          
-=======
         itemName:'name', 
         method:'get',         
->>>>>>> a998ca424fe79e3bf65b8d9e9c940c85ca9ba6de
         type:2,
       },
       {
@@ -1088,11 +1079,7 @@ export default {
     }
   },
   effectiveSales:{
-<<<<<<< HEAD
     reportName:'R04',
-=======
-    reportName:'areas',
->>>>>>> a998ca424fe79e3bf65b8d9e9c940c85ca9ba6de
     title:'理财产品有效销量表',
     search:[
       { 
@@ -1437,11 +1424,7 @@ export default {
     }
   },
   saleStatuSequence:{
-<<<<<<< HEAD
     reportName:'R07',
-=======
-    reportName:'time',
->>>>>>> a998ca424fe79e3bf65b8d9e9c940c85ca9ba6de
     title:'理财销售情况序列表',
     search:[
       { 
@@ -1685,11 +1668,7 @@ export default {
     }
   },
   openSalesEnquiries:{
-<<<<<<< HEAD
     reportName:'R10',
-=======
-    reportName:'time',
->>>>>>> a998ca424fe79e3bf65b8d9e9c940c85ca9ba6de
     title:'开放式理财产品销售情况查询表',
     search:[
       { 
@@ -2079,11 +2058,7 @@ export default {
     }
   },
   branchSaleStatistics:{
-<<<<<<< HEAD
     reportName:'R12',
-=======
-    reportName:'areas',
->>>>>>> a998ca424fe79e3bf65b8d9e9c940c85ca9ba6de
     title:'各分行理财产品销售情况统计表',
     search:[
       { 
@@ -3257,11 +3232,7 @@ export default {
     }
   },
   productRevenueStatistics:{
-<<<<<<< HEAD
     reportName:'R21',
-=======
-    reportName:'areas',
->>>>>>> a998ca424fe79e3bf65b8d9e9c940c85ca9ba6de
     title:'各理财产品收入情况统计表',
     search:[
       { 
@@ -3952,11 +3923,7 @@ export default {
     }
   },
   branchComprehensiveStatistic:{
-<<<<<<< HEAD
     reportName:'R27',
-=======
-    reportName:'areas',
->>>>>>> a998ca424fe79e3bf65b8d9e9c940c85ca9ba6de
     title:'各分行理财产品综合情况统计表',
     search:[
       { 
