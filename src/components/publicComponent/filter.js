@@ -25,6 +25,7 @@ class Filter extends Component {
                 rangeStartMode: 'date',
                 rangeEndMode: 'date',
             },
+            searchList:[],
             dateFormat:'YYYY-MM-DD',
         }
     }
@@ -61,7 +62,7 @@ class Filter extends Component {
         }
         filter && filter.map((item, index) => {
             filed[item.selectType] =  item.defaultValue
-            //console.log(item)
+            // console.log(item)
             if(locationSearch.UPDATE_DATE_END){
                 filed['UPDATE_DATE_END'] = moment(locationSearch.UPDATE_DATE_END, 'YYYY-MM-DD');
             }
@@ -76,7 +77,7 @@ class Filter extends Component {
                 method:item.method,
                 url:filterAPI[item.requestType]
             }).then(resData => {
-                setFilter(item.selectKey ? resData[item.selectKey] : resData, index)
+                setFilter(resData[item.selectKey], index)
             })
         })
     }
@@ -123,10 +124,6 @@ class Filter extends Component {
                 filed
             })
         }
-
-        if( selectType === 'PROD_ID' ){
-            this.handleProdCodeChange(e, selectType);
-        }
         this.setState({
             filed:{
                 ...filed,
@@ -141,44 +138,14 @@ class Filter extends Component {
         onFilterSubmit({ filed , dateFormat })
     }
 
-    /* 模糊搜索*/
-    handleProdCodeChange(e, selectType){
-        let SearchResult=document.querySelector('.SearchResults')
-        const { filter }=this.props;
-        const { filed } = this.state
-        let prodCodeList = filter.find(item => item.selectType === selectType).option
-        let str = '';
-        if ( !e.target.value ) {
-            e.target.value = ''
-        }
-        let val = e.target.value;
-        if ( val !== '' && prodCodeList && prodCodeList.length > 0 ) {
-            SearchResult.style.display = 'block';
-            for ( let i in prodCodeList ) {
-                let txt = prodCodeList[i].prodCode;
-                if ( txt.indexOf(val) == 0 ) {
-                    txt = txt.slice(val.length)
-                    str += "<li><a>" + val + "</a><b>" + txt + "</b></li>"
-                }
+    onClickSearchs = (value, selectType) =>{
+        let { filed } = this.state
+        this.setState({
+            filed:{
+                ...filed,
+                [selectType]:value
             }
-        } else {
-            SearchResult.style.display = 'none';
-        }
-        let that = this;
-        SearchResult.innerHTML = str
-        const List = SearchResult.querySelectorAll('li');
-        for ( let i = 0, len = List.length; i < len; i++ ) {
-            List[i].onclick = function () {
-                SearchResult.innerHTML = '';
-                SearchResult.style.display = 'none';
-                that.setState({
-                    filed:{
-                        ...filed,
-                        [selectType]:this.innerText
-                    }
-                })
-            }
-        }
+        })
     }
 
     onReset = () => {
@@ -218,7 +185,7 @@ class Filter extends Component {
                         return  (   
                                     <div key={item.text} className="cols">
                                         <label>{item.text}</label>
-                                        { item.type === 1 && <Search value={filed[item.selectType] || ''} onChange={e => this.onChangeSelect(e, item, false)} selectType={item.selectType}/>}
+                                        { item.type === 1 && <Search value={filed[item.selectType] || ''} onClockSearchLists={this.onClickSearchs} onChange={e => this.onChangeSelect(e, item, false)} selectType={item.selectType} itemName={item.itemName} option={item.option}/>}
                                         { item.type === 2 && 
                                             <select className={"select " + (item.disabled ? 'disabled' : '')} disabled={item.disabled} value={item.defaultValue || filed[item.selectType] || ''} onChange={e => this.onChangeSelect(e, item, false)}>
                                                 <option value="">请选择</option>

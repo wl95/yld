@@ -6,7 +6,7 @@ class Search extends Component {
     }
    
     render() {
-        let { value, onChange, selectType } = this.props
+        let { value, onChange, onClockSearchLists, selectType, itemName, option } = this.props
         return (
             <Fragment>
                 <input
@@ -16,7 +16,15 @@ class Search extends Component {
                     placeholder='请输入'
                     className='InputBOX'
                     onChange={e => onChange(e, selectType)}/>
-                <ul className='SearchResults' ref='area_txt'></ul>
+                {
+                    !itemName && value && <ul className='SearchResults'>
+                    {
+                        option && option.map((item, index) => {
+                          return item[itemName].indexOf(value) == 0 ? <li onClick={e => onClockSearchLists(item[itemName], selectType)} key={index}>{item[itemName]}</li> : ''
+                        })
+                    }
+                    </ul>
+                }
             </Fragment>
         );
     }
