@@ -31,37 +31,29 @@ class PublicComponent extends Component {
         let { queryList } = this.props
         let { pathname } = location
         let pubChildren = pathname.split('/')[2]
-        let {DATE_TYPE,UPDATE_DATE_START,UPDATE_DATE_END,ORGAN_LEVEL } =filed;
-        let calcDiffTime = CalcDiffTime(UPDATE_DATE_START.format(dateFormat),UPDATE_DATE_END.format(dateFormat), dateFormat)
-       /*  for (let item in filed) {
+        let calcDiffTime = CalcDiffTime(filed.UPDATE_DATE_START.format(dateFormat),filed.UPDATE_DATE_END.format(dateFormat), dateFormat)
+        let calcReportName = calcReportName(filed.UPDATE_DATE_START && filed.UPDATE_DATE_START.format(dateFormat), filed.UPDATE_DATE_END && filed.UPDATE_DATE_END.format(dateFormat), filed.ORGAN_LEVEL, data[pubChildren].reportName)
+        
+        for (let item in filed) {
             if(filed[item] instanceof Object){
                 filed[item] = filed[item].format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM')
             }
-        } */
+        }
+
         let datas = {
-            reportName:calcReportName(UPDATE_DATE_START.format(dateFormat), UPDATE_DATE_END.format(dateFormat), ORGAN_LEVEL, data[pubChildren].reportName),
+            reportName:calcReportName,
             offset:offset || 1,
             limit:10,
             paramMap:{
-                DATE_TYPE,
+                ...filed,
                 GROUP_BY:"ORGAN_ID",
-                UPDATE_DATE_START:UPDATE_DATE_START.format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM'),
-                UPDATE_DATE_END:UPDATE_DATE_END.format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM'),
-                ORGAN_LEVEL,
                 DAY_INTERVAL:calcDiffTime
             },
             orderMap:{property:"period",direction:"DESC"}
         };
-         console.log(datas)
-        /* location.search =  queryString.stringify({
-            DATE_TYPE,
-            GROUP_BY:"ORGAN_ID",
-            UPDATE_DATE_START:UPDATE_DATE_START,
-            UPDATE_DATE_END:UPDATE_DATE_END,
-            ORGAN_LEVEL:ORGAN_LEVEL,
-            DAY_INTERVAL:CalcDiffTime(UPDATE_DATE_START,UPDATE_DATE_END, dateFormat)
-        })  */
+
         queryList(datas)
+
         this.setState({
             dateFormat
         })
