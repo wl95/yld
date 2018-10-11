@@ -31,8 +31,8 @@ class PublicComponent extends Component {
         let { queryList } = this.props
         let { pathname } = location
         let pubChildren = pathname.split('/')[2]
-        let calcDiffTime = CalcDiffTime(filed.UPDATE_DATE_START.format(dateFormat),filed.UPDATE_DATE_END.format(dateFormat), dateFormat)
-        let calcReportName = calcReportName(filed.UPDATE_DATE_START && filed.UPDATE_DATE_START.format(dateFormat), filed.UPDATE_DATE_END && filed.UPDATE_DATE_END.format(dateFormat), filed.ORGAN_LEVEL, data[pubChildren].reportName)
+        let calcDiffTime = filed.UPDATE_DATE_START && CalcDiffTime(filed.UPDATE_DATE_START.format(dateFormat),filed.UPDATE_DATE_END.format(dateFormat), dateFormat)
+        let calcReportName = filed.UPDATE_DATE_START && calcReportName(filed.UPDATE_DATE_START.format(dateFormat),filed.UPDATE_DATE_END.format(dateFormat), filed.ORGAN_LEVEL, data[pubChildren].reportName)
         
         for (let item in filed) {
             if(filed[item] instanceof Object){
@@ -47,7 +47,7 @@ class PublicComponent extends Component {
             paramMap:{
                 ...filed,
                 GROUP_BY:"ORGAN_ID",
-                DAY_INTERVAL:calcDiffTime
+                DAY_INTERVAL:calcDiffTime || ''
             },
             orderMap:{property:"period",direction:"DESC"}
         };
