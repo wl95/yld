@@ -122,7 +122,6 @@ class Filter extends Component {
         this.fetch();
         let { onFilterSubmit } = this.props
         let { filed, dateFormat } = this.state
-        // console.log(filed)
         onFilterSubmit({ filed , dateFormat })
     }
 
