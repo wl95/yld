@@ -53,7 +53,7 @@ function JudgingForm(stateTime, endTime, ban){
 }
 
 function calcReportName(stateTime, endTime, areas, reportName){
-  console.log(stateTime, endTime, areas, reportName)
+  // console.log(stateTime, endTime, areas, reportName)
   switch(reportName){
     case 'R03':
     case 'R10':
