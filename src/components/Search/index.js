@@ -3,10 +3,26 @@ import './search.less';
 class Search extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+            flag:false
+        }
+    }
+
+    onflagState = (e) => {
+        this.setState({
+            flag:e.target.value ? true : false
+        })
+    }
+
+    onClickState = (e) => {
+        this.setState({
+            flag:false
+        })
     }
    
     render() {
-        let { value, onChange, onClockSearchLists, selectType, itemName, option } = this.props
+        let { flag } = this.state
+        let { value, onChange, onClickSearchLists, selectType, itemName, option } = this.props
         return (
             <Fragment>
                 <input
@@ -15,12 +31,12 @@ class Search extends Component {
                     value={value}
                     placeholder='请输入'
                     className='InputBOX'
-                    onChange={e => onChange(e, selectType)}/>
+                    onChange={e => {this.onflagState(e);onChange(e, selectType)}}/>
                 {
-                    !itemName && value && <ul className='SearchResults'>
+                    flag && <ul className='SearchResults'>
                     {
                         option && option.map((item, index) => {
-                          return item[itemName].indexOf(value) == 0 ? <li onClick={e => onClockSearchLists(item[itemName], selectType)} key={index}>{item[itemName]}</li> : ''
+                          return item[itemName].indexOf(value) == 0 ? <li onClick={e => {this.onClickState();onClickSearchLists(item[itemName], selectType)}} key={index}>{item[itemName]}</li> : ''
                         })
                     }
                     </ul>
@@ -28,6 +44,5 @@ class Search extends Component {
             </Fragment>
         );
     }
-
 }
 export default Search;

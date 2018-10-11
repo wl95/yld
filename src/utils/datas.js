@@ -6,7 +6,7 @@ import moment from 'moment'
     itemName:'',        // 渲染字段 */
 export default {
   publicComponent:{   
-    reportName:"tiem-areas",
+    reportName:"R19",
     title:'各分行理财产品日均保有量统计表',
     search:[
       {
@@ -40,11 +40,10 @@ export default {
       },
       {
         text:'产品代码:',   
-        requestType:'reProdCode',     // 请求参数
-        selectType:'PROD_ID',         // 传给后端的字段
-        selectKey:'prodCodeList',     // 请求到的数据获取
-        itemKey:'organCode',           // 渲染字段
-        itemName:'organName',          // 渲染字段
+        requestType:'reProdCode',     
+        selectType:'PROD_ID',      
+        selectKey:'prodCodeList',     
+        itemName:'prodCode',          
         type:1,
         method:'get',
       },
@@ -331,6 +330,7 @@ export default {
         requestType:'reProper',       
         selectType:'reProper',
         selectKey:'list',
+        disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -497,6 +497,7 @@ export default {
         selectType:'reProper',
         selectKey:'list',
         itemKey:'value',
+        disabled:true,
         itemName:'label',
         type:2,
         method:'get',
@@ -725,6 +726,7 @@ export default {
         requestType:'reProper',       
         selectType:'reProper',
         selectKey:'list',
+        disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -867,7 +869,7 @@ export default {
     }
   },
   closedSequence:{
-    reportName:"time",
+    reportName:"R03",
     title:'封闭式非净值型理财产品平均客户收益率及投资收益率序列表',
     search:[ 
       {
@@ -879,11 +881,11 @@ export default {
         itemName:'dateTypeName',         
         option:[
           {
-            dateTypeCode:'0',
+            dateTypeCode:0,
             dateTypeName:'日'
           },
           {
-            dateTypeCode:'1',
+            dateTypeCode:1,
             dateTypeName:'月'
           },
         ]
@@ -906,7 +908,7 @@ export default {
       {
         text:'产品研发人:',
         requestType:'productDeveloper', 
-        selectType:'prod_researcher',
+        selectType:'prod_resea',
         selectKey:'data',
         itemKey:'oper_code',
         itemName:'oper_name',
@@ -937,6 +939,7 @@ export default {
         text:'机构客户类型:',
         requestType:'reProper',       
         selectType:'reProper',
+        disabled:true,
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -1135,6 +1138,7 @@ export default {
         requestType:'dSjld',       
         selectType:'ORGAN_LEVEL',
         selectKey:'list',
+        disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -1511,6 +1515,7 @@ export default {
         requestType:'reProper',       
         selectType:'reProper',
         selectKey:'list',
+        disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -2102,6 +2107,7 @@ export default {
         requestType:'dSjld',       
         selectType:'ORGAN_LEVEL',
         selectKey:'list',
+        disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -2151,6 +2157,7 @@ export default {
         requestType:'reProper',       
         selectType:'reProper',
         selectKey:'list',
+        disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -2452,6 +2459,7 @@ export default {
         requestType:'reProper',       
         selectType:'reProper',
         selectKey:'list',
+        disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -2891,7 +2899,7 @@ export default {
     }
   },
   balanceChangeStatistics:{
-    reportName:"time",
+    reportName:"R16",
     title:'各分行理财余额变动统计表',
     search:[
       {
@@ -2935,6 +2943,7 @@ export default {
         selectType:'reProper',
         selectKey:'list',
         itemKey:'value',
+        disabled:true,
         itemName:'label',
         type:2,
         method:'get',
@@ -3109,6 +3118,7 @@ export default {
         requestType:'reProper',       
         selectType:'reProper',
         selectKey:'list',
+        disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -3182,7 +3192,7 @@ export default {
   },
   branchBalanceEnquiry:{
     reportName:'R18',
-    title:'各分行发行自主平衡产品情况查询',
+    title:'各分行发行自主平衡产品情况查询表',
     search:[
       {
         text:'查询月份:',
@@ -3479,16 +3489,6 @@ export default {
         disabled:true,         
         type:2,
       },
-      /* {
-        text:'起始月份:',
-        selectType:'beginDate',
-        type:3,
-      },
-      {
-        text:'终止月份:',
-        selectType:'endDate',
-        type:3,
-      }, */
       {
         text:'起始月份:',
         selectType:'UPDATE_DATE',
@@ -3496,7 +3496,7 @@ export default {
         type:3,
       },
       {
-        text:'结束月份:',
+        text:'终止月份:',
         selectType:'ENDDATE_DATE',
         dateFormat:'YYYY-MM',
         type:3,
@@ -3576,6 +3576,7 @@ export default {
         requestType:'dSjld',       
         selectType:'ORGAN_LEVEL',
         selectKey:'list',
+        disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -3896,6 +3897,7 @@ export default {
         requestType:'reProper',       
         selectType:'reProper',
         selectKey:'list',
+        disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -3967,6 +3969,7 @@ export default {
         requestType:'dSjld',       
         selectType:'ORGAN_LEVEL',
         selectKey:'list',
+        disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -4002,6 +4005,7 @@ export default {
         requestType:'reProper',       
         selectType:'reProper',
         selectKey:'list',
+        disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -4242,6 +4246,7 @@ export default {
         requestType:'reProper',       
         selectType:'reProper',
         selectKey:'list',
+        disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -4582,10 +4587,12 @@ export default {
 }
 
 
-/* R03D	R03-封闭式非净值型理财产品平均客户收益率及投资收益率序列表（日）
+/* 
+R03D	R03-封闭式非净值型理财产品平均客户收益率及投资收益率序列表（日）
 R03M	R03-封闭式非净值型理财产品平均客户收益率及投资收益率序列表（月）
 R03Q	R03-封闭式非净值型理财产品平均客户收益率及投资收益率序列表（季）
 R03Y	R03-封闭式非净值型理财产品平均客户收益率及投资收益率序列表（年）
+
 R041M	R04-理财产品有效销量表(一分)
 R042M	R04-理财产品有效销量表(二分)
 R043M	R04-理财产品有效销量表(一支)
@@ -4599,11 +4606,15 @@ R10D	R10-开放式理财产品销售情况序列表（日）
 R10M	R10-开放式理财产品销售情况序列表（月）
 R10Q	R10-开放式理财产品销售情况序列表（季度）
 R10Y	R10-开放式理财产品销售情况序列表（年）
+
 R11D	R11-开放式非净值型理财产品成本统计表
+
 R121D	R12-各分行理财产品销售情况统计表（一分）
 R122D	R12-各分行理财产品销售情况统计表（二分）
 R123D	R12-各分行理财产品销售情况统计表（一支）
 R124D	R12-各分行理财产品销售情况统计表（网点）
+
+R13D	R13-各分行理财产品销售情况统计表
 
 R17D	R17-理财余额序列表（日）
 R17M	R17-理财余额序列表（月）
@@ -4622,12 +4633,12 @@ R211M	R21各理财产品收入情况统计表（一分）
 R212M	R21各理财产品收入情况统计表（二分）
 R213M	R21各理财产品收入情况统计表（一支）
 R214M	R21各理财产品收入情况统计表（网点）
-R22M	R22各分行理财产品收入情况统计表
 
-R24D	R24-预约自动购买查询表
-R25D	R25-扣款失败金额明细表
+R22M	R22各分行理财产品收入情况统计表
 
 R271D	R27-各分行理财产品综合情况统计表（一分）
 R272D	R27-各分行理财产品综合情况统计表（二分）
 R273D	R27-各分行理财产品综合情况统计表（一支）
-R274D	R27-各分行理财产品综合情况统计表（网点） */
+R274D	R27-各分行理财产品综合情况统计表（网点）
+
+*/

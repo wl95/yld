@@ -20,11 +20,6 @@ class Filter extends Component {
             },
             branch_data:{},
             city_data:{},
-            rcCalendar:{
-                mode: 'month',
-                rangeStartMode: 'date',
-                rangeEndMode: 'date',
-            },
             searchList:[],
             dateFormat:'YYYY-MM-DD',
         }
@@ -44,7 +39,7 @@ class Filter extends Component {
         let juris = {}
         let index = herfStr.indexOf('?');
         herfStr = herfStr.slice(index+1);
-        if(herfStr.indexOf('organCode')!==-1 && herfStr.indexOf('organLevel') !== -1){
+        if(herfStr.indexOf('organCode') !== -1 && herfStr.indexOf('organLevel') !== -1){
             // 参数正确得传入
             herfStr.split('&').map(item=>{//把获取参数存入本地存储
                 return item.split('=')
@@ -82,23 +77,12 @@ class Filter extends Component {
         })
     }
 
-    onModeChange = ( key, e ) => {
-        let mode;
-        let { rcCalendar } = this.state
-        if ( e && e.target ) {
-            mode = e.target.value;
-        } else {
-            mode = e;
-        }
+    onModeChange = (mode) => {
         let dateFormat = {
             0:'YYYY-MM-DD',
             1:'YYYY-MM',
         }
         this.setState({
-            rcCalendar:{
-                ...rcCalendar,
-                [key]: mode,
-            },
             dateFormat:dateFormat[mode]
         });
     }
@@ -108,8 +92,8 @@ class Filter extends Component {
         let { filed } = this.state
         let { filter, setSearch } = this.props
 
-        if( selectType === 'dateType' ){
-            this.onModeChange('rangeStartMode', e.target.value)
+        if( selectType === 'DATE_TYPE' ){
+            this.onModeChange(e.target.value)
         }
 
         if( selectType === 'dCustomerType' ){
@@ -129,12 +113,15 @@ class Filter extends Component {
                 ...filed,
                 [selectType]:isData ? e : e.target.value
             },
+        }, () => {
+            console.log(this.state.filed)
         })
     }
 
     onSubmit = () => {
         let { onFilterSubmit } = this.props
         let { filed, dateFormat } = this.state
+        console.log(filed)
         onFilterSubmit({ filed , dateFormat })
     }
 
@@ -155,6 +142,7 @@ class Filter extends Component {
         })
         onFilterSubmit()
     } 
+
     /* 判断开始日期和结束日期 */
     disabledDate = (UPDATE_DATE, Item) => {
         const { dateCalendarType, relationship } = Item
@@ -185,9 +173,9 @@ class Filter extends Component {
                         return  (   
                                     <div key={item.text} className="cols">
                                         <label>{item.text}</label>
-                                        { item.type === 1 && <Search value={filed[item.selectType] || ''} onClockSearchLists={this.onClickSearchs} onChange={e => this.onChangeSelect(e, item, false)} selectType={item.selectType} itemName={item.itemName} option={item.option}/>}
+                                        { item.type === 1 && <Search value={filed[item.selectType] || ''} onClickSearchLists={this.onClickSearchs} onChange={e => this.onChangeSelect(e, item, false)} selectType={item.selectType} itemName={item.itemName} option={item.option}/>}
                                         { item.type === 2 && 
-                                            <select className={"select " + (item.disabled ? 'disabled' : '')} disabled={item.disabled} value={item.defaultValue || filed[item.selectType] || ''} onChange={e => this.onChangeSelect(e, item, false)}>
+                                            <select className={"select " + (item.disabled ? 'disabled' : '')} disabled={item.disabled} value={filed[item.selectType] || item.defaultValue || ''} onChange={e => this.onChangeSelect(e, item, false)}>
                                                 <option value="">请选择</option>
                                                 {
                                                     item.option && item.option.map((optionItem, index) => {
