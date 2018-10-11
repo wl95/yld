@@ -1,9 +1,9 @@
 let managemoney = '/Home/managemoney';
 import moment from 'moment'
 /* selectType:'',      // 请求参数
-    selectKey:'',   // 请求到的数据获取
-    itemKey:'',         // 渲染字段
-    itemName:'',        // 渲染字段 */
+    selectKey:'',      // 请求到的数据获取
+    itemKey:'',        // 渲染字段
+    itemName:'',       // 渲染字段 */
 export default {
   publicComponent:{   
     reportName:"R19",
@@ -14,8 +14,8 @@ export default {
         type:2,
         defaultValue:'0',
         selectType:'DATE_TYPE',
-        itemKey:'dateTypeCode',         // 渲染请求参数
-        itemName:'dateTypeName',         // 渲染字段
+        itemKey:'dateTypeCode',        
+        itemName:'dateTypeName',         
         option:[
           {
             dateTypeCode:'0',
@@ -28,14 +28,14 @@ export default {
         selectType:'UPDATE_DATE_START',
         relationship:'UPDATE_DATE_END',
         dateCalendarType:'start',
-        defaultValue:moment('2017-11-20', 'YYYY-MM-DD'),
+        defaultValue:moment(),
         type:3,
       },
       {
         text:'终止日期:',
         selectType:'UPDATE_DATE_END',
         relationship:'UPDATE_DATE_START',
-        defaultValue:moment('2017-11-25', 'YYYY-MM-DD'),
+        defaultValue:moment(),
         type:3,
       },
       {
@@ -51,8 +51,8 @@ export default {
         text:'省份:', 
         selectType:'PROVINCE_CODE',
         selectKey:'provinceList',
-        itemKey:'code',           // 渲染字段
-        itemName:'name',          // 渲染字段
+        itemKey:'code',           
+        itemName:'name',          
         disabled:true,          
         type:2,
       },
@@ -60,8 +60,8 @@ export default {
         text:'地市:',
         selectType:'PREFECTURE_CODE',
         selectKey:'areaList',
-        itemKey:'code',           // 渲染字段
-        itemName:'name',          // 渲染字段
+        itemKey:'code',           
+        itemName:'name',          
         disabled:true,          
         type:2,
       },
@@ -69,8 +69,8 @@ export default {
         text:'市县:',
         selectType:'CITY_CODE',
         selectKey:'cityList',
-        itemKey:'code',           // 渲染字段
-        itemName:'name',          // 渲染字段
+        itemKey:'code',          
+        itemName:'name',          
         disabled:true,           
         type:2,
       },
@@ -78,8 +78,8 @@ export default {
         text:'网点:',
         selectType:'BRANCE_CODE',
         selectKey:'branchList',
-        itemKey:'code',           // 渲染字段
-        itemName:'name',          // 渲染字段
+        itemKey:'code',           
+        itemName:'name',          
         disabled:true,         
         type:2,
       },
@@ -205,8 +205,8 @@ export default {
         type:2,
         defaultValue:'0',
         selectType:'DATE_TYPE',
-        itemKey:'dateTypeCode',         // 渲染请求参数
-        itemName:'dateTypeName',         // 渲染字段
+        itemKey:'dateTypeCode',        
+        itemName:'dateTypeName',         
         option:[
           {
             dateTypeCode:'0',

@@ -114,14 +114,15 @@ class Filter extends Component {
                 [selectType]:isData ? e : e.target.value
             },
         }, () => {
-            console.log(this.state.filed)
+            // console.log(this.state.filed)
         })
     }
 
     onSubmit = () => {
+        this.fetch();
         let { onFilterSubmit } = this.props
         let { filed, dateFormat } = this.state
-        console.log(filed)
+        // console.log(filed)
         onFilterSubmit({ filed , dateFormat })
     }
 
