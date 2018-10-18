@@ -5,8 +5,9 @@ import moment from 'moment'
     itemKey:'',        // 渲染字段
     itemName:'',       // 渲染字段 */
 export default {
-  publicComponent:{   
-    reportName:"R19",
+  publicComponent:{
+    //reportName:"R19",
+    reportName:'branchHoldings',
     title:'各分行理财产品日均保有量统计表',
     search:[
       {
@@ -86,7 +87,7 @@ export default {
       {
         text:'产品状态:',
         requestType:'prodStatus',       
-        selectType:'PROD_STATUS',
+        selectType:'AM_PROD_STATUS',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',         
@@ -126,7 +127,7 @@ export default {
       {
         text:'投资者类型:',
         requestType:'dCustomerType',       
-        selectType:'dCustomerType',
+        selectType:'CUST_CATEGORY',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -136,7 +137,7 @@ export default {
       {
         text:'机构客户:',
         requestType:'reProper',       
-        selectType:'reProper',
+        selectType:'CUST_TYPE',
         disabled:true,
         selectKey:'list',
         itemKey:'value',
@@ -197,7 +198,8 @@ export default {
     }
   },
   productReport:{
-    reportName:"R20",
+    //reportName:"R20",  
+    reportName:'productQuantity',
     title:'各理财产品日均保有量统计表',
     search:[
       {
@@ -234,7 +236,6 @@ export default {
         requestType:'reProdCode',     
         selectType:'PROD_ID',      
         selectKey:'prodCodeList',     
-        itemKey:'prodCode',           
         itemName:'prodCode',          
         type:1,
         method:'get',
@@ -243,8 +244,8 @@ export default {
         text:'省份:', 
         selectType:'PROVINCE_CODE',
         selectKey:'provinceList',
-        itemKey:'code',   
-        itemName:'name', 
+        itemKey:'code',           
+        itemName:'name',          
         disabled:true,          
         type:2,
       },
@@ -252,8 +253,8 @@ export default {
         text:'地市:',
         selectType:'PREFECTURE_CODE',
         selectKey:'areaList',
-        itemKey:'code',   
-        itemName:'name', 
+        itemKey:'code',           
+        itemName:'name',          
         disabled:true,          
         type:2,
       },
@@ -261,8 +262,8 @@ export default {
         text:'市县:',
         selectType:'CITY_CODE',
         selectKey:'cityList',
-        itemKey:'code',   
-        itemName:'name', 
+        itemKey:'code',          
+        itemName:'name',          
         disabled:true,           
         type:2,
       },
@@ -270,15 +271,15 @@ export default {
         text:'网点:',
         selectType:'BRANCE_CODE',
         selectKey:'branchList',
-        itemKey:'code',   
-        itemName:'name', 
+        itemKey:'code',           
+        itemName:'name',          
         disabled:true,         
         type:2,
       },
       {
         text:'产品状态:',
         requestType:'prodStatus',       
-        selectType:'PROD_STATUS',
+        selectType:'AM_PROD_STATUS',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',         
@@ -318,7 +319,7 @@ export default {
       {
         text:'投资者类型:',
         requestType:'dCustomerType',       
-        selectType:'dCustomerType',
+        selectType:'CUST_CATEGORY', 
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -328,9 +329,9 @@ export default {
       {
         text:'机构客户:',
         requestType:'reProper',       
-        selectType:'reProper',
-        selectKey:'list',
+        selectType:'CUST_TYPE',
         disabled:true,
+        selectKey:'list',
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -378,7 +379,8 @@ export default {
     }
   },
   information:{
-    reportName:"R01",
+    //reportName:"R01",
+    reportName:'productInformation',
     title:'理财产品基本信息表',
     search:[
       {
@@ -436,7 +438,7 @@ export default {
       {
         text:'产品代码:',   
         requestType:'reProdCode',     
-        selectType:'PROD_ID',      
+        selectType:'prod_id',      
         selectKey:'prodCodeList',     
         itemName:'prodCode',          
         type:1,
@@ -454,7 +456,7 @@ export default {
       {
         text:'产品品牌:',
         requestType:'reBrand',       
-        selectType:'AM_PROD_BRAND_CODE',
+        selectType:'prod_brand',
         selectKey:'brandList',
         itemKey:'brandCode',
         itemName:'brandName',
@@ -474,7 +476,7 @@ export default {
       {
         text:'产品销售渠道:',
         requestType:'dChnl',
-        selectType:'CHANNEL',
+        selectType:'channel',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -484,7 +486,7 @@ export default {
       {
         text:'产品收益类型:',
         requestType:'reProfitType',       
-        selectType:'AM_PROD_PROFIT_MODE',
+        selectType:'prod_profit_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -494,7 +496,7 @@ export default {
       {
         text:'机构客户:',
         requestType:'reProper',       
-        selectType:'reProper',
+        selectType:'reProper',  //没有
         selectKey:'list',
         itemKey:'value',
         disabled:true,
@@ -504,8 +506,8 @@ export default {
       },
       {
         text:'投资者类型:',
-        requestType:'dCustomerType',       
-        selectType:'dCustomerType',
+        requestType:'dCustomerType',   
+        selectType:'cust_type',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -574,7 +576,7 @@ export default {
       {
         text:'机构属性:',
         requestType:'reOrganType',       
-        selectType:'ORGAN_MODE',
+        selectType:'organ_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -584,7 +586,7 @@ export default {
       {
         text:'发行币种:',
         requestType:'regCurrency',       
-        selectType:'AM_PROD_CURRENCY',
+        selectType:'currency',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -673,12 +675,13 @@ export default {
     }
   },
   closeStatistics:{
-    reportName:"R02",
+    //reportName:"R02",
+    reportName:'closedStatistics',
     title:'封闭式非净值型理财产品平均客户收益率及投资收益率统计表',
     search:[
       {
         text:'查询起始日期:',
-        selectType:'UPDATE_DATE_START',
+        selectType:'start_day',
         relationship:'UPDATE_DATE_END',
         dateCalendarType:'start',
         defaultValue:moment(),
@@ -686,7 +689,7 @@ export default {
       },
       {
         text:'查询终止日期:',
-        selectType:'UPDATE_DATE_END',
+        selectType:'end_day',
         relationship:'UPDATE_DATE_START',
         defaultValue:moment(),
         type:3,
@@ -704,7 +707,7 @@ export default {
       {
         text:'产品销售渠道:',
         requestType:'dChnl',
-        selectType:'CHANNEL',
+        selectType:'channel',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -714,7 +717,7 @@ export default {
       {
         text:'产品收益类型:',
         requestType:'reProfitType',       
-        selectType:'AM_PROD_PROFIT_MODE',
+        selectType:'prod_profit_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -724,7 +727,7 @@ export default {
       {
         text:'机构客户:',
         requestType:'reProper',       
-        selectType:'reProper',
+        selectType:'reProper',   //没有
         selectKey:'list',
         disabled:true,
         itemKey:'value',
@@ -735,7 +738,7 @@ export default {
       {
         text:'投资者类型:',
         requestType:'dCustomerType',       
-        selectType:'dCustomerType',
+        selectType:'cust_type',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -765,7 +768,7 @@ export default {
       {
         text:'产品品牌:',
         requestType:'reBrand',       
-        selectType:'AM_PROD_BRAND_CODE',
+        selectType:'prod_brand',
         selectKey:'brandList',
         itemKey:'brandCode',
         itemName:'brandName',
@@ -785,7 +788,7 @@ export default {
       {
         text:'发行币种:',
         requestType:'regCurrency',       
-        selectType:'AM_PROD_CURRENCY',
+        selectType:'currency',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -869,7 +872,8 @@ export default {
     }
   },
   closedSequence:{
-    reportName:"R03",
+    //reportName:"R03",
+    reportName:'closedSequence',
     title:'封闭式非净值型理财产品平均客户收益率及投资收益率序列表',
     search:[ 
       {
@@ -892,7 +896,7 @@ export default {
       },
       {
         text:'起始日期:',
-        selectType:'UPDATE_DATE_START',
+        selectType:'start_day',
         relationship:'UPDATE_DATE_END',
         dateCalendarType:'start',
         defaultValue:moment(),
@@ -900,7 +904,7 @@ export default {
       },
       {
         text:'终止日期:',
-        selectType:'UPDATE_DATE_END',
+        selectType:'end_day',
         relationship:'UPDATE_DATE_START',
         defaultValue:moment(),
         type:3,
@@ -908,7 +912,7 @@ export default {
       {
         text:'产品研发人:',
         requestType:'productDeveloper', 
-        selectType:'prod_resea',
+        selectType:'prod_researcher',
         selectKey:'data',
         itemKey:'oper_code',
         itemName:'oper_name',
@@ -918,7 +922,7 @@ export default {
       {
         text:'产品销售渠道:',
         requestType:'dChnl',
-        selectType:'CHANNEL',
+        selectType:'channel',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -928,7 +932,7 @@ export default {
       {
         text:'产品收益类型:',
         requestType:'reProfitType',       
-        selectType:'AM_PROD_PROFIT_MODE',
+        selectType:'prod_profit_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -938,7 +942,7 @@ export default {
       {
         text:'机构客户类型:',
         requestType:'reProper',       
-        selectType:'reProper',
+        selectType:'reProper',  //没有
         disabled:true,
         selectKey:'list',
         itemKey:'value',
@@ -949,7 +953,7 @@ export default {
       {
         text:'投资者类型:',
         requestType:'dCustomerType',       
-        selectType:'dCustomerType',
+        selectType:'cust_type',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -988,7 +992,7 @@ export default {
       {
         text:'产品品牌:',
         requestType:'reBrand',       
-        selectType:'AM_PROD_BRAND_CODE',
+        selectType:'prod_brand',
         selectKey:'brandList',
         itemKey:'brandCode',
         itemName:'brandName',
@@ -998,7 +1002,7 @@ export default {
       {
         text:'发行币种:',
         requestType:'regCurrency',       
-        selectType:'AM_PROD_CURRENCY',
+        selectType:'currency',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -1082,7 +1086,8 @@ export default {
     }
   },
   effectiveSales:{
-    reportName:'R04',
+    //reportName:'R04', //没有
+    reportName:'effectiveSales',
     title:'理财产品有效销量表',
     search:[
       { 
@@ -1276,7 +1281,8 @@ export default {
     }
   },
   scaleSequence:{
-    reportName:'R05',
+    //reportName:'R05',  //没有
+    reportName:'scaleSequence',
     title:'理财产品供给规模与销售规模序列表',
     search:[
       {
@@ -1348,12 +1354,13 @@ export default {
     }
   },
   customerSales:{
-    reportName:'R06',
+    //reportName:'R06',
+    reportName:'salesStatusProductCustomers',
     title:'机构理财产品客户销售情况表',
     search:[
       {
         text:'起始日期:',
-        selectType:'UPDATE_DATE_START',
+        selectType:'start_date',
         relationship:'UPDATE_DATE_END',
         dateCalendarType:'start',
         defaultValue:moment(),
@@ -1361,7 +1368,7 @@ export default {
       },
       {
         text:'终止日期:',
-        selectType:'UPDATE_DATE_END',
+        selectType:'end_date',
         relationship:'UPDATE_DATE_START',
         defaultValue:moment(),
         type:3,
@@ -1369,7 +1376,7 @@ export default {
       {
         text:'产品代码:',   
         requestType:'reProdCode',     
-        selectType:'PROD_ID',      
+        selectType:'prod_id',      
         selectKey:'prodCodeList',    
         itemKey:'prodCode',           
         itemName:'prodCode',          
@@ -1379,7 +1386,7 @@ export default {
       {
         text:'发行币种:',
         requestType:'regCurrency',       
-        selectType:'AM_PROD_CURRENCY',
+        selectType:'currency',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -1428,12 +1435,13 @@ export default {
     }
   },
   saleStatuSequence:{
-    reportName:'R07',
+    //reportName:'R07',
+    reportName:'sequenceOfSales',
     title:'理财销售情况序列表',
     search:[
       { 
         text:'省份:', 
-        selectType:'PROVINCE_CODE',
+        selectType:'privance_code',
         selectKey:'provinceList',
         itemKey:'code',   
         itemName:'name', 
@@ -1442,7 +1450,7 @@ export default {
       },
       {
         text:'地市:',
-        selectType:'PREFECTURE_CODE',
+        selectType:'prefecture_code',
         selectKey:'areaList',
         itemKey:'code',   
         itemName:'name', 
@@ -1451,7 +1459,7 @@ export default {
       },
       {
         text:'市县:',
-        selectType:'CITY_CODE',
+        selectType:'city_code',
         selectKey:'cityList',
         itemKey:'code',   
         itemName:'name', 
@@ -1460,7 +1468,7 @@ export default {
       },
       {
         text:'网点:',
-        selectType:'BRANCE_CODE',
+        selectType:'brance_code',
         selectKey:'branchList',
         itemKey:'code',   
         itemName:'name', 
@@ -1487,7 +1495,7 @@ export default {
       },
       {
         text:'起始日期:',
-        selectType:'UPDATE_DATE_START',
+        selectType:'start_date',
         relationship:'UPDATE_DATE_END',
         dateCalendarType:'start',
         defaultValue:moment(),
@@ -1495,7 +1503,7 @@ export default {
       },
       {
         text:'终止日期:',
-        selectType:'UPDATE_DATE_END',
+        selectType:'end_date',
         relationship:'UPDATE_DATE_START',
         defaultValue:moment(),
         type:3,
@@ -1503,7 +1511,7 @@ export default {
       {
         text:'投资者类型:',
         requestType:'dCustomerType',       
-        selectType:'dCustomerType',
+        selectType:'cust_type',   
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -1513,7 +1521,7 @@ export default {
       {
         text:'机构客户:',
         requestType:'reProper',       
-        selectType:'reProper',
+        selectType:'reProper',    // 没有
         selectKey:'list',
         disabled:true,
         itemKey:'value',
@@ -1524,7 +1532,7 @@ export default {
       {
         text:'机构属性:',
         requestType:'reOrganType',       
-        selectType:'ORGAN_MODE',
+        selectType:'organ_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -1534,7 +1542,7 @@ export default {
       {
         text:'产品运作模式:',
         requestType:'reProdoperModel',       
-        selectType:'AM_PROD_OPERATION_MODE',
+        selectType:'am_prod_operation_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -1544,7 +1552,7 @@ export default {
       {
         text:'产品收益类型:',
         requestType:'reProfitType',       
-        selectType:'AM_PROD_PROFIT_MODE',
+        selectType:'am_prod_profit_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -1554,7 +1562,7 @@ export default {
       {
         text:'产品销售渠道:',
         requestType:'dChnl',
-        selectType:'CHANNEL',
+        selectType:'channel',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -1564,7 +1572,7 @@ export default {
       {
         text:'发行币种:',
         requestType:'regCurrency',       
-        selectType:'AM_PROD_CURRENCY',
+        selectType:'currency',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -1598,18 +1606,19 @@ export default {
     }
   },
   closeSalesEnquiries:{
-    reportName:'R08',
+    //reportName:'R08',
+    reportName:'closedSale',
     title:'在售封闭式理财产品销售情况查询表',
     search:[
       {
         text:'查询日期:',
-        selectType:'beginDate',
+        selectType:'update_date',
         type:3,
       },
       {
         text:'产品运作模式:',
         requestType:'reProdoperModel',       
-        selectType:'AM_PROD_OPERATION_MODE',
+        selectType:'prod_operation_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -1619,7 +1628,7 @@ export default {
       {
         text:'销售机构:',
         requestType:'reOrganType',       
-        selectType:'ORGAN_MODE',
+        selectType:'organ_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -1629,7 +1638,7 @@ export default {
       {
         text:'发行币种:',
         requestType:'regCurrency',       
-        selectType:'AM_PROD_CURRENCY',
+        selectType:'prod_currency',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -1673,12 +1682,13 @@ export default {
     }
   },
   openSalesEnquiries:{
-    reportName:'R10',
+    //reportName:'`R10`',
+    reportName:'openSales',
     title:'开放式理财产品销售情况查询表',
     search:[
       { 
         text:'省份:', 
-        selectType:'PROVINCE_CODE',
+        selectType:'province_code',
         selectKey:'provinceList',
         itemKey:'code',   
         itemName:'name', 
@@ -1687,7 +1697,7 @@ export default {
       },
       {
         text:'地市:',
-        selectType:'PREFECTURE_CODE',
+        selectType:'prefecture_code',
         selectKey:'areaList',
         itemKey:'code',   
         itemName:'name', 
@@ -1696,7 +1706,7 @@ export default {
       },
       {
         text:'市县:',
-        selectType:'CITY_CODE',
+        selectType:'city_code',
         selectKey:'cityList',
         itemKey:'code',   
         itemName:'name', 
@@ -1705,7 +1715,7 @@ export default {
       },
       {
         text:'网点:',
-        selectType:'BRANCE_CODE',
+        selectType:'brance_code',
         selectKey:'branchList',
         itemKey:'code',   
         itemName:'name', 
@@ -1714,7 +1724,7 @@ export default {
       },
       {
         text:'起始日期:',
-        selectType:'UPDATE_DATE_START',
+        selectType:'start_date',
         relationship:'UPDATE_DATE_END',
         dateCalendarType:'start',
         defaultValue:moment(),
@@ -1722,7 +1732,7 @@ export default {
       },
       {
         text:'终止日期:',
-        selectType:'UPDATE_DATE_END',
+        selectType:'end_date',
         relationship:'UPDATE_DATE_START',
         defaultValue:moment(),
         type:3,
@@ -1730,7 +1740,7 @@ export default {
       {
         text:'机构属性:',
         requestType:'reOrganType',       
-        selectType:'ORGAN_MODE',
+        selectType:'organ_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -1740,7 +1750,7 @@ export default {
       {
         text:'产品运作模式:',
         requestType:'reProdoperModel',       
-        selectType:'AM_PROD_OPERATION_MODE',
+        selectType:'am_prod_operation_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -1854,7 +1864,8 @@ export default {
     }
   },
   openSaleSequence:{
-    reportName:'R11',
+    //reportName:'R11',  // 没有   
+    reportName:'openSalesSeries',
     title:'开放式产品销售情况序列表',
     search:[
       { 
@@ -2063,12 +2074,13 @@ export default {
     }
   },
   branchSaleStatistics:{
-    reportName:'R12',
+    //reportName:'R12',   
+    reportName:'branchSalesStatistics',
     title:'各分行理财产品销售情况统计表',
     search:[
       { 
         text:'省份:', 
-        selectType:'PROVINCE_CODE',
+        selectType:'province_code',
         selectKey:'provinceList',
         itemKey:'code',   
         itemName:'name', 
@@ -2077,7 +2089,7 @@ export default {
       },
       {
         text:'地市:',
-        selectType:'PREFECTURE_CODE',
+        selectType:'prefecture_code',
         selectKey:'areaList',
         itemKey:'code',   
         itemName:'name', 
@@ -2086,7 +2098,7 @@ export default {
       },
       {
         text:'市县:',
-        selectType:'CITY_CODE',
+        selectType:'city_code',
         selectKey:'cityList',
         itemKey:'code',   
         itemName:'name', 
@@ -2095,7 +2107,7 @@ export default {
       },
       {
         text:'网点:',
-        selectType:'BRANCE_CODE',
+        selectType:'brance_code',
         selectKey:'branchList',
         itemKey:'code',   
         itemName:'name', 
@@ -2105,7 +2117,7 @@ export default {
       {
         text:'数据粒度:',
         requestType:'dSjld',       
-        selectType:'ORGAN_LEVEL',
+        selectType:'organ_level',
         selectKey:'list',
         disabled:true,
         itemKey:'value',
@@ -2116,7 +2128,7 @@ export default {
       {
         text:'产品代码:',   
         requestType:'reProdCode',     // 请求参数
-        selectType:'PROD_ID',      // 传给后端的字段
+        selectType:'prod_id',         // 传给后端的字段
         selectKey:'prodCodeList',     // 请求到的数据获取
         itemKey:'prodCode',           // 渲染字段
         itemName:'prodCode',          // 渲染字段
@@ -2135,7 +2147,7 @@ export default {
       {
         text:'产品状态:',
         requestType:'prodStatus',       
-        selectType:'PROD_STATUS',
+        selectType:'am_prod_status',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',         
@@ -2145,7 +2157,7 @@ export default {
       {
         text:'投资者类型:',
         requestType:'dCustomerType',       
-        selectType:'dCustomerType',
+        selectType:'cust_category',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -2155,7 +2167,7 @@ export default {
       {
         text:'机构客户:',
         requestType:'reProper',       
-        selectType:'reProper',
+        selectType:'cust_type',
         selectKey:'list',
         disabled:true,
         itemKey:'value',
@@ -2165,7 +2177,7 @@ export default {
       },
       {
         text:'起始日期:',
-        selectType:'UPDATE_DATE_START',
+        selectType:'start_date',
         relationship:'UPDATE_DATE_END',
         dateCalendarType:'start',
         defaultValue:moment(),
@@ -2173,15 +2185,15 @@ export default {
       },
       {
         text:'终止日期:',
-        selectType:'UPDATE_DATE_END',
+        selectType:'end_date',
         relationship:'UPDATE_DATE_START',
         defaultValue:moment(),
         type:3,
       },
       {
         text:'产品品牌:',
-        requestType:'reBrand',       
-        selectType:'AM_PROD_BRAND_CODE',
+        requestType:'reBrand',     
+        selectType:'am_prod_brand_code',
         selectKey:'brandList',
         itemKey:'brandCode',
         itemName:'brandName',
@@ -2191,7 +2203,7 @@ export default {
       {
         text:'产品运作模式:',
         requestType:'reProdoperModel',       
-        selectType:'AM_PROD_OPERATION_MODE',
+        selectType:'am_prod_operation_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -2201,7 +2213,7 @@ export default {
       {
         text:'产品销售渠道:',
         requestType:'dChnl',
-        selectType:'CHANNEL',
+        selectType:'prod_channel',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -2211,7 +2223,7 @@ export default {
       {
         text:'机构属性:',
         requestType:'reOrganType',       
-        selectType:'ORGAN_MODE',
+        selectType:'ORGAN_MODE',  //没有
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -2221,7 +2233,7 @@ export default {
       {
         text:'发行币种:',
         requestType:'regCurrency',       
-        selectType:'AM_PROD_CURRENCY',
+        selectType:'am_prod_currency',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -2385,7 +2397,8 @@ export default {
     }
   },
   productSaleStatistics:{
-    reportName:'',
+    //reportName:'R13',  //没有
+    reportName:'productSalesStatistics',
     title:'各理财产品销售情况统计表',
     search:[
       { 
@@ -2706,7 +2719,8 @@ export default {
     }
   },
   customerProductTrading:{
-    reportName:"R14",
+    //reportName:"R14",   //没有
+    reportName:'customerProductTransaction',
     title:'机构理财客户产品交易情况表',
     search:[ 
       {
@@ -2793,7 +2807,8 @@ export default {
     }
   },
   branchBalanceStatistics:{
-    reportName:'R15',
+    //reportName:'R15',
+    reportName:'branchBalanceStatistics',
     title:'各分行理财余额统计查询表',
     search:[
       {
@@ -2899,7 +2914,8 @@ export default {
     }
   },
   balanceChangeStatistics:{
-    reportName:"R16",
+    //reportName:"R16",
+    reportName:'changeBranchBalance',
     title:'各分行理财余额变动统计表',
     search:[
       {
@@ -2920,7 +2936,7 @@ export default {
       {
         text:'销售机构:',
         requestType:'reOrganType',
-        selectType:'organ_mode',
+        selectType:'ORGAN_MODE',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -2930,7 +2946,7 @@ export default {
       {
         text:'投资者类型:',
         requestType:'dCustomerType',       
-        selectType:'dCustomerType',
+        selectType:'CUST_CATEGORY',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -2940,7 +2956,7 @@ export default {
       {
         text:'机构客户:',
         requestType:'reProper',       
-        selectType:'reProper',
+        selectType:'CUST_TYPE',
         selectKey:'list',
         itemKey:'value',
         disabled:true,
@@ -2951,7 +2967,7 @@ export default {
       {
         text:'是否自主平衡:',
         requestType:'balance', 
-        selectType:'is_balance',
+        selectType:'IS_PROVINCE_BALANCE',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -3035,7 +3051,8 @@ export default {
     }
   },
   productBalanceSequence:{
-    reportName:'R17',
+    //reportName:'R17',
+    reportName:'productBalanceSequence',
     title:'各理财产品余额序列表',
     search:[
       { 
@@ -3106,7 +3123,7 @@ export default {
       {
         text:'投资者类型:',
         requestType:'dCustomerType',       
-        selectType:'dCustomerType',
+        selectType:'CUST_CATEGORY',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -3116,7 +3133,7 @@ export default {
       {
         text:'机构客户:',
         requestType:'reProper',       
-        selectType:'reProper',
+        selectType:'CUST_TYPE',
         selectKey:'list',
         disabled:true,
         itemKey:'value',
@@ -3191,7 +3208,8 @@ export default {
     }
   },
   branchBalanceEnquiry:{
-    reportName:'R18',
+    //reportName:'R18',
+    reportName:'AutonomicBalance',
     title:'各分行发行自主平衡产品情况查询表',
     search:[
       {
@@ -3242,7 +3260,8 @@ export default {
     }
   },
   productRevenueStatistics:{
-    reportName:'R21',
+    //reportName:'R21',
+    reportName:'productRevenueStatistics',
     title:'各理财产品收入情况统计表',
     search:[
       { 
@@ -3283,20 +3302,20 @@ export default {
       },
       {
         text:'起始月份:',
-        selectType:'UPDATE_DATE',
+        selectType:'UPDATE_DATE_START',
         dateFormat:'YYYY-MM',
         type:3,
       },
       {
         text:'终止月份:',
-        selectType:'ENDDATE_DATE',
+        selectType:'UPDATE_DATE_END',
         dateFormat:'YYYY-MM',
         type:3,
       },
       {
         text:'投资者类型:',
         requestType:'dCustomerType',       
-        selectType:'dCustomerType',
+        selectType:'CUST_TYPE',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -3316,7 +3335,7 @@ export default {
       {
         text:'产品状态:',
         requestType:'prodStatus',       
-        selectType:'PROD_STATUS',
+        selectType:'AM_PROD_STATUS',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',         
@@ -3450,7 +3469,8 @@ export default {
     }
   },
   branchRevenueStatistics:{
-    reportName:'',
+    //reportName:'R22',
+    reportName:'branchRevenueStatistics',
     title:'各分行理财收入统计表',
     search:[
       { 
@@ -3491,20 +3511,20 @@ export default {
       },
       {
         text:'起始月份:',
-        selectType:'UPDATE_DATE',
+        selectType:'UPDATE_DATE_START',
         dateFormat:'YYYY-MM',
         type:3,
       },
       {
         text:'终止月份:',
-        selectType:'ENDDATE_DATE',
+        selectType:'UPDATE_DATE_END',
         dateFormat:'YYYY-MM',
         type:3,
       },
       {
         text:'投资者类型:',
         requestType:'dCustomerType',       
-        selectType:'dCustomerType',
+        selectType:'CUST_TYPE',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -3534,7 +3554,7 @@ export default {
       {
         text:'产品状态:',
         requestType:'prodStatus',       
-        selectType:'PROD_STATUS',
+        selectType:'AM_PROD_STATUS',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',         
@@ -3669,7 +3689,8 @@ export default {
     }
   },
   annualWithdrawing:{
-    reportName:'R23',
+    //reportName:'R23',
+    reportName:'distributionOfProvision',
     title:'年度销售手续费总计提/已分配/待分配确认表',
     search:[
       { 
@@ -3717,7 +3738,7 @@ export default {
       {
         text:'投资者类型:',
         requestType:'dCustomerType',       
-        selectType:'dCustomerType',
+        selectType:'CUST_TYPE',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -3737,7 +3758,7 @@ export default {
       {
         text:'产品状态:',
         requestType:'prodStatus',       
-        selectType:'PROD_STATUS',
+        selectType:'AM_PROD_STATUS',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',         
@@ -3757,7 +3778,7 @@ export default {
       {
         text:'产品名称:',
         requestType:'productName', 
-        selectType:'prod_name',
+        selectType:'PROD_NAME',
         selectKey:'data',   
         itemName:'prod_name', 
         type:1,
@@ -3820,7 +3841,8 @@ export default {
     }
   },
   purchaseIntentionEnquiry:{
-    reportName:'',
+    //reportName:'R24',
+    reportName:'intentionToBuy',
     title:'客户意向登记购买查询表',
     search:[
       {
@@ -3841,7 +3863,7 @@ export default {
       {
         text:'地区:',
         requestType:'reAreaType',       
-        selectType:'GROUP_BY',
+        selectType:'PROVINCE_CODE',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',         
@@ -3851,7 +3873,7 @@ export default {
       {
         text:'发行币种:',
         requestType:'regCurrency',       
-        selectType:'AM_PROD_CURRENCY',
+        selectType:'PROD_CURRENCY',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -3864,12 +3886,13 @@ export default {
     }
   },
   newCustomer:{
-    reportName:'R26',
+    //reportName:'R26',
+    reportName:'newlyOpenedAccounts',
     title:'新增客户开户数',
     search:[
       {
         text:'起始日期:',
-        selectType:'UPDATE_DATE_START',
+        selectType:'start_date',
         relationship:'UPDATE_DATE_END',
         dateCalendarType:'start',
         defaultValue:moment(),
@@ -3877,7 +3900,7 @@ export default {
       },
       {
         text:'终止日期:',
-        selectType:'UPDATE_DATE_END',
+        selectType:'end_date',
         relationship:'UPDATE_DATE_START',
         defaultValue:moment(),
         type:3,
@@ -3885,7 +3908,7 @@ export default {
       {
         text:'投资者类型:',
         requestType:'dCustomerType',       
-        selectType:'dCustomerType',
+        selectType:'cust_type',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -3895,7 +3918,7 @@ export default {
       {
         text:'机构客户:',
         requestType:'reProper',       
-        selectType:'reProper',
+        selectType:'organ_id',
         selectKey:'list',
         disabled:true,
         itemKey:'value',
@@ -3925,7 +3948,8 @@ export default {
     }
   },
   branchComprehensiveStatistic:{
-    reportName:'R27',
+    //reportName:'R27',   
+    reportName:'branchComprehensiveStatistics',
     title:'各分行理财产品综合情况统计表',
     search:[
       { 
@@ -3993,7 +4017,7 @@ export default {
       {
         text:'投资者类型:',
         requestType:'dCustomerType',       
-        selectType:'dCustomerType',
+        selectType:'CUST_CATEGORY',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -4003,7 +4027,7 @@ export default {
       {
         text:'机构客户:',
         requestType:'reProper',       
-        selectType:'reProper',
+        selectType:'CUST_TYPE',
         selectKey:'list',
         disabled:true,
         itemKey:'value',
@@ -4034,7 +4058,7 @@ export default {
       {
         text:'产品状态:',
         requestType:'prodStatus',       
-        selectType:'PROD_STATUS',
+        selectType:'AM_PROD_STATUS',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',         
@@ -4084,7 +4108,7 @@ export default {
       {
         text:'产品名称:',
         requestType:'productName', 
-        selectType:'prod_name',
+        selectType:'PROD_NAME',
         selectKey:'data',   
         itemName:'prod_name', 
         type:1,
@@ -4187,7 +4211,8 @@ export default {
     }
   },
   comprehensiveProductStatistics:{
-    reportName:'R28',
+    //reportName:'R28',   
+    reportName:'comprehensiveProductStatistics',
     title:'各理财产品综合情况统计表',
     search:[
       { 
@@ -4244,7 +4269,7 @@ export default {
       {
         text:'机构客户:',
         requestType:'reProper',       
-        selectType:'reProper',
+        selectType:'CUST_TYPE	',
         selectKey:'list',
         disabled:true,
         itemKey:'value',
@@ -4275,7 +4300,7 @@ export default {
       {
         text:'产品状态:',
         requestType:'prodStatus',       
-        selectType:'PROD_STATUS',
+        selectType:'AM_PROD_STATUS',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',         
@@ -4325,7 +4350,7 @@ export default {
       {
         text:'产品名称:',
         requestType:'productName', 
-        selectType:'prod_name',
+        selectType:'PROD_NAME',
         selectKey:'data',   
         itemName:'prod_name', 
         type:1,
@@ -4428,19 +4453,20 @@ export default {
     }
   },
   weeklyQuery:{
-    reportName:'R29',
+    //reportName:'R29',   // 没有
+    reportName:'weeklyDataQuery',
     title:'周报数据查询表',
     tableType:'weekTable',
     search:[
       {
         text:'查询周期:',
-        selectType:'reQueryWeek',
+        selectType:'UPDATE_DATE',
         type:3,
       },
       {
         text:'发行币种:',
         requestType:'regCurrency',       
-        selectType:'AM_PROD_CURRENCY',
+        selectType:'CURRENCY',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',

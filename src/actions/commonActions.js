@@ -21,12 +21,12 @@ function reciveData() {
 }
 
 //请求失败
-function reciveError(errorMsg) {
+function reciveError ( errorMsg ) {
     /* if (errorMsg !== '') {
         message.config({
             maxCount: 1
         });
-        message.error("" + errorMsg)//提示错误
+        message.error( "" + errorMsg )//提示错误
     }
     return {
         type: FETCH_FAILED,
@@ -106,15 +106,15 @@ export const fetchDataCallback = (fetchUrl, reqType, params, successCallback = n
                     }
                 })
             } else if (resStatus === 403) {
-                res.json().then(jsonResult => {
+                res.json().then( jsonResult => {
                     // let errorCode=jsonResult.errorCode
                     let errorMessage = jsonResult.errorMessage
-                    if (isAlertError) {//如果需要提示错误信息
+                    if ( isAlertError ) {//如果需要提示错误信息
                         dispatch(reciveError(errorMessage))//发出请求失败动作，会关闭加载动画框，并且提示错误信息
                     } else {
                         dispatch(reciveError(''))//发出请求失败动作，会关闭加载动画框，不会提示错误信息
                     }
-                    if (failedCallback) {//如果失败回调存在，把错误信息传回去
+                    if ( failedCallback ) {//如果失败回调存在，把错误信息传回去
                         failedCallback(errorMessage)
                     }
                 })
@@ -131,20 +131,18 @@ export const fetchDataCallback = (fetchUrl, reqType, params, successCallback = n
                         failedCallback(errorMessage)
                     }
                 })
-            }else if (resStatus === 404) {
+            } else if (resStatus === 404) {
                 let errorMessage = "连接不到服务器，请检查网络"
                     dispatch(reciveError(errorMessage))//发出请求失败动作，会关闭加载动画框，并且提示错误信息
                 if (failedCallback) {//如果失败回调存在，把错误信息传回去
                     failedCallback(errorMessage)
                 }
-            }else{
+            } else {
                 let error = new Error(res.statusText)
                 error.response = res
                 throw error
             }
-
         })
-
             // .then(json=>{console.log("jsonjson===="+JSON.stringify(json))})
             .catch(error => {
                 // console.log("error====" + error)

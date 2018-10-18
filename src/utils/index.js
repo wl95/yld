@@ -28,7 +28,7 @@ const CalcDiffTime = (stateTime, endTime, dateFormat) => {
   year2 = parseInt(endTime[0]) , 
   month2 = parseInt(endTime[1]) , 
   //通过年,月差计算月份差
-  months = (year2 - year1) * 12 + (month2-month1)+1;
+  months = (year2 - year1) * 12 + (month2-month1);
   if(dateFormat === 'YYYY-MM'){
     return JSON.stringify(months);   
   }
@@ -53,7 +53,6 @@ function JudgingForm(stateTime, endTime, ban){
 }
 
 function calcReportName(stateTime, endTime, areas, reportName){
-  // console.log(stateTime, endTime, areas, reportName)
   switch(reportName){
     case 'R03':
     case 'R10':

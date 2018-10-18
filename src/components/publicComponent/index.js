@@ -10,7 +10,7 @@ import WeekTable from './weekTable'
 import { CalcDiffTime, calcReportName } from 'utils'
 
 class PublicComponent extends Component {
-    constructor(){
+    constructor(){  
         super()
         this.state = {
             dateFormat:''
@@ -24,33 +24,50 @@ class PublicComponent extends Component {
         let { setSearch } = this.props
         let filed = queryString.parse(location.search)
         data[pubChildren] && setSearch(data[pubChildren].search)
-        //location.search && this.onFilterSubmit({filed})
+        // location.search && this.onFilterSubmit({filed})
     }
 
-    onFilterSubmit({filed, dateFormat,offset}){
+    onFilterSubmit ({filed, dateFormat,offset}) {
         let { queryList } = this.props
         let { pathname } = location
+        let newFiled = {}
+        let time = ''
         let pubChildren = pathname.split('/')[2]
-        let calcDiffTime = CalcDiffTime(filed.UPDATE_DATE_START && filed.UPDATE_DATE_START.format(dateFormat),filed.UPDATE_DATE_END && filed.UPDATE_DATE_END.format(dateFormat), dateFormat)
-        let calcReportName = calcReportName(filed.UPDATE_DATE_START && filed.UPDATE_DATE_START.format(dateFormat), filed.UPDATE_DATE_END && filed.UPDATE_DATE_END.format(dateFormat), filed.ORGAN_LEVEL, data[pubChildren].reportName)
-        
+        let calcDiffTime = filed.UPDATE_DATE_START && CalcDiffTime(filed.UPDATE_DATE_START.format(dateFormat),filed.UPDATE_DATE_END.format(dateFormat), dateFormat)
         for (let item in filed) {
-            if(filed[item] instanceof Object){
-                filed[item] = filed[item].format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM')
+            if(filed[item] instanceof Object && filed[item]){
+              newFiled[item] = filed[item] && filed[item].format(dateFormat === 'YYYY-MM-DD' ? 'YYYYMMDD' : 'YYYYMM')
             }
         }
-
+        switch(dateFormat){
+            case 'YYYY':
+                time = 'yearily'
+                break
+           /*  case 'YYYY':
+                time = 'qusrterily' */
+                break
+            case 'YYYY-MM':
+                time = 'monthily'
+                break
+            case 'YYYY-MM-DD':
+                time = 'daily'
+                break
+        }
         let datas = {
-            reportName:calcReportName,
+            reportName:data[pubChildren].reportName,
+            organCode:filed.organCode,
+            time,
             offset:offset || 1,
             limit:10,
             paramMap:{
                 ...filed,
+                ...newFiled,
                 GROUP_BY:"ORGAN_ID",
-                DAY_INTERVAL:calcDiffTime
+                DAY_INTERVAL:calcDiffTime || '',
             },
             orderMap:{property:"period",direction:"DESC"}
         };
+        
         queryList(datas)
 
         this.setState({
@@ -62,7 +79,7 @@ class PublicComponent extends Component {
         const { filter, getAuthority, setFilter, setSearch } = this.props
         let { pathname } = location
         let pubChildren = pathname.split('/')[2]
-        const filterProps = {   
+        const filterProps = {
             location,
             filter,
             getAuthority,

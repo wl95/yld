@@ -14,26 +14,32 @@ export function setFilterData( filterData, index ) {
     }
 }
 
-export function setSearchData(searchData) {
+export function setSearchData( searchData ) {
     return{
         type:SET_SEARCHDATA,
         searchData,
     }
 }
 
-export function queryListData(queryData) {
+export function queryListData ( queryData ) {
+    // 日daily  月monthily  季度qusrterily  年yearily
+    let { reportName, organCode, time, ...other } = queryData
     request({
         method:'get',
         data: {
-            reportParam:JSON.stringify(queryData),
+            reportParam:JSON.stringify(other),
         },
-        url:ycReport,
+        url:`${ycReport}/${reportName}/${organCode}/${time}`,
     }).then(resData => {
+        // console.log(resData)
         return{
             type:SET_QUERY_DATA,
             queryData:resData,
         }
     })
+    return {
+        type:SET_QUERY_DATA,
+    }
 }
 
 export function getAuthorityData( dispatch, juris ){

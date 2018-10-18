@@ -28,7 +28,7 @@ export function filterReducers(state = initState, action) {
       switch(juris.organLevel){
         case '0':
           newFilterData.map(item => {
-            if(item.selectType === 'PROVINCE_CODE'){
+            if(item.selectType.toUpperCase() === 'PROVINCE_CODE'){
               item.disabled = false
               item.option = authData.children
             }
@@ -36,20 +36,20 @@ export function filterReducers(state = initState, action) {
           return {...state,filter:newFilterData}
         case '1':
           newFilterData.map(item => {
-            if((item.selectType === 'PROVINCE_CODE' || item.selectType === 'PREFECTURE_CODE') && authData.children){
+            if((item.selectType.toUpperCase() === 'PROVINCE_CODE' || item.selectType.toUpperCase() === 'PREFECTURE_CODE') && authData.children){
               item.disabled = false
               item.option = item.selectType === 'PROVINCE_CODE' ? authData.children : authData.brother
             }
           })
-          return {...state,filter:newFilterData}
+          return { ...state,filter:newFilterData }
         case '2':
           let { superior } = authData
           newFilterData.map( item => {
-            if(item.selectType === 'PREFECTURE_CODE' || item.selectType === 'CITY_CODE') {
+            if(item.selectType.toUpperCase() === 'PREFECTURE_CODE' || item.selectType.toUpperCase() === 'CITY_CODE') {
               item.disabled = false
               item.option = item.selectType === 'CITY_CODE' ?  authData.children : authData.brother
             }
-            if(item.selectType === 'PROVINCE_CODE'){
+            if(item.selectType.toUpperCase() === 'PROVINCE_CODE'){
               item.option = [superior.province]
               item.defaultValue = superior.province.code
             }
@@ -60,7 +60,7 @@ export function filterReducers(state = initState, action) {
           return {...state,filter:newFilterData}
         case '3':
           newFilterData.map( item => {
-            if(item.selectType === 'CITY_CODE'|| item.selectType === 'BRANCE_CODE'){
+            if(item.selectType.toUpperCase() === 'CITY_CODE'|| item.selectType.toUpperCase() === 'BRANCE_CODE'){
               item.disabled = false
               item.option = item.selectType === 'BRANCE_CODE' ?  authData.children : authData.brother
             }
@@ -68,7 +68,7 @@ export function filterReducers(state = initState, action) {
           return {...state,filter:newFilterData}
         case '4':
           newFilterData.map(item => {
-            if(item.selectType === 'BRANCE_CODE'){
+            if(item.selectType.toUpperCase() === 'BRANCE_CODE'){
               item.disabled = false
               item.option = authData.children
             }
@@ -79,8 +79,11 @@ export function filterReducers(state = initState, action) {
       }
       case SET_QUERY_DATA:
         let { queryData } = action
+        if(!queryData){
+          return {...state}
+        }
         return {...state,list:queryData.data, total: queryData.total, totalPage: queryData.totalPage, }    
       default:
         return state
-  }
+  } 
 }

@@ -49,6 +49,7 @@ class Filter extends Component {
             })
             getAuthority(juris)
             filed.ORGAN_LEVEL = juris.organLevel == 0 ? '1' : juris.organLevel
+            filed.organCode = juris.organCode
             this.setState({
                 filed
             })
@@ -56,7 +57,7 @@ class Filter extends Component {
             //参数未正确传入
         }
         filter && filter.map((item, index) => {
-            filed[item.selectType] =  item.defaultValue
+            filed[item.selectType] = filed[item.selectType] || item.defaultValue
             // console.log(item)
             if(locationSearch.UPDATE_DATE_END){
                 filed['UPDATE_DATE_END'] = moment(locationSearch.UPDATE_DATE_END, 'YYYY-MM-DD');
@@ -111,7 +112,7 @@ class Filter extends Component {
         this.setState({
             filed:{
                 ...filed,
-                [selectType]:isData ? e : e.target.value
+                [selectType]:isData ? e : e.target.value,
             },
         }, () => {
             // console.log(this.state.filed)
@@ -138,7 +139,7 @@ class Filter extends Component {
     onReset = () => {
         let { onFilterSubmit } = this.props
         this.setState({
-            filed:{}
+            filed:{},
         })
         onFilterSubmit()
     } 
