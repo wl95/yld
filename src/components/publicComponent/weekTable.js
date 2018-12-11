@@ -13,9 +13,10 @@ class Table extends Component {
     super(props)
     this.state = {
       current: 1, //当前页码
-      pageSize: 10, //每页显示的条数5条
+      pageSize: 10, //每页显示的条数
     }
   }
+
   componentDidMount() {
     
   }
@@ -29,8 +30,9 @@ class Table extends Component {
 
   render() {
     let { title = '', tableResult, scroll, list, total, totalPage } = this.props;
+    let { table1, table2, table3, table4, table5 } = list
     let { current, pageSize } = this.state
-    let { columnsTable1, columnsTable2, columnsTable3, columnsTable4 } = tableResult;
+    let { columnsTable1, columnsTable2, columnsTable3, columnsTable4, columnsTable5 } = tableResult;
     const thThead = (columns) => {
       return columns && columns.length > 0 && columns[0].children ?
         <Fragment>
@@ -65,7 +67,6 @@ class Table extends Component {
           }
         </tr>
     }
-
     let PaginationProps = {
       current,
       total,
@@ -79,7 +80,7 @@ class Table extends Component {
       pageSizeOptions:['10', '30', '50', '100', '500']
     }
 
-    return <div className="table" style={{ overflowX: scroll && scroll.x && 'scroll' }}>
+    return table1 ? <div className="table" style={{ overflowX: scroll && scroll.x && 'scroll' }}>
       <h5>{title}</h5>
       <p>表1</p>
       <table border="1" width={scroll && scroll.x}>
@@ -87,15 +88,22 @@ class Table extends Component {
           {columnsTable1 && thThead(columnsTable1)}
         </thead>
         <tbody>
+            {/* <tr>
+              {
+                Object.keys(TABLE1).map(function (key,_index) {
+                  return <td key={_index}>{TABLE1[key]}</td>
+                })
+              }
+            </tr> */}
             <tr>
-              {/* <td>213</td>
-              <td>213</td>
-              <td>213</td>
-              <td>213</td>
-              <td>213</td>
-              <td>213</td>
-              <td>213</td>
-              <td>213</td> */}
+              <td>{table1.L_WEEK_AMT}</td>
+              <td>{table1.WEEK_AMT}</td>
+              <td>{table1.MONTH_AMT}</td>
+              <td>{table1.YEAR_AMT}</td>
+              <td>{table1.WEEK_END_HOLD_AMT}</td>
+              <td>{table1.L_WEEK_END_HOLD_AMT}</td>
+              <td>{table1.L_MONTH_END_HOLD_AMT}</td>
+              <td>{table1.L_YEAR_END_HOLD_AMT}</td>
             </tr>
         </tbody>
       </table>
@@ -105,10 +113,17 @@ class Table extends Component {
           {columnsTable2 && thThead(columnsTable2)}
         </thead>
         <tbody>
+           {/* <tr>
+              {
+                Object.keys(table2).map(function (key,_index) {
+                  return <td key={_index}>{table2[key]}</td>
+                })
+              }
+            </tr> */}
           <tr>
-            <td>5454213354</td>
-            <td>10</td>
-            <td>-4883</td>
+            <td>{table2.TIME_INTERVAL}</td>
+            <td>{table2.PLAN_SALE_BALACE_AMT}</td>
+            <td>{table2.WEEK_INCREASE_AMT}</td>
           </tr>
         </tbody>
       </table>
@@ -118,13 +133,20 @@ class Table extends Component {
           {columnsTable3 && thThead(columnsTable3)}
         </thead>
         <tbody>
+            {/* <tr>
+              {
+                Object.keys(table3).map(function (key,_index) {
+                  return <td key={_index}>{table3[key]}</td>
+                })
+              }
+            </tr> */}
           <tr>
-            <td>112</td>
-            <td>435</td>
-            <td>5221</td>
-            <td>321</td>
-            <td>0.42</td>
-            <td>456</td>
+            <td>{table3.TIME_INTERVAL}</td>
+            <td>{table3.PROD_FOUNT_NUM}</td>
+            <td>{table3.PLAN_RAISING_BALANCE_AMT}</td>
+            <td>{table3.ACTUAL_RAISING_BALANCE_AMT}</td>
+            <td>{table3.SALES_RATE}</td>
+            <td>{table3.RAISING_PROD_AMT}</td>
           </tr>
         </tbody>
       </table>
@@ -134,20 +156,43 @@ class Table extends Component {
           {columnsTable4 && thThead(columnsTable4)}
         </thead>
         <tbody>
+          {
+            (table4 && table4.length>0) ? table4.map((dataItem, _ind) => {
+                return <tr key={_ind}>
+                  {
+                    Object.keys(dataItem).map(function (key,_index) {
+                      return <td key={_index}>{dataItem[key]}</td>
+                    })
+                  }
+                </tr>
+              }):<tr><td  colSpan="24" style={{"border":"none","textAlign":"center","overflow":"hidden"}}>暂无数据,请重新筛选！😝</td></tr>
+          }
+        </tbody>
+      </table>
+      <p>表5</p>
+      <table border="1" width={scroll && scroll.x}>
+        <thead>
+          {columnsTable5 && thThead(columnsTable5)}
+        </thead>
+        <tbody>
+            {/* <tr>
+              {
+                Object.keys(table5).map(function (key,_index) {
+                  return <td key={_index}>{table5[key]}</td>
+                })
+              }
+            </tr> */}
           <tr>
-            <td>465456</td>
-            <td>45464</td>
-            <td>123</td>
-            <td>120.456</td>
-            <td>56456</td>
-            <td>45678</td>
+            <td>{table5.TIME_INTERVAL}</td>
+            <td>{table5.PLAN_SALES_PERSONAL_BALANCE_AMT}</td>
+            <td>{table5.MATURITY_PERSONAL_BALANCE_AMT}</td>
           </tr>
         </tbody>
       </table>
       {
         //list && list.length>0 && <Pagination style={{textAlign:'center', margin:'10px 0', display:'inline-block'}} {...PaginationProps}/> 
       }
-    </div>
+    </div> : '暂无数据'
   }
 }
 Table.propTypes = {

@@ -27,7 +27,7 @@ class PageComponent extends  Component{
             for(let i = 0; i < len; i ++){
                   let cur = this.props.current;
                   let showI = begin + i;
-            if(cur == showI){ 
+                  if(cur == showI){ 
                         pageNum.push({num : showI, cur : true});
                   }else{
                         pageNum.push({num : showI, cur : false});

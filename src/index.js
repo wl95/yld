@@ -6,14 +6,14 @@ import configureStore from './configureStore'
 import './themes/index.less';
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import '../assets/css/bootstrap.min.css';
 const store = configureStore()//初始化redux的store
 /***
  * app入口
  */
 // console.log(location)
 render(
-   <Fragment>
+    <Fragment>
        <Root store={store}/>
        <ToastContainer/>
     </Fragment>,

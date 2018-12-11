@@ -6,34 +6,35 @@ import BootstrapPage from '../test/bootstrapPage'
 import './main.less'
 
 const ArrySlide=[
-    
-    {"id":1,menu:"各分行理财产品日均保有量统计表",path:'/publicComponent'},
-    {"id":2,menu:"各理财产品日均保有量统计表",path:'/productReport'},
-    {"id":3,menu:"理财产品基本信息",path:'/information'},
-    {"id":4,menu:"封闭式非净值型理财产品平均客户收益率及投资收益率统计",path:'/closeStatistics'},
-    {"id":5,menu:"封闭式非净值型理财产品平均客户收益率及投资收益率序列",path:'/closedSequence'},
-    {"id":6,menu:"理财产品有效销量",path:'/effectiveSales'},
-    {"id":7,menu:"理财产品日供给规模与销售规模",path:'/scaleSequence'},
-    {"id":8,menu:"机构理财产品客户销售情况",path:'/customerSales'},
-    {"id":9,menu:"理财销售情况序列",path:'/saleStatuSequence'},
-    {"id":10,menu:"在售封闭式理财产品销售情况查询",path:'/closeSalesEnquiries'},
-    {"id":11,menu:"开放式理财产品销售情况查询",path:'/openSalesEnquiries'},
-    {"id":12,menu:"开放式产品销售序列表",path:'/openSaleSequence'},
-    {"id":13,menu:"各分行理财产品销售情况统计",path:'/branchSaleStatistics'},
-    {"id":14,menu:"各理财产品销售情况统计",path:'/productSaleStatistics'},
-    {"id":15,menu:"机构理财客户产品交易情况",path:'/customerProductTrading'},
-    {"id":16,menu:"各分行理财余额统计查询",path:'/branchBalanceStatistics'},
-    {"id":17,menu:"各分行理财余额变动统计",path:'/balanceChangeStatistics'},
-    {"id":18,menu:"理财产品余额序列",path:'/productBalanceSequence'},
-    {"id":19,menu:"各分行发行自主平衡产品情况查询",path:'/branchBalanceEnquiry'},
-    {"id":20,menu:"各理财产品收入情况统计",path:'/productRevenueStatistics'},
-    {"id":21,menu:"各分行理财收入统计",path:'/branchRevenueStatistics'},
-    {"id":22,menu:"年度销售手续费总计提已分配待分配确认",path:'/annualWithdrawing'},
-    {"id":23,menu:"客户意向登记购买查询",path:'/purchaseIntentionEnquiry'},
-    {"id":24,menu:"新增客户开户数",path:'/newCustomer'},
-    {"id":25,menu:"各分行理财产品综合情况统计",path:'/branchComprehensiveStatistic'},
-    {"id":26,menu:"各理财产品综合情况统计",path:'/comprehensiveProductStatistics'},
-    {"id":27,menu:"周报数据查询",path:'/weeklyQuery'}
+    {"id":1,menu:"R01理财产品基本信息",path:'/productInformation'},
+    {"id":2,menu:"R02封闭式非净值型理财产品平均客户收益率及投资收益率统计表",path:'/closedStatistics'},
+    {"id":3,menu:"R03封闭式非净值型理财产品平均客户收益率及投资收益率序列表",path:'/closedSequence'},
+    {"id":4,menu:"R04理财产品有效销量表",path:'/effectiveSales'},
+    {"id":5,menu:"R05理财产品供给规模与销售规模序列表",path:'/scaleSequence'},
+    {"id":6,menu:"R06机构理财产品客户销售情况表",path:'/salesStatusProductCustomers'},
+    {"id":7,menu:"R07理财销售情况序列表",path:'/sequenceOfSales'},
+    {"id":8,menu:"R08在售封闭式理财产品销售情况查询表",path:'/closedSale'},
+    {"id":9,menu:"R09开放式理财产品销售情况查询表",path:'/openSales'},
+    {"id":10,menu:"R10开放式产品销售情况序列表",path:'/openSalesSeries'},
+    {"id":11,menu:"R11开放式非净值型理财产品成本统计表",path:'/openCostStatistics'},
+    {"id":12,menu:"R12各分行理财产品销售情况统计表",path:'/branchSalesStatistics'},
+    {"id":13,menu:"R13各理财产品销售情况统计表",path:'/productSalesStatistics'},
+    {"id":14,menu:"R14机构理财客户产品交易情况表",path:'/customerProductTransaction'},
+    {"id":15,menu:"R15各分行理财余额统计查询表",path:'/branchBalanceStatistics'},
+    {"id":16,menu:"R16各分行理财余额变动统计表",path:'/changeBranchBalance'},
+    {"id":17,menu:"R17各理财产品余额序列表",path:'/productBalanceSequence'},
+    {"id":18,menu:"R18各分行发行自主平衡产品情况查询表",path:'/AutonomicBalance'},
+    {"id":19,menu:"R19各分行理财产品日均保有量统计表",path:'/branchHoldings'},
+    {"id":20,menu:"R20各理财产品日均保有量统计表",path:'/productQuantity'},
+    {"id":21,menu:"R21各理财产品收入情况统计表",path:'/productRevenueStatistics'},
+    {"id":22,menu:"R22各分行理财收入统计表",path:'/branchRevenueStatistics'},
+    {"id":23,menu:"R23年度销售手续费总计提/已分配/待分配确认表",path:'/distributionOfProvision'},
+    {"id":24,menu:"R24客户意向登记购买查询表",path:'/intentionToBuy'},
+    {"id":25,menu:"R25扣款失败金额明细表",path:'/failureAmountDetails'},
+    {"id":26,menu:"R26新增客户开户数",path:'/newlyOpenedAccounts'},
+    {"id":27,menu:"R27各分行理财产品综合情况统计表",path:'/branchComprehensiveStatistics'},
+    {"id":28,menu:"R28各理财产品综合情况统计表",path:'/comprehensiveProductStatistics'},
+    {"id":29,menu:"R29周报数据查询表",path:'/weeklyDataQuery'}
 ]
 /**
  * 登录后的主页容器
@@ -55,6 +56,7 @@ class Main extends Component {
         })
     }
 
+
     render() {
 
         /**根据浏览器中的url来区分当前导航条的选中项*/
@@ -71,7 +73,7 @@ class Main extends Component {
                         <div className={'menuList' + (isShow ? ' disb' : '')}>
                         {
                             ArrySlide.map((item,ind)=>{
-                                return <NavLink to={`${this.props.match.path}`+item.path} key={item.id}>{item.menu}</NavLink>
+                                return <NavLink onClick={this.onNavLink} to={`${this.props.match.path}`+item.path} key={item.id}>{item.menu}</NavLink>
                             })
                         }
                         </div>

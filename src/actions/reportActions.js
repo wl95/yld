@@ -50,6 +50,8 @@ export function setBranchList(branchList) {
     }
 }
 
+
+
 /***
  * 初始化产品品牌列表
  * @param brandList

@@ -1,6 +1,8 @@
 import React,{Component} from 'react'
 import {NavLink} from 'react-router-dom'
 import './bootstrapsPage.less'
+import { connect } from 'react-redux'
+import { clearFilter } from 'actions/filterAction'
 import routeConfig from 'components/routeConfig'
 let organCode = '/Home';
 class BootstrapsPage extends Component{
@@ -15,6 +17,11 @@ class BootstrapsPage extends Component{
       isShow:value
     })
   }
+  
+  onNavLink = () => {
+    let { clearFilter } = this.props
+    clearFilter()
+  }
   render(){
     let {isShow} = this.state;
     return  <div className="first">
@@ -27,7 +34,7 @@ class BootstrapsPage extends Component{
                 <div className={`managemoney${isShow == 1 ? ' disblock' : ''}`}>
                   {
                       routeConfig && routeConfig.routers.map((item,index) => {
-                          return  <NavLink to={`${organCode}${item.path}`} key={index}>{item.title}</NavLink>
+                          return  <NavLink onClick={this.onNavLink} to={`${organCode}${item.path}?organCode=11005293&&organLevel=0`} key={index}>{item.title}</NavLink>
                       })
                   }
                 </div>
@@ -38,4 +45,16 @@ class BootstrapsPage extends Component{
             </div>
   }
 }
-export default BootstrapsPage
+
+const mapStateToProps = (state) => {
+  return {
+
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    clearFilter:() => dispatch(clearFilter()),
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(BootstrapsPage)

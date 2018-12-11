@@ -44,7 +44,7 @@ function JudgingForm(stateTime, endTime, ban){
   if(calcDiffTime >= 1 && calcDiffTime < 3 && !Lodash.includes(ban, 'M')){
     return 'M'
   }
-  if(calcDiffTime >= 3 && calcDiffTime < 12&& !Lodash.includes(ban, 'Q')){
+  if(calcDiffTime >= 3 && calcDiffTime < 12 && !Lodash.includes(ban, 'Q')){
     return 'Q'
   }
   if(calcDiffTime >= 12&& !Lodash.includes(ban, 'Y')){

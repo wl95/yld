@@ -1,387 +1,14 @@
 let managemoney = '/Home/managemoney';
 import moment from 'moment'
-/* selectType:'',      // 请求参数
-    selectKey:'',      // 请求到的数据获取
-    itemKey:'',        // 渲染字段
-    itemName:'',       // 渲染字段 */
+/*  selectType:'',      // 请求参数
+    selectKey:'',       // 请求到的数据获取
+    itemKey:'',         // 渲染字段
+    itemName:'',        // 渲染字段 */
 export default {
-  publicComponent:{
-    //reportName:"R19",
-    reportName:'branchHoldings',
-    title:'各分行理财产品日均保有量统计表',
-    search:[
-      {
-        text:'选择查询日期格式:',
-        type:2,
-        defaultValue:'0',
-        selectType:'DATE_TYPE',
-        itemKey:'dateTypeCode',        
-        itemName:'dateTypeName',         
-        option:[
-          {
-            dateTypeCode:'0',
-            dateTypeName:'日'
-          }
-        ]
-      },
-      {
-        text:'起始日期:',
-        selectType:'UPDATE_DATE_START',
-        relationship:'UPDATE_DATE_END',
-        dateCalendarType:'start',
-        defaultValue:moment(),
-        type:3,
-      },
-      {
-        text:'终止日期:',
-        selectType:'UPDATE_DATE_END',
-        relationship:'UPDATE_DATE_START',
-        defaultValue:moment(),
-        type:3,
-      },
-      {
-        text:'产品代码:',   
-        requestType:'reProdCode',     
-        selectType:'PROD_ID',      
-        selectKey:'prodCodeList',     
-        itemName:'prodCode',          
-        type:1,
-        method:'get',
-      },
-      { 
-        text:'省份:', 
-        selectType:'PROVINCE_CODE',
-        selectKey:'provinceList',
-        itemKey:'code',           
-        itemName:'name',          
-        disabled:true,          
-        type:2,
-      },
-      {
-        text:'地市:',
-        selectType:'PREFECTURE_CODE',
-        selectKey:'areaList',
-        itemKey:'code',           
-        itemName:'name',          
-        disabled:true,          
-        type:2,
-      },
-      {
-        text:'市县:',
-        selectType:'CITY_CODE',
-        selectKey:'cityList',
-        itemKey:'code',          
-        itemName:'name',          
-        disabled:true,           
-        type:2,
-      },
-      {
-        text:'网点:',
-        selectType:'BRANCE_CODE',
-        selectKey:'branchList',
-        itemKey:'code',           
-        itemName:'name',          
-        disabled:true,         
-        type:2,
-      },
-      {
-        text:'产品状态:',
-        requestType:'prodStatus',       
-        selectType:'AM_PROD_STATUS',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',         
-        type:2,
-        method:'get',
-      },
-      {
-        text:'产品品牌:',
-        requestType:'reBrand',       
-        selectType:'AM_PROD_BRAND_CODE',
-        selectKey:'brandList',
-        itemKey:'brandCode',
-        itemName:'brandName',
-        type:2,
-        method:'get',
-      },
-      {
-        text:'产品运作模式:',
-        requestType:'reProdoperModel',       
-        selectType:'AM_PROD_OPERATION_MODE',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      },
-      {
-        text:'产品收益类型:',
-        requestType:'reProfitType',       
-        selectType:'AM_PROD_PROFIT_MODE',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      },
-      {
-        text:'投资者类型:',
-        requestType:'dCustomerType',       
-        selectType:'CUST_CATEGORY',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      },
-      {
-        text:'机构客户:',
-        requestType:'reProper',       
-        selectType:'CUST_TYPE',
-        disabled:true,
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      },
-      {
-        text:'机构属性:',
-        requestType:'reOrganType',       
-        selectType:'ORGAN_MODE',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      },
-      {
-        text:'数据粒度:',
-        requestType:'dSjld',       
-        selectType:'ORGAN_LEVEL',
-        selectKey:'list',
-        disabled:true,
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      },
-      {
-        text:'发行币种:',
-        requestType:'regCurrency',       
-        selectType:'AM_PROD_CURRENCY',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      }
-    ],
-    tableResult:{
-      columns:[
-        {
-          title:'机构代码',
-          dataIndex:'ORGAN_ID',
-          key:'ORGAN_ID'
-        },
-        {
-          title:'机构名称',
-          dataIndex:'ORGAN_NAME',
-          key:'ORGAN_NAME'
-        },
-        {
-          title:'日均保有量(万份)',
-          dataIndex:'QUOTA',
-          key:'QUOTA'
-        }
-      ],
-    }
-  },
-  productReport:{
-    //reportName:"R20",  
-    reportName:'productQuantity',
-    title:'各理财产品日均保有量统计表',
-    search:[
-      {
-        text:'选择查询日期格式:',
-        type:2,
-        defaultValue:'0',
-        selectType:'DATE_TYPE',
-        itemKey:'dateTypeCode',        
-        itemName:'dateTypeName',         
-        option:[
-          {
-            dateTypeCode:'0',
-            dateTypeName:'日'
-          }
-        ]
-      },
-      {
-        text:'起始日期:',
-        selectType:'UPDATE_DATE_START',
-        relationship:'UPDATE_DATE_END',
-        dateCalendarType:'start',
-        defaultValue:moment(),
-        type:3,
-      },
-      {
-        text:'终止日期:',
-        selectType:'UPDATE_DATE_END',
-        relationship:'UPDATE_DATE_START',
-        defaultValue:moment(),
-        type:3,
-      },
-      {
-        text:'产品代码:',   
-        requestType:'reProdCode',     
-        selectType:'PROD_ID',      
-        selectKey:'prodCodeList',     
-        itemName:'prodCode',          
-        type:1,
-        method:'get',
-      },
-      { 
-        text:'省份:', 
-        selectType:'PROVINCE_CODE',
-        selectKey:'provinceList',
-        itemKey:'code',           
-        itemName:'name',          
-        disabled:true,          
-        type:2,
-      },
-      {
-        text:'地市:',
-        selectType:'PREFECTURE_CODE',
-        selectKey:'areaList',
-        itemKey:'code',           
-        itemName:'name',          
-        disabled:true,          
-        type:2,
-      },
-      {
-        text:'市县:',
-        selectType:'CITY_CODE',
-        selectKey:'cityList',
-        itemKey:'code',          
-        itemName:'name',          
-        disabled:true,           
-        type:2,
-      },
-      {
-        text:'网点:',
-        selectType:'BRANCE_CODE',
-        selectKey:'branchList',
-        itemKey:'code',           
-        itemName:'name',          
-        disabled:true,         
-        type:2,
-      },
-      {
-        text:'产品状态:',
-        requestType:'prodStatus',       
-        selectType:'AM_PROD_STATUS',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',         
-        type:2,
-        method:'get',
-      },
-      {
-        text:'产品品牌:',
-        requestType:'reBrand',       
-        selectType:'AM_PROD_BRAND_CODE',
-        selectKey:'brandList',
-        itemKey:'brandCode',
-        itemName:'brandName',
-        type:2,
-        method:'get',
-      },
-      {
-        text:'产品运作模式:',
-        requestType:'reProdoperModel',       
-        selectType:'AM_PROD_OPERATION_MODE',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      },
-      {
-        text:'产品收益类型:',
-        requestType:'reProfitType',       
-        selectType:'AM_PROD_PROFIT_MODE',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      },
-      {
-        text:'投资者类型:',
-        requestType:'dCustomerType',       
-        selectType:'CUST_CATEGORY', 
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      },
-      {
-        text:'机构客户:',
-        requestType:'reProper',       
-        selectType:'CUST_TYPE',
-        disabled:true,
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      },
-      {
-        text:'机构属性:',
-        requestType:'reOrganType',       
-        selectType:'ORGAN_MODE',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      },
-      {
-        text:'发行币种:',
-        requestType:'regCurrency',       
-        selectType:'AM_PROD_CURRENCY',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      }
-    ],
-    tableResult:{
-      columns:[
-        {
-          title:'产品代码',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'产品名称',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'日均保有量(万份)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        }
-      ],
-    }
-  },
-  information:{
+  productInformation:{
     //reportName:"R01",
     reportName:'productInformation',
-    title:'理财产品基本信息表',
+    title:'R01理财产品基本信息表',
     search:[
       {
         text:'募集起始开始日期:',
@@ -456,7 +83,7 @@ export default {
       {
         text:'产品品牌:',
         requestType:'reBrand',       
-        selectType:'prod_brand',
+        selectType:'am_prod_brand_code',
         selectKey:'brandList',
         itemKey:'brandCode',
         itemName:'brandName',
@@ -486,7 +113,7 @@ export default {
       {
         text:'产品收益类型:',
         requestType:'reProfitType',       
-        selectType:'prod_profit_mode',
+        selectType:'am_prod_profit_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -496,7 +123,7 @@ export default {
       {
         text:'机构客户:',
         requestType:'reProper',       
-        selectType:'reProper',  //没有
+        selectType:'cust_type',
         selectKey:'list',
         itemKey:'value',
         disabled:true,
@@ -507,7 +134,7 @@ export default {
       {
         text:'投资者类型:',
         requestType:'dCustomerType',   
-        selectType:'cust_type',
+        selectType:'cust_category',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -517,7 +144,7 @@ export default {
       {
         text:'是否自主平衡:',
         requestType:'balance', 
-        selectType:'is_balance',
+        selectType:'is_province_balance',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -566,11 +193,12 @@ export default {
       },
       {
         text:'产品销售区域:',
-        requestType:'',
+        requestType:'saleRange',
         selectType:'prefecture',
-        selectKey:'provinceList',
-        itemKey:'code',     
-        itemName:'name',         
+        //selectKey:'provinceList',
+        itemKey:'code',
+        itemName:'name',
+        method:'get',
         type:2,
       },
       {
@@ -586,7 +214,7 @@ export default {
       {
         text:'发行币种:',
         requestType:'regCurrency',       
-        selectType:'currency',
+        selectType:'am_prod_currency',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -598,99 +226,179 @@ export default {
       columns:[
         {
           title:'序号',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'SERIAL_NUMBER',
+          key:'SERIAL_NUMBER'
         },
         {
           title:'产品代码',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'PROD_ID',
+          key:'PROD_ID'
         },
         {
           title:'产品名称:',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'PROD_NAME',
+          key:'PROD_NAME'
         },
         {
           title:'发行币种:',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'CURRENCY_CN',
+          key:'CURRENCY_CN'
         },
         {
           title:'产品品牌:',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'AM_PROD_BRAND_NAME',
+          key:'AM_PROD_BRAND_NAME'
         },
         {
           title:'产品运作模式',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'AM_PROD_OPERATION_MODE_CN',
+          key:'AM_PROD_OPERATION_MODE_CN'
         },
         {
           title:'产品收益类型:',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'AM_PROD_PROFIT_MODE_CN',
+          key:'AM_PROD_PROFIT_MODE_CN'
         },
         {
           title:'募集起始日期:',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'AM_PROD_START_DAY',
+          key:'AM_PROD_START_DAY'
         },
         {
           title:'募集结束日期',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'AM_PROD_RAISING_END_DAY',
+          key:'AM_PROD_RAISING_END_DAY'
         },
         {
           title:'产品成立日期:',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'AM_PROD_FOUND_DATE',
+          key:'AM_PROD_FOUND_DATE'
         },
         {
           title:'产品终止日期:',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'AM_PROD_EXPIRE_DATE',
+          key:'AM_PROD_EXPIRE_DATE'
         },
         {
           title:'期限(天)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'AM_PROD_DURATION_DAYS',
+          key:'AM_PROD_DURATION_DAYS'
         },
         {
           title:'计划募集规模(万元)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'AM_PROD_RAISING_AMOUNT',
+          key:'AM_PROD_RAISING_AMOUNT'
         },
         {
           title:'实际募集规模(万元)',
-          dataIndex:'companyAddress',
+          dataIndex:'ACTUAL_RAISING_AMOUNT',
+          key:'ACTUAL_RAISING_AMOUNT'
+        },
+        {
+          title:'产品销售渠道',
+          dataIndex:'CHANNEL',
+          key:'CHANNEL'
+        },
+        {
+          title:'产品销售区域',
+          dataIndex:'PREFECTURE_CN',
+          key:'PREFECTURE_CN'
+        },
+        {
+          title:'投资者类型',
+          dataIndex:'CUST_CATEGORY',
           key:'companyAddress'
         },
         {
-          title:'',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        }
+          title:'机构客户类型',
+          dataIndex:'CUST_TYPE_CN',
+          key:'CUST_TYPE_CN'
+        },
+        {
+          title:'客户收益率（％）',
+          dataIndex:'CUST_PROFIT_RATE',
+          key:'CUST_PROFIT_RATE'
+        },
+        {
+          title:'销售费率（％）',
+          dataIndex:'AGENCY_RATE',
+          key:'AGENCY_RATE'
+        },
+        {
+          title:'托管费率（％）',
+          dataIndex:'AM_PROD_CUSTODY_RATE',
+          key:'AM_PROD_CUSTODY_RATE'
+        },
+        {
+          title:'推荐费率（％）',
+          dataIndex:'PROD_RECOMMEND_RATE',
+          key:'PROD_RECOMMEND_RATE'
+        },
+        {
+          title:'超额收益费率（％）',
+          dataIndex:'EXCESS_PROFIT_RATE',
+          key:'EXCESS_PROFIT_RATE'
+        },
+        {
+          title:'投资收益费率（％）',
+          dataIndex:'PROD_PROFIT_RATE',
+          key:'PROD_PROFIT_RATE'
+        },
+        {
+          title:'产品最新净值',
+          dataIndex:'LATEST_NET_VALUE',
+          key:'LATEST_NET_VALUE'
+        },
+        {
+          title:'项目名称',
+          dataIndex:'PROJECT_NAME',
+          key:'PROJECT_NAME'
+        },
+        {
+          title:'是否自主平衡',
+          dataIndex:'IS_PROVINCE_BALANCE',
+          key:'IS_PROVINCE_BALANCE'
+        },
+        {
+          title:'拟续接',
+          dataIndex:'IS_CONT_PROD',
+          key:'IS_CONT_PROD'
+        },
+        {
+          title:'待续接',
+          dataIndex:'IS_NEED_CONT',
+          key:'IS_NEED_CONT'
+        },
+        {
+          title:'产品研发人',
+          dataIndex:'PROD_RESEARCHER',
+          key:'PROD_RESEARCHER'
+        },
+        {
+          title:'项目研发人',
+          dataIndex:'PROJECT_RESEARCHER',
+          key:'PROJECT_RESEARCHER'
+        },
       ],
     }
   },
-  closeStatistics:{
+  closedStatistics:{
     //reportName:"R02",
     reportName:'closedStatistics',
-    title:'封闭式非净值型理财产品平均客户收益率及投资收益率统计表',
+    title:'R02封闭式非净值型理财产品平均客户收益率及投资收益率统计表',
     search:[
       {
         text:'查询起始日期:',
-        selectType:'start_day',
-        relationship:'UPDATE_DATE_END',
+        selectType:'start_date',
+        relationship:'end_date',
         dateCalendarType:'start',
         defaultValue:moment(),
         type:3,
       },
       {
         text:'查询终止日期:',
-        selectType:'end_day',
-        relationship:'UPDATE_DATE_START',
+        selectType:'end_date',
+        relationship:'start_date',
         defaultValue:moment(),
         type:3,
       },
@@ -717,7 +425,7 @@ export default {
       {
         text:'产品收益类型:',
         requestType:'reProfitType',       
-        selectType:'prod_profit_mode',
+        selectType:'am_prod_profit_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -727,7 +435,7 @@ export default {
       {
         text:'机构客户:',
         requestType:'reProper',       
-        selectType:'reProper',   //没有
+        selectType:'cust_type',
         selectKey:'list',
         disabled:true,
         itemKey:'value',
@@ -738,7 +446,7 @@ export default {
       {
         text:'投资者类型:',
         requestType:'dCustomerType',       
-        selectType:'cust_type',
+        selectType:'cust_category',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -748,7 +456,7 @@ export default {
       {
         text:'是否自主平衡:',
         requestType:'balance', 
-        selectType:'is_balance',
+        selectType:'is_province_balance',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -757,9 +465,9 @@ export default {
       },
       {
         text:'产品销售区域:',
-        requestType:'',
+        requestType:'saleRange',
         selectType:'prefecture',
-        selectKey:'provinceList',
+        // selectKey:'provinceList',
         itemKey:'code',           
         itemName:'name', 
         method:'get',         
@@ -768,7 +476,7 @@ export default {
       {
         text:'产品品牌:',
         requestType:'reBrand',       
-        selectType:'prod_brand',
+        selectType:'am_prod_brand_code',
         selectKey:'brandList',
         itemKey:'brandCode',
         itemName:'brandName',
@@ -788,7 +496,7 @@ export default {
       {
         text:'发行币种:',
         requestType:'regCurrency',       
-        selectType:'currency',
+        selectType:'am_prod_currency',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -803,8 +511,8 @@ export default {
           children:[
             {
               title: '序号',
-              dataIndex: 'companyAddress',
-              key: 'companyAddress', 
+              dataIndex: 'DAYS_GROUP',
+              key: 'DAYS_GROUP', 
             }
           ]
         },
@@ -813,8 +521,8 @@ export default {
           children:[
             {
               title:'产品期限分类',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'GROUP_TITLE',
+              key:'GROUP_TITLE'
             }
           ]
         },
@@ -823,23 +531,23 @@ export default {
           children:[
             {
               title:'客户收益率区间',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'S_CUST_PROFIT_RATE_INTERVAL',
+              key:'S_CUST_PROFIT_RATE_INTERVAL'
             },
             {
               title:'平均客户收益率',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'S_AVG_CUST_PROFIT_RATE',
+              key:'S_AVG_CUST_PROFIT_RATE'
             },
             {
               title:'投资收益率区间',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'S_PROD_PROFIT_RATE_INTERVAL',
+              key:'S_PROD_PROFIT_RATE_INTERVAL'
             },
             {
               title:'平均投资收益率',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'S_AVG_PROD_PROFIT_RATE',
+              key:'S_AVG_PROD_PROFIT_RATE'
             }
           ],
         },
@@ -848,23 +556,23 @@ export default {
           children:[
             {
               title:'客户收益率区间',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'A_CUST_PROFIT_RATE_INTERVAL',
+              key:'A_CUST_PROFIT_RATE_INTERVAL'
             },
             {
               title:'平均客户收益率',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'A_AVG_CUST_PROFIT_RATE',
+              key:'A_AVG_CUST_PROFIT_RATE'
             },
             {
               title:'投资收益率区间',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'A_PROD_PROFIT_RATE_INTERVAL',
+              key:'A_PROD_PROFIT_RATE_INTERVAL'
             },
             {
               title:'平均投资收益率',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'A_AVG_PROD_PROFIT_RATE',
+              key:'A_AVG_PROD_PROFIT_RATE'
             }
           ]
         }
@@ -874,38 +582,46 @@ export default {
   closedSequence:{
     //reportName:"R03",
     reportName:'closedSequence',
-    title:'封闭式非净值型理财产品平均客户收益率及投资收益率序列表',
+    title:'R03封闭式非净值型理财产品平均客户收益率及投资收益率序列表',
     search:[ 
       {
         text:'选择查询日期格式:',
         type:2,
-        defaultValue:'0',
-        selectType:'DATE_TYPE',
-        itemKey:'dateTypeCode',         
-        itemName:'dateTypeName',         
+        defaultValue:'daily',
+        selectType:'date_type',
+        itemKey:'dateTypeCode',         // 渲染请求参数
+        itemName:'dateTypeName',         // 渲染字段
         option:[
           {
-            dateTypeCode:0,
+            dateTypeCode:'daily',
             dateTypeName:'日'
           },
           {
-            dateTypeCode:1,
+            dateTypeCode:'monthly',
             dateTypeName:'月'
           },
+          {
+            dateTypeCode:'quarterly',
+            dateTypeName:'季'
+          },
+          {
+            dateTypeCode:'yearly',
+            dateTypeName:'年'
+          }
         ]
       },
       {
         text:'起始日期:',
-        selectType:'start_day',
-        relationship:'UPDATE_DATE_END',
+        selectType:'start_date',
+        relationship:'end_date',
         dateCalendarType:'start',
         defaultValue:moment(),
         type:3,
       },
       {
         text:'终止日期:',
-        selectType:'end_day',
-        relationship:'UPDATE_DATE_START',
+        selectType:'end_date',
+        relationship:'start_date',
         defaultValue:moment(),
         type:3,
       },
@@ -932,7 +648,7 @@ export default {
       {
         text:'产品收益类型:',
         requestType:'reProfitType',       
-        selectType:'prod_profit_mode',
+        selectType:'am_prod_profit_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -942,7 +658,7 @@ export default {
       {
         text:'机构客户类型:',
         requestType:'reProper',       
-        selectType:'reProper',  //没有
+        selectType:'cust_type',
         disabled:true,
         selectKey:'list',
         itemKey:'value',
@@ -953,7 +669,7 @@ export default {
       {
         text:'投资者类型:',
         requestType:'dCustomerType',       
-        selectType:'cust_type',
+        selectType:'cust_category',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -963,7 +679,7 @@ export default {
       {
         text:'是否自主平衡:',
         requestType:'balance', 
-        selectType:'is_balance',
+        selectType:'is_province_balance',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -972,11 +688,12 @@ export default {
       },
       {
         text:'产品销售区域:',
-        requestType:'',
+        requestType:'saleRange',
         selectType:'prefecture',
-        selectKey:'provinceList',
+        // selectKey:'provinceList',
         itemKey:'code',           
-        itemName:'name',          
+        itemName:'name', 
+        method:'get',         
         type:2,
       },
       {
@@ -992,7 +709,7 @@ export default {
       {
         text:'产品品牌:',
         requestType:'reBrand',       
-        selectType:'prod_brand',
+        selectType:'am_prod_brand_code',
         selectKey:'brandList',
         itemKey:'brandCode',
         itemName:'brandName',
@@ -1002,7 +719,7 @@ export default {
       {
         text:'发行币种:',
         requestType:'regCurrency',       
-        selectType:'currency',
+        selectType:'am_prod_currency',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -1017,8 +734,8 @@ export default {
           children:[
             {
               title:'时间',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'UPDATE_DATE',
+              key:'UPDATE_DATE'
             }
           ]
         },
@@ -1027,28 +744,28 @@ export default {
           children:[
             {
               title:'发行币种',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'CURRENCY_CN',
+              key:'CURRENCY_CN'
             },
             {
               title:'客户收益率区间',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'S_CUST_PROFIT_RATE_INTERVAL',
+              key:'S_CUST_PROFIT_RATE_INTERVAL'
             },
             {
               title:'平均客户收益率',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'S_AVG_CUST_PROFIT_RATE',
+              key:'S_AVG_CUST_PROFIT_RATE'
             },
             {
               title:'投资收益率区间',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'S_PROD_PROFIT_RATE_INTERVAL',
+              key:'S_PROD_PROFIT_RATE_INTERVAL'
             },
             {
               title:'平均投资收益率',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'S_AVG_PROD_PROFIT_RATE',
+              key:'S_AVG_PROD_PROFIT_RATE'
             }
           ]
         },
@@ -1057,23 +774,23 @@ export default {
           children:[
             {
               title:'客户收益率区间',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'A_CUST_PROFIT_RATE_INTERVAL',
+              key:'A_CUST_PROFIT_RATE_INTERVAL'
             },
             {
               title:'平均客户收益率',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'A_AVG_CUST_PROFIT_RATE',
+              key:'A_AVG_CUST_PROFIT_RATE'
             },
             {
               title:'投资收益率区间',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'A_PROD_PROFIT_RATE_INTERVAL',
+              key:'A_PROD_PROFIT_RATE_INTERVAL'
             },
             {
               title:'平均投资收益率',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'A_AVG_PROD_PROFIT_RATE',
+              key:'A_AVG_PROD_PROFIT_RATE'
             }
           ]
         }
@@ -1086,362 +803,14 @@ export default {
     }
   },
   effectiveSales:{
-    //reportName:'R04', //没有
+    //reportName:'R04',
     reportName:'effectiveSales',
-    title:'理财产品有效销量表',
+    orcode:'organCode',
+    title:'R04理财产品有效销量表',
     search:[
       { 
         text:'省份:', 
-        selectType:'PROVINCE_CODE',
-        selectKey:'provinceList',
-        itemKey:'code',   
-        itemName:'name', 
-        disabled:true,          
-        type:2,
-      },
-      {
-        text:'地市:',
-        selectType:'PREFECTURE_CODE',
-        selectKey:'areaList',
-        itemKey:'code',   
-        itemName:'name', 
-        disabled:true,          
-        type:2,
-      },
-      {
-        text:'市县:',
-        selectType:'CITY_CODE',
-        selectKey:'cityList',
-        itemKey:'code',   
-        itemName:'name', 
-        disabled:true,           
-        type:2,
-      },
-      {
-        text:'网点:',
-        selectType:'BRANCE_CODE',
-        selectKey:'branchList',
-        itemKey:'code',   
-        itemName:'name', 
-        disabled:true,         
-        type:2,
-      },
-      {
-        text:'起始月份:',
-        selectType:'UPDATE_DATE',
-        dateFormat:'YYYY-MM',
-        type:3,
-      },
-      {
-        text:'结束月份:',
-        selectType:'ENDDATE_DATE',
-        dateFormat:'YYYY-MM',
-        type:3,
-      },
-      {
-        text:'数据粒度:',
-        requestType:'dSjld',       
-        selectType:'ORGAN_LEVEL',
-        selectKey:'list',
-        disabled:true,
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      },
-      {
-        text:'机构属性:',
-        requestType:'reOrganType',       
-        selectType:'ORGAN_MODE',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      },
-      {
-        text:'发行币种:',
-        requestType:'regCurrency',       
-        selectType:'AM_PROD_CURRENCY',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      }
-    ],
-    tableResult:{
-      columns:[
-        {
-          title:'机构代码',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'发行币种',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'机构名称',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'开放式产品日均保有量(个人)增量(万份)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'开放式产品日均保有量(个人)增量排名',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'开放式产品日均保有量(机构)增量(万份)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'开放式产品日均保有量(机构)增量排名',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'开放式日均保有量(合计)增量(万份)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'开放式产品日均保有量(合计)增量排名',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'封闭式产品销量(个人)(万元)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'封闭式产品销量(个人)排名',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'封闭式产品销量(机构)(万元)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'封闭式产品销量(机构)排名',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'封闭式产品销量(合计)(万元)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'封闭式产品销量(合计)排名',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'有效销量(个人)(万元)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'有效销量(个人)排名',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'有效销量(机构)(万元)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'有效销量(机构)排名',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'有效销量(合计)(万元)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'有效销量(合计)排名',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        }
-      ],
-    }
-  },
-  scaleSequence:{
-    //reportName:'R05',  //没有
-    reportName:'scaleSequence',
-    title:'理财产品供给规模与销售规模序列表',
-    search:[
-      {
-        text:'起始月份:',
-        selectType:'UPDATE_DATE',
-        dateFormat:'YYYY-MM',
-        type:3,
-      },
-      {
-        text:'结束月份:',
-        selectType:'ENDDATE_DATE',
-        dateFormat:'YYYY-MM',
-        type:3,
-      },
-      {
-        text:'产品运作模式:',
-        requestType:'reProdoperModel',       
-        selectType:'AM_PROD_OPERATION_MODE',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      },
-      {
-        text:'发行币种:',
-        requestType:'regCurrency',       
-        selectType:'AM_PROD_CURRENCY',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      }
-    ],
-    tableResult:{
-      columns:[
-        {
-          title:'月份',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'发行币种',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'计划发售(万元)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'实际发送(万元)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'差额(万元)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'销售率',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        }
-      ],
-    }
-  },
-  customerSales:{
-    //reportName:'R06',
-    reportName:'salesStatusProductCustomers',
-    title:'机构理财产品客户销售情况表',
-    search:[
-      {
-        text:'起始日期:',
-        selectType:'start_date',
-        relationship:'UPDATE_DATE_END',
-        dateCalendarType:'start',
-        defaultValue:moment(),
-        type:3,
-      },
-      {
-        text:'终止日期:',
-        selectType:'end_date',
-        relationship:'UPDATE_DATE_START',
-        defaultValue:moment(),
-        type:3,
-      },
-      {
-        text:'产品代码:',   
-        requestType:'reProdCode',     
-        selectType:'prod_id',      
-        selectKey:'prodCodeList',    
-        itemKey:'prodCode',           
-        itemName:'prodCode',          
-        type:1,
-        method:'get',
-      },
-      {
-        text:'发行币种:',
-        requestType:'regCurrency',       
-        selectType:'currency',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      }
-    ],
-    tableResult:{
-      columns:[
-        {
-          title:'购买时间',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'发行币种',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'产品代码',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'产品名称',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'客户开户号',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'客户名称',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'认购金额(万元)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        }
-      ],
-    }
-  },
-  saleStatuSequence:{
-    //reportName:'R07',
-    reportName:'sequenceOfSales',
-    title:'理财销售情况序列表',
-    search:[
-      { 
-        text:'省份:', 
-        selectType:'privance_code',
+        selectType:'province_code',
         selectKey:'provinceList',
         itemKey:'code',   
         itemName:'name', 
@@ -1475,28 +844,266 @@ export default {
         disabled:true,         
         type:2,
       },
-      {
-        text:'选择查询日期格式:',
-        type:2,
-        defaultValue:'0',
-        selectType:'DATE_TYPE',
-        itemKey:'dateTypeCode',         
-        itemName:'dateTypeName',         
-        option:[
-          {
-            dateTypeCode:'0',
-            dateTypeName:'日'
-          },
-          {
-            dateTypeCode:'1',
-            dateTypeName:'月'
-          }
-        ]
+      /* {
+        text:'起始月份:',
+        selectType:'start_date',
+        defaultValue:moment(),
+        dateFormat:'YYYY-MM',
+        type:3,
       },
+      {
+        text:'结束月份:',
+        selectType:'end_date',
+        defaultValue:moment(),
+        dateFormat:'YYYY-MM',
+        type:3,
+      }, */
+      {
+        text:'起始月份:',
+        selectType:'start_date',
+        relationship:'end_date',
+        dateCalendarType:'start',
+        defaultValue:moment(),
+        dateFormat:'YYYY-MM',
+        type:3,
+      },
+      {
+        text:'终止月份:',
+        selectType:'end_date',
+        relationship:'start_date',
+        defaultValue:moment(),
+        dateFormat:'YYYY-MM',
+        type:3,
+      },
+      {
+        text:'数据粒度:',
+        requestType:'dSjld',       
+        selectType:'organ_level',
+        selectKey:'list',
+        //disabled:true,
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      },
+      {
+        text:'机构属性:',
+        requestType:'reOrganType',       
+        selectType:'organ_mode',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      },
+      {
+        text:'发行币种:',
+        requestType:'regCurrency',       
+        selectType:'am_prod_currency',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      }
+    ],
+    tableResult:{
+      columns:[
+        {
+          title:'机构代码',
+          dataIndex:'ORGAN_ID',
+          key:'ORGAN_ID'
+        },
+        {
+          title:'发行币种',
+          dataIndex:'CURRENCY',
+          key:'CURRENCY'
+        },
+        {
+          title:'机构名称',
+          dataIndex:'ORGAN_NAME',
+          key:'ORGAN_NAME'
+        },
+        {
+          title:'开放式产品日均保有量(个人)增量(万份)',
+          dataIndex:'OPENED_HOLD_PRIVATE_INC',
+          key:'OPENED_HOLD_PRIVATE_INC'
+        },
+        {
+          title:'开放式产品日均保有量(个人)增量排名',
+          dataIndex:'RANK_OPENED_HOLD_PRIVATE_INC',
+          key:'RANK_OPENED_HOLD_PRIVATE_INC'
+        },
+        {
+          title:'开放式产品日均保有量(机构)增量(万份)',
+          dataIndex:'OPENED_HOLD_ORGAN_INC',
+          key:'OPENED_HOLD_ORGAN_INC'
+        },
+        {
+          title:'开放式产品日均保有量(机构)增量排名',
+          dataIndex:'RANK_OPENED_HOLD_ORGAN_INC',
+          key:'RANK_OPENED_HOLD_ORGAN_INC'
+        },
+        {
+          title:'开放式日均保有量(合计)增量(万份)',
+          dataIndex:'TOTAL_OPENED_HOLD_ORGAN_INC',
+          key:'TOTAL_OPENED_HOLD_ORGAN_INC'
+        },
+        {
+          title:'开放式产品日均保有量(合计)增量排名',
+          dataIndex:'RANK_TOTAL_OPENED_HOLD_ORGAN_INC',
+          key:'RANK_TOTAL_OPENED_HOLD_ORGAN_INC'
+        },
+        {
+          title:'封闭式产品销量(个人)(万元)',
+          dataIndex:'CLOSED_SALES_PRIVATE',
+          key:'CLOSED_SALES_PRIVATE'
+        },
+        {
+          title:'封闭式产品销量(个人)排名',
+          dataIndex:'RANK_CLOSED_SALES_PRIVATE',
+          key:'RANK_CLOSED_SALES_PRIVATE'
+        },
+        {
+          title:'封闭式产品销量(机构)(万元)',
+          dataIndex:'CLOSED_SALES_ORGAN',
+          key:'CLOSED_SALES_ORGAN'
+        },
+        {
+          title:'封闭式产品销量(机构)排名',
+          dataIndex:'RANK_CLOSED_SALES_ORGAN',
+          key:'RANK_CLOSED_SALES_ORGAN'
+        },
+        {
+          title:'封闭式产品销量(合计)(万元)',
+          dataIndex:'TOTAL_CLOSED_SALES',
+          key:'TOTAL_CLOSED_SALES'
+        },
+        {
+          title:'封闭式产品销量(合计)排名',
+          dataIndex:'RANK_TOTAL_CLOSED_SALES',
+          key:'RANK_TOTAL_CLOSED_SALES'
+        },
+        {
+          title:'有效销量(个人)(万元)',
+          dataIndex:'EFFECTIVE_SALES_PRIVATE',
+          key:'EFFECTIVE_SALES_PRIVATE'
+        },
+        {
+          title:'有效销量(个人)排名',
+          dataIndex:'RANK_EFFECTIVE_SALES_PRIVATE',
+          key:'RANK_EFFECTIVE_SALES_PRIVATE'
+        },
+        {
+          title:'有效销量(机构)(万元)',
+          dataIndex:'EFFECTIVE_SALES_ORGAN',
+          key:'EFFECTIVE_SALES_ORGAN'
+        },
+        {
+          title:'有效销量(机构)排名',
+          dataIndex:'EFFECTIVE_SALES_ORGAN',
+          key:'EFFECTIVE_SALES_ORGAN'
+        },
+        {
+          title:'有效销量(合计)(万元)',
+          dataIndex:'TOTAL_EFFECTIVE_SALES',
+          key:'TOTAL_EFFECTIVE_SALES'
+        },
+        {
+          title:'有效销量(合计)排名',
+          dataIndex:'RANK_TOTAL_EFFECTIVE_SALES',
+          key:'RANK_TOTAL_EFFECTIVE_SALES'
+        }
+      ],
+    }
+  },
+  scaleSequence:{
+    //reportName:'R05',
+    reportName:'scaleSequence',
+    title:'R05理财产品供给规模与销售规模序列表',
+    search:[
+      {
+        text:'起始月份:',
+        selectType:'start_date',
+        relationship:'end_date',
+        dateCalendarType:'start',
+        defaultValue:moment(),
+        dateFormat:'YYYY-MM',
+        type:3,
+      },
+      {
+        text:'终止月份:',
+        selectType:'end_date',
+        relationship:'start_date',
+        defaultValue:moment(),
+        dateFormat:'YYYY-MM',
+        type:3,
+      },
+      {
+        text:'产品运作模式:',
+        requestType:'reProdoperModel',       
+        selectType:'am_prod_operation_mode',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      },
+      {
+        text:'发行币种:',
+        requestType:'regCurrency',       
+        selectType:'am_prod_currency',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      }
+    ],
+    tableResult:{
+      columns:[
+        {
+          title:'月份',
+          dataIndex:'UPDATE_DATE',
+          key:'UPDATE_DATE'
+        },
+        {
+          title:'发行币种',
+          dataIndex:'CURRENCY_CN',
+          key:'CURRENCY_CN'
+        },
+        {
+          title:'计划发售(万元)',
+          dataIndex:'PLAN_RAISING_AMOUTN',
+          key:'PLAN_RAISING_AMOUTN'
+        },
+        {
+          title:'实际发售(万元)',
+          dataIndex:'ACTURAL_RAISING_AMOUNT',
+          key:'ACTURAL_RAISING_AMOUNT'
+        },
+        {
+          title:'差额(万元)',
+          dataIndex:'DIFF_AMOUNT',
+          key:'DIFF_AMOUNT'
+        },
+        {
+          title:'销售率',
+          dataIndex:'SALES_RATE',
+          key:'SALES_RATE'
+        }
+      ],
+    }
+  },
+  salesStatusProductCustomers:{
+    //reportName:'R06',
+    reportName:'salesStatusProductCustomers',
+    title:'R06构理财产品客户销售情况表',
+    search:[
       {
         text:'起始日期:',
         selectType:'start_date',
-        relationship:'UPDATE_DATE_END',
+        relationship:'end_date',
         dateCalendarType:'start',
         defaultValue:moment(),
         type:3,
@@ -1504,14 +1111,154 @@ export default {
       {
         text:'终止日期:',
         selectType:'end_date',
-        relationship:'UPDATE_DATE_START',
+        relationship:'start_date',
+        defaultValue:moment(),
+        type:3,
+      },
+      {
+        text:'产品代码:',   
+        requestType:'reProdCode',     
+        selectType:'prod_id',      
+        selectKey:'prodCodeList',    
+        itemKey:'prodCode',           
+        itemName:'prodCode',          
+        type:1,
+        method:'get',
+      },
+      {
+        text:'发行币种:',
+        requestType:'regCurrency',       
+        selectType:'am_prod_currency',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      }
+    ],
+    tableResult:{
+      columns:[
+        {
+          title:'购买时间',
+          dataIndex:'UPDATE_DATE',
+          key:'UPDATE_DATE'
+        },
+        {
+          title:'发行币种',
+          dataIndex:'CURRENCY_CN',
+          key:'CURRENCY_CN'
+        },
+        {
+          title:'产品代码',
+          dataIndex:'PROD_ID',
+          key:'PROD_ID'
+        },
+        {
+          title:'产品名称',
+          dataIndex:'PROD_NAME',
+          key:'PROD_NAME'
+        },
+        {
+          title:'客户开户号',
+          dataIndex:'ACC_NO',
+          key:'ACC_NO'
+        },
+        {
+          title:'客户名称',
+          dataIndex:'CUST_NAME',
+          key:'CUST_NAME'
+        },
+        {
+          title:'认购金额(万元)',
+          dataIndex:'CONFIRMED_AMOUNT',
+          key:'CONFIRMED_AMOUNT'
+        }
+      ],
+    }
+  },
+  sequenceOfSales:{
+    // reportName:'R07',
+    reportName:'sequenceOfSales',
+    orcode:'organCode',
+    title:'R07理财销售情况序列表',
+    search:[
+      { 
+        text:'省份:', 
+        selectType:'province_code',
+        selectKey:'provinceList',
+        itemKey:'code',           
+        itemName:'name',          
+        disabled:true,          
+        type:2,
+      },
+      {
+        text:'地市:',
+        selectType:'prefecture_code',
+        selectKey:'areaList',
+        itemKey:'code',           
+        itemName:'name',          
+        disabled:true,          
+        type:2,
+      },
+      {
+        text:'市县:',
+        selectType:'city_code',
+        selectKey:'cityList',
+        itemKey:'code',          
+        itemName:'name',          
+        disabled:true,           
+        type:2,
+      },
+      {
+        text:'网点:',
+        selectType:'brance_code',
+        selectKey:'branchList',
+        itemKey:'code',           
+        itemName:'name',          
+        disabled:true,         
+        type:2,
+      },
+      {
+        text:'选择查询日期格式:',
+        type:2,
+        defaultValue:'daily',
+        selectType:'date_type',
+        itemKey:'dateTypeCode',         
+        itemName:'dateTypeName',         
+        option:[
+          {
+            dateTypeCode:'daily',
+            dateTypeName:'日'
+          },
+          {
+            dateTypeCode:'monthly',
+            dateTypeName:'月'
+          },
+          {
+            dateTypeCode:'yearly',
+            dateTypeName:'年'
+          }
+        ]
+      },
+      {
+        text:'起始日期:',
+        selectType:'start_date',
+        relationship:'end_date',
+        dateCalendarType:'start',
+        defaultValue:moment(),
+        type:3,
+      },
+      {
+        text:'终止日期:',
+        selectType:'end_date',
+        relationship:'start_date',
         defaultValue:moment(),
         type:3,
       },
       {
         text:'投资者类型:',
         requestType:'dCustomerType',       
-        selectType:'cust_type',   
+        selectType:'cust_category',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -1521,9 +1268,9 @@ export default {
       {
         text:'机构客户:',
         requestType:'reProper',       
-        selectType:'reProper',    // 没有
-        selectKey:'list',
+        selectType:'cust_type',
         disabled:true,
+        selectKey:'list',
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -1572,7 +1319,7 @@ export default {
       {
         text:'发行币种:',
         requestType:'regCurrency',       
-        selectType:'currency',
+        selectType:'am_prod_currency',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -1583,42 +1330,45 @@ export default {
     tableResult:{
       columns:[
         {
-          title:'查询日期',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          title:'购买日期',
+          dataIndex:'UPDATE_DATE',
+          key:'UPDATE_DATE'
         },
         {
-          title:'发行币种',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'销量金额(万元)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          title:'销售金额',
+          dataIndex:'CONFIRMED_AMOUNT',
+          key:'CONFIRMED_AMOUNT'
         },
         {
           title:'同比',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'YOY',
+          key:'YOY'
+        },
+        {
+          title:'环比',
+          dataIndex:'MOM',
+          key:'MOM'
         }   
       ],
     }
   },
-  closeSalesEnquiries:{
+  closedSale:{
     //reportName:'R08',
     reportName:'closedSale',
-    title:'在售封闭式理财产品销售情况查询表',
+    title:'R08在售封闭式理财产品销售情况查询表',
     search:[
       {
         text:'查询日期:',
-        selectType:'update_date',
+        selectType:'start_date',
+        relationship:'end_date',
+        dateCalendarType:'start',
+        defaultValue:moment(),
         type:3,
       },
       {
         text:'产品运作模式:',
         requestType:'reProdoperModel',       
-        selectType:'prod_operation_mode',
+        selectType:'am_prod_operation_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -1638,7 +1388,7 @@ export default {
       {
         text:'发行币种:',
         requestType:'regCurrency',       
-        selectType:'prod_currency',
+        selectType:'am_prod_currency',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -1650,41 +1400,225 @@ export default {
       columns:[
         {
           title:'产品名称',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'发行币种',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'PROD_NAME',
+          key:'PROD_NAME'
         },
         {
           title:'计划发售(万元)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'AM_PROD_RAISING_AMOUNT',
+          key:'AM_PROD_RAISING_AMOUNT'
         },
         {
           title:'实际发售(万元)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'CONFIRMED_AMOUNT',
+          key:'CONFIRMED_AMOUNT'
         },
         {
           title:'差额(万元)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'BALANCE_AMOUNT',
+          key:'BALANCE_AMOUNT'
         },
         {
           title:'销售率',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'SALES_RATE',
+          key:'SALES_RATE'
         }
       ],
     }
   },
-  openSalesEnquiries:{
-    //reportName:'`R10`',
+  openSales:{
+    //reportName:'R09',
     reportName:'openSales',
-    title:'开放式理财产品销售情况查询表',
+    orcode:'organCode',
+    title:'R09开放式理财产品销售情况查询表',
+    search:[
+      { 
+        text:'省份:', 
+        selectType:'province_code',
+        selectKey:'provinceList',
+        itemKey:'code',           
+        itemName:'name',          
+        disabled:true,          
+        type:2,
+      },
+      {
+        text:'地市:',
+        selectType:'prefecture_code',
+        selectKey:'areaList',
+        itemKey:'code',           
+        itemName:'name',          
+        disabled:true,          
+        type:2,
+      },
+      {
+        text:'市县:',
+        selectType:'city_code',
+        selectKey:'cityList',
+        itemKey:'code',          
+        itemName:'name',          
+        disabled:true,           
+        type:2,
+      },
+      {
+        text:'网点:',
+        selectType:'brance_code',
+        selectKey:'branchList',
+        itemKey:'code',           
+        itemName:'name',          
+        disabled:true,         
+        type:2,
+      },
+      {
+        text:'起始日期:',
+        selectType:'start_date',
+        relationship:'end_date',
+        dateCalendarType:'start',
+        defaultValue:moment(),
+        type:3,
+      },
+      {
+        text:'终止日期:',
+        selectType:'end_date',
+        relationship:'start_date',
+        defaultValue:moment(),
+        type:3,
+      },
+      {
+        text:'机构属性:',
+        requestType:'reOrganType',       
+        selectType:'organ_mode',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      },
+      {
+        text:'产品运作模式:',
+        requestType:'reProdoperModel',       
+        selectType:'am_prod_operation_mode',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      },
+    ],
+    tableResult:{
+      columns:[
+        {
+          title:'产品代码',
+          dataIndex:'PROD_ID',
+          key:'PROD_ID'
+        },
+        {
+          title:'产品名称',
+          dataIndex:'PROD_NAME',
+          key:'PROD_NAME'
+        },
+        {
+          title:'销售金额(个人)',
+          dataIndex:'INDIVIDUAL_SALES_AMOUNT',
+          key:'INDIVIDUAL_SALES_AMOUNT'
+        },
+        {
+          title:'销售金额(机构)',
+          dataIndex:'ORGAN_SALES_AMOUNT',
+          key:'ORGAN_SALES_AMOUNT'
+        },
+        {
+          title:'销售总金额(合计)',
+          dataIndex:'SALES_AMOUNT',
+          key:'SALES_AMOUNT'
+        },
+        {
+          title:'销售份额(个人)',
+          dataIndex:'INDIVIDUAL_SALES_QUOTA',
+          key:'INDIVIDUAL_SALES_QUOTA'
+        },
+        {
+          title:'销售份额(机构)',
+          dataIndex:'ORGAN_SALES_QUOTA',
+          key:'ORGAN_SALES_QUOTA'
+        },
+        {
+          title:'销售总份额(合计)',
+          dataIndex:'SALES_QUOTA',
+          key:'SALES_QUOTA'
+        },
+        {
+          title:'赎回金额(个人)',
+          dataIndex:'INDIVIDUAL_REDEEM_AMOUNT',
+          key:'INDIVIDUAL_REDEEM_AMOUNT'
+        },
+        {
+          title:'赎回金额(机构)',
+          dataIndex:'ORGAN_REDEEM_AMOUNT',
+          key:'ORGAN_REDEEM_AMOUNT'
+        },
+        {
+          title:'赎回份额(个人)',
+          dataIndex:'INDIVIDUAL_REDEEM_QUOTA',
+          key:'INDIVIDUAL_REDEEM_QUOTA'
+        },
+        {
+          title:'赎回份额(机构)',
+          dataIndex:'ORGAN_REDEEM_QUOTA',
+          key:'ORGAN_REDEEM_QUOTA'
+        },
+        {
+          title:'净增金额(个人)',
+          dataIndex:'INDIVIDUAL_NET_AMOUNT',
+          key:'INDIVIDUAL_NET_AMOUNT'
+        },
+        {
+          title:'净增金额(机构)',
+          dataIndex:'ORGAN_NET_AMOUNT',
+          key:'ORGAN_NET_AMOUNT'
+        },
+        {
+          title:'净增份额(个人)',
+          dataIndex:'INDIVIDUAL_NET_QUOTA',
+          key:'INDIVIDUAL_NET_QUOTA'
+        },
+        {
+          title:'净增份额(机构)',
+          dataIndex:'ORGAN_NET_QUOTA',
+          key:'ORGAN_NET_QUOTA'
+        },
+        {
+          title:'净增金额总计',
+          dataIndex:'NET_AMOUNT',
+          key:'NET_AMOUNT'
+        },
+        {
+          title:'净增份额总计',
+          dataIndex:'NET_QUOTA',
+          key:'NET_QUOTA'
+        },
+        {
+          title:'当前保有量份额（个人）',
+          dataIndex:'INDIVIDUAL_HOLD_QUOTA',
+          key:'INDIVIDUAL_HOLD_QUOTA'
+        },
+        {
+          title:'当前保有量份额（机构）',
+          dataIndex:'ORGAN_HOLD_QUOTA',
+          key:'ORGAN_HOLD_QUOTA'
+        },
+        {
+          title:'当前保有量份额总计',
+          dataIndex:'HOLD_QUOTA',
+          key:'HOLD_QUOTA'
+        },
+      ],
+    }
+  },
+  openSalesSeries:{
+    //reportName:'R10', 
+    reportName:'openSalesSeries',
+    orcode:'organCode',
+    title:'R10开放式产品销售情况序列表',
     search:[
       { 
         text:'省份:', 
@@ -1723,9 +1657,35 @@ export default {
         type:2,
       },
       {
+        text:'选择查询日期格式:',
+        type:2,
+        defaultValue:'daily',
+        selectType:'date_type',
+        itemKey:'dateTypeCode',         // 渲染请求参数
+        itemName:'dateTypeName',         // 渲染字段
+        option:[
+          {
+            dateTypeCode:'daily',
+            dateTypeName:'日'
+          },
+          {
+            dateTypeCode:'monthly',
+            dateTypeName:'月'
+          },
+          {
+            dateTypeCode:'quarterly',
+            dateTypeName:'季'
+          },
+          {
+            dateTypeCode:'yearly',
+            dateTypeName:'年'
+          }
+        ]
+      },
+      {
         text:'起始日期:',
         selectType:'start_date',
-        relationship:'UPDATE_DATE_END',
+        relationship:'end_date',
         dateCalendarType:'start',
         defaultValue:moment(),
         type:3,
@@ -1733,18 +1693,18 @@ export default {
       {
         text:'终止日期:',
         selectType:'end_date',
-        relationship:'UPDATE_DATE_START',
+        relationship:'start_date',
         defaultValue:moment(),
         type:3,
       },
       {
-        text:'机构属性:',
-        requestType:'reOrganType',       
-        selectType:'organ_mode',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',
-        type:2,
+        text:'产品代码:',   
+        requestType:'reProdCode',     
+        selectType:'prod_id',      
+        selectKey:'prodCodeList',    
+        itemKey:'prodCode',           
+        itemName:'prodCode',          
+        type:1,
         method:'get',
       },
       {
@@ -1757,210 +1717,10 @@ export default {
         type:2,
         method:'get',
       },
-    ],
-    tableResult:{
-      columns:[
-        {
-          title:'产品代码',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'产品名称',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'销售金额(个人)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'销售金额(机构)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'销售总金额(合计)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'销售份额(个人)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'销售份额(机构)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'销售总份额(合计)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'赎回金额(个人)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'赎回金额(机构)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'赎回总金额(合计)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'赎回份额(个人)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'赎回份额(机构)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'赎回总份额(合计)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'净增金额(个人)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'净增份额(个人)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'净增金额(机构)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'净增份额(机构)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'净增总金额(合计)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'净增总份数(合计)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        }
-      ],
-    }
-  },
-  openSaleSequence:{
-    //reportName:'R11',  // 没有   
-    reportName:'openSalesSeries',
-    title:'开放式产品销售情况序列表',
-    search:[
-      { 
-        text:'省份:', 
-        selectType:'PROVINCE_CODE',
-        selectKey:'provinceList',
-        itemKey:'code',   
-        itemName:'name', 
-        disabled:true,          
-        type:2,
-      },
-      {
-        text:'地市:',
-        selectType:'PREFECTURE_CODE',
-        selectKey:'areaList',
-        itemKey:'code',   
-        itemName:'name', 
-        disabled:true,          
-        type:2,
-      },
-      {
-        text:'市县:',
-        selectType:'CITY_CODE',
-        selectKey:'cityList',
-        itemKey:'code',   
-        itemName:'name', 
-        disabled:true,           
-        type:2,
-      },
-      {
-        text:'网点:',
-        selectType:'BRANCE_CODE',
-        selectKey:'branchList',
-        itemKey:'code',   
-        itemName:'name', 
-        disabled:true,         
-        type:2,
-      },
-      {
-        text:'选择查询日期格式:',
-        type:2,
-        defaultValue:'0',
-        selectType:'DATE_TYPE',
-        itemKey:'dateTypeCode',         // 渲染请求参数
-        itemName:'dateTypeName',         // 渲染字段
-        option:[
-          {
-            dateTypeCode:'0',
-            dateTypeName:'日'
-          },
-          {
-            dateTypeCode:'1',
-            dateTypeName:'月'
-          },
-        ]
-      },
-      {
-        text:'起始日期:',
-        selectType:'UPDATE_DATE_START',
-        relationship:'UPDATE_DATE_END',
-        dateCalendarType:'start',
-        defaultValue:moment(),
-        type:3,
-      },
-      {
-        text:'终止日期:',
-        selectType:'UPDATE_DATE_END',
-        relationship:'UPDATE_DATE_START',
-        defaultValue:moment(),
-        type:3,
-      },
-      {
-        text:'产品代码:',   
-        requestType:'reProdCode',     
-        selectType:'PROD_ID',      
-        selectKey:'prodCodeList',    
-        itemKey:'prodCode',           
-        itemName:'prodCode',          
-        type:1,
-        method:'get',
-      },
-      {
-        text:'产品运作模式:',
-        requestType:'reProdoperModel',       
-        selectType:'AM_PROD_OPERATION_MODE',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      },
       {
         text:'机构属性:',
         requestType:'reOrganType',       
-        selectType:'ORGAN_MODE',
+        selectType:'organ_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -1972,111 +1732,171 @@ export default {
       columns:[
         {
           title:'日期',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'UPDATE_DATE',
+          key:'UPDATE_DATE'
         },
         {
           title:'销售金额(个人)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'INDIVIDUAL_SALES_AMOUNT',
+          key:'INDIVIDUAL_SALES_AMOUNT'
         },
         {
           title:'销售金额(机构)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'ORGAN_SALES_AMOUNT',
+          key:'ORGAN_SALES_AMOUNT'
         },
         {
           title:'销售总金额(合计)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'TOTAL_SALES_AMOUNT',
+          key:'TOTAL_SALES_AMOUNT'
         },
         {
           title:'销售份额(个人)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'INDIVIDUAL_SALES_QUOTA',
+          key:'INDIVIDUAL_SALES_QUOTA'
         },
         {
           title:'销售份额(机构)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'ORGAN_SALES_QUOTA',
+          key:'ORGAN_SALES_QUOTA'
         },
         {
           title:'销售总份额(合计)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'TOTAL_SALES_QUOTA',
+          key:'TOTAL_SALES_QUOTA'
         },
         {
           title:'赎回金额(个人)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'INDIVIDUAL_REDEEM_AMOUNT',
+          key:'INDIVIDUAL_REDEEM_AMOUNT'
         },
         {
           title:'赎回金额(机构)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'ORGAN_REDEEM_AMOUNT',
+          key:'ORGAN_REDEEM_AMOUNT'
         },
         {
           title:'赎回总金额(合计)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'TOTAL_REDEEM_AMOUNT',
+          key:'TOTAL_REDEEM_AMOUNT'
         },
         {
           title:'赎回份额(个人)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'INDIVIDUAL_REDEEM_QUOTA',
+          key:'INDIVIDUAL_REDEEM_QUOTA'
         },
         {
           title:'赎回份额(机构)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'ORGAN_REDEEM_QUOTA',
+          key:'ORGAN_REDEEM_QUOTA'
         },
         {
           title:'赎回总份额(合计)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'TOTAL_REDEEM_QUOTA',
+          key:'TOTAL_REDEEM_QUOTA'
         },
         {
           title:'净增金额(个人)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'净增份额(个人)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'NET_INDIVIDUAL_AMOUNT',
+          key:'NET_INDIVIDUAL_AMOUNT'
         },
         {
           title:'净增金额(机构)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'净增份额(机构)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'NET_ORGAN_AMOUNT',
+          key:'NET_ORGAN_AMOUNT'
         },
         {
           title:'净增总金额(合计)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'NET_TOTAL_AMOUNT',
+          key:'NET_TOTAL_AMOUNT'
+        },
+        {
+          title:'净增份额(个人)',
+          dataIndex:'NET_INDIVIDUAL_QUOTA',
+          key:'NET_INDIVIDUAL_QUOTA'
+        },
+        {
+          title:'净增份额(机构)',
+          dataIndex:'NET_ORGAN_QUOTA',
+          key:'NET_ORGAN_QUOTA'
         },
         {
           title:'净增总份额(合计)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'NET_TOTAL_QUOTA',
+          key:'NET_TOTAL_QUOTA'
         },
         {
           title:'当前保有量份数(个人)',
-          dataIndex:'companyAddress',
-          key:'comapnyAddress'
+          dataIndex:'INDIVIDUAL_HOLD_QUOTA',
+          key:'INDIVIDUAL_HOLD_QUOTA'
+        },
+        {
+          title:'当前保有量份数(机构)',
+          dataIndex:'ORGAN_HOLD_QUOTA',
+          key:'ORGAN_HOLD_QUOTA'
+        },
+        {
+          title:'当前保有量份数(合计)',
+          dataIndex:'TOTAL_HOLD',
+          key:'TOTAL_HOLD'
         }
       ],
     }
   },
-  branchSaleStatistics:{
+  openCostStatistics:{
+    // reportName:'R11',
+    reportName:'openCostStatistics',
+    title:'R11开放式非净值型理财产品成本统计表',
+    search:[
+      {
+        text:'查询日期:',
+        selectType:'start_date',
+        relationship:'end_date',
+        dateCalendarType:'start',
+        defaultValue:moment(),
+        type:3,
+      }
+    ],
+    tableResult:{
+      columns:[
+        {
+          title:'产品代码',
+          dataIndex:'PROD_ID',
+          key:'PROD_ID'
+        },
+        {
+          title:'产品名称',
+          dataIndex:'PROD_NAME',
+          key:'PROD_NAME'
+        },
+        {
+          title:'客户收益率成本',
+          dataIndex:'CUST_PROFIT_RATE',
+          key:'CUST_PROFIT_RATE'
+        },
+        {
+          title:'销售费率成本',
+          dataIndex:'AGENCY_RATE',
+          key:'AGENCY_RATE'
+        },
+        {
+          title:'托管费率成本',
+          dataIndex:'AM_PROD_CUSTODY_RATE',
+          key:'AM_PROD_CUSTODY_RATE'
+        },
+        {
+          title:'总成本',
+          dataIndex:'IN_ALL_COST_RATE',
+          key:'IN_ALL_COST_RATE'
+        }
+      ],
+    }
+  },
+  branchSalesStatistics:{
     //reportName:'R12',   
     reportName:'branchSalesStatistics',
-    title:'各分行理财产品销售情况统计表',
+    orcode:'organCode',
+    title:'R12各分行理财产品销售情况统计表',
     search:[
       { 
         text:'省份:', 
@@ -2119,7 +1939,7 @@ export default {
         requestType:'dSjld',       
         selectType:'organ_level',
         selectKey:'list',
-        disabled:true,
+        // disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -2178,7 +1998,7 @@ export default {
       {
         text:'起始日期:',
         selectType:'start_date',
-        relationship:'UPDATE_DATE_END',
+        relationship:'end_date',
         dateCalendarType:'start',
         defaultValue:moment(),
         type:3,
@@ -2186,7 +2006,7 @@ export default {
       {
         text:'终止日期:',
         selectType:'end_date',
-        relationship:'UPDATE_DATE_START',
+        relationship:'start_date',
         defaultValue:moment(),
         type:3,
       },
@@ -2213,7 +2033,7 @@ export default {
       {
         text:'产品销售渠道:',
         requestType:'dChnl',
-        selectType:'prod_channel',
+        selectType:'channel',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -2223,7 +2043,7 @@ export default {
       {
         text:'机构属性:',
         requestType:'reOrganType',       
-        selectType:'ORGAN_MODE',  //没有
+        selectType:'organ_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -2248,8 +2068,8 @@ export default {
           children:[
             {
               title:'机构代码',
-              daatIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'ORGAN_ID',
+              key:'ORGAN_ID'
             }
           ]
         },
@@ -2258,38 +2078,38 @@ export default {
           children:[
             {
               title:'机构名称',
-              daatIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'ORGAN_NAME',
+              key:'ORGAN_NAME'
             }
           ]
-        },,
+        },
         {
           title:'',
           children:[
             {
               title:'发行币种',
-              daatIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'CURRENCY_CN',
+              key:'CURRENCY_CN'
             }
           ]
-        },,
+        },
         {
           title:'0-50000',
           children:[
             {
               title:'笔数',
-              daatIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL1_ROW_NUM',
+              key:'LEVEL1_ROW_NUM'
             },
             {
               title:'客户数',
-              daatIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL1_CUST_NUM',
+              key:'LEVEL1_CUST_NUM'
             },
             {
               title:'金额',
-              daatIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL1_AMOUNT_SUM',
+              key:'LEVEL1_AMOUNT_SUM'
             }
           ]
         },
@@ -2298,18 +2118,18 @@ export default {
           children:[
             {
               title:'笔数',
-              daatIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL2_ROW_NUM',
+              key:'LEVEL2_ROW_NUM'
             },
             {
               title:'客户数',
-              daatIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL2_CUST_NUM',
+              key:'LEVEL2_CUST_NUM'
             },
             {
               title:'金额',
-              daatIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL2_AMOUNT_SUM',
+              key:'LEVEL2_AMOUNT_SUM'
             }
           ]
         },
@@ -2318,18 +2138,18 @@ export default {
           children:[
             {
               title:'笔数',
-              daatIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL3_ROW_NUM',
+              key:'LEVEL3_ROW_NUM'
             },
             {
               title:'客户数',
-              daatIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL3_CUST_NUM',
+              key:'LEVEL3_CUST_NUM'
             },
             {
               title:'金额',
-              daatIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL3_AMOUNT_SUM',
+              key:'LEVEL3_AMOUNT_SUM'
             }
           ]
         },
@@ -2338,18 +2158,18 @@ export default {
           children:[
             {
               title:'笔数',
-              daatIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL4_ROW_NUM',
+              key:'LEVEL4_ROW_NUM'
             },
             {
               title:'客户数',
-              daatIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL4_CUST_NUM',
+              key:'LEVEL4_CUST_NUM'
             },
             {
               title:'金额',
-              daatIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL4_AMOUNT_SUM',
+              key:'LEVEL4_AMOUNT_SUM'
             }
           ]
         },
@@ -2358,18 +2178,18 @@ export default {
           children:[
             {
               title:'笔数',
-              daatIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL5_ROW_NUM',
+              key:'LEVEL5_ROW_NUM'
             },
             {
               title:'客户数',
-              daatIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL5_CUST_NUM',
+              key:'LEVEL5_CUST_NUM'
             },
             {
               title:'金额',
-              daatIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL5_AMOUNT_SUM',
+              key:'LEVEL5_AMOUNT_SUM'
             }
           ]
         },
@@ -2378,32 +2198,33 @@ export default {
           children:[
             {
               title:'笔数',
-              daatIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'TOTAL_ROW_NUM',
+              key:'TOTAL_ROW_NUM'
             },
             {
               title:'客户数',
-              daatIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'TOTAL_CUST_NUM',
+              key:'TOTAL_CUST_NUM'
             },
             {
               title:'金额',
-              daatIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'TOTAL_AMOUNT_SUM',
+              key:'TOTAL_AMOUNT_SUM'
             }
           ]
         },
       ],
     }
   },
-  productSaleStatistics:{
-    //reportName:'R13',  //没有
+  productSalesStatistics:{
+    //reportName:'R13',
     reportName:'productSalesStatistics',
-    title:'各理财产品销售情况统计表',
+    orcode:'organCode',
+    title:'R13各理财产品销售情况统计表',
     search:[
       { 
         text:'省份:', 
-        selectType:'PROVINCE_CODE',
+        selectType:'province_code',
         selectKey:'provinceList',
         itemKey:'code',   
         itemName:'name', 
@@ -2412,7 +2233,7 @@ export default {
       },
       {
         text:'地市:',
-        selectType:'PREFECTURE_CODE',
+        selectType:'prefecture_code',
         selectKey:'areaList',
         itemKey:'code',   
         itemName:'name', 
@@ -2421,7 +2242,7 @@ export default {
       },
       {
         text:'市县:',
-        selectType:'CITY_CODE',
+        selectType:'city_code',
         selectKey:'cityList',
         itemKey:'code',   
         itemName:'name', 
@@ -2430,7 +2251,7 @@ export default {
       },
       {
         text:'网点:',
-        selectType:'BRANCE_CODE',
+        selectType:'brance_code',
         selectKey:'branchList',
         itemKey:'code',   
         itemName:'name', 
@@ -2440,7 +2261,7 @@ export default {
       {
         text:'产品状态:',
         requestType:'prodStatus',       
-        selectType:'PROD_STATUS',
+        selectType:'am_prod_status',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',         
@@ -2450,7 +2271,7 @@ export default {
       {
         text:'机构属性:',
         requestType:'reOrganType',       
-        selectType:'ORGAN_MODE',
+        selectType:'organ_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -2460,7 +2281,7 @@ export default {
       {
         text:'投资者类型:',
         requestType:'dCustomerType',       
-        selectType:'dCustomerType',
+        selectType:'cust_category',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -2470,7 +2291,7 @@ export default {
       {
         text:'机构客户:',
         requestType:'reProper',       
-        selectType:'reProper',
+        selectType:'cust_type',
         selectKey:'list',
         disabled:true,
         itemKey:'value',
@@ -2480,23 +2301,23 @@ export default {
       },
       {
         text:'起始日期:',
-        selectType:'UPDATE_DATE_START',
-        relationship:'UPDATE_DATE_END',
+        selectType:'start_date',
+        relationship:'end_date',
         dateCalendarType:'start',
         defaultValue:moment(),
         type:3,
       },
       {
         text:'终止日期:',
-        selectType:'UPDATE_DATE_END',
-        relationship:'UPDATE_DATE_START',
+        selectType:'end_date',
+        relationship:'start_date',
         defaultValue:moment(),
         type:3,
       },
       {
         text:'产品代码:',   
         requestType:'reProdCode',     
-        selectType:'PROD_ID',      
+        selectType:'prod_id',      
         selectKey:'prodCodeList',     
         itemKey:'prodCode',           
         itemName:'prodCode',          
@@ -2515,7 +2336,7 @@ export default {
       {
         text:'产品销售渠道:',
         requestType:'dChnl',
-        selectType:'CHANNEL',
+        selectType:'channel',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -2525,7 +2346,7 @@ export default {
       {
         text:'是否自主平衡:',
         requestType:'balance', 
-        selectType:'is_balance',
+        selectType:'is_province_balance',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -2535,7 +2356,7 @@ export default {
       {
         text:'产品运作模式:',
         requestType:'reProdoperModel',       
-        selectType:'AM_PROD_OPERATION_MODE',
+        selectType:'am_prod_operation_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -2545,7 +2366,7 @@ export default {
       {
         text:'发行币种:',
         requestType:'regCurrency',       
-        selectType:'AM_PROD_CURRENCY',
+        selectType:'am_prod_currency',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -2560,8 +2381,8 @@ export default {
           children:[
             {
               title:'产品代码',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'PROD_ID',
+              key:'PROD_ID'
             }
           ]
         },
@@ -2570,8 +2391,8 @@ export default {
           children:[
             {
               title:'产品名称',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'PROD_NAME',
+              key:'PROD_NAME'
             }
           ]
         },
@@ -2580,8 +2401,8 @@ export default {
           children:[
             {
               title:'产品状态',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'AM_PROD_STATUS',
+              key:'AM_PROD_STATUS'
             }
           ]
         },
@@ -2590,8 +2411,8 @@ export default {
           children:[
             {
               title:'发行币种',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'CURRENCY_CN',
+              key:'CURRENCY_CN'
             }
           ]
         },
@@ -2600,18 +2421,18 @@ export default {
           children:[
             {
               title:'笔数',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL1_ROW_NUM',
+              key:'LEVEL1_ROW_NUM'
             },
             {
               title:'客户数',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL1_CUST_NUM',
+              key:'LEVEL1_CUST_NUM'
             },
             {
               title:'金额',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL1_AMOUNT_SUM',
+              key:'LEVEL1_AMOUNT_SUM'
             }
           ]
         },
@@ -2620,18 +2441,18 @@ export default {
           children:[
             {
               title:'笔数',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL2_ROW_NUM',
+              key:'LEVEL2_ROW_NUM'
             },
             {
               title:'客户数',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL2_CUST_NUM',
+              key:'LEVEL2_CUST_NUM'
             },
             {
               title:'金额',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL2_AMOUNT_SUM',
+              key:'LEVEL2_AMOUNT_SUM'
             }
           ]
         },
@@ -2640,18 +2461,18 @@ export default {
           children:[
             {
               title:'笔数',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL3_ROW_NUM',
+              key:'LEVEL3_ROW_NUM'
             },
             {
               title:'客户数',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL3_CUST_NUM',
+              key:'LEVEL3_CUST_NUM'
             },
             {
               title:'金额',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL3_AMOUNT_SUM',
+              key:'LEVEL3_AMOUNT_SUM'
             }
           ]
         },
@@ -2660,18 +2481,18 @@ export default {
           children:[
             {
               title:'笔数',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL4_ROW_NUM',
+              key:'LEVEL4_ROW_NUM'
             },
             {
               title:'客户数',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL4_CUST_NUM',
+              key:'LEVEL4_CUST_NUM'
             },
             {
               title:'金额',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL4_AMOUNT_SUM',
+              key:'LEVEL4_AMOUNT_SUM'
             }
           ]
         },
@@ -2680,18 +2501,18 @@ export default {
           children:[
             {
               title:'笔数',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL5_ROW_NUM',
+              key:'LEVEL5_ROW_NUM'
             },
             {
               title:'客户数',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL5_CUST_NUM',
+              key:'LEVEL5_CUST_NUM'
             },
             {
               title:'金额',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'LEVEL5_AMOUNT_SUM',
+              key:'LEVEL5_AMOUNT_SUM'
             }
           ]
         },
@@ -2700,47 +2521,47 @@ export default {
           children:[
             {
               title:'笔数',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'TOTAL_ROW_NUM',
+              key:'TOTAL_ROW_NUM'
             },
             {
               title:'客户数',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'TOTAL_CUST_NUM',
+              key:'TOTAL_CUST_NUM'
             },
             {
               title:'金额',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'TOTAL_AMOUNT_SUM',
+              key:'TOTAL_AMOUNT_SUM'
             }
           ]
         }
       ],
     }
   },
-  customerProductTrading:{
-    //reportName:"R14",   //没有
+  customerProductTransaction:{
+    //reportName:"R14",
     reportName:'customerProductTransaction',
-    title:'机构理财客户产品交易情况表',
+    title:'R14机构理财客户产品交易情况表',
     search:[ 
       {
         text:'起始日期:',
-        selectType:'UPDATE_DATE_START',
-        relationship:'UPDATE_DATE_END',
+        selectType:'start_date',
+        relationship:'end_date',
         dateCalendarType:'start',
         defaultValue:moment(),
         type:3,
       },
       {
         text:'终止日期:',
-        selectType:'UPDATE_DATE_END',
-        relationship:'UPDATE_DATE_START',
+        selectType:'end_date',
+        relationship:'start_date',
         defaultValue:moment(),
         type:3,
       },
       {
         text:'客户开户号码:',
-        selectType:'',
+        selectType:'acc_no',
         selectKey:'',
         type:1,
         method:'get',
@@ -2748,7 +2569,7 @@ export default {
       {
         text:'发行币种:',
         requestType:'regCurrency',       
-        selectType:'AM_PROD_CURRENCY',
+        selectType:'am_prod_currency',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -2760,48 +2581,48 @@ export default {
       columns:[
         {
           title:'日期',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'UPDATE_DATE',
+          key:'UPDATE_DATE'
         },
         {
           title:'产品名称',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'PROD_NAME',
+          key:'PROD_NAME'
         },
         {
           title:'产品代码',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'PROD_ID',
+          key:'PROD_ID'
         },
         {
           title:'发行币种',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'CURRENCY_CN',
+          key:'CURRENCY_CN'
         },
         {
           title:'认购金额',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'CONFIRMED_AMOUNT',
+          key:'CONFIRMED_AMOUNT'
         },
         {
           title:'赎回金额',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'REDEEM_AMOUNT',
+          key:'REDEEM_AMOUNT'
         },
         {
           title:'到期兑付金额',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'PAY_AMOUNT',
+          key:'PAY_AMOUNT'
         },
         {
           title:'分红金额',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'SHARE_AMOUNT',
+          key:'SHARE_AMOUNT'
         },
         {
           title:'保有金额(万份)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'HOLD_AMOUNT',
+          key:'HOLD_AMOUNT'
         }
       ],
     }
@@ -2809,18 +2630,22 @@ export default {
   branchBalanceStatistics:{
     //reportName:'R15',
     reportName:'branchBalanceStatistics',
-    title:'各分行理财余额统计查询表',
+    group_by:'2',
+    title:'R15各分行理财余额统计查询表',
     search:[
       {
         text:'查询月份:',
-        selectType:'UPDATE_DATE',
+        selectType:'start_date',
+        relationship:'end_date',
+        dateCalendarType:'start',
+        defaultValue:moment(),
         dateFormat:'YYYY-MM',
         type:3,
       },
       {
         text:'地区分类:',
         requestType:'reAreaType',       
-        selectType:'GROUP_BY',
+        selectType:'group_by',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',         
@@ -2830,7 +2655,7 @@ export default {
       {
         text:'产品收益类型:',
         requestType:'reProfitType',       
-        selectType:'AM_PROD_PROFIT_MODE',
+        selectType:'am_prod_profit_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -2840,7 +2665,7 @@ export default {
       {
         text:'产品运作模式:',
         requestType:'reProdoperModel',       
-        selectType:'AM_PROD_OPERATION_MODE',
+        selectType:'am_prod_operaion_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -2850,7 +2675,7 @@ export default {
       {
         text:'机构属性:',
         requestType:'reOrganType',       
-        selectType:'ORGAN_MODE',
+        selectType:'organ_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -2860,7 +2685,7 @@ export default {
       {
         text:'发行币种:',
         requestType:'regCurrency',       
-        selectType:'AM_PROD_CURRENCY',
+        selectType:'am_prod_curency',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -2872,71 +2697,71 @@ export default {
       columns:[
         {
           title:'机构代码',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'合计',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'排名',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'AREA_CODE',
+          key:'AREA_CODE'
         },
         {
           title:'地区',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'AREA_NAME',
+          key:'AREA_NAME'
+        },
+        {
+          title:'合计',
+          dataIndex:'TOTAL_QUOTA',
+          key:'TOTAL_QUOTA'
         },
         {
           title:'排名',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'RANK',
+          key:'RANK'
         },
         {
           title:'个人理财(万份)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'机构理财(万份)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'PERSON_QUOTA',
+          key:'PERSON_QUOTA'
         },
         {
           title:'排名',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'PERSON_RANK',
+          key:'PERSON_RANK'
+        },
+        {
+          title:'机构理财(万份)',
+          dataIndex:'ORGAN_QUOTA',
+          key:'ORGAN_QUOTA'
+        },
+        {
+          title:'排名',
+          dataIndex:'ORGAN_RANK',
+          key:'ORGAN_RANK'
         }
       ],
     }
   },
-  balanceChangeStatistics:{
+  changeBranchBalance:{
     //reportName:"R16",
     reportName:'changeBranchBalance',
-    title:'各分行理财余额变动统计表',
+    title:'R16各分行理财余额变动统计表',
     search:[
       {
         text:'起始日期:',
-        selectType:'UPDATE_DATE_START',
-        relationship:'UPDATE_DATE_END',
+        selectType:'start_date',
+        relationship:'end_date',
         dateCalendarType:'start',
         defaultValue:moment(),
         type:3,
       },
       {
         text:'终止日期:',
-        selectType:'UPDATE_DATE_END',
-        relationship:'UPDATE_DATE_START',
+        selectType:'end_date',
+        relationship:'start_date',
         defaultValue:moment(),
         type:3,
       },
       {
         text:'销售机构:',
         requestType:'reOrganType',
-        selectType:'ORGAN_MODE',
+        selectType:'organ_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -2946,7 +2771,7 @@ export default {
       {
         text:'投资者类型:',
         requestType:'dCustomerType',       
-        selectType:'CUST_CATEGORY',
+        selectType:'cust_category',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -2956,7 +2781,7 @@ export default {
       {
         text:'机构客户:',
         requestType:'reProper',       
-        selectType:'CUST_TYPE',
+        selectType:'cust_type',
         selectKey:'list',
         itemKey:'value',
         disabled:true,
@@ -2967,7 +2792,7 @@ export default {
       {
         text:'是否自主平衡:',
         requestType:'balance', 
-        selectType:'IS_PROVINCE_BALANCE',
+        selectType:'is_province_balance',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -2977,7 +2802,7 @@ export default {
       {
         text:'地区分类:',
         requestType:'reAreaType',       
-        selectType:'GROUP_BY',
+        selectType:'group_by',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',         
@@ -2987,7 +2812,7 @@ export default {
       {
         text:'发行币种:',
         requestType:'regCurrency',       
-        selectType:'AM_PROD_CURRENCY',
+        selectType:'am_prod_currency',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -2999,53 +2824,53 @@ export default {
       columns:[
         {
           title:'地区',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'AREA_NAME',
+          key:'AREA_NAME'
         },
         {
           title:'起始日余额(万份)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'START_QUOTA',
+          key:'START_QUOTA'
         },
         {
           title:'起始日余额排名',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'START_RANK',
+          key:'START_RANK'
         },
         {
           title:'终止日余额(万份)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'END_QUOTA',
+          key:'END_QUOTA'
         },
         {
           title:'终止日余额排名',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'END_RANK',
+          key:'END_RANK'
         },
         {
           title:'排名变动量',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'RANK_CHANGE',
+          key:'RANK_CHANGE'
         },
         {
           title:'增量(万份)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'INCRE_QUOTA',
+          key:'INCRE_QUOTA'
         },
         {
           title:'增量排名',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'INCRE_RANK',
+          key:'INCRE_RANK'
         },
         {
           title:'增幅',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'INCRE_RATE',
+          key:'INCRE_RATE'
         },
         {
           title:'增幅排名',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'INCRE_RATE_RANK',
+          key:'INCRE_RATE_RANK'
         }
       ],
     }
@@ -3053,11 +2878,12 @@ export default {
   productBalanceSequence:{
     //reportName:'R17',
     reportName:'productBalanceSequence',
-    title:'各理财产品余额序列表',
+    orcode:'organCode',
+    title:'R17各理财产品余额序列表',
     search:[
       { 
         text:'省份:', 
-        selectType:'PROVINCE_CODE',
+        selectType:'province_code',
         selectKey:'provinceList',
         itemKey:'code',   
         itemName:'name', 
@@ -3066,7 +2892,7 @@ export default {
       },
       {
         text:'地市:',
-        selectType:'PREFECTURE_CODE',
+        selectType:'prefecture_code',
         selectKey:'areaList',
         itemKey:'code',   
         itemName:'name', 
@@ -3075,7 +2901,7 @@ export default {
       },
       {
         text:'市县:',
-        selectType:'CITY_CODE',
+        selectType:'city_code',
         selectKey:'cityList',
         itemKey:'code',   
         itemName:'name', 
@@ -3084,7 +2910,7 @@ export default {
       },
       {
         text:'网点:',
-        selectType:'BRANCE_CODE',
+        selectType:'brance_code',
         selectKey:'branchList',
         itemKey:'code',   
         itemName:'name', 
@@ -3094,36 +2920,44 @@ export default {
       {
         text:'选择查询日期格式:',
         type:2,
-        defaultValue:'0',
-        selectType:'DATE_TYPE',
+        defaultValue:'daily',
+        selectType:'date_type',
         itemKey:'dateTypeCode',         // 渲染请求参数
         itemName:'dateTypeName',         // 渲染字段
         option:[
           {
-            dateTypeCode:'0',
+            dateTypeCode:'daily',
             dateTypeName:'日'
+          },
+          {
+            dateTypeCode:'monthly',
+            dateTypeName:'月'
+          },
+          {
+            dateTypeCode:'yearly',
+            dateTypeName:'年'
           }
         ]
       },
       {
         text:'起始日期:',
-        selectType:'UPDATE_DATE_START',
-        relationship:'UPDATE_DATE_END',
+        selectType:'start_date',
+        relationship:'end_date',
         dateCalendarType:'start',
         defaultValue:moment(),
         type:3,
       },
       {
         text:'终止日期:',
-        selectType:'UPDATE_DATE_END',
-        relationship:'UPDATE_DATE_START',
+        selectType:'end_date',
+        relationship:'start_date',
         defaultValue:moment(),
         type:3,
       },
       {
         text:'投资者类型:',
         requestType:'dCustomerType',       
-        selectType:'CUST_CATEGORY',
+        selectType:'cust_category',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -3133,7 +2967,7 @@ export default {
       {
         text:'机构客户:',
         requestType:'reProper',       
-        selectType:'CUST_TYPE',
+        selectType:'cust_type',
         selectKey:'list',
         disabled:true,
         itemKey:'value',
@@ -3144,7 +2978,7 @@ export default {
       {
         text:'机构属性:',
         requestType:'reOrganType',       
-        selectType:'ORGAN_MODE',
+        selectType:'organ_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -3154,7 +2988,7 @@ export default {
       {
         text:'产品运作模式:',
         requestType:'reProdoperModel',       
-        selectType:'AM_PROD_OPERATION_MODE',
+        selectType:'am_prod_operation_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -3164,7 +2998,7 @@ export default {
       {
         text:'产品收益类型:',
         requestType:'reProfitType',       
-        selectType:'AM_PROD_PROFIT_MODE',
+        selectType:'am_prod_profit_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -3174,7 +3008,7 @@ export default {
       {
         text:'发行币种:',
         requestType:'regCurrency',       
-        selectType:'AM_PROD_CURRENCY',
+        selectType:'am_prod_currency',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -3186,42 +3020,45 @@ export default {
       columns:[
         {
           title:'查询日期',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'UPDATE_DATE',
+          key:'UPDATE_DATE'
         },
         {
           title:'保有量(万份)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'QUOTA',
+          key:'QUOTA'
         },
         {
           title:'同比(%)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'YOY',
+          key:'YOY'
         },
         {
           title:'环比(%)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'MOM',
+          key:'MOM'
         }
       ],
     }
   },
-  branchBalanceEnquiry:{
+  AutonomicBalance:{
     //reportName:'R18',
     reportName:'AutonomicBalance',
-    title:'各分行发行自主平衡产品情况查询表',
+    title:'R18各分行发行自主平衡产品情况查询表',
     search:[
       {
-        text:'查询月份:',
-        selectType:'UPDATE_DATE',
+        text:'起始月份:',
+        selectType:'start_date',
+        relationship:'end_date',
+        dateCalendarType:'start',
+        defaultValue:moment(),
         dateFormat:'YYYY-MM',
         type:3,
       },
       {
         text:'发行币种:',
         requestType:'regCurrency',       
-        selectType:'AM_PROD_CURRENCY',
+        selectType:'am_prod_currency',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -3233,109 +3070,121 @@ export default {
       columns:[
         {
           title:'机构代码',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'ORGAN_ID',
+          key:'ORGAN_ID'
         },
         {
           title:'分行',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'ORGAN_NAME',
+          key:'ORGAN_NAME'
         },
         {
           title:'发行币种',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'AM_PROD_CURRENCY_NAME',
+          key:'AM_PROD_CURRENCY_NAME'
         },
         {
           title:'产品支数',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'PROD_NUM',
+          key:'PROD_NUM'
         },
         {
           title:'发行规模(万份)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'PROD_ISSUE_AMT',
+          key:'PROD_ISSUE_AMT'
         }
       ],
     }
   },
-  productRevenueStatistics:{
-    //reportName:'R21',
-    reportName:'productRevenueStatistics',
-    title:'各理财产品收入情况统计表',
+  branchHoldings:{
+    //reportName:"R19",
+    reportName:'branchHoldings',
+    orcode:'organCode',
+    group_by:'organ_id',
+    title:'R19各分行理财产品日均保有量统计表',
     search:[
+      {
+        text:'选择查询日期格式:',
+        type:2,
+        defaultValue:'daily',
+        selectType:'date_type',
+        itemKey:'dateTypeCode',        
+        itemName:'dateTypeName',         
+        option:[
+          {
+            dateTypeCode:'daily',
+            dateTypeName:'日'
+          },
+          {
+            dateTypeCode:'monthly',
+            dateTypeName:'月'
+          }
+        ]
+      },
+      {
+        text:'起始日期:',
+        selectType:'start_date',
+        relationship:'end_date',
+        dateCalendarType:'start',
+        defaultValue:moment(),
+        type:3,
+      },
+      {
+        text:'终止日期:',
+        selectType:'end_date',
+        relationship:'start_date',
+        defaultValue:moment(),
+        type:3,
+      },
+      {
+        text:'产品代码:',   
+        requestType:'reProdCode',     
+        selectType:'prod_id',      
+        selectKey:'prodCodeList',     
+        itemName:'prodCode',          
+        type:1,
+        method:'get',
+      },
       { 
         text:'省份:', 
-        selectType:'PROVINCE_CODE',
+        selectType:'province_code',
         selectKey:'provinceList',
-        itemKey:'code',   
-        itemName:'name', 
+        itemKey:'code',           
+        itemName:'name',          
         disabled:true,          
         type:2,
       },
       {
         text:'地市:',
-        selectType:'PREFECTURE_CODE',
+        selectType:'prefecture_code',
         selectKey:'areaList',
-        itemKey:'code',   
-        itemName:'name', 
+        itemKey:'code',           
+        itemName:'name',          
         disabled:true,          
         type:2,
       },
       {
         text:'市县:',
-        selectType:'CITY_CODE',
+        selectType:'city_code',
         selectKey:'cityList',
-        itemKey:'code',   
-        itemName:'name', 
+        itemKey:'code',          
+        itemName:'name',          
         disabled:true,           
         type:2,
       },
       {
         text:'网点:',
-        selectType:'BRANCE_CODE',
+        selectType:'brance_code',
         selectKey:'branchList',
-        itemKey:'code',   
-        itemName:'name', 
+        itemKey:'code',           
+        itemName:'name',          
         disabled:true,         
         type:2,
       },
       {
-        text:'起始月份:',
-        selectType:'UPDATE_DATE_START',
-        dateFormat:'YYYY-MM',
-        type:3,
-      },
-      {
-        text:'终止月份:',
-        selectType:'UPDATE_DATE_END',
-        dateFormat:'YYYY-MM',
-        type:3,
-      },
-      {
-        text:'投资者类型:',
-        requestType:'dCustomerType',       
-        selectType:'CUST_TYPE',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      },
-      {
-        text:'产品代码:',   
-        requestType:'reProdCode',     
-        selectType:'PROD_ID',      
-        selectKey:'prodCodeList',     
-        itemKey:'prodCode',           
-        itemName:'prodCode',          
-        type:1,
-        method:'get',
-      },
-      {
         text:'产品状态:',
         requestType:'prodStatus',       
-        selectType:'AM_PROD_STATUS',
+        selectType:'am_prod_status',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',         
@@ -3343,9 +3192,19 @@ export default {
         method:'get',
       },
       {
+        text:'产品品牌:',
+        requestType:'reBrand',       
+        selectType:'am_prod_brand_code',
+        selectKey:'brandList',
+        itemKey:'brandCode',
+        itemName:'brandName',
+        type:2,
+        method:'get',
+      },
+      {
         text:'产品运作模式:',
         requestType:'reProdoperModel',       
-        selectType:'AM_PROD_OPERATION_MODE',
+        selectType:'am_prod_operation_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -3355,176 +3214,28 @@ export default {
       {
         text:'产品收益类型:',
         requestType:'reProfitType',       
-        selectType:'AM_PROD_PROFIT_MODE',
+        selectType:'am_prod_profit_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
         type:2,
         method:'get',
-      },
-      {
-        text:'产品品牌:',
-        requestType:'reBrand',       
-        selectType:'AM_PROD_BRAND_CODE',
-        selectKey:'brandList',
-        itemKey:'brandCode',
-        itemName:'brandName',
-        type:2,
-        method:'get',
-      },
-      {
-        text:'机构属性:',
-        requestType:'reOrganType',       
-        selectType:'ORGAN_MODE',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      },
-      {
-        text:'发行币种:',
-        requestType:'regCurrency',       
-        selectType:'AM_PROD_CURRENCY',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      }
-    ],
-    tableResult:{
-      columns:[
-        {
-          title:'',
-          children:[
-            {
-              title:'产品名称',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
-            }
-          ]
-        },
-        {
-          title:'',
-          children:[
-            {
-              title:'产品代码',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
-            }
-          ]
-        },
-        {
-          title:'已分配手续费',
-          children:[
-            {
-              title:'销售手续费(万元)',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
-            },
-            {
-              title:'推荐费(万元)',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
-            },
-            {
-              title:'激励手续费(万元)',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
-            },
-            {
-              title:'合计(万元)',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
-            }
-          ]
-        },
-        {
-          title:'计提手续费',
-          children:[
-            {
-              title:'销售手续费(万元)',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
-            },
-            {
-              title:'推荐费(万元)',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
-            },
-            {
-              title:'激励手续费(万元)',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
-            },
-            {
-              title:'合计(万元)',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
-            }
-          ]
-        }
-      ],
-    }
-  },
-  branchRevenueStatistics:{
-    //reportName:'R22',
-    reportName:'branchRevenueStatistics',
-    title:'各分行理财收入统计表',
-    search:[
-      { 
-        text:'省份:', 
-        selectType:'PROVINCE_CODE',
-        selectKey:'provinceList',
-        itemKey:'code',   
-        itemName:'name', 
-        disabled:true,          
-        type:2,
-      },
-      {
-        text:'地市:',
-        selectType:'PREFECTURE_CODE',
-        selectKey:'areaList',
-        itemKey:'code',   
-        itemName:'name', 
-        disabled:true,          
-        type:2,
-      },
-      {
-        text:'市县:',
-        selectType:'CITY_CODE',
-        selectKey:'cityList',
-        itemKey:'code',   
-        itemName:'name', 
-        disabled:true,           
-        type:2,
-      },
-      {
-        text:'网点:',
-        selectType:'BRANCE_CODE',
-        selectKey:'branchList',
-        itemKey:'code',   
-        itemName:'name', 
-        disabled:true,         
-        type:2,
-      },
-      {
-        text:'起始月份:',
-        selectType:'UPDATE_DATE_START',
-        dateFormat:'YYYY-MM',
-        type:3,
-      },
-      {
-        text:'终止月份:',
-        selectType:'UPDATE_DATE_END',
-        dateFormat:'YYYY-MM',
-        type:3,
       },
       {
         text:'投资者类型:',
         requestType:'dCustomerType',       
-        selectType:'CUST_TYPE',
+        selectType:'cust_category',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      },
+      {
+        text:'机构客户:',
+        requestType:'reProper',       
+        selectType:'cust_type',
+        disabled:true,
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -3534,69 +3245,19 @@ export default {
       {
         text:'机构属性:',
         requestType:'reOrganType',       
-        selectType:'ORGAN_MODE',
+        selectType:'organ_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
-        type:2,
-        method:'get',
-      },
-      {
-        text:'产品代码:',   
-        requestType:'reProdCode',     
-        selectType:'PROD_ID',     
-        selectKey:'prodCodeList',     
-        itemKey:'prodCode',           
-        itemName:'prodCode',          
-        type:1,
-        method:'get',
-      },
-      {
-        text:'产品状态:',
-        requestType:'prodStatus',       
-        selectType:'AM_PROD_STATUS',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',         
-        type:2,
-        method:'get',
-      },
-      {
-        text:'产品运作模式:',
-        requestType:'reProdoperModel',       
-        selectType:'AM_PROD_OPERATION_MODE',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      },
-      {
-        text:'产品收益类型:',
-        requestType:'reProfitType',       
-        selectType:'AM_PROD_PROFIT_MODE',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      },
-      {
-        text:'产品品牌:',
-        requestType:'reBrand',       
-        selectType:'AM_PROD_BRAND_CODE',
-        selectKey:'brandList',
-        itemKey:'brandCode',
-        itemName:'brandName',
         type:2,
         method:'get',
       },
       {
         text:'数据粒度:',
-        requestType:'dSjld',       
-        selectType:'ORGAN_LEVEL',
+        //requestType:'dSjld',       
+        selectType:'organ_level',
         selectKey:'list',
-        disabled:true,
+        // disabled:true,
         itemKey:'value',
         itemName:'label',
         type:2,
@@ -3605,7 +3266,7 @@ export default {
       {
         text:'发行币种:',
         requestType:'regCurrency',       
-        selectType:'AM_PROD_CURRENCY',
+        selectType:'am_prod_currency',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -3616,129 +3277,163 @@ export default {
     tableResult:{
       columns:[
         {
-          title:'',
-          children:[
-            {
-              title:'机构代码',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
-            }
-          ]
+          title:'机构代码',
+          dataIndex:'ORGAN_ID',
+          key:'ORGAN_ID'
         },
         {
-          title:'',
-          children:[
-            {
-              title:'机构名称',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
-            }
-          ]
+          title:'机构名称',
+          dataIndex:'ORGAN_NAME',
+          key:'ORGAN_NAME'
         },
         {
-          title:'已分配手续费',
-          children:[
-            {
-              title:'销售手续费(万元)',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
-            },
-            {
-              title:'推荐费(万元)',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
-            },
-            {
-              title:'激励手续费(万元)',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
-            },
-            {
-              title:'合计(万元)',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
-            }
-          ]
-        },
-        {
-          title:'计提手续费',
-          children:[
-            {
-              title:'销售手续费(万元)',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
-            },
-            {
-              title:'推荐费(万元)',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
-            },
-            {
-              title:'激励手续费(万元)',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
-            },
-            {
-              title:'合计(万元)',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
-            }
-          ]
+          title:'日均保有量(万份)',
+          dataIndex:'QUOTA',
+          key:'QUOTA'
         }
       ],
     }
   },
-  annualWithdrawing:{
-    //reportName:'R23',
-    reportName:'distributionOfProvision',
-    title:'年度销售手续费总计提/已分配/待分配确认表',
+  productQuantity:{
+    //reportName:"R20", 
+    reportName:'productQuantity',
+    orcode:'organCode',
+    group_by:'prod_id',
+    title:'R20各理财产品日均保有量统计表',
     search:[
+      {
+        text:'选择查询日期格式:',
+        type:2,
+        defaultValue:'daily',
+        selectType:'date_type',
+        itemKey:'dateTypeCode',        
+        itemName:'dateTypeName',         
+        option:[
+          {
+            dateTypeCode:'daily',
+            dateTypeName:'日'
+          },
+          {
+            dateTypeCode:'monthly',
+            dateTypeName:'月'
+          }
+        ]
+      },
+      {
+        text:'起始日期:',
+        selectType:'start_date',
+        relationship:'end_date',
+        dateCalendarType:'start',
+        defaultValue:moment(),
+        type:3,
+      },
+      {
+        text:'终止日期:',
+        selectType:'end_date',
+        relationship:'start_date',
+        defaultValue:moment(),
+        type:3,
+      },
+      {
+        text:'产品代码:',   
+        requestType:'reProdCode',     
+        selectType:'prod_id',      
+        selectKey:'prodCodeList',     
+        itemName:'prodCode',          
+        type:1,
+        method:'get',
+      },
       { 
         text:'省份:', 
-        selectType:'PROVINCE_CODE',
+        selectType:'province_code',
         selectKey:'provinceList',
-        itemKey:'code',   
-        itemName:'name', 
+        itemKey:'code',           
+        itemName:'name',          
         disabled:true,          
         type:2,
       },
       {
         text:'地市:',
-        selectType:'PREFECTURE_CODE',
+        selectType:'prefecture_code',
         selectKey:'areaList',
-        itemKey:'code',   
-        itemName:'name', 
+        itemKey:'code',           
+        itemName:'name',          
         disabled:true,          
         type:2,
       },
       {
         text:'市县:',
-        selectType:'CITY_CODE',
+        selectType:'city_code',
         selectKey:'cityList',
-        itemKey:'code',   
-        itemName:'name', 
+        itemKey:'code',          
+        itemName:'name',          
         disabled:true,           
         type:2,
       },
       {
         text:'网点:',
-        selectType:'BRANCE_CODE',
+        selectType:'brance_code',
         selectKey:'branchList',
-        itemKey:'code',   
-        itemName:'name', 
+        itemKey:'code',           
+        itemName:'name',          
         disabled:true,         
         type:2,
       },
       {
-        text:'查询月份:',
-        selectType:'UPDATE_DATE',
-        dateFormat:'YYYY-MM',
-        type:3,
+        text:'产品状态:',
+        requestType:'prodStatus',       
+        selectType:'am_prod_status',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',         
+        type:2,
+        method:'get',
+      },
+      {
+        text:'产品品牌:',
+        requestType:'reBrand',       
+        selectType:'am_prod_brand_code',
+        selectKey:'brandList',
+        itemKey:'brandCode',
+        itemName:'brandName',
+        type:2,
+        method:'get',
+      },
+      {
+        text:'产品运作模式:',
+        requestType:'reProdoperModel',       
+        selectType:'am_prod_operation_mode',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      },
+      {
+        text:'产品收益类型:',
+        requestType:'reProfitType',       
+        selectType:'am_prod_profit_mode',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
       },
       {
         text:'投资者类型:',
         requestType:'dCustomerType',       
-        selectType:'CUST_TYPE',
+        selectType:'cust_category', 
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      },
+      {
+        text:'机构客户:',
+        requestType:'reProper',       
+        selectType:'cust_type',
+        disabled:true,
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -3748,7 +3443,7 @@ export default {
       {
         text:'机构属性:',
         requestType:'reOrganType',       
-        selectType:'ORGAN_MODE',
+        selectType:'organ_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -3756,38 +3451,9 @@ export default {
         method:'get',
       },
       {
-        text:'产品状态:',
-        requestType:'prodStatus',       
-        selectType:'AM_PROD_STATUS',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',         
-        type:2,
-        method:'get',
-      },
-      {
-        text:'产品代码:',   
-        requestType:'reProdCode',     
-        selectType:'PROD_ID',      
-        selectKey:'prodCodeList',     
-        itemKey:'prodCode',           
-        itemName:'prodCode',          
-        type:1,
-        method:'get',
-      },
-      {
-        text:'产品名称:',
-        requestType:'productName', 
-        selectType:'PROD_NAME',
-        selectKey:'data',   
-        itemName:'prod_name', 
-        type:1,
-        method:'get',
-      },
-      {
         text:'发行币种:',
         requestType:'regCurrency',       
-        selectType:'AM_PROD_CURRENCY',
+        selectType:'am_prod_currency',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -3799,110 +3465,80 @@ export default {
       columns:[
         {
           title:'产品代码',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'PROD_ID',
+          key:'PROD_ID'
         },
         {
           title:'产品名称',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          dataIndex:'PROD_NAME',
+          key:'PROD_NAME'
         },
         {
-          title:'当年计提手续费(万元)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'当年已分配金额(万元)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'历史已分配金额(万元)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'当年已分配次数',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'当年待分配金额(万元)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'年度跨期调整分配金额(万元)',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
+          title:'日均保有量(万份)',
+          dataIndex:'QUOTA',
+          key:'QUOTA'
         }
       ],
     }
   },
-  purchaseIntentionEnquiry:{
-    //reportName:'R24',
-    reportName:'intentionToBuy',
-    title:'客户意向登记购买查询表',
+  productRevenueStatistics:{
+    //reportName:'R21',
+    reportName:'productRevenueStatistics',
+    orcode:'organCode',
+    group_by:'prod_id',
+    title:'R21各理财产品收入情况统计表',
     search:[
-      {
-        text:'起始日期:',
-        selectType:'UPDATE_DATE_START',
-        relationship:'UPDATE_DATE_END',
-        dateCalendarType:'start',
-        defaultValue:moment(),
-        type:3,
-      },
-      {
-        text:'终止日期:',
-        selectType:'UPDATE_DATE_END',
-        relationship:'UPDATE_DATE_START',
-        defaultValue:moment(),
-        type:3,
-      },
-      {
-        text:'地区:',
-        requestType:'reAreaType',       
-        selectType:'PROVINCE_CODE',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',         
+      { 
+        text:'省份:', 
+        selectType:'province_code',
+        selectKey:'provinceList',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
         type:2,
-        method:'get',
       },
       {
-        text:'发行币种:',
-        requestType:'regCurrency',       
-        selectType:'PROD_CURRENCY',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',
+        text:'地市:',
+        selectType:'prefecture_code',
+        selectKey:'areaList',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
         type:2,
-        method:'get',
-      }
-    ],
-    tableResult:{
-      
-    }
-  },
-  newCustomer:{
-    //reportName:'R26',
-    reportName:'newlyOpenedAccounts',
-    title:'新增客户开户数',
-    search:[
+      },
       {
-        text:'起始日期:',
+        text:'市县:',
+        selectType:'city_code',
+        selectKey:'cityList',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,           
+        type:2,
+      },
+      {
+        text:'网点:',
+        selectType:'brance_code',
+        selectKey:'branchList',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,         
+        type:2,
+      },
+      {
+        text:'起始月份:',
         selectType:'start_date',
-        relationship:'UPDATE_DATE_END',
+        relationship:'end_date',
         dateCalendarType:'start',
         defaultValue:moment(),
+        dateFormat:'YYYY-MM',
         type:3,
       },
       {
-        text:'终止日期:',
+        text:'终止月份:',
         selectType:'end_date',
-        relationship:'UPDATE_DATE_START',
+        relationship:'start_date',
         defaultValue:moment(),
+        dateFormat:'YYYY-MM',
         type:3,
       },
       {
@@ -3916,149 +3552,19 @@ export default {
         method:'get',
       },
       {
-        text:'机构客户:',
-        requestType:'reProper',       
-        selectType:'organ_id',
-        selectKey:'list',
-        disabled:true,
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      },
-    ],
-    tableResult:{
-      columns:[
-        {
-          title:'机构代码',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'机构名称',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        },
-        {
-          title:'新增开户数',
-          dataIndex:'companyAddress',
-          key:'companyAddress'
-        }
-      ],
-    }
-  },
-  branchComprehensiveStatistic:{
-    //reportName:'R27',   
-    reportName:'branchComprehensiveStatistics',
-    title:'各分行理财产品综合情况统计表',
-    search:[
-      { 
-        text:'省份:', 
-        selectType:'PROVINCE_CODE',
-        selectKey:'provinceList',
-        itemKey:'code',   
-        itemName:'name', 
-        disabled:true,          
-        type:2,
-      },
-      {
-        text:'地市:',
-        selectType:'PREFECTURE_CODE',
-        selectKey:'areaList',
-        itemKey:'code',   
-        itemName:'name', 
-        disabled:true,          
-        type:2,
-      },
-      {
-        text:'市县:',
-        selectType:'CITY_CODE',
-        selectKey:'cityList',
-        itemKey:'code',   
-        itemName:'name', 
-        disabled:true,           
-        type:2,
-      },
-      {
-        text:'网点:',
-        selectType:'BRANCE_CODE',
-        selectKey:'branchList',
-        itemKey:'code',   
-        itemName:'name', 
-        disabled:true,         
-        type:2,
-      },
-      {
-        text:'数据粒度:',
-        requestType:'dSjld',       
-        selectType:'ORGAN_LEVEL',
-        selectKey:'list',
-        disabled:true,
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      },
-      {
-        text:'起始日期:',
-        selectType:'UPDATE_DATE_START',
-        relationship:'UPDATE_DATE_END',
-        dateCalendarType:'start',
-        defaultValue:moment(),
-        type:3,
-      },
-      {
-        text:'终止日期:',
-        selectType:'UPDATE_DATE_END',
-        relationship:'UPDATE_DATE_START',
-        defaultValue:moment(),
-        type:3,
-      },
-      {
-        text:'投资者类型:',
-        requestType:'dCustomerType',       
-        selectType:'CUST_CATEGORY',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      },
-      {
-        text:'机构客户:',
-        requestType:'reProper',       
-        selectType:'CUST_TYPE',
-        selectKey:'list',
-        disabled:true,
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      },
-      {
-        text:'机构属性:',
-        requestType:'reOrganType',       
-        selectType:'ORGAN_MODE',
-        selectKey:'list',
-        itemKey:'value',
-        itemName:'label',
-        type:2,
-        method:'get',
-      },
-      {
-        text:'产品品牌:',
-        requestType:'reBrand',       
-        selectType:'AM_PROD_BRAND_CODE',
-        selectKey:'brandList',
-        itemKey:'brandCode',
-        itemName:'brandName',
-        type:2,
+        text:'产品代码:',   
+        requestType:'reProdCode',     
+        selectType:'prod_id',      
+        selectKey:'prodCodeList',     
+        itemKey:'prodCode',           
+        itemName:'prodCode',          
+        type:1,
         method:'get',
       },
       {
         text:'产品状态:',
         requestType:'prodStatus',       
-        selectType:'AM_PROD_STATUS',
+        selectType:'am_prod_status',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',         
@@ -4068,7 +3574,7 @@ export default {
       {
         text:'产品运作模式:',
         requestType:'reProdoperModel',       
-        selectType:'AM_PROD_OPERATION_MODE',
+        selectType:'am_prod_operation_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -4078,7 +3584,7 @@ export default {
       {
         text:'产品收益类型:',
         requestType:'reProfitType',       
-        selectType:'AM_PROD_PROFIT_MODE',
+        selectType:'am_prod_profit_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -4086,9 +3592,185 @@ export default {
         method:'get',
       },
       {
-        text:'产品销售渠道:',
-        requestType:'dChnl',
-        selectType:'CHANNEL',
+        text:'产品品牌:',
+        requestType:'reBrand',       
+        selectType:'am_prod_brand_code',
+        selectKey:'brandList',
+        itemKey:'brandCode',
+        itemName:'brandName',
+        type:2,
+        method:'get',
+      },
+      {
+        text:'机构属性:',
+        requestType:'reOrganType',       
+        selectType:'organ_mode',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      },
+      {
+        text:'发行币种:',
+        requestType:'regCurrency',       
+        selectType:'am_prod_currency',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      }
+    ],
+    tableResult:{
+      columns:[
+        {
+          title:'',
+          children:[
+            {
+              title:'产品名称',
+              dataIndex:'PROD_NAME',
+              key:'PROD_NAME'
+            }
+          ]
+        },
+        {
+          title:'',
+          children:[
+            {
+              title:'产品代码',
+              dataIndex:'PROD_ID',
+              key:'PROD_ID'
+            }
+          ]
+        },
+        {
+          title:'已分配手续费',
+          children:[
+            {
+              title:'销售手续费(万元)',
+              dataIndex:'SALES_ALLOTTED',
+              key:'SALES_ALLOTTED'
+            },
+            {
+              title:'推荐费(万元)',
+              dataIndex:'RECOMMEND_ALLOTTED',
+              key:'RECOMMEND_ALLOTTED'
+            },
+            {
+              title:'激励手续费(万元)',
+              dataIndex:'ENCOURAGE_ALLOTTED',
+              key:'ENCOURAGE_ALLOTTED'
+            },
+            {
+              title:'合计(万元)',
+              dataIndex:'AMOUNT_ALLOTTED',
+              key:'AMOUNT_ALLOTTED'
+            }
+          ]
+        },
+        {
+          title:'计提手续费',
+          children:[
+            {
+              title:'销售手续费(万元)',
+              dataIndex:'SALES_PLANNED',
+              key:'SALES_PLANNED'
+            },
+            {
+              title:'推荐费(万元)',
+              dataIndex:'RECOMMEND_PLANNED',
+              key:'RECOMMEND_PLANNED'
+            },
+            {
+              title:'激励手续费(万元)',
+              dataIndex:'ENCOURAGE_PLANNED',
+              key:'ENCOURAGE_PLANNED'
+            },
+            {
+              title:'合计(万元)',
+              dataIndex:'AMOUNT_PLANNED',
+              key:'AMOUNT_PLANNED'
+            }
+          ]
+        }
+      ],
+    }
+  },
+  branchRevenueStatistics:{
+    //reportName:'R22',
+    reportName:'branchRevenueStatistics',
+    orcode:'organCode',
+    group_by:'organ_id',
+    title:'R22各分行理财收入统计表',
+    search:[
+      { 
+        text:'省份:', 
+        selectType:'province_code',
+        selectKey:'provinceList',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
+        type:2,
+      },
+      {
+        text:'地市:',
+        selectType:'prefecture_code',
+        selectKey:'areaList',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
+        type:2,
+      },
+      {
+        text:'市县:',
+        selectType:'city_code',
+        selectKey:'cityList',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,           
+        type:2,
+      },
+      {
+        text:'网点:',
+        selectType:'brance_code',
+        selectKey:'branchList',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,         
+        type:2,
+      },
+      {
+        text:'起始月份:',
+        selectType:'start_date',
+        relationship:'end_date',
+        dateCalendarType:'start',
+        defaultValue:moment(),
+        dateFormat:'YYYY-MM',
+        type:3,
+      },
+      {
+        text:'终止月份:',
+        selectType:'end_date',
+        relationship:'start_date',
+        defaultValue:moment(),
+        dateFormat:'YYYY-MM',
+        type:3,
+      },
+      {
+        text:'投资者类型:',
+        requestType:'dCustomerType',       
+        selectType:'cust_type',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      },
+      {
+        text:'机构属性:',
+        requestType:'reOrganType',       
+        selectType:'organ_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -4098,7 +3780,7 @@ export default {
       {
         text:'产品代码:',   
         requestType:'reProdCode',     
-        selectType:'PROD_ID',     
+        selectType:'prod_id',     
         selectKey:'prodCodeList',     
         itemKey:'prodCode',           
         itemName:'prodCode',          
@@ -4106,18 +3788,60 @@ export default {
         method:'get',
       },
       {
-        text:'产品名称:',
-        requestType:'productName', 
-        selectType:'PROD_NAME',
-        selectKey:'data',   
-        itemName:'prod_name', 
-        type:1,
+        text:'产品状态:',
+        requestType:'prodStatus',       
+        selectType:'am_prod_status',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',         
+        type:2,
+        method:'get',
+      },
+      {
+        text:'产品运作模式:',
+        requestType:'reProdoperModel',       
+        selectType:'am_prod_operation_mode',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      },
+      {
+        text:'产品收益类型:',
+        requestType:'reProfitType',       
+        selectType:'am_prod_profit_mode',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      },
+      {
+        text:'产品品牌:',
+        requestType:'reBrand',       
+        selectType:'am_prod_brand_code',
+        selectKey:'brandList',
+        itemKey:'brandCode',
+        itemName:'brandName',
+        type:2,
+        method:'get',
+      },
+      {
+        text:'数据粒度:',
+        requestType:'dSjld',       
+        selectType:'organ_level',
+        selectKey:'list',
+        // disabled:true,
+        itemKey:'value',
+        itemName:'label',
+        type:2,
         method:'get',
       },
       {
         text:'发行币种:',
         requestType:'regCurrency',       
-        selectType:'AM_PROD_CURRENCY',
+        selectType:'am_prod_currency',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -4132,18 +3856,8 @@ export default {
           children:[
             {
               title:'机构代码',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
-            }
-          ]
-        },
-        {
-          title:'',
-          children:[
-            {
-              title:'发行币种',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'PROD_ID',
+              key:'PROD_ID'
             }
           ]
         },
@@ -4152,72 +3866,73 @@ export default {
           children:[
             {
               title:'机构名称',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'PROD_NAME',
+              key:'PROD_NAME'
             }
           ]
         },
         {
-          title:'预约购买',
+          title:'已分配手续费',
           children:[
             {
-              title:'金额',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              title:'销售手续费(万元)',
+              dataIndex:'SALES_ALLOTTED',
+              key:'SALES_ALLOTTED'
             },
             {
-              title:'份额(万份)',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              title:'推荐费(万元)',
+              dataIndex:'RECOMMEND_ALLOTTED',
+              key:'RECOMMEND_ALLOTTED'
             },
             {
-              title:'笔数',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              title:'激励手续费(万元)',
+              dataIndex:'ENCOURAGE_ALLOTTED',
+              key:'ENCOURAGE_ALLOTTED'
             },
             {
-              title:'客户数',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              title:'合计(万元)',
+              dataIndex:'AMOUNT_ALLOTTED',
+              key:'AMOUNT_ALLOTTED'
             }
           ]
         },
         {
-          title:'购买',
+          title:'计提手续费',
           children:[
             {
-              title:'金额',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              title:'销售手续费(万元)',
+              dataIndex:'SALES_PLANNED',
+              key:'SALES_PLANNED'
             },
             {
-              title:'份额(万份)',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              title:'推荐费(万元)',
+              dataIndex:'RECOMMEND_PLANNED',
+              key:'RECOMMEND_PLANNED'
             },
             {
-              title:'笔数',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              title:'激励手续费(万元)',
+              dataIndex:'ENCOURAGE_PLANNED',
+              key:'ENCOURAGE_PLANNED'
             },
             {
-              title:'客户数',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              title:'合计(万元)',
+              dataIndex:'AMOUNT_PLANNED',
+              key:'AMOUNT_PLANNED'
             }
           ]
         }
       ],
     }
   },
-  comprehensiveProductStatistics:{
-    //reportName:'R28',   
-    reportName:'comprehensiveProductStatistics',
-    title:'各理财产品综合情况统计表',
+  distributionOfProvision:{
+    //reportName:'R23',
+    orcode:'organCode',
+    reportName:'distributionOfProvision',
+    title:'R23年度销售手续费总计提/已分配/待分配确认表',
     search:[
       { 
         text:'省份:', 
-        selectType:'PROVINCE_CODE',
+        selectType:'province_code',
         selectKey:'provinceList',
         itemKey:'code',   
         itemName:'name', 
@@ -4226,7 +3941,7 @@ export default {
       },
       {
         text:'地市:',
-        selectType:'PREFECTURE_CODE',
+        selectType:'prefecture_code',
         selectKey:'areaList',
         itemKey:'code',   
         itemName:'name', 
@@ -4235,7 +3950,7 @@ export default {
       },
       {
         text:'市县:',
-        selectType:'CITY_CODE',
+        selectType:'city_code',
         selectKey:'cityList',
         itemKey:'code',   
         itemName:'name', 
@@ -4244,7 +3959,7 @@ export default {
       },
       {
         text:'网点:',
-        selectType:'BRANCE_CODE',
+        selectType:'brance_code',
         selectKey:'branchList',
         itemKey:'code',   
         itemName:'name', 
@@ -4252,24 +3967,410 @@ export default {
         type:2,
       },
       {
+        text:'查询年份:',
+        selectType:'start_date',
+        relationship:'end_date',
+        dateCalendarType:'start',
+        defaultValue:moment(),
+        dateFormat:'YYYY-MM',
+        type:3,
+      },
+      {
+        text:'投资者类型:',
+        requestType:'dCustomerType',       
+        selectType:'cust_type',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      },
+      {
+        text:'机构属性:',
+        requestType:'reOrganType',       
+        selectType:'organ_mode',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      },
+      {
+        text:'产品状态:',
+        requestType:'prodStatus',       
+        selectType:'am_prod_status',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',         
+        type:2,
+        method:'get',
+      },
+      {
+        text:'产品代码:',   
+        requestType:'reProdCode',     
+        selectType:'prod_id',      
+        selectKey:'prodCodeList',     
+        itemKey:'prodCode',           
+        itemName:'prodCode',          
+        type:1,
+        method:'get',
+      },
+      {
+        text:'产品名称:',
+        requestType:'productName', 
+        selectType:'prod_name',
+        selectKey:'data',   
+        itemName:'prod_name', 
+        type:1,
+        method:'get',
+      },
+      {
+        text:'发行币种:',
+        requestType:'regCurrency',       
+        selectType:'am_prod_currency',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      }
+    ],
+    tableResult:{
+      columns:[
+        {
+          title:'产品代码',
+          dataIndex:'PROD_ID',
+          key:'PROD_ID'
+        },
+        {
+          title:'产品名称',
+          dataIndex:'PROD_NAME',
+          key:'PROD_NAME'
+        },
+        {
+          title:'当年计提手续费(万元)',
+          dataIndex:'AMOUNT_PLANNED',
+          key:'AMOUNT_PLANNED'
+        },
+        {
+          title:'当年已分配金额(万元)',
+          dataIndex:'AMOUNT_ALLOTTED',
+          key:'AMOUNT_ALLOTTED'
+        },
+        {
+          title:'历史已分配金额(万元)',
+          dataIndex:'AMOUNT_ALLOTTED_HIS',
+          key:'AMOUNT_ALLOTTED_HIS'
+        },
+        {
+          title:'当年已分配次数',
+          dataIndex:'BATCHSERIAL_NUM',
+          key:'BATCHSERIAL_NUM'
+        },
+        {
+          title:'当年待分配金额(万元)',
+          dataIndex:'AMOUNT_NOT_ALLOTTED',
+          key:'AMOUNT_NOT_ALLOTTED'
+        },
+        {
+          title:'年度跨期调整分配金额(万元)',
+          dataIndex:'AMOUNT_NOT_ALLOTTED',
+          key:'AMOUNT_NOT_ALLOTTED'
+        }
+      ],
+    }
+  },
+  intentionToBuy:{
+    //reportName:'R24',
+    reportName:'intentionToBuy',
+    title:'R24客户意向登记购买查询表',
+    search:[
+      {
         text:'起始日期:',
-        selectType:'UPDATE_DATE_START',
-        relationship:'UPDATE_DATE_END',
+        selectType:'start_date',
+        relationship:'end_date',
+        dateCalendarType:'start',
+        defaultValue:moment(),
+        dateFormat:'YYYY-MM',
+        type:3,
+      },
+      {
+        text:'终止日期:',
+        selectType:'end_date',
+        relationship:'start_date',
+        defaultValue:moment(),
+        dateFormat:'YYYY-MM',
+        type:3,
+      },
+      /* {
+        text:'地区:',
+        requestType:'reAreaType',       
+        selectType:'PROVINCE_CODE',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',         
+        type:2,
+        method:'get',
+      }, */
+      {
+        text:'地区:',
+        requestType:'reAreaType',       
+        selectType:'group_by',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',         
+        type:2,
+        method:'get',
+      },
+      {
+        text:'发行币种:',
+        requestType:'regCurrency',       
+        selectType:'am_prod_currency',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      }
+    ],
+    tableResult:{
+      columns:[
+        {
+          title:'产品期限',
+          dataIndex:'INTENT_PROD_CYCLE',
+          key:'INTENT_PROD_CYCLE'
+        },
+        {
+          title:'发行币种',
+          dataIndex:'SBUSCRIPT_PROD_CURRENCY_NAME',
+          key:'SBUSCRIPT_PROD_CURRENCY_NAME'
+        },
+        {
+          title:'收益率(％)',
+          dataIndex:'SUBSCRIPT_PROD_EXPECT_RETURN_LOW',
+          key:'SUBSCRIPT_PROD_EXPECT_RETURN_LOW'
+        },
+        {
+          title:'预约规模(万份)',
+          dataIndex:'SUBSCRIPT_AMOUNT',
+          key:'SUBSCRIPT_AMOUNT'
+        },
+      ],
+    }
+  },
+  failureAmountDetails:{
+    //reportName:'R25',
+    reportName:'failureAmountDetails',
+    title:'R25扣款失败金额明细表',
+    search:[
+      {
+        text:'查询日期:',
+        selectType:'update_date',
+        // relationship:'end_date',
+        // dateCalendarType:'start',
+        defaultValue:moment(),
+        type:3,
+      },
+      {
+        text:'产品代码:',   
+        requestType:'reProdCode',     
+        selectType:'prod_id',      
+        selectKey:'prodCodeList',     
+        itemName:'prodCode',          
+        type:1,
+        method:'get',
+      },
+      {
+        text:'发行币种:',
+        requestType:'regCurrency',       
+        selectType:'am_prod_currency',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      }
+    ],
+    tableResult:{
+      columns:[
+        {
+          title:'产品代码',
+          dataIndex:'PROD_ID',
+          key:'PROD_ID'
+        },
+        {
+          title:'产品名称',
+          dataIndex:'PROD_NAME',
+          key:'PROD_NAME'
+        },
+        {
+          title:'发行币种',
+          dataIndex:'AM_PROD_CURRENCY_NAME',
+          key:'AM_PROD_CURRENCY_NAME'
+        },
+        {
+          title:'客户开户号码',
+          dataIndex:'ACC_NO',
+          key:'ACC_NO'
+        },
+        {
+          title:'客户名称',
+          dataIndex:'CUST_NAME',
+          key:'CUST_NAME'
+        },
+        {
+          title:'金额（元）',
+          dataIndex:'TRADE_AMT',
+          key:'TRADE_AMT'
+        }
+      ],
+    }
+  },
+  newlyOpenedAccounts:{
+    //reportName:'R26',
+    reportName:'newlyOpenedAccounts',
+    title:'R26新增客户开户数',
+    search:[
+      {
+        text:'起始日期:',
+        selectType:'start_date',
+        relationship:'end_date',
         dateCalendarType:'start',
         defaultValue:moment(),
         type:3,
       },
       {
         text:'终止日期:',
-        selectType:'UPDATE_DATE_END',
-        relationship:'UPDATE_DATE_START',
+        selectType:'end_date',
+        relationship:'start_date',
         defaultValue:moment(),
         type:3,
       },
       {
+        text:'投资者类型:',
+        requestType:'dCustomerType',       
+        selectType:'cust_category',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      },
+      {
         text:'机构客户:',
         requestType:'reProper',       
-        selectType:'CUST_TYPE	',
+        selectType:'cust_type',
+        selectKey:'list',
+        disabled:true,
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      },
+    ],
+    tableResult:{
+      columns:[
+        {
+          title:'机构代码',
+          dataIndex:'ORGAN_ID',
+          key:'ORGAN_ID'
+        },
+        {
+          title:'机构名称',
+          dataIndex:'ORGAN_NAME',
+          key:'ORGAN_NAME'
+        },
+        {
+          title:'新增开户数',
+          dataIndex:'CUST_NUM',
+          key:'CUST_NUM'
+        }
+      ],
+    }
+  },
+  branchComprehensiveStatistics:{
+    //reportName:'R27',   
+    reportName:'branchComprehensiveStatistics',
+    group_by:'organ_id',
+    orcode:'organCode',
+    title:'R27各分行理财产品综合情况统计表',
+    search:[
+      { 
+        text:'省份:', 
+        selectType:'province_code',
+        selectKey:'provinceList',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
+        type:2,
+      },
+      {
+        text:'地市:',
+        selectType:'prefecture_code',
+        selectKey:'areaList',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
+        type:2,
+      },
+      {
+        text:'市县:',
+        selectType:'city_code',
+        selectKey:'cityList',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,           
+        type:2,
+      },
+      {
+        text:'网点:',
+        selectType:'brance_code',
+        selectKey:'branchList',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,         
+        type:2,
+      },
+      {
+        text:'数据粒度:',
+        requestType:'dSjld',       
+        selectType:'organ_level',
+        selectKey:'list',
+        //disabled:true,
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      },
+      {
+        text:'起始日期:',
+        selectType:'start_date',
+        relationship:'end_date',
+        dateCalendarType:'start',
+        defaultValue:moment(),
+        type:3,
+      },
+      {
+        text:'终止日期:',
+        selectType:'end_date',
+        relationship:'start_date',
+        defaultValue:moment(),
+        type:3,
+      },
+      {
+        text:'投资者类型:',
+        requestType:'dCustomerType',       
+        selectType:'cust_category',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      },
+      {
+        text:'机构客户:',
+        requestType:'reProper',       
+        selectType:'cust_type',
         selectKey:'list',
         disabled:true,
         itemKey:'value',
@@ -4280,7 +4381,7 @@ export default {
       {
         text:'机构属性:',
         requestType:'reOrganType',       
-        selectType:'ORGAN_MODE',
+        selectType:'organ_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -4290,7 +4391,7 @@ export default {
       {
         text:'产品品牌:',
         requestType:'reBrand',       
-        selectType:'AM_PROD_BRAND_CODE',
+        selectType:'am_prod_brand_code',
         selectKey:'brandList',
         itemKey:'brandCode',
         itemName:'brandName',
@@ -4300,7 +4401,7 @@ export default {
       {
         text:'产品状态:',
         requestType:'prodStatus',       
-        selectType:'AM_PROD_STATUS',
+        selectType:'am_prod_status',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',         
@@ -4310,7 +4411,7 @@ export default {
       {
         text:'产品运作模式:',
         requestType:'reProdoperModel',       
-        selectType:'AM_PROD_OPERATION_MODE',
+        selectType:'am_prod_operation_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -4320,7 +4421,7 @@ export default {
       {
         text:'产品收益类型:',
         requestType:'reProfitType',       
-        selectType:'AM_PROD_PROFIT_MODE',
+        selectType:'am_prod_profit_mode',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -4330,7 +4431,7 @@ export default {
       {
         text:'产品销售渠道:',
         requestType:'dChnl',
-        selectType:'CHANNEL',
+        selectType:'channel',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -4340,7 +4441,7 @@ export default {
       {
         text:'产品代码:',   
         requestType:'reProdCode',     
-        selectType:'PROD_ID',      
+        selectType:'prod_id',     
         selectKey:'prodCodeList',     
         itemKey:'prodCode',           
         itemName:'prodCode',          
@@ -4350,7 +4451,7 @@ export default {
       {
         text:'产品名称:',
         requestType:'productName', 
-        selectType:'PROD_NAME',
+        selectType:'prod_name',
         selectKey:'data',   
         itemName:'prod_name', 
         type:1,
@@ -4359,7 +4460,451 @@ export default {
       {
         text:'发行币种:',
         requestType:'regCurrency',       
-        selectType:'AM_PROD_CURRENCY',
+        selectType:'am_prod_currency',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      }
+    ],
+    tableResult:{
+      columns:[
+        {
+          title:'',
+          children:[
+            {
+              title:'机构代码',
+              dataIndex:'ORGAN_ID',
+              key:'ORGAN_ID'
+            }
+          ]
+        },
+        {
+          title:'',
+          children:[
+            {
+              title:'发行币种',
+              dataIndex:'AM_PROD_CURRENCY_NAME',
+              key:'AM_PROD_CURRENCY_NAME'
+            }
+          ]
+        },
+        {
+          title:'',
+          children:[
+            {
+              title:'机构名称',
+              dataIndex:'ORGAN_NAME',
+              key:'ORGAN_NAME'
+            }
+          ]
+        },
+        {
+          title:'预约购买',
+          children:[
+            {
+              title:'金额',
+              dataIndex:'SUBSCRIPT_RESERV_AMOUNT',
+              key:'SUBSCRIPT_RESERV_AMOUNT'
+            },
+            {
+              title:'份额(万份)',
+              dataIndex:'SUBSCRIPT_RESERV_CONFIRMED_QUOTA',
+              key:'SUBSCRIPT_RESERV_CONFIRMED_QUOTA'
+            },
+            {
+              title:'笔数',
+              dataIndex:'SUBSCRIPT_RESERV_TRANS_NUM',
+              key:'SUBSCRIPT_RESERV_TRANS_NUM'
+            },
+            {
+              title:'客户数',
+              dataIndex:'SUBSCRIPT_RESERV_CUST_NUM',
+              key:'SUBSCRIPT_RESERV_CUST_NUM'
+            }
+          ]
+        },
+        {
+          title:'购买',
+          children:[
+            {
+              title:'金额',
+              dataIndex:'ALL_BUY_AMT',
+              key:'ALL_BUY_AMT'
+            },
+            {
+              title:'份额(万份)',
+              dataIndex:'ALL_BUY_CONFIRMED_QUOTA',
+              key:'ALL_BUY_CONFIRMED_QUOTA'
+            },
+            {
+              title:'笔数',
+              dataIndex:'ALL_BUY_TRANS_NUM',
+              key:'ALL_BUY_TRANS_NUM'
+            },
+            {
+              title:'客户数',
+              dataIndex:'ALL_BUY_CUST_NUM',
+              key:'ALL_BUY_CUST_NUM'
+            }
+          ]
+        },
+        {
+          title:'定期定额',
+          children:[
+            {
+              title:'金额',
+              dataIndex:'PURCHASE_RESERV_MORE_AMOUNT',
+              key:'PURCHASE_RESERV_MORE_AMOUNT'
+            },
+            {
+              title:'份额(万份)',
+              dataIndex:'PURCHASE_RESERV_MORE_CONFIRMED_QUOTA',
+              key:'PURCHASE_RESERV_MORE_CONFIRMED_QUOTA'
+            },
+            {
+              title:'笔数',
+              dataIndex:'PURCHASE_RESERV_MORE_TRANS_NUM',
+              key:'PURCHASE_RESERV_MORE_TRANS_NUM'
+            },
+            {
+              title:'客户数',
+              dataIndex:'PURCHASE_RESERV_MORE_CUST_NUM',
+              key:'PURCHASE_RESERV_MORE_CUST_NUM'
+            }
+          ]
+        },
+        {
+          title:'赎回',
+          children:[
+            {
+              title:'金额',
+              dataIndex:'ALL_REDEM_AMT',
+              key:'ALL_REDEM_AMT'
+            },
+            {
+              title:'份额(万份)',
+              dataIndex:'ALL_REDEM_CONFIRMED_QUOTA',
+              key:'ALL_REDEM_CONFIRMED_QUOTA'
+            },
+            {
+              title:'笔数',
+              dataIndex:'ALL_REDEM_TRANS_NUM',
+              key:'ALL_REDEM_TRANS_NUM'
+            },
+            {
+              title:'客户数',
+              dataIndex:'ALL_REDEM_CUST_NUM',
+              key:'ALL_REDEM_CUST_NUM'
+            }
+          ]
+        },
+        {
+          title:'分红',
+          children:[
+            {
+              title:'金额',
+              dataIndex:'SHARE_OUT_BONUS_AMT',
+              key:'SHARE_OUT_BONUS_AMT'
+            },
+            {
+              title:'份额(万份)',
+              dataIndex:'SHARE_OUT_BONUS_CONFIRMED_QUOTA',
+              key:'SHARE_OUT_BONUS_CONFIRMED_QUOTA'
+            },
+            {
+              title:'笔数',
+              dataIndex:'SHARE_OUT_BONUS_TRANS_NUM',
+              key:'SHARE_OUT_BONUS_TRANS_NUM'
+            },
+            {
+              title:'客户数',
+              dataIndex:'SHARE_OUT_BONUS_CUST_NUM',
+              key:'SHARE_OUT_BONUS_CUST_NUM'
+            }
+          ]
+        },
+        {
+          title:'到期兑付',
+          children:[
+            {
+              title:'金额',
+              dataIndex:'MATURE_PAY_AMT',
+              key:'MATURE_PAY_AMT'
+            },
+            {
+              title:'份额(万份)',
+              dataIndex:'MATURE_PAY_CONFIRMED_QUOTA',
+              key:'MATURE_PAY_CONFIRMED_QUOTA'
+            },
+            {
+              title:'笔数',
+              dataIndex:'MATURE_PAY_TRANS_NUM',
+              key:'MATURE_PAY_TRANS_NUM'
+            },
+            {
+              title:'客户数',
+              dataIndex:'MATURE_PAY_CUST_NUM',
+              key:'MATURE_PAY_CUST_NUM'
+            }
+          ]
+        },
+        {
+          title:'份额转换',
+          children:[
+            {
+              title:'金额',
+              dataIndex:'PURCHASE_CONVERT_AMOUNT',
+              key:'PURCHASE_CONVERT_AMOUNT'
+            },
+            {
+              title:'份额(万份)',
+              dataIndex:'PURCHASE_CONVERT_CONFIRMED_QUOTA',
+              key:'PURCHASE_CONVERT_CONFIRMED_QUOTA'
+            },
+            {
+              title:'笔数',
+              dataIndex:'PURCHASE_CONVERT_TRANS_NUM',
+              key:'PURCHASE_CONVERT_TRANS_NUM'
+            },
+            {
+              title:'客户数',
+              dataIndex:'PURCHASE_CONVERT_CUST_NUM',
+              key:'PURCHASE_CONVERT_CUST_NUM'
+            }
+          ]
+        },
+        {
+          title:'交易过户',
+          children:[
+            {
+              title:'金额',
+              dataIndex:'PURCHASE_TRANSFER_AMOUNT',
+              key:'PURCHASE_TRANSFER_AMOUNT'
+            },
+            {
+              title:'份额(万份)',
+              dataIndex:'PURCHASE_TRANSFER_CONFIRMED_QUOTA',
+              key:'PURCHASE_TRANSFER_CONFIRMED_QUOTA'
+            },
+            {
+              title:'笔数',
+              dataIndex:'PURCHASE_TRANSFER_TRANS_NUM',
+              key:'PURCHASE_TRANSFER_TRANS_NUM'
+            },
+            {
+              title:'客户数',
+              dataIndex:'PURCHASE_TRANSFER_CUST_NUM',
+              key:'PURCHASE_TRANSFER_CUST_NUM'
+            }
+          ]
+        },
+        {
+          title:'预约赎回',
+          children:[
+            {
+              title:'金额',
+              dataIndex:'REDEM_RESERV_AMOUNT',
+              key:'REDEM_RESERV_AMOUNT'
+            },
+            {
+              title:'份额(万份)',
+              dataIndex:'REDEM_RESERV_CONFIRMED_QUOTA',
+              key:'REDEM_RESERV_CONFIRMED_QUOTA'
+            },
+            {
+              title:'笔数',
+              dataIndex:'REDEM_RESERV_TRANS_NUM',
+              key:'REDEM_RESERV_TRANS_NUM'
+            },
+            {
+              title:'客户数',
+              dataIndex:'REDEM_RESERV_CUST_NUM',
+              key:'REDEM_RESERV_CUST_NUM'
+            }
+          ]
+        },
+        {
+          title:'预约自动购买',
+          children:[
+            {
+              title:'金额',
+              dataIndex:'SUBSCRIPT_INTENT_AMOUNT',
+              key:'SUBSCRIPT_INTENT_AMOUNT'
+            },
+            {
+              title:'份额(万份)',
+              dataIndex:'SUBSCRIPT_INTENT_CONFIRMED_QUOTA',
+              key:'SUBSCRIPT_INTENT_CONFIRMED_QUOTA'
+            },
+            {
+              title:'笔数',
+              dataIndex:'SUBSCRIPT_INTENT_TRANS_NUM',
+              key:'SUBSCRIPT_INTENT_TRANS_NUM'
+            },
+            {
+              title:'客户数',
+              dataIndex:'SUBSCRIPT_INTENT_CUST_NUM',
+              key:'SUBSCRIPT_INTENT_CUST_NUM'
+            }
+          ]
+        },
+      ],
+    }
+  },
+  comprehensiveProductStatistics:{
+    //reportName:'R28',
+    reportName:'comprehensiveProductStatistics',
+    group_by:'prod_id',
+    orcode:'organCode',
+    title:'R28各理财产品综合情况统计表',
+    search:[
+      { 
+        text:'省份:', 
+        selectType:'province_code',
+        selectKey:'provinceList',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
+        type:2,
+      },
+      {
+        text:'地市:',
+        selectType:'prefecture_code',
+        selectKey:'areaList',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,          
+        type:2,
+      },
+      {
+        text:'市县:',
+        selectType:'city_code',
+        selectKey:'cityList',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,           
+        type:2,
+      },
+      {
+        text:'网点:',
+        selectType:'brance_code',
+        selectKey:'branchList',
+        itemKey:'code',   
+        itemName:'name', 
+        disabled:true,         
+        type:2,
+      },
+      {
+        text:'起始日期:',
+        selectType:'start_date',
+        relationship:'end_date',
+        dateCalendarType:'start',
+        defaultValue:moment(),
+        type:3,
+      },
+      {
+        text:'终止日期:',
+        selectType:'end_date',
+        relationship:'start_date',
+        defaultValue:moment(),
+        type:3,
+      },
+      {
+        text:'机构客户:',
+        requestType:'reProper',       
+        selectType:'cust_type',
+        selectKey:'list',
+        disabled:true,
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      },
+      {
+        text:'机构属性:',
+        requestType:'reOrganType',       
+        selectType:'organ_mode',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      },
+      {
+        text:'产品品牌:',
+        requestType:'reBrand',       
+        selectType:'am_prod_brand_code',
+        selectKey:'brandList',
+        itemKey:'brandCode',
+        itemName:'brandName',
+        type:2,
+        method:'get',
+      },
+      {
+        text:'产品状态:',
+        requestType:'prodStatus',       
+        selectType:'am_prod_status',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',         
+        type:2,
+        method:'get',
+      },
+      {
+        text:'产品运作模式:',
+        requestType:'reProdoperModel',       
+        selectType:'am_prod_operation_mode',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      },
+      {
+        text:'产品收益类型:',
+        requestType:'reProfitType',       
+        selectType:'am_prod_profit_mode',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      },
+      {
+        text:'产品销售渠道:',
+        requestType:'dChnl',
+        selectType:'channel',
+        selectKey:'list',
+        itemKey:'value',
+        itemName:'label',
+        type:2,
+        method:'get',
+      },
+      {
+        text:'产品代码:',   
+        requestType:'reProdCode',     
+        selectType:'prod_id',      
+        selectKey:'prodCodeList',     
+        itemKey:'prodCode',           
+        itemName:'prodCode',          
+        type:1,
+        method:'get',
+      },
+      {
+        text:'产品名称:',
+        requestType:'productName', 
+        selectType:'prod_name',
+        selectKey:'data',   
+        itemName:'prod_name', 
+        type:1,
+        method:'get',
+      },
+      {
+        text:'发行币种:',
+        requestType:'regCurrency',       
+        selectType:'am_prod_currency',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -4374,8 +4919,8 @@ export default {
           children:[
             {
               title:'产品代码',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'PROD_ID',
+              key:'PROD_ID'
             }
           ]
         },
@@ -4384,8 +4929,8 @@ export default {
           children:[
             {
               title:'发行币种',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'AM_PROD_CURRENCY_NAME',
+              key:'AM_PROD_CURRENCY_NAME'
             }
           ]
         },
@@ -4394,8 +4939,8 @@ export default {
           children:[
             {
               title:'产品名称',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'PROD_NAME',
+              key:'PROD_NAME'
             }
           ]
         },
@@ -4404,23 +4949,23 @@ export default {
           children:[
             {
               title:'金额',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'SUBSCRIPT_RESERV_AMOUNT',
+              key:'SUBSCRIPT_RESERV_AMOUNT'
             },
             {
               title:'份额(万份)',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'SUBSCRIPT_RESERV_CONFIRMED_QUOTA',
+              key:'SUBSCRIPT_RESERV_CONFIRMED_QUOTA'
             },
             {
               title:'笔数',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'SUBSCRIPT_RESERV_TRANS_NUM',
+              key:'SUBSCRIPT_RESERV_TRANS_NUM'
             },
             {
               title:'客户数',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'SUBSCRIPT_RESERV_CUST_NUM',
+              key:'SUBSCRIPT_RESERV_CUST_NUM'
             }
           ]
         },
@@ -4429,44 +4974,246 @@ export default {
           children:[
             {
               title:'金额',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'ALL_BUY_AMT',
+              key:'ALL_BUY_AMT'
             },
             {
               title:'份额(万份)',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'ALL_BUY_CONFIRMED_QUOTA',
+              key:'ALL_BUY_CONFIRMED_QUOTA'
             },
             {
               title:'笔数',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'ALL_BUY_TRANS_NUM',
+              key:'ALL_BUY_TRANS_NUM'
             },
             {
               title:'客户数',
-              dataIndex:'companyAddress',
-              key:'companyAddress'
+              dataIndex:'ALL_BUY_CUST_NUM',
+              key:'ALL_BUY_CUST_NUM'
             }
           ]
-        }
+        },
+        {
+          title:'定期定额',
+          children:[
+            {
+              title:'金额',
+              dataIndex:'PURCHASE_RESERV_MORE_AMOUNT',
+              key:'PURCHASE_RESERV_MORE_AMOUNT'
+            },
+            {
+              title:'份额(万份)',
+              dataIndex:'PURCHASE_RESERV_MORE_CONFIRMED_QUOTA',
+              key:'PURCHASE_RESERV_MORE_CONFIRMED_QUOTA'
+            },
+            {
+              title:'笔数',
+              dataIndex:'PURCHASE_RESERV_MORE_TRANS_NUM',
+              key:'PURCHASE_RESERV_MORE_TRANS_NUM'
+            },
+            {
+              title:'客户数',
+              dataIndex:'PURCHASE_RESERV_MORE_CUST_NUM',
+              key:'PURCHASE_RESERV_MORE_CUST_NUM'
+            }
+          ]
+        },
+        {
+          title:'赎回',
+          children:[
+            {
+              title:'金额',
+              dataIndex:'ALL_REDEM_AMT',
+              key:'ALL_REDEM_AMT'
+            },
+            {
+              title:'份额(万份)',
+              dataIndex:'ALL_REDEM_CONFIRMED_QUOTA',
+              key:'ALL_REDEM_CONFIRMED_QUOTA'
+            },
+            {
+              title:'笔数',
+              dataIndex:'ALL_REDEM_TRANS_NUM',
+              key:'ALL_REDEM_TRANS_NUM'
+            },
+            {
+              title:'客户数',
+              dataIndex:'ALL_REDEM_CUST_NUM',
+              key:'ALL_REDEM_CUST_NUM'
+            }
+          ]
+        },
+        {
+          title:'分红',
+          children:[
+            {
+              title:'金额',
+              dataIndex:'SHARE_OUT_BONUS_AMT',
+              key:'SHARE_OUT_BONUS_AMT'
+            },
+            {
+              title:'份额(万份)',
+              dataIndex:'SHARE_OUT_BONUS_CONFIRMED_QUOTA',
+              key:'SHARE_OUT_BONUS_CONFIRMED_QUOTA'
+            },
+            {
+              title:'笔数',
+              dataIndex:'SHARE_OUT_BONUS_TRANS_NUM',
+              key:'SHARE_OUT_BONUS_TRANS_NUM'
+            },
+            {
+              title:'客户数',
+              dataIndex:'SHARE_OUT_BONUS_CUST_NUM',
+              key:'SHARE_OUT_BONUS_CUST_NUM'
+            }
+          ]
+        },
+        {
+          title:'到期兑付',
+          children:[
+            {
+              title:'金额',
+              dataIndex:'MATURE_PAY_AMT',
+              key:'MATURE_PAY_AMT'
+            },
+            {
+              title:'份额(万份)',
+              dataIndex:'MATURE_PAY_CONFIRMED_QUOTA',
+              key:'MATURE_PAY_CONFIRMED_QUOTA'
+            },
+            {
+              title:'笔数',
+              dataIndex:'MATURE_PAY_TRANS_NUM',
+              key:'MATURE_PAY_TRANS_NUM'
+            },
+            {
+              title:'客户数',
+              dataIndex:'MATURE_PAY_CUST_NUM',
+              key:'MATURE_PAY_CUST_NUM'
+            }
+          ]
+        },
+        {
+          title:'份额转换',
+          children:[
+            {
+              title:'金额',
+              dataIndex:'PURCHASE_CONVERT_AMOUNT',
+              key:'PURCHASE_CONVERT_AMOUNT'
+            },
+            {
+              title:'份额(万份)',
+              dataIndex:'PURCHASE_CONVERT_CONFIRMED_QUOTA',
+              key:'PURCHASE_CONVERT_CONFIRMED_QUOTA'
+            },
+            {
+              title:'笔数',
+              dataIndex:'PURCHASE_CONVERT_TRANS_NUM',
+              key:'PURCHASE_CONVERT_TRANS_NUM'
+            },
+            {
+              title:'客户数',
+              dataIndex:'PURCHASE_CONVERT_CUST_NUM',
+              key:'PURCHASE_CONVERT_CUST_NUM'
+            }
+          ]
+        },
+        {
+          title:'交易过户',
+          children:[
+            {
+              title:'金额',
+              dataIndex:'PURCHASE_TRANSFER_AMOUNT',
+              key:'PURCHASE_TRANSFER_AMOUNT'
+            },
+            {
+              title:'份额(万份)',
+              dataIndex:'PURCHASE_TRANSFER_CONFIRMED_QUOTA',
+              key:'PURCHASE_TRANSFER_CONFIRMED_QUOTA'
+            },
+            {
+              title:'笔数',
+              dataIndex:'PURCHASE_TRANSFER_TRANS_NUM',
+              key:'PURCHASE_TRANSFER_TRANS_NUM'
+            },
+            {
+              title:'客户数',
+              dataIndex:'PURCHASE_TRANSFER_CUST_NUM',
+              key:'PURCHASE_TRANSFER_CUST_NUM'
+            }
+          ]
+        },
+        {
+          title:'预约赎回',
+          children:[
+            {
+              title:'金额',
+              dataIndex:'REDEM_RESERV_AMOUNT',
+              key:'REDEM_RESERV_AMOUNT'
+            },
+            {
+              title:'份额(万份)',
+              dataIndex:'REDEM_RESERV_CONFIRMED_QUOTA',
+              key:'REDEM_RESERV_CONFIRMED_QUOTA'
+            },
+            {
+              title:'笔数',
+              dataIndex:'REDEM_RESERV_TRANS_NUM',
+              key:'REDEM_RESERV_TRANS_NUM'
+            },
+            {
+              title:'客户数',
+              dataIndex:'REDEM_RESERV_CUST_NUM',
+              key:'REDEM_RESERV_CUST_NUM'
+            }
+          ]
+        },
+        {
+          title:'预约自动购买',
+          children:[
+            {
+              title:'金额',
+              dataIndex:'SUBSCRIPT_INTENT_AMOUNT',
+              key:'SUBSCRIPT_INTENT_AMOUNT'
+            },
+            {
+              title:'份额(万份)',
+              dataIndex:'SUBSCRIPT_INTENT_CONFIRMED_QUOTA',
+              key:'SUBSCRIPT_INTENT_CONFIRMED_QUOTA'
+            },
+            {
+              title:'笔数',
+              dataIndex:'SUBSCRIPT_INTENT_TRANS_NUM',
+              key:'SUBSCRIPT_INTENT_TRANS_NUM'
+            },
+            {
+              title:'客户数',
+              dataIndex:'SUBSCRIPT_INTENT_CUST_NUM',
+              key:'SUBSCRIPT_INTENT_CUST_NUM'
+            }
+          ]
+        },
       ],
     }
   },
-  weeklyQuery:{
-    //reportName:'R29',   // 没有
+  weeklyDataQuery:{
+    //reportName:'R29',
     reportName:'weeklyDataQuery',
-    title:'周报数据查询表',
+    title:'R29周报数据查询表',
     tableType:'weekTable',
     search:[
       {
         text:'查询周期:',
-        selectType:'UPDATE_DATE',
+        selectType:'update_date',
+        defaultValue:moment(),
         type:3,
       },
+      
       {
         text:'发行币种:',
         requestType:'regCurrency',       
-        selectType:'CURRENCY',
+        selectType:'am_prod_currency',
         selectKey:'list',
         itemKey:'value',
         itemName:'label',
@@ -4481,23 +5228,23 @@ export default {
           children:[
             {
               title:'上周规模',
-              dataIndex:'a',
-              key:'a'
+              dataIndex:'L_WEEK_AMT',
+              key:'L_WEEK_AMT'
             },
             {
               title:'本周余额',
-              dataIndex:'b',
-              key:'b'
+              dataIndex:'WEEK_AMT',
+              key:'WEEK_AMT'
             },
             {
               title:'本月余额',
-              dataIndex:'c',
-              key:'c'
+              dataIndex:'MONTH_AMT',
+              key:'MONTH_AMT'
             },
             {
               title:'本周余额',
-              dataIndex:'d',
-              key:'d'
+              dataIndex:'YEAR_AMT',
+              key:'YEAR_AMT'
             },
           ]
         },
@@ -4506,23 +5253,23 @@ export default {
           children:[
             {
               title:'上周末余额',
-              dataIndex:'q',
-              key:'q'
+              dataIndex:'WEEK_END_HOLD_AMT',
+              key:'WEEK_END_HOLD_AMT'
             },
             {
               title:'本周末余额',
-              dataIndex:'w',
-              key:'w'
+              dataIndex:'L_WEEK_END_HOLD_AMT',
+              key:'L_WEEK_END_HOLD_AMT'
             },
             {
               title:'上月末余额',
-              dataIndex:'e',
-              key:'e'
+              dataIndex:'L_MONTH_END_HOLD_AMT',
+              key:'L_MONTH_END_HOLD_AMT'
             },
             {
               title:'上年末余额',
-              dataIndex:'r',
-              key:'r'
+              dataIndex:'L_YEAR_END_HOLD_AMT',
+              key:'L_YEAR_END_HOLD_AMT'
             },
           ]
         },
@@ -4530,141 +5277,101 @@ export default {
       columnsTable2:[
         {
           title:'时间区间',
-          dataIndex:'r',
-          key:'r'
+          dataIndex:'TIME_INTERVAL',
+          key:'TIME_INTERVAL'
         },
         {
           title:'计划发售余额',
-          dataIndex:'a',
-          key:'a'
+          dataIndex:'PLAN_SALE_BALACE_AMT',
+          key:'PLAN_SALE_BALACE_AMT'
         },
         {
           title:'较上周增量',
-          dataIndex:'c',
-          key:'c'
+          dataIndex:'WEEK_INCREASE_AMT',
+          key:'WEEK_INCREASE_AMT'
         },
       ],
       columnsTable3:[
         {
           title:'时间区间',
-          dataIndex:'r',
-          key:'r'
+          dataIndex:'TIME_INTERVAL',
+          key:'TIME_INTERVAL'
         },
         {
           title:'已成立产品只数',
-          dataIndex:'a',
-          key:'a'
+          dataIndex:'PROD_FOUNT_NUM',
+          key:'PROD_FOUNT_NUM'
         },
         {
           title:'计划募集余额',
-          dataIndex:'c',
-          key:'c'
+          dataIndex:'PLAN_RAISING_BALANCE_AMT',
+          key:'PLAN_RAISING_BALANCE_AMT'
         },
         {
           title:'实际募集余额',
-          dataIndex:'b',
-          key:'b'
+          dataIndex:'ACTUAL_RAISING_BALANCE_AMT',
+          key:'ACTUAL_RAISING_BALANCE_AMT'
         },
         {
-          title:'销售牢',
-          dataIndex:'e',
-          key:'e'
+          title:'销售率',
+          dataIndex:'SALES_RATE',
+          key:'SALES_RATE'
         },
         {
           title:'仍在募集期产品',
-          dataIndex:'t',
-          key:'t'
+          dataIndex:'RAISING_PROD_AMT',
+          key:'RAISING_PROD_AMT'
         },
       ],
       columnsTable4:[
         {
           title:'开放式理财产品',
-          dataIndex:'r',
-          key:'r'
+          dataIndex:'PROD_ID',
+          key:'PROD_ID'
         },
         {
           title:'购买',
-          dataIndex:'a',
-          key:'a'
+          dataIndex:'SALES_AMT',
+          key:'SALES_AMT'
         },
         {
           title:'赎回',
-          dataIndex:'c',
-          key:'c'
+          dataIndex:'REDEMTION_AMT',
+          key:'REDEMTION_AMT'
         },
         {
           title:'净购买',
-          dataIndex:'b',
-          key:'b'
+          dataIndex:'NET_AMT',
+          key:'NET_AMT'
         },
         {
           title:'产品余额',
-          dataIndex:'d',
-          key:'d'
+          dataIndex:'BALANCE_AMT',
+          key:'BALANCE_AMT'
         },
         {
           title:'存量占比',
-          dataIndex:'e',
-          key:'e'
+          dataIndex:'BALANCE_PERCENT',
+          key:'BALANCE_PERCENT'
+        },
+      ],
+      columnsTable5:[
+        {
+          title:'时间区间',
+          dataIndex:'TIME_INTERVAL',
+          key:'TIME_INTERVAL'
+        },
+        {
+          title:'计划发售个人理财产品余额',
+          dataIndex:'PLAN_SALES_PERSONAL_BALANCE_AMT',
+          key:'PLAN_SALES_PERSONAL_BALANCE_AMT'
+        },
+        {
+          title:'到期个人产品余额',
+          dataIndex:'MATURITY_PERSONAL_BALANCE_AMT',
+          key:'MATURITY_PERSONAL_BALANCE_AMT'
         },
       ],
     }
   }
 }
-
-
-/* 
-R03D	R03-封闭式非净值型理财产品平均客户收益率及投资收益率序列表（日）
-R03M	R03-封闭式非净值型理财产品平均客户收益率及投资收益率序列表（月）
-R03Q	R03-封闭式非净值型理财产品平均客户收益率及投资收益率序列表（季）
-R03Y	R03-封闭式非净值型理财产品平均客户收益率及投资收益率序列表（年）
-
-R041M	R04-理财产品有效销量表(一分)
-R042M	R04-理财产品有效销量表(二分)
-R043M	R04-理财产品有效销量表(一支)
-R044M	R04-理财产品有效销量表(网点)
-
-R07D	R07-理财销售情况序列表（日）
-R07M	R07-理财销售情况序列表（月）
-R07Y	R07-理财销售情况序列表（年）
-
-R10D	R10-开放式理财产品销售情况序列表（日）
-R10M	R10-开放式理财产品销售情况序列表（月）
-R10Q	R10-开放式理财产品销售情况序列表（季度）
-R10Y	R10-开放式理财产品销售情况序列表（年）
-
-R11D	R11-开放式非净值型理财产品成本统计表
-
-R121D	R12-各分行理财产品销售情况统计表（一分）
-R122D	R12-各分行理财产品销售情况统计表（二分）
-R123D	R12-各分行理财产品销售情况统计表（一支）
-R124D	R12-各分行理财产品销售情况统计表（网点）
-
-R13D	R13-各分行理财产品销售情况统计表
-
-R17D	R17-理财余额序列表（日）
-R17M	R17-理财余额序列表（月）
-R17Y	R17-理财余额序列表（年）
-
-R191D	R19-各分行理财产品日均保有量统计表（一分）（日）
-R192D	R19-各分行理财产品日均保有量统计表（二分）（日）
-R193D	R19-各分行理财产品日均保有量统计表（一支）（日）
-R194D	R19-各分行理财产品日均保有量统计表（网点）（日）
-R195M	R19-各分行理财产品日均保有量统计表（一分）（月）
-R196M	R19-各分行理财产品日均保有量统计表（二分）（月）
-R197M	R19-各分行理财产品日均保有量统计表（一支）（月）
-R198M	R19-各分行理财产品日均保有量统计表（网点）（月）
-
-R211M	R21各理财产品收入情况统计表（一分）
-R212M	R21各理财产品收入情况统计表（二分）
-R213M	R21各理财产品收入情况统计表（一支）
-R214M	R21各理财产品收入情况统计表（网点）
-
-R22M	R22各分行理财产品收入情况统计表
-
-R271D	R27-各分行理财产品综合情况统计表（一分）
-R272D	R27-各分行理财产品综合情况统计表（二分）
-R273D	R27-各分行理财产品综合情况统计表（一支）
-R274D	R27-各分行理财产品综合情况统计表（网点）
-
-*/

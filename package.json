@@ -2,6 +2,7 @@
   "name": "yld_ui",
   "version": "0.1.0",
   "private": true,
+  "homepage":".",
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
   "author": "hejunjie",
   "license": "ISC",

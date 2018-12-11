@@ -80,7 +80,7 @@ export const fetchDataCallback = (fetchUrl, reqType, params, successCallback = n
             if (fetchUrl.endsWith('&') || fetchUrl.endsWith('?')) {
                 fetchUrl = fetchUrl.substring(0, fetchUrl.length - 1)
             }
-            console.log("fetchurl=====" + fetchUrl)
+            // console.log("fetchurl=====" + fetchUrl)
         } else {
             fetchParams.body = body
         }

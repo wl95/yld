@@ -1,4 +1,4 @@
-import { setFilterData, setDATE, setSearchData, queryListData, getAuthorityData } from 'actions/filterAction'
+import { setFilterData, setSearchData, queryListData, getAuthorityData } from 'actions/filterAction'
 export default (dispatch) => ({
     setFilter: (filterData, index) => dispatch(setFilterData(filterData, index)),
     setSearch: (searchData) => dispatch(setSearchData(searchData)),
