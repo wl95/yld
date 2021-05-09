@@ -21,7 +21,7 @@
     "babel-runtime": "6.26.0",
     "es6-promise": "4.2.4",
     "isomorphic-fetch": "2.2.1",
-    "lodash": "4.17.5",
+    "lodash": "4.17.21",
     "npm": "6.0.0",
     "query-string": "6.1.0",
     "rc-calendar": "9.7.0",
